@@ -1,0 +1,50 @@
+@import '~src/assets/scss/variables';
+
+.header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .button:not(:last-child) {
+    margin-right: .5rem;
+  }
+}
+
+.grid-list li {
+  background: $color-background-2;
+  position: relative;
+  transition: all .1s ease-out;
+  cursor: pointer;
+
+  &:hover,
+  &.is-selected {
+    transform: scale(1.05);
+  }
+
+  img {
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+.checkbox-wrapper {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}
+
+// .list {
+//   display: flex;
+//   flex-wrap: wrap;
+
+//   li {
+//     width: 25%;
+//     margin-right: 1rem;
+//     margin-bottom: 1rem;
+//   }
+
+//   img {
+//     width: 100%;
+//   }
+// }

@@ -1,0 +1,23 @@
+<header class="header main-container">
+  <div class="inner">
+    <div class="left">
+      <a [routerLink]="['/']">
+        <h1 class="title">Photol</h1>
+      </a>
+    </div>
+    <div class="album-title">{{albumTitle}}</div>
+    <div class="right">
+      <!-- <button
+        ngfSelect
+        class="button"
+        accept="image/*"
+        multiple="1"
+        (filesChange)="onUpload($event)"
+      >
+        Upload
+      </button> -->
+      <a class="button" [routerLink]="['/', 'albums']">Albums</a>
+      <app-search-input (search)="onSearch($event)"></app-search-input>
+    </div>
+  </div>
+</header>

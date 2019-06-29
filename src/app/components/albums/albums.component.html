@@ -1,0 +1,10 @@
+<div class="main-loader-wrapper" *ngIf="!albums" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<div class="main-container" *ngIf="albums" [@fadeAnimation]>
+  <ul class="grid-list inner">
+    <li *ngFor="let album of albums">
+      <app-album-thumb [album]="album"></app-album-thumb>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+// General colors
+$color-white: #fff;
+$color-black: #000;
+$color-white-smoke: #f5f6f7;
+$color-gray: #828a92;
+$color-lightgray: #cdcdcd;
+$color-mediumgray: #8A8A8A;
+$color-blue: #3498db;
+
+$color-almost-black: #212121;
+$color-darkgray: #333;
+$color-darkgray-lighter: #4e4e4e;
+$color-mediumgray-lighter: #a6a6a6;
+
+// Theme
+$color-text: $color-white;
+$color-text-2: $color-mediumgray-lighter;
+$color-background: $color-almost-black;
+$color-background-2: $color-darkgray;
+$color-main-border: $color-darkgray-lighter;
+$color-accent: $color-blue;
+
+// Font
+// $font-family: 'Roboto', sans-serif;
+$font-family: 'PT Sans', serif;
+$base-font-size: .9rem;
+// $base-font-size: .85rem;
+
+// Sizes
+$container-width: 68rem;
+
+// Easing
+$ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+
+// Breakpoints
+@import '~src/assets/scss/breakpoints';

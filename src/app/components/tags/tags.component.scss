@@ -1,0 +1,8 @@
+@import '~src/assets/scss/variables';
+
+.tags {
+  line-height: 1.5;
+  text-shadow: 1px 1px 5px rgba($color-black, .6);
+  opacity: .9;
+  font-weight: 700;
+}

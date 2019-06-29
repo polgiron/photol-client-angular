@@ -1,0 +1,46 @@
+@import '~src/assets/scss/variables';
+
+.header {
+  animation: fade-in .4s both;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include respond-to('small') {
+    display: block;
+    text-align: center;
+  }
+}
+
+.right {
+  display: flex;
+
+  >*:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  // text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.album-title {
+  font-size: 1.1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

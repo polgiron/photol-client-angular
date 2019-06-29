@@ -1,0 +1,26 @@
+@import '~src/assets/scss/variables';
+
+.image-wrapper {
+  width: 100%;
+  position: relative;
+  background: $color-background-2;
+  border: 1px solid $color-main-border;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // box-shadow: -2px 2px 15px rgba(0, 0, 0, .15);
+}

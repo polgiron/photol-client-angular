@@ -1,0 +1,29 @@
+@import '~src/assets/scss/variables';
+
+.main-container {
+  padding-top: 0;
+}
+
+.inner {
+  display: flex;
+  height: calc(100vh - 6rem);
+}
+
+.left {
+  flex: 1;
+  background: $color-white-smoke;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+  }
+}
+
+.right {
+  width: 18rem;
+  padding: 2rem;
+  position: relative;
+}

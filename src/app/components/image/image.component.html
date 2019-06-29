@@ -1,0 +1,12 @@
+<div class="image-wrapper" #wrapper>
+  <div class="loader" *ngIf="!isLoaded">
+    <app-loader></app-loader>
+  </div>
+  <img
+    alt=""
+    class="fade"
+    [src]="src"
+    (load)="onLoad()"
+    [ngClass]="{'is-loaded': isLoaded}"
+  >
+</div>

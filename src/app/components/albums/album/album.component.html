@@ -1,0 +1,16 @@
+<div class="main-loader-wrapper" *ngIf="!album" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<div class="main-container" *ngIf="album" [@fadeAnimation]>
+  <div class="inner">
+    <div class="cover" *ngIf="cover">
+      <app-image
+        [src]="coverSrc"
+        [width]="cover.width_o"
+        [height]="cover.height_o"
+        [cover]="true"
+      ></app-image>
+    </div>
+    <app-photos [photos]="album.photo"></app-photos>
+  </div>
+</div>

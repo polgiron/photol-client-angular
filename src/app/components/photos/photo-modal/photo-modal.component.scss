@@ -1,0 +1,24 @@
+@import '~src/assets/scss/variables';
+
+.photo-wrapper {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $color-main-border;
+
+  &:hover .infos {
+    opacity: 1;
+  }
+}
+
+.infos {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // background: rgba($color-black, .8);
+  background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .4) 100%);
+  color: $color-white;
+  padding: .7rem 1rem;
+  opacity: 0;
+  transition: all .2s;
+}

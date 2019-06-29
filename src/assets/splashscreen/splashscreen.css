@@ -1,0 +1,52 @@
+#splashscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background: #212121;
+  z-index: 9999;
+  transition: all .6s ease-out;
+  /* pointer-events: none; */
+}
+
+#splashscreen.is-hidden {
+  opacity: 0;
+  /* transform: scale(1.5); */
+  visibility: hidden;
+}
+
+#splashscreen .inner {
+  margin: auto;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+/* #splashscreen i {
+  font-size: 2rem;
+} */
+
+#splashscreen img {
+  width: 3rem;
+  height: 3rem;
+  opacity: .7;
+  animation: spin 3s infinite both linear;
+}
+
+#splashscreen h1 {
+  font-size: 2.2rem;
+  margin-left: 1rem;
+  color: #bdbdbd;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,21 @@
+@import '~src/assets/scss/variables';
+
+$border-width: .2rem;
+$loader-width: 2rem;
+
+.loader {
+  margin: auto;
+  width: $loader-width;
+  height: $loader-width;
+  border-style: solid;
+  border-color: $color-background-2 transparent transparent $color-background-2;
+  border-image: initial;
+  border-radius: 50%;
+  border-width: $border-width;
+  animation: spin .4s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

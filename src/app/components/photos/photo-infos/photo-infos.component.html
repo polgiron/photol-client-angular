@@ -1,0 +1,19 @@
+<!-- <h2 class="title">{{title}}</h2>
+<p class="description">{{description}}</p> -->
+
+<section class="section" *ngIf="tags && tags.length && tags[0] != ''">
+  <h3 class="section__title">Tags</h3>
+  <app-tags [tags]="tags"></app-tags>
+</section>
+
+<section class="section" *ngIf="albums">
+  <h3 class="section__title">Albums</h3>
+  <a *ngFor="let album of albums" [routerLink]="['/', 'albums', album.id]" (click)="onClickAlbum()">
+    {{album.title}}
+  </a>
+</section>
+
+<section class="section" *ngIf="time">
+  <h3 class="section__title">Darkroom settings</h3>
+  <app-darkroom-settings [time]="time" [contrast]="contrast" [aperture]="aperture"></app-darkroom-settings>
+</section>

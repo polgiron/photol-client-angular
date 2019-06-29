@@ -1,0 +1,40 @@
+@import '~src/assets/scss/variables';
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: $color-darkgray;
+
+  @include respond-to('small') {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+  }
+}
+
+.description {
+  color: $color-mediumgray;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: .9rem;
+  font-style: italic;
+}
+
+.section {
+  line-height: 1.5;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.section__title {
+  color: $color-mediumgray;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+  font-size: .9rem;
+}

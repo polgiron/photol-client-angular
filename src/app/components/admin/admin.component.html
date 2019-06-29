@@ -1,0 +1,20 @@
+<div class="admin main-container">
+  <div class="header">
+    <div *ngIf="uploadPhotos">{{uploadPhotos.length}} photos</div>
+    <div *ngIf="selectedPhotos.length">{{selectedPhotos.length}} photos selected</div>
+    <div class="right">
+      <button class="button" (click)="selectAll()">Select All</button>
+      <button class="button" (click)="unselectAll()" *ngIf="selectedPhotos.length">Clear Selection</button>
+      <button class="button" *ngIf="selectedPhotos.length">Batch Edit</button>
+    </div>
+  </div>
+  <ul class="grid-list grid-list--small">
+    <li *ngFor="let photo of uploadPhotos" [ngClass]="{'is-selected': photo.selected}">
+    <!-- <li *ngFor="let key of [1,2,3,4,5,6,7,8,9]"> -->
+      <img [src]="'assets/images/tmp/' + photo.id + '.JPG'" draggable="false" alt="">
+      <div class="checkbox-wrapper">
+        <app-checkbox (setCheckState)="onSelectPhoto(photo)" [check]="photo.selected"></app-checkbox>
+      </div>
+    </li>
+  </ul>
+</div>

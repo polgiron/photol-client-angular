@@ -1,0 +1,8 @@
+<div class="main-loader-wrapper" *ngIf="!photostream" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<div class="main-container" *ngIf="photostream" [@fadeAnimation]>
+  <div class="inner">
+    <app-photos [photos]="photostream" [columns]="2"></app-photos>
+  </div>
+</div>

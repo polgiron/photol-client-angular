@@ -1,0 +1,10 @@
+<button
+  class="checkbox"
+  [ngClass]="{
+    'is-checked': check
+  }"
+  (click)="toggleCheck()"
+  [disabled]="disabled"
+>
+  <i class="material-icons">check</i>
+</button>

@@ -1,0 +1,36 @@
+@import '~src/assets/scss/variables';
+
+.checkbox:disabled {
+  cursor: default;
+}
+
+.checkbox {
+  display: flex;
+  border: 2px solid rgba($color-white, .5);
+  // border: 2px solid $color-main-border;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  // transition: all .2s;
+  box-shadow: -1px 1px 6px rgba($color-black, .15);
+
+  i {
+    margin: auto;
+    font-size: 1.5em;
+    display: none;
+  }
+
+  &.is-checked {
+    background: $color-accent;
+    border-color: $color-accent;
+
+    i {
+      color: $color-white;
+      display: block;
+    }
+  }
+
+  &:disabled {
+    background: $color-background-2;
+  }
+}
