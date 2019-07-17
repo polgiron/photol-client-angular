@@ -1,0 +1,18 @@
+<div class="modal-body">
+  <h2 class="modal__title">Create Album</h2>
+  <!-- <h2 class="modal__title">Add to album</h2> -->
+  <div class="input-wrapper-list">
+    <div class="input-wrapper">
+      <input class="input" type="text" placeholder="Album title..." [(ngModel)]="title">
+    </div>
+    <div class="input-wrapper">
+      <input class="input" type="number" placeholder="Roll id..." [(ngModel)]="rollId">
+    </div>
+  </div>
+  <!-- <button class="button button--main" (click)="onCreateAlbum()">Add to Album</button> -->
+  <button
+    class="button button--main"
+    (click)="onCreateAlbum()"
+    [disabled]="!title || title == '' || !rollId || rollId == ''"
+  >Create Album</button>
+</div>

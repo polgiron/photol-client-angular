@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 import { AlbumService } from 'src/app/services/album.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-create-album.component';
 
 @Component({
   selector: 'app-topbar',
@@ -12,7 +14,8 @@ export class TopbarComponent implements OnInit {
   albumTitle: string = '';
 
   constructor(
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -21,6 +24,11 @@ export class TopbarComponent implements OnInit {
     //   .subscribe((albumTitle: string) => {
     //     this.albumTitle = albumTitle;
     //   });
+    // this.onClickAddAlbum();
+  }
+
+  onClickAddAlbum() {
+    this.modalService.open(ModalCreateAlbumComponent, 'big');
   }
 
   ngOnDestroy() {

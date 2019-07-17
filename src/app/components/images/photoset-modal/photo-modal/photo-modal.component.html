@@ -1,5 +1,5 @@
   <div class="photo-wrapper" #photoWrapper>
-    <app-image [src]="imageSrc" [width]="photo.width_m" [height]="photo.height_m"></app-image>
+    <app-image *ngIf="imageSrc" [src]="imageSrc" [width]="image.oriWidth" [height]="image.oriHeight"></app-image>
     <!-- <div class="infos"> -->
       <!-- <app-photo-infos
         [title]="photo.title"

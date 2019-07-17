@@ -17,6 +17,10 @@ export class AlbumService {
     });
   }
 
+  createAlbum(params: Object) {
+    return this.api.post('album', params);
+  }
+
   // public albumTitleChannel(): Observable<string> {
   //   return this._albumTitle.asObservable();
   // }

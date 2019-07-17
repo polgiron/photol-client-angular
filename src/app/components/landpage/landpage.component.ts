@@ -41,7 +41,7 @@ export class LandpageComponent implements OnInit {
 
     console.log('GET LANDPAGE');
     this.images = await this.imageService.getImages();
-    console.log(this.images);
+    // console.log(this.images);
     this.ref.markForCheck();
   }
 }

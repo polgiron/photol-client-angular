@@ -14,11 +14,10 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FormsModule } from '@angular/forms';
 import { ImagesComponent } from './components/images/images.component';
-import { PhotoComponent } from './components/images/photo/photo.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
-import { PhotoModalComponent } from './components/images/photo-modal/photo-modal.component';
+import { PhotoModalComponent } from './components/images/photoset-modal/photo-modal/photo-modal.component';
 import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
@@ -34,6 +33,10 @@ import { UploadService } from 'src/app/services/upload.service';
 import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
 import { CacheService } from 'src/app/services/cache.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalService } from './services/modal.service';
+import { ModalPickAlbumComponent } from './components/modals/modal-pick-album/modal-pick-album.component';
+import { ModalCreateAlbumComponent } from './components/modals/modal-create-album/modal-create-album.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,6 @@ import { HttpClientModule } from '@angular/common/http';
     LoaderComponent,
     SearchInputComponent,
     ImagesComponent,
-    PhotoComponent,
     ImageThumbComponent,
     TagsComponent,
     DarkroomSettingsComponent,
@@ -57,7 +59,9 @@ import { HttpClientModule } from '@angular/common/http';
     PhotosetModalComponent,
     LandpageComponent,
     AdminComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ModalPickAlbumComponent,
+    ModalCreateAlbumComponent
   ],
   imports: [
     HttpModule,
@@ -66,7 +70,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     ngfModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [
     BaseApi,
@@ -75,7 +80,12 @@ import { HttpClientModule } from '@angular/common/http';
     AlbumService,
     Utils,
     UploadService,
-    CacheService
+    CacheService,
+    ModalService
+  ],
+  entryComponents: [
+    ModalPickAlbumComponent,
+    ModalCreateAlbumComponent
   ],
   bootstrap: [AppComponent]
 })

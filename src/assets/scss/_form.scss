@@ -5,24 +5,44 @@
   color: $color-text-lighter;
   font-size: 1em;
   transition: all .2s;
-  padding: .6rem 1rem;
+  padding: .55rem 1.2rem;
 
-  &:hover {
+  &:disabled {
+    cursor: default;
+    opacity: .5;
+    background: $color-mediumgray-lighter;
+    border-color: $color-mediumgray-lighter;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  &:not(:disabled):hover {
     // color: $color-text;
     border-color: $color-text-lighter;
   }
 }
 
-.button--green {
+// .button--main {
+//   background: rgba($color-white, 1);
+//   color: $color-darkgray;
+//   border-color: rgba($color-white, 1);
+//   font-weight: 500;
+// }
+
+.button--main {
   background: $color-accent;
   border-color: $color-accent;
-  color: rgba($color-white, .8);
+  color: rgba($color-white, 1);
+  // text-transform: uppercase;
+  // letter-spacing: .05em;
+  // font-size: .8rem;
   // border-color: rgba($color-green, .6);
+  box-shadow: 0 2px 5px rgba($color-black, .1);
 
-  &:hover {
+  &:not(:disabled):hover {
     // border-color: rgba($color-green, 1);
     border-color: $color-accent;
     opacity: .9;
+    box-shadow: 0 2px 7px rgba($color-black, .1);
   }
 }
 
@@ -40,7 +60,7 @@
 
   .input {
     border: 0;
-    padding: .6rem 1rem;
+    padding: .55rem 1rem;
     flex: 1;
     outline: 0;
     font-size: 1rem;

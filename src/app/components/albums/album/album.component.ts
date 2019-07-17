@@ -50,7 +50,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
   extendAlbum() {
     this.cover = this.album.photo.find(album => album.isprimary == true);
     if (this.cover) {
-      this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
+      // this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
       // console.log(this.cover);
     }
     // this.albumService.setAlbumTitle(this.album.title);

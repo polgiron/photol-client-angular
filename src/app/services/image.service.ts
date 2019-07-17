@@ -6,7 +6,7 @@ import { Image } from '../models/image.model';
 @Injectable()
 export class ImageService {
   private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  currentPhotos: any;
+  currentPhotos: Image[];
 
   constructor(
     private api: BaseApi
@@ -19,22 +19,21 @@ export class ImageService {
     });
   }
 
-
-
-
-
-
-
-
+  getImageBigSignedUrl(imageId: number): Promise<any> {
+    return this.api.get(`image/${imageId}/big`).then(data => {
+      // console.log(data);
+      return data;
+    });
+  }
 
   public modalPhotoChannel(): Observable<any> {
     return this._modalPhoto.asObservable();
   }
 
   openPhotoModal(photo: any) {
-    console.log('open photo modal');
-    console.log(this.currentPhotos);
-    console.log(photo.id);
+    // console.log('open photo modal');
+    // console.log(this.currentPhotos);
+    // console.log(photo._id);
     this._modalPhoto.next(this.currentPhotos.indexOf(photo));
     document.body.classList.add('is-static');
   }
@@ -42,22 +41,5 @@ export class ImageService {
   closePhotoModal() {
     this._modalPhoto.next(null);
     document.body.classList.remove('is-static');
-  }
-
-  getPhoto(photoId: number) {
-    return this.api.get('photo/' + photoId);
-  }
-
-  getContext(photoId: number) {
-    return this.api.get(`photo/${photoId}/context`);
-  }
-
-  getPhotostream() {
-    return this.api.get(`photostream`);
-  }
-
-  getBigThumbnail(farm: number, server: number, id: number, secret: number) {
-    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_b.jpg`;
-    // return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_[mstzb].jpg`;
   }
 }

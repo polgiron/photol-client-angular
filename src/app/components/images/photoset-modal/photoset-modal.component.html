@@ -1,8 +1,8 @@
-<div class="modal">
+<div class="image-collection-modal">
   <div class="overlay" (click)="close()"></div>
 
   <ul class="list">
-    <li *ngFor="let photo of photos; let i = index">
+    <li *ngFor="let image of images; let i = index">
       <div
         *ngIf="i == index || i == getPrevIndex(index) || i == getNextIndex(index)"
         class="dialog"
@@ -13,7 +13,7 @@
         }"
       >
         <div class="inner">
-          <app-photo-modal [photo]="photo" [active]="i == index"></app-photo-modal>
+          <app-photo-modal [image]="image" [active]="i == index"></app-photo-modal>
           <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
         </div>
       </div>

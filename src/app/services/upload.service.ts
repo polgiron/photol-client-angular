@@ -7,7 +7,6 @@ import {
 import { BaseApi } from './base-api.service';
 import { Image } from '../models/image.model';
 import { Utils } from '../utils/utils';
-import { UploadImage } from '../models/upload-image.model';
 
 @Injectable()
 export class UploadService {
@@ -30,10 +29,10 @@ export class UploadService {
   //   this._uploadPhotos.next(photos);
   // }
 
-  upload(images: UploadImage[]) {
+  upload(images: any[]) {
     images.forEach(image => {
       let formData: FormData = new FormData();
-      formData.append('title', image.title);
+      // formData.append('title', image.title);
       formData.append('file', image.file);
 
       const req = new HttpRequest<FormData>(

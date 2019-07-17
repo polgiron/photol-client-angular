@@ -10,17 +10,17 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class PhotoModalComponent implements OnInit {
   @ViewChild('photoWrapper') photoWrapperElement: ElementRef;
-  @Input() set photo(value: any) {
+  @Input() set image(value: any) {
     // console.log(value);
 
-    this._photo = value;
+    this._image = value;
 
-    this.extendPhoto();
+    this.extendImage();
     this.setDialogWidth();
 
-    this.photoService.getContext(this.photo.id).then(albums => {
-      this.albums = albums;
-    });
+    // this.photoService.getContext(this.photo.id).then(albums => {
+    //   this.albums = albums;
+    // });
   };
   @Input() set active(value: boolean) {
     if (value) {
@@ -28,7 +28,7 @@ export class PhotoModalComponent implements OnInit {
     }
   }
   private _resizeListener: EventListener;
-  private _photo: any;
+  private _image: any;
   imageSrc: string;
   padding: number = 32;
   mobileBreakpoint: number = 767;
@@ -38,13 +38,12 @@ export class PhotoModalComponent implements OnInit {
   aperture: number;
   albums: any;
 
-  get photo() {
-    return this._photo;
+  get image() {
+    return this._image;
   }
 
   constructor(
-    private utils: Utils,
-    private photoService: ImageService,
+    private imageService: ImageService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -60,7 +59,7 @@ export class PhotoModalComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
-        open: this.photo.id
+        open: this.image._id
       },
       queryParamsHandling: 'merge',
       // preserve the existing query params in the route
@@ -78,39 +77,39 @@ export class PhotoModalComponent implements OnInit {
       return;
     }
 
-    const oriWidth = this.photo.width_m;
-    const oriHeight = this.photo.height_m;
     const maxHeight = window.innerHeight - 2 * this.padding;
     const maxWidth = window.innerWidth - 2 * this.padding;
 
-    let newWidth = oriWidth * maxHeight / oriHeight;
+    let newWidth = this.image.oriWidth * maxHeight / this.image.oriHeight;
     let newHeight = maxHeight;
 
     if (newWidth > maxWidth) {
       newWidth = maxWidth;
-      newHeight = oriHeight * newWidth / oriWidth;
+      newHeight = this.image.oriHeight * newWidth / this.image.oriWidth;
     }
 
     this.photoWrapperElement.nativeElement.style.width = newWidth + 'px';
     this.photoWrapperElement.nativeElement.style.height = newHeight + 'px';
   }
 
-  extendPhoto() {
+  async extendImage() {
     // Image src
-    this.imageSrc = this.utils.getPhotoUrl(this.photo.farm, this.photo.server, this.photo.id, this.photo.secret, 'b');
+    this.imageService.getImageBigSignedUrl(this.image._id).then(data => {
+      this.imageSrc = data.signedUrl;
+    });
 
     // Extend tags
-    this.photo.tags.split(' ').forEach(tag => {
-      if (tag.includes('settingtime')) {
-        this.time = tag.replace('settingtime', '');
-      } else if (tag.includes('settingaperture')) {
-        this.aperture = tag.replace('settingaperture', '');
-      } else if (tag.includes('settingcontrast')) {
-        this.contrast = tag.replace('settingcontrast', '');
-      } else {
-        this.tags.push(tag);
-      }
-    });
+    // this.photo.tags.split(' ').forEach(tag => {
+    //   if (tag.includes('settingtime')) {
+    //     this.time = tag.replace('settingtime', '');
+    //   } else if (tag.includes('settingaperture')) {
+    //     this.aperture = tag.replace('settingaperture', '');
+    //   } else if (tag.includes('settingcontrast')) {
+    //     this.contrast = tag.replace('settingcontrast', '');
+    //   } else {
+    //     this.tags.push(tag);
+    //   }
+    // });
   }
 
   ngOnDestroy() {

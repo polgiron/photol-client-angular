@@ -10,32 +10,31 @@ import { Utils } from 'src/app/utils/utils';
 export class PhotosetModalComponent implements OnInit, OnDestroy {
   @Input() index: number;
   private _keydownListener: EventListener;
-  photos: any;
+  images: any;
   displayControl: boolean = true;
 
   constructor(
-    private photoService: ImageService,
+    private imageService: ImageService,
     private utils: Utils
   ) { }
 
   ngOnInit() {
-    this.photos = this.photoService.currentPhotos;
-    this.displayControl = this.photos.length > 1;
-
+    this.images = this.imageService.currentPhotos;
+    this.displayControl = this.images.length > 1;
     this._keydownListener = this.onKeydown.bind(this);
     window.addEventListener('keydown', this._keydownListener);
   }
 
   getPrevIndex(index: number) {
     if (index - 1 < 0) {
-      return this.photos.length - 1;
+      return this.images.length - 1;
     } else {
       return index - 1;
     }
   }
 
   getNextIndex(index: number) {
-    if (index + 1 >= this.photos.length) {
+    if (index + 1 >= this.images.length) {
       return 0;
     } else {
       return index + 1;
@@ -46,20 +45,20 @@ export class PhotosetModalComponent implements OnInit, OnDestroy {
     this.index--;
 
     if (this.index < 0) {
-      this.index = this.photos.length - 1;
+      this.index = this.images.length - 1;
     }
   }
 
   next() {
     this.index++;
 
-    if (this.index >= this.photos.length) {
+    if (this.index >= this.images.length) {
       this.index = 0;
     }
   }
 
   close() {
-    this.photoService.closePhotoModal();
+    this.imageService.closePhotoModal();
     this.utils.clearOpenQuery();
   }
 

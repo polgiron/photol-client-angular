@@ -21,19 +21,19 @@ export class ImagesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.reorder(this.photos);
-    // this.photoService.currentPhotos = this.photos;
+    this.reorder(this.images);
+    this.imageService.currentPhotos = this.images;
 
-    // const params: any = this.route.queryParams;
-    // const photoId = params.value.open;
+    const params: any = this.route.queryParams;
+    const photoId = params.value.open;
 
-    // if (photoId) {
-    //   setTimeout(() => {
-    //     this.openPhotoOnReload(photoId);
-    //   }, 500);
-    // } else {
-    //   this.utils.hideSplashscreen();
-    // }
+    if (photoId) {
+      setTimeout(() => {
+        this.openPhotoOnReload(photoId);
+      }, 500);
+    } else {
+      this.utils.hideSplashscreen();
+    }
 
     // const macyInstance = Macy({
     //   container: '#photos-list',
@@ -53,33 +53,33 @@ export class ImagesComponent implements OnInit {
     // });
   }
 
-  // openPhotoOnReload(photoId: number) {
-  //   // console.log(photoId);
-  //   console.log(this.photos);
-  //   const photo = this.photos.find(photo => photo.id == photoId);
-  //   console.log(photo.id);
-  //   this.photoService.openPhotoModal(photo);
-  //   this.utils.hideSplashscreen();
-  // }
+  openPhotoOnReload(photoId: number) {
+    // console.log(photoId);
+    // console.log(this.images);
+    const photo = this.images.find(photo => photo._id == photoId);
+    // console.log(photo._id);
+    this.imageService.openPhotoModal(photo);
+    this.utils.hideSplashscreen();
+  }
 
-  // reorder(array) {
-  //   array.forEach((element, index) => {
-  //     element.index = index;
-  //   });
+  reorder(array) {
+    array.forEach((element, index) => {
+      element.index = index;
+    });
 
-  //   const out = [];
-  //   let col = 0;
+    const out = [];
+    let col = 0;
 
-  //   while (col < this.columns) {
-  //     for (let i = 0; i < array.length; i += this.columns) {
-  //       let _val = array[i + col];
-  //       if (_val !== undefined) {
-  //         out.push(_val);
-  //       }
-  //     }
-  //     col++;
-  //   }
+    while (col < this.columns) {
+      for (let i = 0; i < array.length; i += this.columns) {
+        let _val = array[i + col];
+        if (_val !== undefined) {
+          out.push(_val);
+        }
+      }
+      col++;
+    }
 
-  //   this.photos = out;
-  // }
+    this.images = out;
+  }
 }

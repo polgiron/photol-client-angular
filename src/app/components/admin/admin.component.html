@@ -9,7 +9,7 @@
     >
       Add to upload
     </button>
-    <button class="button button--green" (click)="onSave()">
+    <button class="button button--main" (click)="onSave()">
       Save
     </button>
   </div>
@@ -32,9 +32,6 @@
           <app-checkbox (setCheckState)="onSelectImage(image)" [check]="image.selected"></app-checkbox>
         </div>
         <!-- <div class="name">{{image.title}}</div> -->
-        <div class="remove-button">
-
-        </div>
       </li>
     </ul>
     <!-- <div class="empty" *ngIf="!images.length">The list is empty</div> -->

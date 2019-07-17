@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { UploadService } from 'src/app/services/upload.service';
 import { Utils } from 'src/app/utils/utils';
 import { BaseApi } from 'src/app/services/base-api.service';
-import { Image } from 'src/app/models/image.model';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageService } from 'src/app/services/image.service';
-import { UploadImage } from 'src/app/models/upload-image.model';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalPickAlbumComponent } from '../modals/modal-pick-album/modal-pick-album.component';
 
 @Component({
   selector: 'app-admin',
@@ -14,11 +14,12 @@ import { UploadImage } from 'src/app/models/upload-image.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent implements OnInit {
-  // private _mousemoveListener: EventListener;
-  // private _mouseupListener: EventListener;
-  images: UploadImage[] = [];
-  selectedImages: UploadImage[] = [];
-  index: number = 0;
+  // // private _mousemoveListener: EventListener;
+  // // private _mouseupListener: EventListener;
+  // images: UploadImage[] = [];
+  // selectedImages: UploadImage[] = [];
+  // index: number = 0;
+  // firstUpload: boolean = true;
 
   constructor(
     private uploadService: UploadService,
@@ -26,99 +27,107 @@ export class AdminComponent implements OnInit {
     private api: BaseApi,
     private albumService: AlbumService,
     private imageService: ImageService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
-    this.albumService.getAlbums();
+    // this.albumService.getAlbums();
+    // this.modalService.open(ModalPickAlbumComponent, 'small');
   }
 
-  onUpload(files: File[]) {
-    this.extendPhotos(files);
-  }
+  // onUpload(files: File[]) {
+  //   this.extendPhotos(files);
 
-  extendPhotos(files: File[]) {
-    // console.log(files);
+  //   if (this.firstUpload) {
+  //     this.modalService.open(ModalPickAlbumComponent, 'small');
+  //   }
 
-    files.forEach((file: File) => {
-      if (!this.images.find(image => image.file == file)) {
-        this.index += 1;
+  //   this.firstUpload = false;
+  // }
 
-        const image: UploadImage = {
-          id: this.index,
-          title: file.name,
-          file: file
-        };
+  // extendPhotos(files: File[]) {
+  //   // console.log(files);
 
-        const reader = new FileReader();
-        reader.onload = (event: any) => {
-          image.src = event.target.result;
-          this.images.push(image);
-          this.ref.markForCheck();
-          console.log(image);
-        }
-        reader.readAsDataURL(file);
+  //   files.forEach((file: File) => {
+  //     if (!this.images.find(image => image.file == file)) {
+  //       this.index += 1;
 
-        // const img = new Image();
-        // img.src = window.URL.createObjectURL(file);
-        // img.onload = () => {
-        //   window.URL.revokeObjectURL(img.src);
+  //       // const image: UploadImage = {
+  //         // id: this.index,
+  //         // title: file.name,
+  //         file: file
+  //       };
 
-        //   image.original_width = img.naturalWidth;
-        //   image.original_height = img.naturalHeight;
+  //       const reader = new FileReader();
+  //       reader.onload = (event: any) => {
+  //         image.src = event.target.result;
+  //         this.images.push(image);
+  //         this.ref.markForCheck();
+  //         console.log(image);
+  //       }
+  //       reader.readAsDataURL(file);
 
-        //   const reader = new FileReader();
-        //   reader.onload = (event: any) => {
-        //     image.src = event.target.result;
-        //     this.images.push(image);
-        //     this.ref.markForCheck();
-        //   }
-        //   reader.readAsDataURL(file);
-        // };
-      }
-    });
-  }
+  //       // const img = new Image();
+  //       // img.src = window.URL.createObjectURL(file);
+  //       // img.onload = () => {
+  //       //   window.URL.revokeObjectURL(img.src);
 
-  onSelectImage(image: UploadImage) {
-    image.selected = !image.selected;
+  //       //   image.original_width = img.naturalWidth;
+  //       //   image.original_height = img.naturalHeight;
 
-    // if (image.selected) {
-    //   this.selectedImages.push(image);
-    // } else {
-    //   this.selectedImages.splice(this.selectedImages.indexOf(image), 1);
-    // }
+  //       //   const reader = new FileReader();
+  //       //   reader.onload = (event: any) => {
+  //       //     image.src = event.target.result;
+  //       //     this.images.push(image);
+  //       //     this.ref.markForCheck();
+  //       //   }
+  //       //   reader.readAsDataURL(file);
+  //       // };
+  //     }
+  //   });
+  // }
 
-    this.ref.markForCheck();
-  }
+  // onSelectImage(image: UploadImage) {
+  //   image.selected = !image.selected;
 
-  selectAll() {
-    this.images.forEach(image => {
-      image.selected = true;
-      this.selectedImages.push(image);
-    });
+  //   // if (image.selected) {
+  //   //   this.selectedImages.push(image);
+  //   // } else {
+  //   //   this.selectedImages.splice(this.selectedImages.indexOf(image), 1);
+  //   // }
 
-    this.ref.markForCheck();
-  }
+  //   this.ref.markForCheck();
+  // }
 
-  unselectAll() {
-    this.images.forEach(image => {
-      image.selected = false;
-    });
-    this.selectedImages = [];
+  // selectAll() {
+  //   this.images.forEach(image => {
+  //     image.selected = true;
+  //     this.selectedImages.push(image);
+  //   });
 
-    this.ref.markForCheck();
-  }
+  //   this.ref.markForCheck();
+  // }
 
-  onSave() {
-    this.uploadService.upload(this.images);
-  }
+  // unselectAll() {
+  //   this.images.forEach(image => {
+  //     image.selected = false;
+  //   });
+  //   this.selectedImages = [];
 
-  trackByFunction(index, item) {
-    if (!item) {
-      return null;
-    }
-    return item.id;
-  }
+  //   this.ref.markForCheck();
+  // }
+
+  // onSave() {
+  //   this.uploadService.upload(this.images);
+  // }
+
+  // trackByFunction(index, item) {
+  //   if (!item) {
+  //     return null;
+  //   }
+  //   return item.id;
+  // }
 
   ngOnDestroy() {
     // this._alive = false;
