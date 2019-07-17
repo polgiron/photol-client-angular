@@ -2,14 +2,27 @@
   background: $color-background-2;
   border-radius: 2rem;
   border: 1px solid $color-main-border;
-  color: $color-text-2;
+  color: $color-text-lighter;
   font-size: 1em;
   transition: all .2s;
   padding: .6rem 1rem;
 
   &:hover {
     // color: $color-text;
-    border-color: $color-text-2;
+    border-color: $color-text-lighter;
+  }
+}
+
+.button--green {
+  background: $color-accent;
+  border-color: $color-accent;
+  color: rgba($color-white, .8);
+  // border-color: rgba($color-green, .6);
+
+  &:hover {
+    // border-color: rgba($color-green, 1);
+    border-color: $color-accent;
+    opacity: .9;
   }
 }
 
@@ -21,7 +34,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid $color-main-border;
-  color: $color-text-2;
+  color: $color-text-lighter;
   font-size: 1em;
   transition: border .2s;
 
@@ -40,13 +53,13 @@
     display: block;
     width: 3rem;
     text-align: center;
-    color: $color-text-2;
+    color: $color-text-lighter;
     padding-left: .3rem;
     font-size: 1.4em;
   }
 
   &:focus-within {
-    border-color: $color-text-2;
+    border-color: $color-text-lighter;
 
     // i {
     //   color: $color-text;

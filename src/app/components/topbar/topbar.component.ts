@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 import { AlbumService } from 'src/app/services/album.service';
-import { UploadService } from 'src/app/services/upload.service';
 
 @Component({
   selector: 'app-topbar',
@@ -13,24 +12,15 @@ export class TopbarComponent implements OnInit {
   albumTitle: string = '';
 
   constructor(
-    private albumService: AlbumService,
-    private uploadService: UploadService
+    private albumService: AlbumService
   ) { }
 
   ngOnInit() {
-    this.albumService.albumTitleChannel()
-      .pipe(takeWhile(() => this._alive))
-      .subscribe((albumTitle: string) => {
-        this.albumTitle = albumTitle;
-      });
-  }
-
-  onSearch(event: any) {
-
-  }
-
-  onUpload(files: File[]) {
-    this.uploadService.setUploadPhotos(files);
+    // this.albumService.albumTitleChannel()
+    //   .pipe(takeWhile(() => this._alive))
+    //   .subscribe((albumTitle: string) => {
+    //     this.albumTitle = albumTitle;
+    //   });
   }
 
   ngOnDestroy() {

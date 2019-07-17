@@ -13,26 +13,27 @@ import { AlbumThumbComponent } from './components/albums/album-thumb/album-thumb
 import { LoaderComponent } from './components/loader/loader.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FormsModule } from '@angular/forms';
-import { PhotosComponent } from './components/photos/photos.component';
-import { PhotoComponent } from './components/photos/photo/photo.component';
-import { PhotoThumbComponent } from './components/photos/photo-thumb/photo-thumb.component';
+import { ImagesComponent } from './components/images/images.component';
+import { PhotoComponent } from './components/images/photo/photo.component';
+import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
-import { PhotoModalComponent } from './components/photos/photo-modal/photo-modal.component';
-import { PhotoService } from 'src/app/services/photo.service';
+import { PhotoModalComponent } from './components/images/photo-modal/photo-modal.component';
+import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
-import { ImageComponent } from 'src/app/components/image/image.component';
+import { ImageComponent } from 'src/app/components/images/image/image.component';
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
-import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos.component';
-import { PhotosetModalComponent } from './components/photos/photoset-modal/photoset-modal.component';
+import { PhotoInfosComponent } from './components/images/photo-infos/photo-infos.component';
+import { PhotosetModalComponent } from './components/images/photoset-modal/photoset-modal.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
 import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
 import { CacheService } from 'src/app/services/cache.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,9 +44,9 @@ import { CacheService } from 'src/app/services/cache.service';
     AlbumThumbComponent,
     LoaderComponent,
     SearchInputComponent,
-    PhotosComponent,
+    ImagesComponent,
     PhotoComponent,
-    PhotoThumbComponent,
+    ImageThumbComponent,
     TagsComponent,
     DarkroomSettingsComponent,
     PhotoModalComponent,
@@ -64,12 +65,13 @@ import { CacheService } from 'src/app/services/cache.service';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    ngfModule
+    ngfModule,
+    HttpClientModule
   ],
   providers: [
     BaseApi,
     DatePipe,
-    PhotoService,
+    ImageService,
     AlbumService,
     Utils,
     UploadService,

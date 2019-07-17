@@ -1,16 +1,19 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements OnInit {
   @Input() check: boolean = false;
   @Input() disabled: boolean = false;
   @Output() setCheckState: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private ref: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
 
@@ -20,6 +23,7 @@ export class CheckboxComponent implements OnInit {
     if (!this.disabled) {
       this.check = !this.check;
       this.setCheckState.emit(this.check);
+      this.ref.markForCheck();
     }
   }
 }

@@ -1,84 +1,126 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UploadService } from 'src/app/services/upload.service';
-import { takeWhile } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
+import { BaseApi } from 'src/app/services/base-api.service';
+import { Image } from 'src/app/models/image.model';
+import { AlbumService } from 'src/app/services/album.service';
+import { ImageService } from 'src/app/services/image.service';
+import { UploadImage } from 'src/app/models/upload-image.model';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent implements OnInit {
-  private _alive: boolean = true;
   // private _mousemoveListener: EventListener;
   // private _mouseupListener: EventListener;
-  // uploadPhotos: File[];
-  uploadPhotos = [
-    { id: 1, selected: false },
-    { id: 2, selected: false },
-    { id: 3, selected: false },
-    { id: 4, selected: false },
-    { id: 5, selected: false },
-    { id: 6, selected: false },
-    { id: 7, selected: false },
-    { id: 8, selected: false },
-    { id: 9, selected: false }
-  ];
-  selectedPhotos: number[] = [];
+  images: UploadImage[] = [];
+  selectedImages: UploadImage[] = [];
+  index: number = 0;
 
   constructor(
     private uploadService: UploadService,
-    private utils: Utils
+    private utils: Utils,
+    private api: BaseApi,
+    private albumService: AlbumService,
+    private imageService: ImageService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.uploadService.uploadPhotosChannel()
-      .pipe(takeWhile(() => this._alive))
-      .subscribe((uploadPhotos: File[]) => {
-        if (uploadPhotos) {
-          this.extendPhotos(uploadPhotos);
-          // this.uploadPhotos = uploadPhotos;
-          console.log(uploadPhotos);
+    this.albumService.getAlbums();
+  }
+
+  onUpload(files: File[]) {
+    this.extendPhotos(files);
+  }
+
+  extendPhotos(files: File[]) {
+    // console.log(files);
+
+    files.forEach((file: File) => {
+      if (!this.images.find(image => image.file == file)) {
+        this.index += 1;
+
+        const image: UploadImage = {
+          id: this.index,
+          title: file.name,
+          file: file
+        };
+
+        const reader = new FileReader();
+        reader.onload = (event: any) => {
+          image.src = event.target.result;
+          this.images.push(image);
+          this.ref.markForCheck();
+          console.log(image);
         }
-      });
-  }
+        reader.readAsDataURL(file);
 
-  extendPhotos(photos: any) {
-    photos.forEach(photo => {
-      const reader = new FileReader();
-      reader.onload = (event: any) => {
-        photo.src = event.target.result;
+        // const img = new Image();
+        // img.src = window.URL.createObjectURL(file);
+        // img.onload = () => {
+        //   window.URL.revokeObjectURL(img.src);
+
+        //   image.original_width = img.naturalWidth;
+        //   image.original_height = img.naturalHeight;
+
+        //   const reader = new FileReader();
+        //   reader.onload = (event: any) => {
+        //     image.src = event.target.result;
+        //     this.images.push(image);
+        //     this.ref.markForCheck();
+        //   }
+        //   reader.readAsDataURL(file);
+        // };
       }
-      reader.readAsDataURL(photo);
-    })
+    });
   }
 
-  onSelectPhoto(photo: any) {
-    photo.selected = !photo.selected;
+  onSelectImage(image: UploadImage) {
+    image.selected = !image.selected;
 
-    if (photo.selected) {
-      this.selectedPhotos.push(photo.id);
-    } else {
-      console.log(this.selectedPhotos.indexOf(photo.id));
-      this.selectedPhotos.splice(this.selectedPhotos.indexOf(photo.id), 1);
-    }
+    // if (image.selected) {
+    //   this.selectedImages.push(image);
+    // } else {
+    //   this.selectedImages.splice(this.selectedImages.indexOf(image), 1);
+    // }
+
+    this.ref.markForCheck();
   }
 
   selectAll() {
-    this.uploadPhotos.forEach(photo => {
-      photo.selected = true;
-      this.selectedPhotos.push(photo.id);
+    this.images.forEach(image => {
+      image.selected = true;
+      this.selectedImages.push(image);
     });
+
+    this.ref.markForCheck();
   }
 
   unselectAll() {
-    this.uploadPhotos.forEach(photo => {
-      photo.selected = false;
+    this.images.forEach(image => {
+      image.selected = false;
     });
-    this.selectedPhotos = [];
+    this.selectedImages = [];
+
+    this.ref.markForCheck();
+  }
+
+  onSave() {
+    this.uploadService.upload(this.images);
+  }
+
+  trackByFunction(index, item) {
+    if (!item) {
+      return null;
+    }
+    return item.id;
   }
 
   ngOnDestroy() {
-    this._alive = false;
+    // this._alive = false;
   }
 }

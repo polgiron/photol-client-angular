@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BaseApi } from 'src/app/services/base-api.service';
+import { Image } from '../models/image.model';
 
 @Injectable()
-export class PhotoService {
+export class ImageService {
   private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   currentPhotos: any;
 
   constructor(
     private api: BaseApi
   ) { }
+
+  getImages() {
+    return this.api.get('image/all').then((images: Image[]) => {
+      // console.log(images);
+      return images;
+    });
+  }
+
+
+
+
+
+
+
+
 
   public modalPhotoChannel(): Observable<any> {
     return this._modalPhoto.asObservable();

@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { PhotoService } from 'src/app/services/photo.service';
+import { ImageService } from 'src/app/services/image.service';
 import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private api: BaseApi,
     private albumService: AlbumService,
-    private photoService: PhotoService,
+    private photoService: ImageService,
     private cache: CacheService
   ) { }
 
@@ -53,10 +53,10 @@ export class AlbumComponent implements OnInit, OnDestroy {
       this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
       // console.log(this.cover);
     }
-    this.albumService.setAlbumTitle(this.album.title);
+    // this.albumService.setAlbumTitle(this.album.title);
   }
 
   ngOnDestroy() {
-    this.albumService.setAlbumTitle('');
+    // this.albumService.setAlbumTitle('');
   }
 }

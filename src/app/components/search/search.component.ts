@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
     console.log('Search: ' + value);
 
     this.photos = null;
-    this.albumService.setAlbumTitle('Search: ' + value);
+    // this.albumService.setAlbumTitle('Search: ' + value);
 
     this.api.get('search/' + value).then((searchResults: any) => {
       console.log(searchResults);
@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.albumService.setAlbumTitle('');
+    // this.albumService.setAlbumTitle('');
     this.utils.clearSearchInput();
   }
 }

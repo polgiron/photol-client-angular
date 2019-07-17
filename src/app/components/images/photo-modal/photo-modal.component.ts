@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo.service';
+import { ImageService } from 'src/app/services/image.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 
@@ -44,7 +44,7 @@ export class PhotoModalComponent implements OnInit {
 
   constructor(
     private utils: Utils,
-    private photoService: PhotoService,
+    private photoService: ImageService,
     private router: Router,
     private route: ActivatedRoute
   ) { }

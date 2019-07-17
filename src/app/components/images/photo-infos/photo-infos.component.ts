@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-photo-infos',
@@ -16,7 +16,7 @@ export class PhotoInfosComponent implements OnInit {
   @Input() albums: any;
 
   constructor(
-    private photoService: PhotoService
+    private photoService: ImageService
   ) { }
 
   ngOnInit() {

@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BaseApi } from './base-api.service';
+import { Album } from '../models/album.model';
+// import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class AlbumService {
-  private _albumTitle: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // private _albumTitle: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-  constructor() { }
+  constructor(
+    private api: BaseApi
+  ) { }
 
-  public albumTitleChannel(): Observable<string> {
-    return this._albumTitle.asObservable();
+  getAlbums() {
+    this.api.get('album/all').then((albums: Album[]) => {
+      console.log(albums);
+    });
   }
 
-  setAlbumTitle(title: string) {
-    this._albumTitle.next(title);
-  }
+  // public albumTitleChannel(): Observable<string> {
+  //   return this._albumTitle.asObservable();
+  // }
+
+  // setAlbumTitle(title: string) {
+  //   this._albumTitle.next(title);
+  // }
 }

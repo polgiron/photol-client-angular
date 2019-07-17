@@ -1,0 +1,5 @@
+<ul class="masonry-list" [ngStyle]="{'column-count': columns}">
+  <li class="list__entry" *ngFor="let image of images">
+    <app-image-thumb [image]="image"></app-image-thumb>
+  </li>
+</ul>

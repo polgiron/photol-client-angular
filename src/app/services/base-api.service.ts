@@ -23,6 +23,17 @@ export class BaseApi {
       });
   }
 
+  post(method: string, params: object) {
+    return this.http.post(this.domain + method, params)
+      .pipe(map((res: any) => res.json()))
+      .pipe(catchError(this.handleError).bind(this))
+      .toPromise().then(response => {
+        console.log('-----API POST RESPONSE');
+        console.log(response);
+        return response;
+      });
+  }
+
   public handleError = error => {
     console.error(error);
     return throwError('Server error');

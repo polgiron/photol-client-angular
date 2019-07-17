@@ -1,20 +1,42 @@
 <div class="admin main-container">
-  <div class="header">
+  <div class="toolbar">
+    <button
+      ngfSelect
+      class="button"
+      accept="image/*"
+      multiple="1"
+      (filesChange)="onUpload($event)"
+    >
+      Add to upload
+    </button>
+    <button class="button button--green" (click)="onSave()">
+      Save
+    </button>
+  </div>
+  <div class="toolbar">
     <div *ngIf="uploadPhotos">{{uploadPhotos.length}} photos</div>
-    <div *ngIf="selectedPhotos.length">{{selectedPhotos.length}} photos selected</div>
+    <div *ngIf="selectedImages.length">{{selectedImages.length}} photos selected</div>
     <div class="right">
-      <button class="button" (click)="selectAll()">Select All</button>
-      <button class="button" (click)="unselectAll()" *ngIf="selectedPhotos.length">Clear Selection</button>
-      <button class="button" *ngIf="selectedPhotos.length">Batch Edit</button>
+      <button class="button" (click)="selectAll()" *ngIf="uploadPhotos">Select All</button>
+      <button class="button" (click)="unselectAll()" *ngIf="selectedImages.length">Clear Selection</button>
+      <button class="button" *ngIf="selectedImages.length">Batch Edit</button>
     </div>
   </div>
-  <ul class="grid-list grid-list--small">
-    <li *ngFor="let photo of uploadPhotos" [ngClass]="{'is-selected': photo.selected}">
-    <!-- <li *ngFor="let key of [1,2,3,4,5,6,7,8,9]"> -->
-      <img [src]="'assets/images/tmp/' + photo.id + '.JPG'" draggable="false" alt="">
-      <div class="checkbox-wrapper">
-        <app-checkbox (setCheckState)="onSelectPhoto(photo)" [check]="photo.selected"></app-checkbox>
-      </div>
-    </li>
-  </ul>
+  <div class="upload-list-wrapper">
+    <!-- <ul class="grid"> -->
+    <ul class="masonry-list" *ngIf="images.length">
+      <li class="list__entry" *ngFor="let image of images; trackBy: trackByFunction" [ngClass]="{'is-selected': image.selected}">
+        <img [src]="image.src" draggable="false" alt="">
+        <!-- <app-image-thumb [image]="image"></app-image-thumb> -->
+        <div class="checkbox-wrapper">
+          <app-checkbox (setCheckState)="onSelectImage(image)" [check]="image.selected"></app-checkbox>
+        </div>
+        <!-- <div class="name">{{image.title}}</div> -->
+        <div class="remove-button">
+
+        </div>
+      </li>
+    </ul>
+    <!-- <div class="empty" *ngIf="!images.length">The list is empty</div> -->
+  </div>
 </div>

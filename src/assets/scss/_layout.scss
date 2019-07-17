@@ -4,12 +4,12 @@
 // }
 
 .main-container {
-  padding: 1rem 3rem 2rem;
+  padding: 1rem 1.5rem 2rem;
 
-  .inner {
-    max-width: $container-width;
-    margin: auto;
-  }
+  // .inner {
+  max-width: $container-width;
+  margin: auto;
+  // }
 
   @include respond-to('medium') {
     padding: 1rem 1.5rem;
@@ -84,4 +84,38 @@ img.fade {
 
 .image-wrapper .loader {
   border-color: $color-main-border transparent transparent $color-main-border !important;
+}
+
+// Masonry
+.masonry-list {
+  column-count: 3;
+  column-gap: 2rem;
+  // column-gap: 1.5rem;
+
+  @include respond-to('medium') {
+    column-count: 2 !important;
+    column-gap: 1rem;
+  }
+
+  @include respond-to('small') {
+    column-count: 1 !important;
+    column-gap: 0;
+  }
+
+  .list__entry {
+    // padding-top: .75rem;
+    // padding-bottom: .75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    break-inside: avoid;
+
+    @include respond-to('small') {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
 }

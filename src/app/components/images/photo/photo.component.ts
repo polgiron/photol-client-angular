@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { PhotoService } from 'src/app/services/photo.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-photo',
@@ -23,7 +23,7 @@ export class PhotoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private utils: Utils,
-    private photoService: PhotoService
+    private photoService: ImageService
   ) { }
 
   ngOnInit() {

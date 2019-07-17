@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo.service';
+import { ImageService } from 'src/app/services/image.service';
 import { Utils } from 'src/app/utils/utils';
 
 @Component({
@@ -14,7 +14,7 @@ export class PhotosetModalComponent implements OnInit, OnDestroy {
   displayControl: boolean = true;
 
   constructor(
-    private photoService: PhotoService,
+    private photoService: ImageService,
     private utils: Utils
   ) { }
 
