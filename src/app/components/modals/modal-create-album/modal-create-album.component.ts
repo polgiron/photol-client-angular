@@ -3,9 +3,7 @@ import { UploadService } from 'src/app/services/upload.service';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
-// import { Utils } from 'src/app/utils/utils';
-// import Pica from 'pica';
-import Macy from 'Macy';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-modal-create-album',
@@ -21,44 +19,17 @@ export class ModalCreateAlbumComponent implements OnInit {
   rollId: number;
   index: number = 0;
   macyInstance: any;
+  files: File[];
 
   constructor(
     private ref: ChangeDetectorRef,
     private uploadService: UploadService,
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
-    // this.initMacy();
-  }
 
-  // ngAfterViewInit() {
-  //   this.macyInstance.recalculate(true);
-  //   // if (!this.macyInstance) {
-  //     // this.initMacy();
-  //   // } else {
-  //     // this.macyInstance.recalculate(true);
-  //   // }
-  //   this.ref.markForCheck();
-  // }
-
-  initMacy() {
-    this.macyInstance = Macy({
-      container: '#preview-list',
-      columns: 3,
-      trueOrder: true,
-      margin: 16
-      // breakAt: {
-      //   992: {
-      //     margin: 16,
-      //     columns: 2
-      //   },
-      //   767: {
-      //     margin: 16,
-      //     columns: 1
-      //   }
-      // }
-    });
   }
 
   onUpload(files: File[]) {
@@ -67,33 +38,12 @@ export class ModalCreateAlbumComponent implements OnInit {
 
   extendPhotos(files: File[]) {
     // console.log(files);
-    // this.loading = true;
+    this.loading = true;
+    this.files = files;
+    this.ref.markForCheck();
 
     files.forEach((file: File) => {
       this.generatePreviewThumbnail(file);
-
-      // if (typeof Worker !== 'undefined') {
-      //   // Create a new
-      //   const worker = new Worker('./modal-create-album.worker', { type: 'module' });
-      //   worker.onmessage = ({ data }) => {
-      //     console.log('worker done');
-      //     // this.generatePreviewThumbnail(file, data);
-      //     // this.index += 1;
-
-      //     // this.images.push({
-      //     //   id: this.index,
-      //     //   file: file,
-      //     //   src: data
-      //     //   // src: dataUrl
-      //     // });
-
-      //     // this.ref.markForCheck();
-      //   };
-      //   worker.postMessage(file);
-      // } else {
-      //   // Web Workers are not supported in this environment.
-      //   // You should add a fallback so that your program still executes correctly.
-      // }
     });
   }
 
@@ -101,33 +51,20 @@ export class ModalCreateAlbumComponent implements OnInit {
     const imgURL = window.URL.createObjectURL(file);
     const image = new Image();
 
-    // have added some debugging code that would be useful to know if
-    // this does not solve the problem. Uncomment it and use it to see where
-    // the big delay is.
     image.onload = () => {
-      var canvas, ctx, dataSrc, delay; // hosit vars just for readability as the following functions will close over them
-      // Just for the uninitiated in closure.
-      // var now, CPUProfile = [];  // debug code
-      delay = 10; // 0 could work just as well and save you 20-30ms
+      // var canvas, ctx, dataSrc;
+      // const canvas: HTMLCanvasElement;
+      // const ctx: any;
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      let dataSrc: string;
+      const delay = 10;
 
       const revokeObject = () => {
-        // as an event.
-        // now = performance.now(); // debug code
         URL.revokeObjectURL(imgURL);
-        //CPUProfile.push(performance.now()-now); // debug code
-        // setTimeout( function () { CPUProfile.forEach ( time => console.log(time)), 0);
-
-        if (!this.macyInstance) {
-          this.initMacy();
-        } else {
-          this.macyInstance.recalculate(true);
-        }
       }
 
       const decodeImage = () => {
-        // now = performance.now(); // debug code
-        // $('#img').attr('src', dataSrc);
-
         // Add id for the ng for tracking
         this.index += 1;
         this.images.push({
@@ -136,31 +73,27 @@ export class ModalCreateAlbumComponent implements OnInit {
           src: dataSrc
         });
 
-        // this.initMacy();
+        if (this.index == this.files.length) {
+          this.loading = false;
+        }
 
         this.ref.markForCheck();
 
-        setTimeout(revokeObject, delay); // gives the UI a second chance to get something done.
-        //CPUProfile.push(performance.now()-now); // debug code
+        setTimeout(revokeObject, delay);
       }
 
       const encodeImage = () => {
-        // now = performance.now(); // debug code
-        dataSrc = canvas.toDataURL('image/jpeg', 0.5);
-        setTimeout(decodeImage, delay); // gives the UI a second chance to get something done.
-        //CPUProfile.push(performance.now()-now); // debug code
+        dataSrc = canvas.toDataURL('image/jpeg', .5);
+        setTimeout(decodeImage, delay);
       }
 
       const scaleImage = () => {
-        // now = performance.now(); // debug code
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-        setTimeout(encodeImage, delay); // gives the UI a second chance to get something done.
-        //CPUProfile.push(performance.now()-now); // debug code
+        setTimeout(encodeImage, delay);
       }
 
-      // now = performance.now(); // debug code
-      canvas = document.createElement('canvas');
-      ctx = canvas.getContext('2d');
+      // canvas = document.createElement('canvas');
+      // ctx = canvas.getContext('2d');
 
       const maxSize = 200;
       let width = image.width;
@@ -178,70 +111,14 @@ export class ModalCreateAlbumComponent implements OnInit {
         }
       }
 
-      // w = Math.min(image.width, 1000);
-      // h = image.height / image.width * w;
       canvas.width = width;
       canvas.height = height;
 
-      setTimeout(scaleImage, delay); // gives the UI a chance to get something done.
-      //CPUProfile.push(performance.now()-now); // debug code
+      setTimeout(scaleImage, delay);
     };
 
     image.src = imgURL;
   }
-
-  // generatePreviewThumbnail(file: File, imageSrc: string) {
-  //   const image = new Image();
-  //   image.onload = () => {
-  //     const resizedCanvas = document.createElement('canvas');
-  //     resizedCanvas.width = 200;
-  //     resizedCanvas.height = 200;
-
-  //     const pica = Pica();
-  //     pica.resize(image, resizedCanvas, {}).then(result => console.log('resize done!', result));
-  //   };
-  //   image.src = imageSrc;
-  // }
-
-  // generatePreviewThumbnail(file: File, imageSrc: string) {
-  //   const image = new Image();
-  //   image.onload = () => {
-  //     // Resize the image
-  //     const canvas = document.createElement('canvas');
-  //     const maxSize = 200;
-  //     let width = image.width;
-  //     let height = image.height;
-
-  //     if (width > height) {
-  //       if (width > maxSize) {
-  //         height *= maxSize / width;
-  //         width = maxSize;
-  //       }
-  //     } else {
-  //       if (height > maxSize) {
-  //         width *= maxSize / height;
-  //         height = maxSize;
-  //       }
-  //     }
-
-  //     canvas.width = width;
-  //     canvas.height = height;
-  //     canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-
-  //     const dataUrl = canvas.toDataURL('image/jpeg');
-
-  //     // Add id for the ng for tracking
-  //     this.index += 1;
-  //     this.images.push({
-  //       id: this.index,
-  //       file: file,
-  //       src: dataUrl
-  //     });
-
-  //     this.ref.markForCheck();
-  //   }
-  //   image.src = imageSrc;
-  // }
 
   removeImage(image: Object) {
     this.images.splice(this.images.indexOf(image), 1);
@@ -258,6 +135,10 @@ export class ModalCreateAlbumComponent implements OnInit {
       this.images.forEach(image => image.albums = [album._id]);
       this.uploadService.upload(this.images);
     });
+  }
+
+  close() {
+    this.modalService.close(this);
   }
 
   trackByFunction(index, item) {
