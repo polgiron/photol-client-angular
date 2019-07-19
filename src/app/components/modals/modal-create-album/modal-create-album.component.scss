@@ -61,7 +61,8 @@
   }
 
   &:hover .button-remove {
-    opacity: 1;
+    opacity: .8;
+    transform: scale(1);
   }
 }
 
@@ -71,19 +72,12 @@
   right: .2rem;
   width: 1.2rem;
   height: 1.2rem;
-  display: flex;
-  // background: rgba($color-white, .5);
-  // background: rgba($color-darkgray, .5);
-  background: $color-darkgray;
-  border-radius: 50%;
-  opacity: 0;
   transition: all .2s;
+  opacity: 0;
+  transform: scale(.8);
 
-  i {
-    font-size: 1em;
-    margin: auto;
-    // color: $color-darkgray;
-    color: $color-white;
+  img {
+    width: 100%;
   }
 }
 
