@@ -25,6 +25,8 @@ export class TopbarComponent implements OnInit {
     //     this.albumTitle = albumTitle;
     //   });
     // this.onClickAddAlbum();
+
+    this.modalService.open(ModalCreateAlbumComponent, 'big');
   }
 
   onClickAddAlbum() {

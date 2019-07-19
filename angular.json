@@ -31,7 +31,9 @@
               "./node_modules/bootstrap-css-only/css/bootstrap.css",
               "src/assets/scss/main.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/pica/dist/pica.min.js"
+            ],
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {

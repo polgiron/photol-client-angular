@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
@@ -8,16 +8,19 @@ import { Image } from 'src/app/models/image.model';
 @Component({
   selector: 'app-images',
   templateUrl: './images.component.html',
-  styleUrls: ['./images.component.scss']
+  styleUrls: ['./images.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesComponent implements OnInit {
   @Input() images: Image[];
   @Input() columns: number = 3;
+  // macyInstance: any;
 
   constructor(
     private imageService: ImageService,
     private route: ActivatedRoute,
-    private utils: Utils
+    private utils: Utils,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -35,22 +38,27 @@ export class ImagesComponent implements OnInit {
       this.utils.hideSplashscreen();
     }
 
-    // const macyInstance = Macy({
-    //   container: '#photos-list',
+    // this.macyInstance = Macy({
+    //   container: '#images-list',
     //   columns: 3,
     //   trueOrder: true,
     //   margin: 16,
-    //   breakAt: {
-    //     992: {
-    //       margin: 16,
-    //       columns: 2
-    //     },
-    //     767: {
-    //       margin: 16,
-    //       columns: 1
-    //     }
-    //   }
+    //   // breakAt: {
+    //   //   992: {
+    //   //     margin: 16,
+    //   //     columns: 2
+    //   //   },
+    //   //   767: {
+    //   //     margin: 16,
+    //   //     columns: 1
+    //   //   }
+    //   // }
     // });
+  }
+
+  ngAfterViewInit() {
+    // this.macyInstance.recalculate(true);
+    this.ref.markForCheck();
   }
 
   openPhotoOnReload(photoId: number) {
