@@ -44,20 +44,19 @@ export class UploadService {
         });
 
       // this.httpEmitter = this.HttpClient.request(req)
-      this.HttpClient.request(req)
-        .subscribe(
-          event => {
-            // console.log('sub', event);
+      this.HttpClient.request(req).subscribe(
+        event => {
+          console.log('sub', event);
 
-            // this.httpEvent = event;
+          // this.httpEvent = event;
 
-            if (event instanceof HttpResponse) {
-              // delete this.httpEmitter;
-              console.log('request done', event);
-            }
-          },
-          error => console.error('Error Uploading Files: ' + error.message)
-        );
+          if (event instanceof HttpResponse) {
+            // delete this.httpEmitter;
+            console.log('request done', event);
+          }
+        },
+        error => console.error('Error Uploading Files: ' + error.message)
+      );
     });
   }
 }

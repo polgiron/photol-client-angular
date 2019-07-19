@@ -17,6 +17,18 @@ export class AlbumService {
     });
   }
 
+  // getAlbumByRollId(rollId: number) {
+  //   return this.api.get('album/roll/' + rollId).then((album: Album) => {
+  //     return album;
+  //   });
+  // }
+
+  rollIdExists(rollId: number) {
+    return this.api.get('album/roll/' + rollId).then((response: any) => {
+      return response.album != null;
+    });
+  }
+
   createAlbum(params: Object) {
     return this.api.post('album', params);
   }

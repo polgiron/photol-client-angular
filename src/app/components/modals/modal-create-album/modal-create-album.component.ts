@@ -20,6 +20,11 @@ export class ModalCreateAlbumComponent implements OnInit {
   index: number = 0;
   macyInstance: any;
   files: File[];
+  rollExists: boolean = false;
+
+  get disableButton() {
+    return !this.title || this.title == '' || !this.rollId || this.rollId == null || !this.images.length || this.rollExists;
+  }
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -135,6 +140,16 @@ export class ModalCreateAlbumComponent implements OnInit {
       this.images.forEach(image => image.albums = [album._id]);
       this.uploadService.upload(this.images);
     });
+  }
+
+  async onRollKeyup() {
+    console.log(this.rollId);
+    if (this.rollId) {
+      this.rollExists = await this.albumService.rollIdExists(this.rollId);
+    } else {
+      this.rollExists = false;
+    }
+    this.ref.markForCheck();
   }
 
   close() {

@@ -10,8 +10,8 @@
   &:disabled {
     cursor: default;
     opacity: .5;
-    background: $color-mediumgray-lighter;
-    border-color: $color-mediumgray-lighter;
+    // background: $color-mediumgray-lighter;
+    // border-color: $color-mediumgray-lighter;
     box-shadow: 0 0 0 transparent;
   }
 
@@ -20,13 +20,6 @@
     border-color: $color-text-lighter;
   }
 }
-
-// .button--main {
-//   background: rgba($color-white, 1);
-//   color: $color-darkgray;
-//   border-color: rgba($color-white, 1);
-//   font-weight: 500;
-// }
 
 .button--main {
   background: $color-accent;
