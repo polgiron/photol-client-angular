@@ -8,7 +8,7 @@ import { fadeOutAnimation } from 'src/app/utils/animations';
   animations: [fadeOutAnimation]
 })
 export class ImageComponent implements OnInit {
-  @ViewChild('wrapper') wrapper: ElementRef;
+  @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   // @Output() isImageLoaded: EventEmitter<boolean> = new EventEmitter();
   @Input() width: number;
   @Input() height: number;

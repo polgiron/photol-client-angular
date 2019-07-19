@@ -9,7 +9,7 @@ import { Utils } from 'src/app/utils/utils';
   styleUrls: ['./photo-modal.component.scss']
 })
 export class PhotoModalComponent implements OnInit {
-  @ViewChild('photoWrapper') photoWrapperElement: ElementRef;
+  @ViewChild('photoWrapper', { static: true }) photoWrapperElement: ElementRef;
   @Input() set image(value: any) {
     // console.log(value);
 
