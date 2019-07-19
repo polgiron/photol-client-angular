@@ -30,6 +30,8 @@ export class AlbumService {
   }
 
   createAlbum(params: Object) {
+    console.log('Create album');
+    console.log(params);
     return this.api.post('album', params);
   }
 

@@ -12,8 +12,7 @@
     </button>
     <!-- <ul id="preview-list" class="list"> -->
     <ul class="list">
-      <li class="list__entry" *ngFor="let image of images; trackBy: trackByFunction"
-        [ngClass]="{'is-selected': image.selected}" [@fadeInAnimation]>
+      <li class="list__entry" *ngFor="let image of images; trackBy: trackByFunction" [@fadeInAnimation]>
         <img [src]="image.src" draggable="false" alt="">
         <button class="button-remove" (click)="removeImage(image)">
           <img src="assets/images/close-button.svg" alt="">

@@ -37,6 +37,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalService } from './services/modal.service';
 import { ModalPickAlbumComponent } from './components/modals/modal-pick-album/modal-pick-album.component';
 import { ModalCreateAlbumComponent } from './components/modals/modal-create-album/modal-create-album.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { ModalUploadProgressComponent } from './components/modals/modal-upload-progress/modal-upload-progress.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { ModalCreateAlbumComponent } from './components/modals/modal-create-albu
     AdminComponent,
     CheckboxComponent,
     ModalPickAlbumComponent,
-    ModalCreateAlbumComponent
+    ModalCreateAlbumComponent,
+    ModalUploadProgressComponent
   ],
   imports: [
     HttpModule,
@@ -71,7 +74,8 @@ import { ModalCreateAlbumComponent } from './components/modals/modal-create-albu
     BrowserAnimationsModule,
     ngfModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ProgressbarModule.forRoot()
   ],
   providers: [
     BaseApi,
@@ -85,7 +89,8 @@ import { ModalCreateAlbumComponent } from './components/modals/modal-create-albu
   ],
   entryComponents: [
     ModalPickAlbumComponent,
-    ModalCreateAlbumComponent
+    ModalCreateAlbumComponent,
+    ModalUploadProgressComponent
   ],
   bootstrap: [AppComponent]
 })

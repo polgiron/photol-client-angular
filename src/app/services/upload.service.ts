@@ -7,10 +7,13 @@ import {
 import { BaseApi } from './base-api.service';
 import { Image } from '../models/image.model';
 import { Utils } from '../utils/utils';
+import { ModalService } from './modal.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UploadService {
-  // private _uploadPhotos: BehaviorSubject<File[]> = new BehaviorSubject<File[]>(null);
+  private _uploadProgress: Subject<number> = new Subject<number>();
+  progress: number = 0;
 
   // httpEmitter: Subscription;
   // httpEvent: HttpEvent<{}>;
@@ -18,18 +21,21 @@ export class UploadService {
   constructor(
     private HttpClient: HttpClient,
     private api: BaseApi,
-    private utils: Utils
+    private utils: Utils,
+    private modalService: ModalService,
+    private router: Router
   ) { }
 
-  // public uploadPhotosChannel(): Observable<File[]> {
-  //   return this._uploadPhotos.asObservable();
-  // }
+  public uploadProgressChannel(): Observable<number> {
+    return this._uploadProgress.asObservable();
+  }
 
-  // setUploadPhotos(photos: File[]) {
-  //   this._uploadPhotos.next(photos);
-  // }
+  upload(images: any[], albumId: number) {
+    console.log('Upload function');
+    console.log(images);
 
-  upload(images: any[]) {
+    this.progress = 0;
+
     images.forEach(image => {
       let formData: FormData = new FormData();
       // formData.append('title', image.title);
@@ -53,6 +59,18 @@ export class UploadService {
           if (event instanceof HttpResponse) {
             // delete this.httpEmitter;
             console.log('request done', event);
+            this.progress += 1;
+            this._uploadProgress.next(this.progress);
+
+            if (this.progress == images.length) {
+              console.log('UPLOAD DONE!');
+
+              setTimeout(() => {
+                this.modalService.closeAll();
+              }, 600);
+
+              // this.router.navigate(['/album']);
+            }
           }
         },
         error => console.error('Error Uploading Files: ' + error.message)

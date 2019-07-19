@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { UploadService } from 'src/app/services/upload.service';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
-import { Album } from 'src/app/models/album.model';
 import { ModalService } from 'src/app/services/modal.service';
+import { ModalUploadProgressComponent } from '../modal-upload-progress/modal-upload-progress.component';
+import { Album } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-modal-create-album',
@@ -24,6 +25,7 @@ export class ModalCreateAlbumComponent implements OnInit {
 
   get disableButton() {
     return !this.title || this.title == '' || !this.rollId || this.rollId == null || !this.images.length || this.rollExists;
+    // return false;
   }
 
   constructor(
@@ -97,9 +99,6 @@ export class ModalCreateAlbumComponent implements OnInit {
         setTimeout(encodeImage, delay);
       }
 
-      // canvas = document.createElement('canvas');
-      // ctx = canvas.getContext('2d');
-
       const maxSize = 200;
       let width = image.width;
       let height = image.height;
@@ -130,15 +129,24 @@ export class ModalCreateAlbumComponent implements OnInit {
   }
 
   onCreateAlbum() {
+    console.log('ON CREATE ALBUM');
+
     const params = {
       title: this.title,
       rollId: this.rollId
     };
 
+    this.close();
+
     this.albumService.createAlbum(params).then((album: Album) => {
       console.log('Album has been created');
       this.images.forEach(image => image.albums = [album._id]);
-      this.uploadService.upload(this.images);
+      this.uploadService.upload(this.images, album._id);
+    });
+
+    this.modalService.open(ModalUploadProgressComponent, 'upload', true, {
+      albumTitle: this.title,
+      totalImages: this.images.length
     });
   }
 

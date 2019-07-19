@@ -8,6 +8,18 @@
   &.big {
     max-width: 40rem;
   }
+
+  &.upload {
+    margin-top: 12rem;
+  }
+}
+
+.modal.fade .modal-dialog.upload {
+  transform: translate(0, 50px);
+}
+
+.modal.show .modal-dialog {
+  transform: none !important;
 }
 
 .modal-content {
@@ -58,6 +70,7 @@
   margin-bottom: 2rem;
   font-size: .9rem;
   line-height: 1.4;
+  color: $color-text-lighter;
 
   // a {
   //   color: var(--color-blue);

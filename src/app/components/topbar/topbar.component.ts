@@ -3,6 +3,7 @@ import { takeWhile } from 'rxjs/operators';
 import { AlbumService } from 'src/app/services/album.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-create-album.component';
+import { ModalUploadProgressComponent } from '../modals/modal-upload-progress/modal-upload-progress.component';
 
 @Component({
   selector: 'app-topbar',
@@ -26,7 +27,8 @@ export class TopbarComponent implements OnInit {
     //   });
     // this.onClickAddAlbum();
 
-    this.modalService.open(ModalCreateAlbumComponent, 'big');
+    // this.modalService.open(ModalCreateAlbumComponent, 'big');
+    // this.modalService.open(ModalUploadProgressComponent, 'upload');
   }
 
   onClickAddAlbum() {
