@@ -90,7 +90,6 @@ img.fade {
 .masonry-list {
   column-count: 3;
   column-gap: 2rem;
-  // column-gap: 1.5rem;
 
   @include respond-to('medium') {
     column-count: 2 !important;
@@ -103,13 +102,11 @@ img.fade {
   }
 
   .list__entry {
-    // padding-top: .75rem;
-    // padding-bottom: .75rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     break-inside: avoid;
 
-    @include respond-to('small') {
+    @include respond-to('medium') {
       padding-top: .5rem;
       padding-bottom: .5rem;
     }

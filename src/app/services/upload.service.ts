@@ -40,6 +40,7 @@ export class UploadService {
       let formData: FormData = new FormData();
       // formData.append('title', image.title);
       formData.append('file', image.file);
+      formData.append('albums', image.albums);
 
       const req = new HttpRequest<FormData>(
         'POST',
@@ -52,7 +53,7 @@ export class UploadService {
       // this.httpEmitter = this.HttpClient.request(req)
       this.HttpClient.request(req).subscribe(
         event => {
-          console.log('sub', event);
+          // console.log('sub', event);
 
           // this.httpEvent = event;
 
@@ -69,7 +70,7 @@ export class UploadService {
                 this.modalService.closeAll();
               }, 600);
 
-              // this.router.navigate(['/album']);
+              this.router.navigate(['/', 'albums', albumId]);
             }
           }
         },
