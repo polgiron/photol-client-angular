@@ -4,4 +4,5 @@ export interface Image {
   oriWidth?: number;
   oriHeight?: number;
   signedUrl?: string;
+  favorite?: boolean;
 }

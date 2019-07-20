@@ -56,10 +56,10 @@ export class ImagesComponent implements OnInit {
     // });
   }
 
-  ngAfterViewInit() {
-    // this.macyInstance.recalculate(true);
-    this.ref.markForCheck();
-  }
+  // ngAfterViewInit() {
+  //   // this.macyInstance.recalculate(true);
+  //   this.ref.markForCheck();
+  // }
 
   openPhotoOnReload(photoId: number) {
     // console.log(photoId);
@@ -89,5 +89,10 @@ export class ImagesComponent implements OnInit {
     }
 
     this.images = out;
+  }
+
+  onDeleteImage(imageId: number) {
+    this.images = this.images.filter(image => image._id != imageId);
+    this.ref.markForCheck();
   }
 }

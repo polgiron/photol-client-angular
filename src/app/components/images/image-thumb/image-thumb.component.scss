@@ -1,4 +1,37 @@
+@import '~src/assets/scss/variables';
+
 .image-thumb {
   width: 100%;
   display: block;
+  position: relative;
+}
+
+.edit-toolbar {
+  background: rgba($color-white, .5);
+  border-radius: 1000rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  button {
+    padding: .4rem;
+    display: flex;
+    color: $color-darkgray;
+
+    // &:hover i {
+    //   transform: scale(1.5);
+    // }
+
+    i {
+      margin: auto;
+      font-size: 1.4rem;
+      // transition: all .2s;
+    }
+  }
+
+  .button-favorite.is-active {
+    color: $color-yellow;
+  }
 }

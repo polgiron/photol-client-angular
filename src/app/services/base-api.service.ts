@@ -34,6 +34,28 @@ export class BaseApi {
       });
   }
 
+  put(method: string, params: object) {
+    return this.http.put(this.domain + method, params)
+      .pipe(map((res: any) => res.json()))
+      .pipe(catchError(this.handleError).bind(this))
+      .toPromise().then(response => {
+        console.log('-----API PUT RESPONSE');
+        console.log(response);
+        return response;
+      });
+  }
+
+  delete(method: string) {
+    return this.http.delete(this.domain + method)
+      .pipe(map((res: any) => res.json()))
+      .pipe(catchError(this.handleError).bind(this))
+      .toPromise().then(response => {
+        console.log('-----API DELETE RESPONSE');
+        console.log(response);
+        return response;
+      });
+  }
+
   public handleError = error => {
     console.error(error);
     return throwError('Server error');

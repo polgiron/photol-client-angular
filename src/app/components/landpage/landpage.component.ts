@@ -33,7 +33,7 @@ export class LandpageComponent implements OnInit {
     //   this.utils.hideSplashscreen();
     // }
 
-    this.images = await this.imageService.getImages();
+    this.images = await this.imageService.getAll();
     // console.log(this.images);
     this.ref.markForCheck();
   }

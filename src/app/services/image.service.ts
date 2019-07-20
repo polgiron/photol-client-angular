@@ -7,24 +7,38 @@ import { Image } from '../models/image.model';
 export class ImageService {
   private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   currentPhotos: Image[];
+  document: string = 'image/';
 
   constructor(
     private api: BaseApi
   ) { }
 
-  getImages() {
-    return this.api.get('image/all').then((images: Image[]) => {
+  getAll() {
+    return this.api.get(this.document + 'all').then((images: Image[]) => {
       // console.log(images);
       return images;
     });
   }
 
   getImageBigSignedUrl(imageId: number): Promise<any> {
-    return this.api.get(`image/${imageId}/big`).then(data => {
+    return this.api.get(this.document + `${imageId}/big`).then(data => {
       // console.log(data);
       return data;
     });
   }
+
+  update(imageId: number, params: object) {
+    this.api.put(this.document + imageId, params);
+  }
+
+  delete(imageId: number) {
+    return this.api.delete(this.document + imageId);
+  }
+
+
+
+
+
 
   public modalPhotoChannel(): Observable<any> {
     return this._modalPhoto.asObservable();
