@@ -1,9 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
-import { Utils } from 'src/app/utils/utils';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { CacheService } from 'src/app/services/cache.service';
-import { BaseApi } from 'src/app/services/base-api.service';
 import { Image } from 'src/app/models/image.model';
 
 @Component({
@@ -18,9 +15,6 @@ export class LandpageComponent implements OnInit {
 
   constructor(
     private imageService: ImageService,
-    private utils: Utils,
-    private cache: CacheService,
-    private api: BaseApi,
     private ref: ChangeDetectorRef
   ) { }
 
@@ -39,7 +33,6 @@ export class LandpageComponent implements OnInit {
     //   this.utils.hideSplashscreen();
     // }
 
-    console.log('GET LANDPAGE');
     this.images = await this.imageService.getImages();
     // console.log(this.images);
     this.ref.markForCheck();

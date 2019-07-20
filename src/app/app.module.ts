@@ -31,7 +31,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
 import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
-import { CacheService } from 'src/app/services/cache.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalService } from './services/modal.service';
@@ -84,7 +83,6 @@ import { ModalUploadProgressComponent } from './components/modals/modal-upload-p
     AlbumService,
     Utils,
     UploadService,
-    CacheService,
     ModalService
   ],
   entryComponents: [

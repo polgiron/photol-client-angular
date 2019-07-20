@@ -68,9 +68,8 @@ export class UploadService {
 
               setTimeout(() => {
                 this.modalService.closeAll();
+                this.router.navigate(['/', 'albums', albumId]);
               }, 600);
-
-              this.router.navigate(['/', 'albums', albumId]);
             }
           }
         },

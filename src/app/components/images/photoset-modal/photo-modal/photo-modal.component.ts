@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
@@ -6,7 +6,8 @@ import { Utils } from 'src/app/utils/utils';
 @Component({
   selector: 'app-photo-modal',
   templateUrl: './photo-modal.component.html',
-  styleUrls: ['./photo-modal.component.scss']
+  styleUrls: ['./photo-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PhotoModalComponent implements OnInit {
   @ViewChild('photoWrapper', { static: true }) photoWrapperElement: ElementRef;
@@ -45,7 +46,8 @@ export class PhotoModalComponent implements OnInit {
   constructor(
     private imageService: ImageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -90,12 +92,15 @@ export class PhotoModalComponent implements OnInit {
 
     this.photoWrapperElement.nativeElement.style.width = newWidth + 'px';
     this.photoWrapperElement.nativeElement.style.height = newHeight + 'px';
+
+    this.ref.markForCheck();
   }
 
   async extendImage() {
     // Image src
     this.imageService.getImageBigSignedUrl(this.image._id).then(data => {
       this.imageSrc = data.signedUrl;
+      this.ref.markForCheck();
     });
 
     // Extend tags

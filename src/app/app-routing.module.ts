@@ -14,9 +14,8 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      // { path: '', component: AdminComponent },
       { path: '', component: LandpageComponent },
-      // { path: 'albums', component: AlbumsComponent },
+      { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
       // { path: 'photos/:photoId', component: PhotoComponent },
       // { path: 'search', component: SearchComponent },

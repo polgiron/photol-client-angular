@@ -88,7 +88,7 @@ img.fade {
 
 // Masonry
 .masonry-list {
-  column-count: 3;
+  column-count: 4;
   column-gap: 2rem;
 
   @include respond-to('medium') {

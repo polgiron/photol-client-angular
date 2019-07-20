@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BaseApi } from 'src/app/services/base-api.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
-import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-album',
@@ -20,10 +18,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private api: BaseApi,
     private albumService: AlbumService,
     private imageService: ImageService,
-    private cache: CacheService,
     private ref: ChangeDetectorRef
   ) { }
 

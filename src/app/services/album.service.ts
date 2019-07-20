@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BaseApi } from './base-api.service';
-import { Album } from '../models/album.model';
 // import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
@@ -12,14 +11,13 @@ export class AlbumService {
   ) { }
 
   getAlbums() {
-    this.api.get('album/all').then((albums: Album[]) => {
-      console.log(albums);
+    return this.api.get('album/all').then((response: any) => {
+      return response.albums;
     });
   }
 
   getAlbum(albumId: number) {
     return this.api.get('album/' + albumId).then((response: any) => {
-      console.log(response);
       return response.album;
     });
   }
@@ -37,8 +35,6 @@ export class AlbumService {
   }
 
   createAlbum(params: Object) {
-    console.log('Create album');
-    console.log(params);
     return this.api.post('album', params);
   }
 
