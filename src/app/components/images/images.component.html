@@ -1,6 +1,25 @@
-<!-- <ul id="images-list" [ngStyle]="{'column-count': columns}"> -->
 <ul class="masonry-list" [ngStyle]="{'column-count': columns}">
   <li class="list__entry" *ngFor="let image of images">
-    <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)"></app-image-thumb>
+    <app-image-thumb
+      [image]="image"
+      (onDeleteImage)="onDeleteImage($event)"
+    ></app-image-thumb>
+    <!-- <button class="image-thumb" (click)="openPhotoModal(image)">
+      <app-image [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"></app-image>
+      <div class="edit-toolbar">
+        <div class="group">
+          <button (click)="updateCover(image._id, $event)">
+            <i class="material-icons">photo</i> <span>Set as cover</span>
+          </button>
+        </div>
+        <div class="group">
+          <button (click)="updateFavorite(image, $event)" class="button-favorite"
+            [ngClass]="{'is-active': image.favorite}"><i class="material-icons">star</i></button>
+          <button><i class="material-icons">edit</i></button>
+          <button (click)="deleteImage(image._id, $event)"><i class="material-icons">delete</i></button>
+        </div>
+      </div>
+    </button> -->
+    <h3 class="title">{{image.title ? image.title : 'No title'}}</h3>
   </li>
 </ul>

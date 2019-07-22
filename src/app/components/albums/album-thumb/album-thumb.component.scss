@@ -1,5 +1,10 @@
 @import '~src/assets/scss/variables';
 
+.album-thumb {
+  min-height: 12rem;
+  background: lightgray;
+}
+
 .infos {
   margin-top: .5rem;
 }

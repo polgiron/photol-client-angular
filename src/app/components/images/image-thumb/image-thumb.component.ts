@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Image } from 'src/app/models/image.model';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-image-thumb',
@@ -11,16 +12,17 @@ import { Image } from 'src/app/models/image.model';
 export class ImageThumbComponent implements OnInit {
   @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
   @Input() image: Image;
-  isFavorite: boolean = false;
+  isAlbumView: boolean = false;
 
   constructor(
     private imageService: ImageService,
+    private albumService: AlbumService,
     private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.isFavorite = this.image.favorite ? this.image.favorite : false;
     // console.log(this.image);
+    this.isAlbumView = this.albumService.currentId ? true : false;
   }
 
   openPhotoModal() {
@@ -30,20 +32,24 @@ export class ImageThumbComponent implements OnInit {
   updateFavorite(event: any) {
     event.stopPropagation();
 
-    this.isFavorite = !this.isFavorite;
+    this.image.favorite = !this.image.favorite;
     this.ref.markForCheck();
 
     const params = {
-      favorite: this.isFavorite
+      favorite: this.image.favorite
     };
 
     this.imageService.update(this.image._id, params);
   }
 
+  updateCover(event: any) {
+    event.stopPropagation();
+    this.albumService.updateCover(this.image._id);
+  }
+
   delete(event: any) {
     event.stopPropagation();
-
-    this.imageService.delete(this.image._id).then(response => {
+    this.imageService.delete(this.image._id).then((response: any) => {
       // this.ref.markForCheck();
       this.onDeleteImage.emit(this.image._id);
     });

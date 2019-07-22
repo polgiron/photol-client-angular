@@ -10,6 +10,6 @@ export class AppComponent {
   constructor(
     private utils: Utils
   ) {
-    // this.utils.hideSplashscreen();
+    this.utils.hideSplashscreen();
   }
 }

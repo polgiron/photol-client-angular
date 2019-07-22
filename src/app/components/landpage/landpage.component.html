@@ -1,7 +1,7 @@
-<div class="main-loader-wrapper" *ngIf="!images">
+<div class="main-loader-wrapper" *ngIf="!images" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="main-container" *ngIf="images">
+<div class="main-container" *ngIf="images" [@fadeAnimation]>
   <app-images [images]="images"></app-images>
   <!-- <app-images [images]="images" [columns]="2"></app-images> -->
 </div>

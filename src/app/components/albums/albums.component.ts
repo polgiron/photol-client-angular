@@ -30,8 +30,8 @@ export class AlbumsComponent implements OnInit {
 
   async getAlbums() {
     // this.albums = await this.api.get('albums');
-    this.albums = await this.albumService.getAlbums();
-    console.log(this.albums);
+    this.albums = await this.albumService.getAll();
+    console.log('get albums', this.albums);
     this.ref.markForCheck();
     // this.albums.forEach((album: Album) => {
       // album.year = this.datePipe.transform(album.primary_photo_extras.datetaken, 'y');

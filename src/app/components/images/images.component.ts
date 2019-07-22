@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 import { Image } from 'src/app/models/image.model';
+import { AlbumService } from 'src/app/services/album.service';
 // import Macy from 'Macy';
 
 @Component({
@@ -12,6 +13,7 @@ import { Image } from 'src/app/models/image.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesComponent implements OnInit {
+  // @Output() onUpdateCover: EventEmitter<number> = new EventEmitter();
   @Input() images: Image[];
   @Input() columns: number = 3;
   // macyInstance: any;
@@ -20,12 +22,12 @@ export class ImagesComponent implements OnInit {
     private imageService: ImageService,
     private route: ActivatedRoute,
     private utils: Utils,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private albumService: AlbumService
   ) { }
 
   ngOnInit() {
-    this.reorder(this.images);
-    this.imageService.currentPhotos = this.images;
+    this.extendImages();
 
     const params: any = this.route.queryParams;
     const photoId = params.value.open;
@@ -56,10 +58,10 @@ export class ImagesComponent implements OnInit {
     // });
   }
 
-  // ngAfterViewInit() {
-  //   // this.macyInstance.recalculate(true);
-  //   this.ref.markForCheck();
-  // }
+  extendImages() {
+    this.reorder(this.images);
+    this.imageService.currentPhotos = this.images;
+  }
 
   openPhotoOnReload(photoId: number) {
     // console.log(photoId);
@@ -70,7 +72,7 @@ export class ImagesComponent implements OnInit {
     this.utils.hideSplashscreen();
   }
 
-  reorder(array) {
+  reorder(array: any[]) {
     array.forEach((element, index) => {
       element.index = index;
     });
@@ -95,4 +97,41 @@ export class ImagesComponent implements OnInit {
     this.images = this.images.filter(image => image._id != imageId);
     this.ref.markForCheck();
   }
+
+  // onUpdateCover(imageId: number) {
+  //   this.images = this.images.filter(image => image._id != imageId);
+  //   this.ref.markForCheck();
+  // }
+
+  // openPhotoModal(image: Image) {
+  //   this.imageService.openPhotoModal(image);
+  // }
+
+  // updateFavorite(image: Image, event: any) {
+  //   event.stopPropagation();
+
+  //   image.favorite = !image.favorite;
+  //   this.ref.markForCheck();
+
+  //   const params = {
+  //     favorite: image.favorite
+  //   };
+
+  //   this.imageService.update(image._id, params);
+  // }
+
+  // deleteImage(imageId: number, event: any) {
+  //   event.stopPropagation();
+
+  //   this.imageService.delete(imageId).then(response => {
+  //     this.images = this.images.filter(image => image._id != imageId);
+  //     this.ref.markForCheck();
+  //   });
+  // }
+
+  // updateCover(imageId: number, event: any) {
+  //   event.stopPropagation();
+  //   // this.onUpdateCover.emit(imageId);
+  //   this.albumService.updateCover(imageId);
+  // }
 }

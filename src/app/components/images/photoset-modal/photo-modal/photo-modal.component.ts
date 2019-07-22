@@ -98,8 +98,8 @@ export class PhotoModalComponent implements OnInit {
 
   async extendImage() {
     // Image src
-    this.imageService.getImageBigSignedUrl(this.image._id).then(data => {
-      this.imageSrc = data.signedUrl;
+    this.imageService.getImageBigSignedUrl(this.image._id).then((signedUrl: string) => {
+      this.imageSrc = signedUrl;
       this.ref.markForCheck();
     });
 

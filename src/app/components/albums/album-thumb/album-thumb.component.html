@@ -1,11 +1,12 @@
 <a class="album-thumb" [routerLink]="['/', 'albums', album._id]">
   <div class="cover">
     <!-- <img [src]="album.primary_photo_extras.url_m" alt=""> -->
-    <!-- <app-image
-      [src]="album.primary_photo_extras.url_m"
-      [width]="album.primary_photo_extras.width_m"
-      [height]="album.primary_photo_extras.height_m"
-    ></app-image> -->
+    <app-image
+      *ngIf="album.cover"
+      [src]="album.cover.signedUrl"
+      [width]="album.cover.oriWidth"
+      [height]="album.cover.oriHeight"
+    ></app-image>
   </div>
   <div class="infos">
     <h2 class="title">{{album.title}}</h2>

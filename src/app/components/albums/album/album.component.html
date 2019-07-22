@@ -3,14 +3,16 @@
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
   <div class="inner">
-    <!-- <div class="cover" *ngIf="cover">
+    <div class="album.cover" *ngIf="cover">
       <app-image
-        [src]="coverSrc"
-        [width]="cover.width_o"
-        [height]="cover.height_o"
+        [src]="cover.signedUrl"
+        [width]="cover.oriWidth"
+        [height]="cover.oriHeight"
         [cover]="true"
+        [displayLoader]="true"
       ></app-image>
-    </div> -->
+    </div>
     <app-images [images]="album.images"></app-images>
+    <!-- <app-images [images]="album.images" (onUpdateCover)="onUpdateCover($event)"></app-images> -->
   </div>
 </div>

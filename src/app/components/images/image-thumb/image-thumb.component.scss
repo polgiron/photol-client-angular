@@ -7,27 +7,45 @@
 }
 
 .edit-toolbar {
-  background: rgba($color-white, .5);
-  border-radius: 1000rem;
-  display: flex;
-  align-items: center;
   position: absolute;
   bottom: 1rem;
   right: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .group {
+    display: flex;
+    align-items: center;
+    border-radius: 1000rem;
+    overflow: hidden;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
 
   button {
     padding: .4rem;
     display: flex;
     color: $color-darkgray;
+    background: rgba($color-white, .7);
+    transition: all .2s;
 
-    // &:hover i {
-    //   transform: scale(1.5);
-    // }
+    &:hover {
+      background: rgba($color-white, .9);
+    }
 
     i {
       margin: auto;
       font-size: 1.4rem;
-      // transition: all .2s;
+    }
+
+    span {
+      font-weight: 500;
+      margin-left: .3rem;
+      margin-right: .3rem;
     }
   }
 

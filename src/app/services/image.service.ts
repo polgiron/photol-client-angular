@@ -20,10 +20,10 @@ export class ImageService {
     });
   }
 
-  getImageBigSignedUrl(imageId: number): Promise<any> {
-    return this.api.get(this.document + `${imageId}/big`).then(data => {
+  getImageBigSignedUrl(imageId: number) {
+    return this.api.get(this.document + `${imageId}/big`).then((response: any) => {
       // console.log(data);
-      return data;
+      return response.signedUrl;
     });
   }
 

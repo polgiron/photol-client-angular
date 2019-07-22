@@ -1,6 +1,9 @@
+import { Image } from "./image.model";
+
 export interface Album {
   _id: number;
   title: string;
   rollId?: number;
-  images?: number[];
+  images?: Image[];
+  cover?: Image
 }

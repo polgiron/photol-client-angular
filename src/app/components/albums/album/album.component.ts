@@ -3,6 +3,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
+import { takeWhile } from 'rxjs/operators';
+import { Image } from 'src/app/models/image.model';
+import { Album } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-album',
@@ -12,9 +15,9 @@ import { ImageService } from 'src/app/services/image.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumComponent implements OnInit, OnDestroy {
-  album: any;
-  cover: any;
-  coverSrc: string;
+  private _alive: boolean = true;
+  album: Album;
+  cover: Image;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,28 +32,36 @@ export class AlbumComponent implements OnInit, OnDestroy {
       console.log(albumId);
       if (albumId) {
         this.getAlbum(albumId);
+
+        this.albumService.updateCoverChannel()
+          .pipe(takeWhile(() => this._alive))
+          .subscribe((image: Image) => {
+            this.cover = image;
+            console.log(this.cover);
+            this.ref.markForCheck();
+          });
       }
     });
   }
 
   async getAlbum(albumId: number) {
     console.log('Get album');
+
     this.album = await this.albumService.getAlbum(albumId);
     console.log(this.album);
-    this.ref.markForCheck();
-    // this.extendAlbum();
-  }
 
-  extendAlbum() {
-    // this.cover = this.album.photo.find(album => album.isprimary == true);
-    // if (this.cover) {
-      // this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
-      // console.log(this.cover);
-    // }
-    // this.albumService.setAlbumTitle(this.album.title);
+    this.albumService.currentId = this.album._id;
+
+    if (this.album.cover) {
+      this.cover = this.album.cover;
+    }
+
+    this.ref.markForCheck();
   }
 
   ngOnDestroy() {
     // this.albumService.setAlbumTitle('');
+    this._alive = false;
+    this.albumService.currentId = null;
   }
 }
