@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Api } from 'src/app/services/api.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   searchValue: string;
 
   constructor(
-    private api: BaseApi,
+    private api: Api,
     private utils: Utils,
     private route: ActivatedRoute,
     private router: Router,

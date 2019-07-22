@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 @Injectable()
-export class BaseApi {
+export class Api {
   // domain: string = 'https://photol-api.paulgiron.com/';
   domain: string = 'http://localhost:3333/';
 

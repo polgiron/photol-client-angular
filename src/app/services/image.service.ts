@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Api } from 'src/app/services/api.service';
 import { Image } from '../models/image.model';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class ImageService {
   document: string = 'image/';
 
   constructor(
-    private api: BaseApi
+    private api: Api
   ) { }
 
   getAll() {

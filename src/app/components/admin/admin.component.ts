@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UploadService } from 'src/app/services/upload.service';
 import { Utils } from 'src/app/utils/utils';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Api } from 'src/app/services/api.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageService } from 'src/app/services/image.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private uploadService: UploadService,
     private utils: Utils,
-    private api: BaseApi,
+    private api: Api,
     private albumService: AlbumService,
     private imageService: ImageService,
     private ref: ChangeDetectorRef,

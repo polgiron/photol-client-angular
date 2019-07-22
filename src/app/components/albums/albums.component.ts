@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Api } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { Utils } from 'src/app/utils/utils';
@@ -17,7 +17,7 @@ export class AlbumsComponent implements OnInit {
   albums: any;
 
   constructor(
-    private api: BaseApi,
+    private api: Api,
     private datePipe: DatePipe,
     private utils: Utils,
     private albumService: AlbumService,

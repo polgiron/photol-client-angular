@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseApi } from './base-api.service';
+import { Api } from './api.service';
 import { Subject, Observable } from 'rxjs';
 import { Image } from '../models/image.model';
 import { Album } from '../models/album.model';
@@ -13,7 +13,7 @@ export class AlbumService {
   currentId: number;
 
   constructor(
-    private api: BaseApi
+    private api: Api
   ) { }
 
   public updateCoverChannel(): Observable<Image> {

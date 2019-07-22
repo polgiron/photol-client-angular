@@ -4,7 +4,7 @@ import {
   HttpClient, HttpRequest,
   HttpResponse, HttpEvent
 } from '@angular/common/http'
-import { BaseApi } from './base-api.service';
+import { Api } from './api.service';
 import { Image } from '../models/image.model';
 import { Utils } from '../utils/utils';
 import { ModalService } from './modal.service';
@@ -20,7 +20,7 @@ export class UploadService {
 
   constructor(
     private HttpClient: HttpClient,
-    private api: BaseApi,
+    private api: Api,
     private utils: Utils,
     private modalService: ModalService,
     private router: Router

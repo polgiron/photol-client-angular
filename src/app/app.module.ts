@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Api } from 'src/app/services/api.service';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './components/home/home.component';
 import { AlbumsComponent } from './components/albums/albums.component';
@@ -77,7 +77,7 @@ import { ModalUploadProgressComponent } from './components/modals/modal-upload-p
     ProgressbarModule.forRoot()
   ],
   providers: [
-    BaseApi,
+    Api,
     DatePipe,
     ImageService,
     AlbumService,
