@@ -4,12 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 
 @Component({
-  selector: 'app-photo-modal',
-  templateUrl: './photo-modal.component.html',
-  styleUrls: ['./photo-modal.component.scss'],
+  selector: 'app-imageset-image',
+  templateUrl: './imageset-image.component.html',
+  styleUrls: ['./imageset-image.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PhotoModalComponent implements OnInit {
+export class ImagesetImageComponent implements OnInit {
   @ViewChild('photoWrapper', { static: true }) photoWrapperElement: ElementRef;
   @Input() set image(value: any) {
     // console.log(value);

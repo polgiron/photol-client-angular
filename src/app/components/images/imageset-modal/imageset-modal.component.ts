@@ -3,11 +3,11 @@ import { ImageService } from 'src/app/services/image.service';
 import { Utils } from 'src/app/utils/utils';
 
 @Component({
-  selector: 'app-photoset-modal',
-  templateUrl: './photoset-modal.component.html',
-  styleUrls: ['./photoset-modal.component.scss']
+  selector: 'app-imageset-modal',
+  templateUrl: './imageset-modal.component.html',
+  styleUrls: ['./imageset-modal.component.scss']
 })
-export class PhotosetModalComponent implements OnInit, OnDestroy {
+export class ImagesetModalComponent implements OnInit, OnDestroy {
   @Input() index: number;
   private _keydownListener: EventListener;
   images: any;
@@ -19,7 +19,7 @@ export class PhotosetModalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.images = this.imageService.currentPhotos;
+    this.images = this.imageService.currentImages;
     this.displayControl = this.images.length > 1;
     this._keydownListener = this.onKeydown.bind(this);
     window.addEventListener('keydown', this._keydownListener);

@@ -6,7 +6,7 @@ import { Image } from '../models/image.model';
 @Injectable()
 export class ImageService {
   private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  currentPhotos: Image[];
+  currentImages: Image[];
   document: string = 'image/';
 
   constructor(
@@ -46,9 +46,9 @@ export class ImageService {
 
   openPhotoModal(photo: any) {
     // console.log('open photo modal');
-    // console.log(this.currentPhotos);
+    // console.log(this.currentImages);
     // console.log(photo._id);
-    this._modalPhoto.next(this.currentPhotos.indexOf(photo));
+    this._modalPhoto.next(this.currentImages.indexOf(photo));
     document.body.classList.add('is-static');
   }
 

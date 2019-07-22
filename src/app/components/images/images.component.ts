@@ -60,7 +60,7 @@ export class ImagesComponent implements OnInit {
 
   extendImages() {
     this.reorder(this.images);
-    this.imageService.currentPhotos = this.images;
+    this.imageService.currentImages = this.images;
   }
 
   openPhotoOnReload(photoId: number) {

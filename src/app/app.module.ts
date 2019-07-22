@@ -17,7 +17,7 @@ import { ImagesComponent } from './components/images/images.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
-import { PhotoModalComponent } from './components/images/photoset-modal/photo-modal/photo-modal.component';
+import { ImagesetImageComponent } from './components/images/imageset-modal/imageset-image/imageset-image.component';
 import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
@@ -25,7 +25,7 @@ import { ImageComponent } from 'src/app/components/images/image/image.component'
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
 import { PhotoInfosComponent } from './components/images/photo-infos/photo-infos.component';
-import { PhotosetModalComponent } from './components/images/photoset-modal/photoset-modal.component';
+import { ImagesetModalComponent } from './components/images/imageset-modal/imageset-modal.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ngfModule } from "angular-file";
@@ -52,12 +52,12 @@ import { ModalUploadProgressComponent } from './components/modals/modal-upload-p
     ImageThumbComponent,
     TagsComponent,
     DarkroomSettingsComponent,
-    PhotoModalComponent,
+    ImagesetImageComponent,
     TopbarComponent,
     ImageComponent,
     SearchComponent,
     PhotoInfosComponent,
-    PhotosetModalComponent,
+    ImagesetModalComponent,
     LandpageComponent,
     AdminComponent,
     CheckboxComponent,
