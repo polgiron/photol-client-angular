@@ -1,6 +1,6 @@
 <button class="image-thumb" (click)="openPhotoModal()">
   <app-image [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"></app-image>
-  <div class="edit-toolbar">
+  <div class="edit-toolbar" *ngIf="editMode">
     <div class="group" *ngIf="isAlbumView">
       <button (click)="updateCover($event)">
         <i class="material-icons">photo</i> <span>Set as cover</span>

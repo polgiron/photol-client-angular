@@ -7,7 +7,7 @@
   padding: 1rem 1.5rem 2rem;
 
   // .inner {
-  max-width: $container-width;
+  // max-width: $container-width;
   margin: auto;
   // }
 
@@ -89,20 +89,25 @@ img.fade {
 // Masonry
 .masonry-list {
   column-count: 4;
-  column-gap: 2rem;
+  column-gap: 1rem;
+
+  @include respond-to('large') {
+    column-count: 3;
+    column-gap: 2rem;
+  }
 
   @include respond-to('medium') {
-    column-count: 2 !important;
+    column-count: 2;
     column-gap: 1rem;
   }
 
   @include respond-to('small') {
-    column-count: 1 !important;
+    column-count: 1;
     column-gap: 0;
   }
 
   .list__entry {
-    padding-top: 1rem;
+    // padding-top: 1rem;
     padding-bottom: 1rem;
     break-inside: avoid;
 

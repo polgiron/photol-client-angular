@@ -17,6 +17,7 @@ export class ImagesComponent implements OnInit {
   @Input() images: Image[];
   @Input() columns: number = 3;
   // macyInstance: any;
+  editMode: boolean = false;
 
   constructor(
     private imageService: ImageService,

@@ -5,7 +5,7 @@
   color: $color-text-lighter;
   font-size: 1em;
   transition: all .2s;
-  padding: .55rem 1.2rem;
+  padding: .4rem 1rem;
 
   &:disabled {
     cursor: default;
@@ -53,12 +53,15 @@
 
   .input {
     border: 0;
-    padding: .55rem 1rem;
+    // padding: .55rem 1rem;
     flex: 1;
     outline: 0;
     font-size: 1rem;
     background: transparent;
     color: inherit;
+    height: 35.78px;
+    line-height: 35.78px;
+    padding: 0 1rem;
   }
 
   i,

@@ -3,7 +3,7 @@
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
   <div class="inner">
-    <div class="album.cover" *ngIf="cover">
+    <div class="cover" *ngIf="cover">
       <app-image
         [src]="cover.signedUrl"
         [width]="cover.oriWidth"

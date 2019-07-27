@@ -1,4 +1,5 @@
-<ul class="masonry-list" [ngStyle]="{'column-count': columns}">
+<!-- <ul class="masonry-list" [ngStyle]="{'column-count': columns}"> -->
+<ul class="masonry-list">
   <li class="list__entry" *ngFor="let image of images">
     <app-image-thumb
       [image]="image"
@@ -20,6 +21,6 @@
         </div>
       </div>
     </button> -->
-    <h3 class="title">{{image.title ? image.title : 'No title'}}</h3>
+    <h3 class="title" *ngIf="editMode">{{image.title ? image.title : 'No title'}}</h3>
   </li>
 </ul>

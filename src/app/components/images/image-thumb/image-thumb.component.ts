@@ -13,6 +13,7 @@ export class ImageThumbComponent implements OnInit {
   @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
   @Input() image: Image;
   isAlbumView: boolean = false;
+  editMode: boolean = false;
 
   constructor(
     private imageService: ImageService,

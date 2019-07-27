@@ -1,9 +1,9 @@
 @import '~src/assets/scss/variables';
 
 .cover {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
-  @include respond-to('medium') {
-    margin-bottom: 1rem;
-  }
+  // @include respond-to('medium') {
+  //   margin-bottom: 1rem;
+  // }
 }
