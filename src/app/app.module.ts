@@ -41,6 +41,7 @@ import { ModalUploadProgressComponent } from './components/modals/modal-upload-p
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeferLoadDirective } from './directives/defer-load.directive';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { DeferLoadDirective } from './directives/defer-load.directive';
     ngfModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [
     Api,

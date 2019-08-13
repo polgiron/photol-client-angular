@@ -1,16 +1,41 @@
 @import '~src/assets/scss/variables';
 
-.button-album-toolbar {
-  // color: $color-text;
-  margin-left: 2rem;
-  display: flex;
+// .button-album-toolbar {
+//   // color: $color-text;
+//   margin-left: 2rem;
+//   display: flex;
+
+//   i {
+//     align-items: center;
+//     // color: $color-darkgray;
+//     font-size: 2.2rem;
+//     background: $color-white;
+//     border-radius: 50%;
+//     opacity: .7;
+//   }
+// }
+
+.button-add-album button {
+  width: 100%;
+  padding-top: 100%;
+  background: $color-background-2;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid $color-main-border;
+  transition: all .2s;
+
+  &:hover {
+    border-color: rgba($color-white, .3);
+  }
 
   i {
-    align-items: center;
-    // color: $color-darkgray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
     font-size: 2.2rem;
-    background: $color-white;
     border-radius: 50%;
-    opacity: .7;
+    color: $color-text-lighter;
   }
 }

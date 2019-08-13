@@ -5,6 +5,8 @@ import { fadeAnimation } from 'src/app/utils/animations';
 import { Utils } from 'src/app/utils/utils';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-create-album.component';
 
 @Component({
   selector: 'app-albums',
@@ -21,7 +23,8 @@ export class AlbumsComponent implements OnInit {
     private datePipe: DatePipe,
     private utils: Utils,
     private albumService: AlbumService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -42,5 +45,9 @@ export class AlbumsComponent implements OnInit {
   onDeleteAlbum(albumId: number) {
     this.albums = this.albums.filter(image => image._id != albumId);
     this.ref.markForCheck();
+  }
+
+  onClickAddAlbum() {
+    this.modalService.open(ModalCreateAlbumComponent, 'big');
   }
 }

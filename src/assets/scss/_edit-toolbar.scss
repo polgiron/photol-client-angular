@@ -22,11 +22,11 @@
     padding: .4rem;
     display: flex;
     color: $color-darkgray;
-    background: rgba($color-white, .7);
+    background: rgba($color-white, .9);
     transition: all .2s;
 
     &:hover {
-      background: rgba($color-white, .9);
+      background: rgba($color-white, 1);
     }
 
     i {

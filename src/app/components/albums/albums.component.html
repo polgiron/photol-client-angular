@@ -4,15 +4,20 @@
 <div class="main-container" *ngIf="albums" [@fadeAnimation]>
   <div class="page-header">
     <h1 class="title-1">Albums</h1>
-    <div class="right">
-      <button class="button-album-toolbar">
+    <!-- <div class="right">
+      <button class="button-album-toolbar" (click)="onClickAddAlbum()">
         <i class="material-icons">add</i>
       </button>
-    </div>
+    </div> -->
   </div>
   <ul class="grid-list">
     <li *ngFor="let album of albums">
       <app-album-thumb [album]="album" (onDeleteAlbum)="onDeleteAlbum($event)"></app-album-thumb>
+    </li>
+    <li class="button-add-album">
+      <button (click)="onClickAddAlbum()">
+        <i class="material-icons">add</i>
+      </button>
     </li>
   </ul>
 </div>

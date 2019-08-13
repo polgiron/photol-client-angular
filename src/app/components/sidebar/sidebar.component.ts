@@ -31,9 +31,9 @@ export class SidebarComponent implements OnInit {
     // this.modalService.open(ModalUploadProgressComponent, 'upload');
   }
 
-  onClickAddAlbum() {
-    this.modalService.open(ModalCreateAlbumComponent, 'big');
-  }
+  // onClickAddAlbum() {
+  //   this.modalService.open(ModalCreateAlbumComponent, 'big');
+  // }
 
   ngOnDestroy() {
     this._alive = false;
