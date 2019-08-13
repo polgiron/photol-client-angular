@@ -1,8 +1,9 @@
-<div class="image-wrapper" #wrapper>
+<div class="image-wrapper" (deferLoad)="onDeferLoad()" #wrapper>
   <div class="loader" *ngIf="!isLoaded && displayLoader">
     <app-loader></app-loader>
   </div>
   <img
+    *ngIf="isInViewport"
     alt=""
     class="fade"
     [src]="src"

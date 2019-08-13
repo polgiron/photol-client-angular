@@ -40,6 +40,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ModalUploadProgressComponent } from './components/modals/modal-upload-progress/modal-upload-progress.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DeferLoadDirective } from './directives/defer-load.directive';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,
     FavoritesComponent,
-    SidebarComponent
+    SidebarComponent,
+    DeferLoadDirective
   ],
   imports: [
     HttpModule,

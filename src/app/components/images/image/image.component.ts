@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { fadeOutAnimation } from 'src/app/utils/animations';
 
 @Component({
@@ -9,7 +9,6 @@ import { fadeOutAnimation } from 'src/app/utils/animations';
 })
 export class ImageComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
-  // @Output() isImageLoaded: EventEmitter<boolean> = new EventEmitter();
   @Input() width: number;
   @Input() height: number;
   @Input() cover: boolean = false;
@@ -17,14 +16,12 @@ export class ImageComponent implements OnInit {
   @Input() set src(value: string) {
     this.isLoaded = false;
     this._src = value;
-
-    // if (!this.cover) {
-      this.setPadding();
-    // }
+    this.setPadding();
   };
 
   private _src: string;
   isLoaded: boolean = false;
+  isInViewport: boolean = false;
 
   get src() {
     return this._src;
@@ -47,7 +44,11 @@ export class ImageComponent implements OnInit {
   }
 
   onLoad() {
-    // this.isImageLoaded.emit(true);
     this.isLoaded = true;
+  }
+
+  onDeferLoad() {
+    console.log('IMAGE IN VIEWPORT');
+    this.isInViewport = true;
   }
 }
