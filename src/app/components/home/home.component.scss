@@ -9,3 +9,8 @@
   padding-left: $sidebar-width;
   // padding-top: $sidebar-width;
 }
+
+.modal-wrapper {
+  position: relative;
+  z-index: 999;
+}
