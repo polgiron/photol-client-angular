@@ -38,4 +38,9 @@ export class AlbumsComponent implements OnInit {
     // });
     // this.utils.hideSplashscreen();
   }
+
+  onDeleteAlbum(albumId: number) {
+    this.albums = this.albums.filter(image => image._id != albumId);
+    this.ref.markForCheck();
+  }
 }

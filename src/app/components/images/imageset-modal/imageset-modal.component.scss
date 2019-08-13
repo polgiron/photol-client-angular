@@ -14,6 +14,10 @@
       opacity: .3;
       transform: translate3d(0, 0, 0);
     }
+
+    .close-button {
+      opacity: .5;
+    }
   }
 
   @include respond-to('small') {
@@ -39,9 +43,9 @@
   z-index: 1;
   visibility: hidden;
 
-  &:hover .close-button {
-    opacity: .5;
-  }
+  // &:hover .close-button {
+  //   opacity: .5;
+  // }
 
   &.is-visible {
     visibility: visible;
@@ -78,15 +82,16 @@
 .prev,
 .next {
   position: absolute;
-  top: 0;
-  width: 5rem;
-  height: 100%;
+  top: 4rem;
+  bottom: 4rem;
+  width: 8rem;
+  // height: 100%;
   display: flex;
   transition: all .2s ease-out;
   opacity: 0;
   z-index: 1;
 
-  &:hover {
+  &:hover i {
     background: rgba($color-white, .2);
   }
 
@@ -95,6 +100,9 @@
     color: $color-white;
     font-size: 3.2rem;
     text-shadow: 1px 1px 5px rgba($color-black, .05);
+    border-radius: 50%;
+    padding: .5rem;
+    transition: all .2s;
   }
 }
 
@@ -110,13 +118,14 @@
 
 .close-button {
   position: absolute;
-  top: .5rem;
-  right: .5rem;
+  top: .75rem;
+  right: .75rem;
   width: 2rem;
   height: 2rem;
   z-index: 2;
+  // opacity: .5;
   opacity: 0;
-  transition: all .2s ease-out;
+  transition: all .3s ease-out;
 
   i {
     font-size: 2.4em;

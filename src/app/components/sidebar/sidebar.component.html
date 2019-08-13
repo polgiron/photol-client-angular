@@ -1,17 +1,16 @@
-<header class="header">
-  <!-- <div class="left"> -->
+<div class="sidebar">
   <a class="logo" [routerLink]="['/']">
-    <!-- <h1 class="title">Photol</h1> -->
     <img src="assets/images/icon-camera.svg" alt="">
   </a>
-  <!-- </div> -->
-  <!-- <div class="right">
-    <a class="button" [routerLink]="['/', 'albums']">Albums</a>
-    <button class="button" (click)="onClickAddAlbum()">Add New Album</button>
-  </div> -->
 
   <nav class="menu">
     <ul>
+      <li>
+        <a class="menu__entry" [routerLink]="['/']" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="material-icons">all_inclusive</i>
+          <span>All</span>
+        </a>
+      </li>
       <li>
         <a class="menu__entry" [routerLink]="['/', 'albums']" routerLinkActive="is-active">
           <i class="material-icons">collections</i>
@@ -36,4 +35,4 @@
   <div class="bottom">
     <div class="user-thumb"></div>
   </div>
-</header>
+</div>

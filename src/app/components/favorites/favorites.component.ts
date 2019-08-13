@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
-import { fadeAnimation } from 'src/app/utils/animations';
 import { Image } from 'src/app/models/image.model';
+import { fadeAnimation } from 'src/app/utils/animations';
 
 @Component({
-  selector: 'app-landpage',
-  templateUrl: './landpage.component.html',
-  styleUrls: ['./landpage.component.scss'],
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.scss'],
   animations: [fadeAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LandpageComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
   images: Image[];
 
   constructor(
@@ -23,7 +23,7 @@ export class LandpageComponent implements OnInit {
   }
 
   async getLandpage() {
-    this.images = await this.imageService.getAll();
+    this.images = await this.imageService.getFavorites();
     this.ref.markForCheck();
   }
 }

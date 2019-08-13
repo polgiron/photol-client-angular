@@ -4,7 +4,8 @@
 // }
 
 .main-container {
-  padding: 1rem 1.5rem 2rem;
+  // padding: 1rem 1.5rem 2rem;
+  padding: 1.5rem;
 
   // .inner {
   // max-width: $container-width;
@@ -120,4 +121,11 @@ img.fade {
       width: 100%;
     }
   }
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  margin-bottom: 1.5rem;
 }

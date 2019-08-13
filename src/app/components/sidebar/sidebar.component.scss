@@ -1,24 +1,14 @@
 @import '~src/assets/scss/variables';
 
-.header {
+.sidebar {
   animation: fade-in .4s both;
-  // padding-top: 1.5rem;
-  // padding-bottom: 1rem;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-
   background: $color-background-2;
   height: 100vh;
   width: $sidebar-width;
-  // width: 100%;
-  // height: $sidebar-width;
   position: fixed;
   top: 0;
   left: 0;
   border-right: 1px solid $color-main-border;
-  // border-bottom: 1px solid $color-main-border;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,36 +26,21 @@
   display: flex;
   opacity: .65;
 
-  // background: $color-accent;
-
-  // .image-wrapper {
-  //   width: 75%;
-  //   margin: auto;
-  //   border-radius: 50%;
-  //   background: rgba(255, 255, 255, .3);
-  // }
-
   img {
     width: 60%;
-    // width: 70%;
     margin: auto;
   }
 }
 
 .menu {
-  // height: 100%;
   width: 100%;
 
   ul {
     width: 100%;
     margin-top: 1rem;
-    // height: 100%;
-    // display: flex;
-    // align-items: center;
   }
 
   li {
-    //   height: 100%;
     width: 100%;
   }
 }
@@ -75,44 +50,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // color: $color-text-lighter;
   color: $color-white;
   position: relative;
   transition: .2s all;
   opacity: .55;
   height: $sidebar-width;
   width: 100%;
-  // width: $sidebar-width;
-  // height: 100%;
 
   &:after {
     content: '';
     width: 1px;
-    // height: 1px;
     height: 100%;
-    // width: 100%;
     background: $color-white;
     position: absolute;
     right: -1px;
     top: 0;
-    // bottom: -1px;
-    // left: 0;
     opacity: 0;
     transition: .2s all;
   }
 
   &:hover {
     opacity: .8;
-
-    // &:after {
-    //   opacity: .7;
-    // }
   }
 
   &.is-active {
-    // color: $color-white;
     opacity: .8;
-    // background: $color-main-border;
     background: rgba($color-white, .1);
 
     &:after {
@@ -133,7 +95,6 @@
 }
 
 .bottom {
-  // padding-right: 1rem;
   padding-bottom: 1rem;
 }
 
@@ -144,24 +105,6 @@
   height: 2rem;
   opacity: .5;
 }
-
-// .right {
-//   display: flex;
-
-//   >*:not(:last-child) {
-//     margin-right: 1rem;
-//   }
-// }
-
-// .title {
-//   font-size: 2rem;
-//   // text-transform: uppercase;
-//   letter-spacing: .1em;
-// }
-
-// .album-title {
-//   font-size: 1.1rem;
-// }
 
 @keyframes fade-in {
   from {

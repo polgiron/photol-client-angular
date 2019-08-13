@@ -6,6 +6,7 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { LandpageComponent } from 'src/app/components/landpage/landpage.component';
 import { AdminComponent } from 'src/app/components/admin/admin.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'albums', pathMatch: 'full' },
@@ -17,9 +18,10 @@ const routes: Routes = [
       { path: '', component: LandpageComponent },
       { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
+      { path: 'favorites', component: FavoritesComponent }
       // { path: 'photos/:photoId', component: PhotoComponent },
       // { path: 'search', component: SearchComponent },
-      { path: 'admin', component: AdminComponent }
+      // { path: 'admin', component: AdminComponent }
     ]
   },
   { path: '**', redirectTo: '' }

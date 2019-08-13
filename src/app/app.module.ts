@@ -38,6 +38,8 @@ import { ModalPickAlbumComponent } from './components/modals/modal-pick-album/mo
 import { ModalCreateAlbumComponent } from './components/modals/modal-create-album/modal-create-album.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ModalUploadProgressComponent } from './components/modals/modal-upload-progress/modal-upload-progress.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { ModalUploadProgressComponent } from './components/modals/modal-upload-p
     CheckboxComponent,
     ModalPickAlbumComponent,
     ModalCreateAlbumComponent,
-    ModalUploadProgressComponent
+    ModalUploadProgressComponent,
+    FavoritesComponent,
+    SidebarComponent
   ],
   imports: [
     HttpModule,

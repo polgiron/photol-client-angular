@@ -25,8 +25,8 @@ $color-accent: $color-blue;
 
 // Font
 // $font-family: 'Roboto', sans-serif;
-$font-family: 'PT Sans',
-serif;
+// $font-family: 'PT Sans', sans-serif;
+$font-family: 'Lato', sans-serif;
 $base-font-size: .9rem;
 // $base-font-size: .85rem;
 
@@ -34,6 +34,7 @@ $base-font-size: .9rem;
 $container-width: 68rem;
 $small-border-radius: .3rem;
 $big-border-radius: .8rem;
+$sidebar-width: 4rem;
 
 // Easing
 $ease-out-quint: cubic-bezier(.23, 1, .32, 1);

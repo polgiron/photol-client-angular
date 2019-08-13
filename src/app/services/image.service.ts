@@ -27,6 +27,13 @@ export class ImageService {
     });
   }
 
+  getFavorites() {
+    return this.api.get(this.document + 'favorites').then((response: any) => {
+      // console.log(data);
+      return response.images;
+    });
+  }
+
   update(imageId: number, params: object) {
     this.api.put(this.document + imageId, params);
   }

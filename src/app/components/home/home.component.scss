@@ -1,0 +1,11 @@
+@import '~src/assets/scss/variables';
+
+.home-wrapper {
+  // display: flex;
+}
+
+.content {
+  flex: 1;
+  padding-left: $sidebar-width;
+  // padding-top: $sidebar-width;
+}

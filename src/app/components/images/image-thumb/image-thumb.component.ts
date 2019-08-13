@@ -13,7 +13,8 @@ export class ImageThumbComponent implements OnInit {
   @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
   @Input() image: Image;
   isAlbumView: boolean = false;
-  editMode: boolean = false;
+  // editMode: boolean = false;
+  editMode: boolean = true;
 
   constructor(
     private imageService: ImageService,
@@ -49,6 +50,7 @@ export class ImageThumbComponent implements OnInit {
   }
 
   delete(event: any) {
+    event.preventDefault();
     event.stopPropagation();
     this.imageService.delete(this.image._id).then((response: any) => {
       // this.ref.markForCheck();

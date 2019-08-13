@@ -1,5 +1,8 @@
-<app-topbar></app-topbar>
-
-<router-outlet></router-outlet>
+<div class="home-wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
 <app-imageset-modal *ngIf="index != undefined" [index]="index" [@fadeFastAnimation]></app-imageset-modal>

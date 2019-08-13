@@ -69,4 +69,8 @@ export class AlbumService {
       return response.album;
     });
   }
+
+  delete(albumId: number) {
+    return this.api.delete(this.document + albumId);
+  }
 }

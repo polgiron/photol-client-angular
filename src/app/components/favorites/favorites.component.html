@@ -1,0 +1,9 @@
+<div class="main-loader-wrapper" *ngIf="!images" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<div class="main-container" *ngIf="images" [@fadeAnimation]>
+  <div class="page-header">
+    <h1 class="title-1">Favorites</h1>
+  </div>
+  <app-images [images]="images"></app-images>
+</div>
