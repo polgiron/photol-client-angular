@@ -1,0 +1,32 @@
+@import '~src/assets/scss/variables';
+
+.checkbox {
+  display: flex;
+  border: 1px dashed $color-darkgray;
+  border-radius: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  opacity: .5;
+
+  i {
+    margin: auto;
+    font-size: .85em;
+    color: $color-darkgray;
+  }
+
+  &.is-checked {
+    background: $color-accent;
+    border-color: $color-accent;
+    border-style: solid;
+    opacity: 1;
+
+    i {
+      color: $color-white;
+      display: block;
+    }
+  }
+
+  &:disabled {
+    opacity: 0;
+  }
+}

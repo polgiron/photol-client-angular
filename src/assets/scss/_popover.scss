@@ -1,0 +1,22 @@
+.popover {
+  width: 12rem;
+  max-width: 12rem;
+  font-family: inherit;
+  box-shadow: 0 4px 18px rgba(var(--color-black-rgb), .2);
+  border-radius: $big-border-radius + .1rem;
+  // background: var(--modal-background-color);
+  // Bug it's not centered
+  // transform: translateX(-4px);
+
+  // .arrow:after {
+  //   border-bottom-color: var(--modal-background-color);
+  // }
+}
+
+.popover-body {
+  height: 100%;
+  padding: 0;
+  border-radius: $big-border-radius;
+  overflow: hidden;
+  // color: var(--color-text);
+}

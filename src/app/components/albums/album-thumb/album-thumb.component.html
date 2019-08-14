@@ -7,7 +7,7 @@
     <!-- </div> -->
     <img *ngIf="album.cover" [src]="album.cover.signedUrl" class="fade" [ngClass]="{ 'is-loaded': isLoaded }"
       (load)="isLoaded = true" alt="">
-    <div class="edit-toolbar" *ngIf="editMode">
+    <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group">
         <button (click)="delete($event)"><i class="material-icons">delete</i></button>
       </div>

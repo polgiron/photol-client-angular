@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { fadeAnimation } from 'src/app/utils/animations';
@@ -7,6 +7,9 @@ import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
 import { ModalService } from 'src/app/services/modal.service';
 import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-create-album.component';
+import { SettingsService } from 'src/app/services/settings.service';
+import { takeWhile } from 'rxjs/operators';
+import { Settings } from 'src/app/models/settings.model';
 
 @Component({
   selector: 'app-albums',
@@ -15,8 +18,10 @@ import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-cr
   animations: [fadeAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlbumsComponent implements OnInit {
-  albums: any;
+export class AlbumsComponent implements OnInit, OnDestroy {
+  private _alive: boolean = true;
+  albums: Album[];
+  editMode: boolean = false;
 
   constructor(
     private api: Api,
@@ -24,11 +29,19 @@ export class AlbumsComponent implements OnInit {
     private utils: Utils,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
     this.getAlbums();
+
+    this.settingsService.settingsChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe((settings: Settings) => {
+        this.editMode = settings.editMode;
+        this.ref.markForCheck();
+      });
   }
 
   async getAlbums() {
@@ -49,5 +62,9 @@ export class AlbumsComponent implements OnInit {
 
   onClickAddAlbum() {
     this.modalService.open(ModalCreateAlbumComponent, 'big');
+  }
+
+  ngOnDestroy() {
+    this._alive = false;
   }
 }

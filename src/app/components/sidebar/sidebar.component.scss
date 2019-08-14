@@ -2,7 +2,7 @@
 
 .sidebar {
   animation: fade-in .4s both;
-  background: $color-background-2;
+  // background: $color-background-2;
   height: 100vh;
   width: $sidebar-width;
   position: fixed;
@@ -27,7 +27,7 @@
   opacity: .65;
 
   img {
-    width: 60%;
+    width: 55%;
     margin: auto;
   }
 }
@@ -52,10 +52,10 @@
   justify-content: center;
   color: $color-white;
   position: relative;
-  transition: .2s all;
   opacity: .55;
   height: $sidebar-width;
   width: 100%;
+  transition: .2s all;
 
   &:after {
     content: '';
@@ -94,8 +94,17 @@
   }
 }
 
+// .menu__entry--settings {
+//   transition-duration: 0s;
+
+//   &:after {
+//     transition-duration: 0s;
+//   }
+// }
+
 .bottom {
-  padding-bottom: 1rem;
+  // padding-bottom: 1rem;
+  width: 100%;
 }
 
 .user-thumb {

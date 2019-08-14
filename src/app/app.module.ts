@@ -27,10 +27,8 @@ import { Utils } from 'src/app/utils/utils';
 import { PhotoInfosComponent } from './components/images/photo-infos/photo-infos.component';
 import { ImagesetModalComponent } from './components/images/imageset-modal/imageset-modal.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
-import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalService } from './services/modal.service';
@@ -42,6 +40,9 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeferLoadDirective } from './directives/defer-load.directive';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { SettingsComponent } from './components/settings/settings.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { SettingsService } from './services/settings.service';
 
 @NgModule({
   declarations: [
@@ -63,14 +64,14 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     PhotoInfosComponent,
     ImagesetModalComponent,
     LandpageComponent,
-    AdminComponent,
-    CheckboxComponent,
     ModalPickAlbumComponent,
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,
     FavoritesComponent,
     SidebarComponent,
-    DeferLoadDirective
+    DeferLoadDirective,
+    SettingsComponent,
+    CheckboxComponent
   ],
   imports: [
     HttpModule,
@@ -91,7 +92,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     AlbumService,
     Utils,
     UploadService,
-    ModalService
+    ModalService,
+    SettingsService
   ],
   entryComponents: [
     ModalPickAlbumComponent,

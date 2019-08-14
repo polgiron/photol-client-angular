@@ -6,7 +6,8 @@
   <nav class="menu">
     <ul>
       <li>
-        <a class="menu__entry" [routerLink]="['/']" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="menu__entry" [routerLink]="['/']" routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{exact: true}">
           <i class="material-icons">all_inclusive</i>
           <span>All</span>
         </a>
@@ -29,16 +30,28 @@
           <span>New</span>
         </button>
       </li> -->
-      <li>
-        <button class="menu__entry" (click)="onClickAddAlbum()">
+      <!-- <li>
+        <button class="menu__entry" [ngClass]="{'is-active': activeSettingsButton}" [popover]="popSettingsContent"
+          containerClass="popover--settings" placement="right" outsideClick="true" (onShown)="onPopSettingsShown()"
+          (onHidden)="onPopSettingsHidden()">
           <i class="material-icons">settings</i>
           <span>Settings</span>
         </button>
-      </li>
+      </li> -->
     </ul>
   </nav>
 
   <div class="bottom">
-    <div class="user-thumb"></div>
+    <!-- <div class="user-thumb"></div> -->
+    <button class="menu__entry" [ngClass]="{'is-active': activeSettingsButton}" [popover]="popSettingsContent"
+      containerClass="popover--settings" placement="right" outsideClick="true" (onShown)="onPopSettingsShown()"
+      (onHidden)="onPopSettingsHidden()">
+      <i class="material-icons">settings</i>
+      <!-- <span>Settings</span> -->
+    </button>
   </div>
 </div>
+
+<ng-template #popSettingsContent>
+  <app-settings></app-settings>
+</ng-template>

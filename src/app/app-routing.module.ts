@@ -5,7 +5,6 @@ import { AlbumComponent } from 'src/app/components/albums/album/album.component'
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { LandpageComponent } from 'src/app/components/landpage/landpage.component';
-import { AdminComponent } from 'src/app/components/admin/admin.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 import { AlbumService } from 'src/app/services/album.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -8,15 +8,18 @@ import { ModalUploadProgressComponent } from '../modals/modal-upload-progress/mo
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent implements OnInit {
-  private _alive: boolean = true;
+  // private _alive: boolean = true;
   albumTitle: string = '';
+  activeSettingsButton: boolean = false;
 
   constructor(
     private albumService: AlbumService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,22 @@ export class SidebarComponent implements OnInit {
   //   this.modalService.open(ModalCreateAlbumComponent, 'big');
   // }
 
+  onPopSettingsShown() {
+    this.activeSettingsButton = true;
+    this.ref.markForCheck();
+  }
+
+  onPopSettingsHidden() {
+    this.activeSettingsButton = false;
+    this.ref.markForCheck();
+  }
+
+  // onClickSettingsButton() {
+  //   this.activeSettingsButton = true;
+  //   this.ref.markForCheck();
+  // }
+
   ngOnDestroy() {
-    this._alive = false;
+    // this._alive = false;
   }
 }
