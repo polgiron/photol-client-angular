@@ -32,7 +32,6 @@ import { UploadService } from 'src/app/services/upload.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalService } from './services/modal.service';
-import { ModalPickAlbumComponent } from './components/modals/modal-pick-album/modal-pick-album.component';
 import { ModalCreateAlbumComponent } from './components/modals/modal-create-album/modal-create-album.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ModalUploadProgressComponent } from './components/modals/modal-upload-progress/modal-upload-progress.component';
@@ -67,7 +66,6 @@ import { PreventDefaultClickDirective } from './directives/prevent-default-click
     PhotoInfosComponent,
     ImagesetModalComponent,
     LandpageComponent,
-    ModalPickAlbumComponent,
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,
     FavoritesComponent,
@@ -102,7 +100,6 @@ import { PreventDefaultClickDirective } from './directives/prevent-default-click
     // TopbarService
   ],
   entryComponents: [
-    ModalPickAlbumComponent,
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent
   ],
