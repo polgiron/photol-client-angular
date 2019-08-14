@@ -1,11 +1,12 @@
 .button {
-  background: $color-background-2;
+  // background: $color-background-2;
   border-radius: 2rem;
   border: 1px solid $color-main-border;
   color: $color-text-lighter;
+  // color: $color-white;
   font-size: 1em;
   transition: all .2s;
-  padding: .4rem 1rem;
+  padding: .5rem 1.1rem;
 
   &:disabled {
     cursor: default;
@@ -64,6 +65,7 @@
     line-height: 35.78px;
     padding: 0 1rem;
     font-weight: 300;
+    width: 100%;
   }
 
   i,
@@ -74,14 +76,17 @@
     color: $color-text-lighter;
     padding-left: .3rem;
     font-size: 1.4em;
+    transition: border .2s;
   }
 
-  &:focus-within {
-    border-color: $color-text-lighter;
+  &:focus-within,
+  &.is-filled {
+    border-color: $color-text-medium;
+    color: $color-text-medium;
 
-    // i {
-    //   color: $color-text;
-    // }
+    i {
+      color: $color-text-medium;
+    }
   }
 }
 

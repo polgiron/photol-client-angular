@@ -1,8 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Api } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { Utils } from 'src/app/utils/utils';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
 import { ModalService } from 'src/app/services/modal.service';
@@ -25,9 +23,7 @@ export class AlbumsComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
 
   constructor(
-    private api: Api,
     private datePipe: DatePipe,
-    private utils: Utils,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
     private modalService: ModalService,

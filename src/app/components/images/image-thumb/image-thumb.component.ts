@@ -41,7 +41,9 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
       });
 
     if (this.isAlbumView) {
-      this.isCover = this.albumService.currentAlbum.cover._id == this.image._id;
+      if (this.albumService.currentAlbum.cover) {
+        this.isCover = this.albumService.currentAlbum.cover._id == this.image._id;
+      }
 
       this.albumService.updateCoverChannel()
         .pipe(takeWhile(() => this._alive))

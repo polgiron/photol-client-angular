@@ -10,7 +10,6 @@
       (filesChange)="onUpload($event)">
       Add images to upload
     </button>
-    <!-- <ul id="preview-list" class="list"> -->
     <ul class="list">
       <li class="list__entry" *ngFor="let image of images; trackBy: trackByFunction" [@fadeInAnimation]>
         <img [src]="image.src" draggable="false" alt="">
@@ -26,10 +25,10 @@
     </div>
   </div>
   <div class="input-list">
-    <div class="input-wrapper">
+    <div class="input-wrapper" [ngClass]="{'is-filled': title?.length}">
       <input class="input" type="text" placeholder="Album title..." [(ngModel)]="title">
     </div>
-    <div class="input-wrapper">
+    <div class="input-wrapper" [ngClass]="{'is-filled': rollId?.length}">
       <input class="input" type="number" placeholder="Roll id..." [(ngModel)]="rollId"
         onkeydown="return event.keyCode !== 69" (keyup)="onRollKeyup()">
     </div>

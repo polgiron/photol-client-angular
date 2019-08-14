@@ -88,19 +88,15 @@ img.fade {
 //   transition: 0s all !important;
 // }
 
-// .photo-thumb,
-// .album-thumb {
-//   transition: all .3s $ease-out-quint;
+.image-thumb,
+.album-thumb .cover {
+  transition: all .3s $ease-out-quint;
 
-//   &:hover .image-wrapper {
-//     // transform: translate3d(.2rem, -.2rem, 0);
-//     border-color: $color-mediumgray;
-
-//     // img {
-//     //   box-shadow: -5px 5px 15px rgba(0, 0, 0, .3) !important;
-//     // }
-//   }
-// }
+  &:hover,
+  &:hover .cover {
+    opacity: .8;
+  }
+}
 
 .image-wrapper .loader {
   border-color: $color-main-border transparent transparent $color-main-border !important;
@@ -142,11 +138,4 @@ img.fade {
       width: 100%;
     }
   }
-}
-
-.page-header {
-  display: flex;
-  align-items: center;
-  // justify-content: space-between;
-  margin-bottom: 1.5rem;
 }
