@@ -10,6 +10,7 @@ import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-cr
 import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
 import { Settings } from 'src/app/models/settings.model';
+import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-albums',
@@ -30,10 +31,12 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
     private modalService: ModalService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private topbarService: TopbarService
   ) { }
 
   ngOnInit() {
+    this.topbarService.updatePageTitle('Albums');
     this.getAlbums();
 
     this.settingsService.settingsChannel()

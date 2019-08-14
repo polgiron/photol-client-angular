@@ -43,6 +43,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SettingsComponent } from './components/settings/settings.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SettingsService } from './services/settings.service';
+import { MenuComponent } from './components/menu/menu.component';
+import { TopbarService } from './services/topbar.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { SettingsService } from './services/settings.service';
     SidebarComponent,
     DeferLoadDirective,
     SettingsComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    MenuComponent
   ],
   imports: [
     HttpModule,
@@ -93,7 +96,8 @@ import { SettingsService } from './services/settings.service';
     Utils,
     UploadService,
     ModalService,
-    SettingsService
+    SettingsService,
+    TopbarService
   ],
   entryComponents: [
     ModalPickAlbumComponent,

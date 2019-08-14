@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ImageService } from 'src/app/services/image.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { Image } from 'src/app/models/image.model';
+import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-landpage',
@@ -15,10 +16,12 @@ export class LandpageComponent implements OnInit {
 
   constructor(
     private imageService: ImageService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private topbarService: TopbarService
   ) { }
 
   ngOnInit() {
+    this.topbarService.updatePageTitle('Home');
     this.getLandpage();
   }
 

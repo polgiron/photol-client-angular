@@ -40,8 +40,9 @@
 }
 
 .input-wrapper {
-  background: $color-background-2;
-  border-radius: 2rem;
+  // background: $color-background-2;
+  background: transparent;
+  border-radius: 1000rem;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -62,6 +63,7 @@
     height: 35.78px;
     line-height: 35.78px;
     padding: 0 1rem;
+    font-weight: 300;
   }
 
   i,

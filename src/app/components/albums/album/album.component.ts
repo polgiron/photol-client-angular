@@ -6,6 +6,7 @@ import { ImageService } from 'src/app/services/image.service';
 import { takeWhile } from 'rxjs/operators';
 import { Image } from 'src/app/models/image.model';
 import { Album } from 'src/app/models/album.model';
+import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-album',
@@ -23,13 +24,14 @@ export class AlbumComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private albumService: AlbumService,
     private imageService: ImageService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private topbarService: TopbarService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       const albumId = params['albumId'];
-      console.log(albumId);
+
       if (albumId) {
         this.getAlbum(albumId);
 
@@ -37,7 +39,6 @@ export class AlbumComponent implements OnInit, OnDestroy {
           .pipe(takeWhile(() => this._alive))
           .subscribe((image: Image) => {
             this.cover = image;
-            console.log(this.cover);
             this.ref.markForCheck();
           });
       }
@@ -45,10 +46,12 @@ export class AlbumComponent implements OnInit, OnDestroy {
   }
 
   async getAlbum(albumId: number) {
-    console.log('Get album');
+    // console.log('Get album');
 
     this.album = await this.albumService.getAlbum(albumId);
-    console.log(this.album);
+    // console.log(this.album);
+
+    this.topbarService.updatePageTitle(this.album.title);
 
     this.albumService.currentId = this.album._id;
 
