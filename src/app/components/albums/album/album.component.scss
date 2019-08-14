@@ -1,9 +1,13 @@
 @import '~src/assets/scss/variables';
 
 .cover {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   // @include respond-to('medium') {
   //   margin-bottom: 1rem;
   // }
+}
+
+.page-header {
+  justify-content: center;
 }

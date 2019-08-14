@@ -20,6 +20,7 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   private _alive: boolean = true;
   isAlbumView: boolean = false;
   editMode: boolean = false;
+  isCover: boolean = false;
 
   constructor(
     private imageService: ImageService,
@@ -30,7 +31,7 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // console.log(this.image);
-    this.isAlbumView = this.albumService.currentId ? true : false;
+    this.isAlbumView = this.albumService.currentAlbum ? true : false;
 
     this.settingsService.settingsChannel()
       .pipe(takeWhile(() => this._alive))
@@ -38,15 +39,24 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
         this.editMode = settings.editMode;
         this.ref.markForCheck();
       });
+
+    if (this.isAlbumView) {
+      this.isCover = this.albumService.currentAlbum.cover._id == this.image._id;
+
+      this.albumService.updateCoverChannel()
+        .pipe(takeWhile(() => this._alive))
+        .subscribe((image: Image) => {
+          this.isCover = this.image._id == image._id;
+          this.ref.markForCheck();
+        });
+    }
   }
 
   openPhotoModal() {
     this.imageService.openPhotoModal(this.image);
   }
 
-  updateFavorite(event: any) {
-    event.stopPropagation();
-
+  updateFavorite() {
     this.image.favorite = !this.image.favorite;
     this.ref.markForCheck();
 
@@ -57,14 +67,13 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     this.imageService.update(this.image._id, params);
   }
 
-  updateCover(event: any) {
-    event.stopPropagation();
-    this.albumService.updateCover(this.image._id);
+  updateCover() {
+    if (!this.isCover) {
+      this.albumService.updateCover(this.image._id);
+    }
   }
 
-  delete(event: any) {
-    event.preventDefault();
-    event.stopPropagation();
+  delete() {
     this.imageService.delete(this.image._id).then((response: any) => {
       // this.ref.markForCheck();
       this.onDeleteImage.emit(this.image._id);

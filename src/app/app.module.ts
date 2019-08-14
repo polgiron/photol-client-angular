@@ -44,7 +44,8 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SettingsService } from './services/settings.service';
 import { MenuComponent } from './components/menu/menu.component';
-import { TopbarService } from './services/topbar.service';
+import { PreventDefaultClickDirective } from './directives/prevent-default-click.directive';
+// import { TopbarService } from './services/topbar.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { TopbarService } from './services/topbar.service';
     DeferLoadDirective,
     SettingsComponent,
     CheckboxComponent,
-    MenuComponent
+    MenuComponent,
+    PreventDefaultClickDirective
   ],
   imports: [
     HttpModule,
@@ -97,7 +99,7 @@ import { TopbarService } from './services/topbar.service';
     UploadService,
     ModalService,
     SettingsService,
-    TopbarService
+    // TopbarService
   ],
   entryComponents: [
     ModalPickAlbumComponent,

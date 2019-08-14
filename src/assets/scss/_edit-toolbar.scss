@@ -25,13 +25,21 @@
     background: rgba($color-white, .9);
     transition: all .2s;
 
-    &:hover {
+    &:not(.is-disabled):hover {
       background: rgba($color-white, 1);
+    }
+
+    &.is-disabled {
+      cursor: default;
     }
 
     i {
       margin: auto;
       font-size: 1.4rem;
+    }
+
+    .icon-check {
+      font-size: 1rem;
     }
 
     span {

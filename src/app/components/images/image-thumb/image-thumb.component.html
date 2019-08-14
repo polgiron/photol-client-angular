@@ -2,15 +2,17 @@
   <app-image [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"></app-image>
   <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
     <div class="group" *ngIf="isAlbumView">
-      <button (click)="updateCover($event)">
-        <i class="material-icons">photo</i> <span>Set as cover</span>
+      <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}" preventDefaultClick>
+        <i class="material-icons">photo</i>
+        <span *ngIf="!isCover">Set as cover</span>
+        <i class="material-icons icon-check" *ngIf="isCover">check</i>
       </button>
     </div>
     <div class="group">
-      <button (click)="updateFavorite($event)" class="button-favorite"
-        [ngClass]="{'is-active': image.favorite}"><i class="material-icons">star</i></button>
+      <button (click)="updateFavorite($event)" class="button-favorite" [ngClass]="{'is-active': image.favorite}"
+        preventDefaultClick><i class="material-icons">star</i></button>
       <!-- <button><i class="material-icons">edit</i></button> -->
-      <button (click)="delete($event)"><i class="material-icons">delete</i></button>
+      <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
     </div>
   </div>
 </button>

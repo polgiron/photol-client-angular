@@ -3,14 +3,12 @@ import { Api } from './api.service';
 import { Subject, Observable } from 'rxjs';
 import { Image } from '../models/image.model';
 import { Album } from '../models/album.model';
-// import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class AlbumService {
-  // private _albumTitle: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   private _updateCover: Subject<Image> = new Subject<Image>();
   document: string = 'album/';
-  currentId: number;
+  currentAlbum: Album;
 
   constructor(
     private api: Api
@@ -21,20 +19,12 @@ export class AlbumService {
   }
 
   updateCover(imageId: number) {
-    this.update(this.currentId, {
+    this.update(this.currentAlbum._id, {
       cover: imageId
     }).then((album: Album) => {
       this._updateCover.next(album.cover);
     });
   }
-
-  // public albumTitleChannel(): Observable<string> {
-  //   return this._albumTitle.asObservable();
-  // }
-
-  // setAlbumTitle(title: string) {
-  //   this._albumTitle.next(title);
-  // }
 
   getAll() {
     return this.api.get(this.document + 'all').then((response: any) => {

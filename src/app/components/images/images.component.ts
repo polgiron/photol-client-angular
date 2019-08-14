@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 import { Image } from 'src/app/models/image.model';
-import { AlbumService } from 'src/app/services/album.service';
 // import Macy from 'Macy';
 
 @Component({
@@ -13,18 +12,15 @@ import { AlbumService } from 'src/app/services/album.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesComponent implements OnInit {
-  // @Output() onUpdateCover: EventEmitter<number> = new EventEmitter();
   @Input() images: Image[];
   @Input() columns: number = 3;
   // macyInstance: any;
-  // editMode: boolean = false;
 
   constructor(
     private imageService: ImageService,
     private route: ActivatedRoute,
     private utils: Utils,
-    private ref: ChangeDetectorRef,
-    private albumService: AlbumService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -65,10 +61,7 @@ export class ImagesComponent implements OnInit {
   }
 
   openPhotoOnReload(photoId: number) {
-    // console.log(photoId);
-    // console.log(this.images);
     const photo = this.images.find(photo => photo._id == photoId);
-    // console.log(photo._id);
     this.imageService.openPhotoModal(photo);
     this.utils.hideSplashscreen();
   }
@@ -98,41 +91,4 @@ export class ImagesComponent implements OnInit {
     this.images = this.images.filter(image => image._id != imageId);
     this.ref.markForCheck();
   }
-
-  // onUpdateCover(imageId: number) {
-  //   this.images = this.images.filter(image => image._id != imageId);
-  //   this.ref.markForCheck();
-  // }
-
-  // openPhotoModal(image: Image) {
-  //   this.imageService.openPhotoModal(image);
-  // }
-
-  // updateFavorite(image: Image, event: any) {
-  //   event.stopPropagation();
-
-  //   image.favorite = !image.favorite;
-  //   this.ref.markForCheck();
-
-  //   const params = {
-  //     favorite: image.favorite
-  //   };
-
-  //   this.imageService.update(image._id, params);
-  // }
-
-  // deleteImage(imageId: number, event: any) {
-  //   event.stopPropagation();
-
-  //   this.imageService.delete(imageId).then(response => {
-  //     this.images = this.images.filter(image => image._id != imageId);
-  //     this.ref.markForCheck();
-  //   });
-  // }
-
-  // updateCover(imageId: number, event: any) {
-  //   event.stopPropagation();
-  //   // this.onUpdateCover.emit(imageId);
-  //   this.albumService.updateCover(imageId);
-  // }
 }

@@ -2,11 +2,10 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRe
 import { ActivatedRoute, Params } from '@angular/router';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { ImageService } from 'src/app/services/image.service';
 import { takeWhile } from 'rxjs/operators';
 import { Image } from 'src/app/models/image.model';
 import { Album } from 'src/app/models/album.model';
-import { TopbarService } from 'src/app/services/topbar.service';
+// import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-album',
@@ -23,9 +22,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private albumService: AlbumService,
-    private imageService: ImageService,
     private ref: ChangeDetectorRef,
-    private topbarService: TopbarService
+    // private topbarService: TopbarService
   ) { }
 
   ngOnInit() {
@@ -51,9 +49,9 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.album = await this.albumService.getAlbum(albumId);
     // console.log(this.album);
 
-    this.topbarService.updatePageTitle(this.album.title);
+    // this.topbarService.updatePageTitle(this.album.title);
 
-    this.albumService.currentId = this.album._id;
+    this.albumService.currentAlbum = this.album;
 
     if (this.album.cover) {
       this.cover = this.album.cover;
@@ -63,8 +61,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.albumService.setAlbumTitle('');
     this._alive = false;
-    this.albumService.currentId = null;
+    this.albumService.currentAlbum = null;
   }
 }

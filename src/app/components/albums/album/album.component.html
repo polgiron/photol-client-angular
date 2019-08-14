@@ -2,7 +2,10 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
-  <!-- <div class="cover" *ngIf="cover">
+  <div class="page-header">
+    <h1 class="title-1">{{album.title}}</h1>
+  </div>
+  <div class="cover" *ngIf="cover">
     <app-image
       [src]="cover.signedUrl"
       [width]="cover.oriWidth"
@@ -10,10 +13,7 @@
       [cover]="true"
       [displayLoader]="true"
     ></app-image>
-  </div> -->
-  <!-- <div class="page-header">
-    <h1 class="title-1">{{album.title}}</h1>
-  </div> -->
+  </div>
   <app-images [images]="album.images"></app-images>
   <!-- <app-images [images]="album.images" (onUpdateCover)="onUpdateCover($event)"></app-images> -->
 </div>
