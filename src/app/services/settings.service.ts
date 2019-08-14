@@ -5,7 +5,7 @@ import { Settings } from '../models/settings.model';
 @Injectable()
 export class SettingsService {
   private _settings: BehaviorSubject<Settings> = new BehaviorSubject<Settings>({
-    editMode: true
+    editMode: false
   });
 
   constructor() { }

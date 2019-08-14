@@ -8,10 +8,24 @@
   // }
 }
 
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // justify-content: space-between;
+.title-wrapper {
   margin-bottom: 2rem;
+
+  .title-1 {
+    text-align: center;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: $color-text-medium;
+    font-weight: 200;
+    letter-spacing: .1em;
+
+    span {
+      margin-right: .3rem;
+    }
+  }
 }

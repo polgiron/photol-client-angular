@@ -2,8 +2,11 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
-  <div class="page-header">
+  <div class="title-wrapper">
     <h1 class="title-1">{{album.title}}</h1>
+    <div class="bottom">
+      {{album.date}}<span *ngIf="album.date && album.rollId">,</span> #{{album.rollId}}
+    </div>
   </div>
   <div class="cover" *ngIf="cover">
     <app-image

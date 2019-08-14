@@ -86,20 +86,24 @@
 }
 
 .input-list {
-  display: flex;
   margin-top: 1rem;
 
-  >div {
-    flex: 1;
-  }
+  .bottom {
+    display: flex;
+    margin-top: 1rem;
 
-  .input-wrapper {
-    margin-right: 1rem;
-  }
+    >div {
+      flex: 1;
+    }
 
-  .button {
-    margin-left: 3rem;
+    .input-wrapper {
+      margin-right: 1rem;
+    }
   }
+}
+
+.input-wrapper--title {
+  max-width: 25rem;
 }
 
 .error {

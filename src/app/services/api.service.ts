@@ -5,8 +5,8 @@ import { throwError } from 'rxjs';
 
 @Injectable()
 export class Api {
-  // domain: string = 'https://photol-api.paulgiron.com/';
-  domain: string = 'http://localhost:3333/';
+  domain: string = 'https://photol-api.paulgiron.com/';
+  // domain: string = 'http://localhost:3333/';
 
   constructor(
     private http: Http

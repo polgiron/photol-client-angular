@@ -18,6 +18,7 @@ export class ModalCreateAlbumComponent implements OnInit {
   loading: boolean = false;
   title: string;
   rollId: number;
+  date: number;
   index: number = 0;
   macyInstance: any;
   files: File[];
@@ -129,17 +130,18 @@ export class ModalCreateAlbumComponent implements OnInit {
   }
 
   onCreateAlbum() {
-    console.log('ON CREATE ALBUM');
+    // console.log('ON CREATE ALBUM');
 
     const params = {
       title: this.title,
-      rollId: this.rollId
+      rollId: this.rollId,
+      date: this.date
     };
 
     this.close();
 
     this.albumService.createAlbum(params).then((album: Album) => {
-      console.log('Album has been created');
+      // console.log('Album has been created');
       this.images.forEach(image => image.albums = [album._id]);
       this.uploadService.upload(this.images, album._id);
     });
@@ -151,7 +153,7 @@ export class ModalCreateAlbumComponent implements OnInit {
   }
 
   async onRollKeyup() {
-    console.log(this.rollId);
+    // console.log(this.rollId);
     if (this.rollId) {
       this.rollExists = await this.albumService.rollIdExists(this.rollId);
     } else {
