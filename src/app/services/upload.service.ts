@@ -9,6 +9,8 @@ import { Image } from '../models/image.model';
 import { Utils } from '../utils/utils';
 import { ModalService } from './modal.service';
 import { Router } from '@angular/router';
+import { Headers, Http, RequestOptions, ResponseType, ResponseContentType } from '@angular/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UploadService {
@@ -19,11 +21,11 @@ export class UploadService {
   // httpEvent: HttpEvent<{}>;
 
   constructor(
-    private HttpClient: HttpClient,
     private api: Api,
     private utils: Utils,
     private modalService: ModalService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   public uploadProgressChannel(): Observable<number> {
@@ -31,8 +33,8 @@ export class UploadService {
   }
 
   upload(images: any[], albumId: number) {
-    console.log('Upload function');
-    console.log(images);
+    // console.log('Upload function');
+    // console.log(images);
 
     this.progress = 0;
 
@@ -50,8 +52,7 @@ export class UploadService {
           responseType: 'text'
         });
 
-      // this.httpEmitter = this.HttpClient.request(req)
-      this.HttpClient.request(req).subscribe(
+      this.http.request(req).subscribe(
         event => {
           // console.log('sub', event);
 

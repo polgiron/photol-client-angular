@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class Api {
@@ -9,61 +9,43 @@ export class Api {
   // domain: string = 'http://localhost:3333/';
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) { }
 
-  get(method: string) {
-    return this.http.get(this.domain + method)
-      .pipe(map((res: any) => res.json()))
+  async get(method: string) {
+    const response = await this.http.get(this.domain + method)
       .pipe(catchError(this.handleError).bind(this))
-      .toPromise().then(response => {
-        console.log('-----API GET RESPONSE');
-        console.log(response);
-        return response;
-      });
+      .toPromise();
+    console.log('-----API GET RESPONSE');
+    console.log(response);
+    return response;
   }
 
-  post(method: string, params: object) {
-    let options = new RequestOptions({
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    });
-
-    // if (data instanceof FormData) {
-    //   options.headers.delete('Content-Type');
-    // }
-
-    return this.http.post(this.domain + method, params, options)
-      .pipe(map((res: any) => res.json()))
+  async post(method: string, params: object) {
+    const response = await this.http.post(this.domain + method, params)
       .pipe(catchError(this.handleError).bind(this))
-      .toPromise().then(response => {
-        console.log('-----API POST RESPONSE');
-        console.log(response);
-        return response;
-      });
+      .toPromise();
+    console.log('-----API POST RESPONSE');
+    console.log(response);
+    return response;
   }
 
-  put(method: string, params: object) {
-    return this.http.put(this.domain + method, params)
-      .pipe(map((res: any) => res.json()))
+  async put(method: string, params: object) {
+    const response = await this.http.put(this.domain + method, params)
       .pipe(catchError(this.handleError).bind(this))
-      .toPromise().then(response => {
-        console.log('-----API PUT RESPONSE');
-        console.log(response);
-        return response;
-      });
+      .toPromise();
+    console.log('-----API PUT RESPONSE');
+    console.log(response);
+    return response;
   }
 
-  delete(method: string) {
-    return this.http.delete(this.domain + method)
-      .pipe(map((res: any) => res.json()))
+  async delete(method: string) {
+    const response = await this.http.delete(this.domain + method)
       .pipe(catchError(this.handleError).bind(this))
-      .toPromise().then(response => {
-        console.log('-----API DELETE RESPONSE');
-        console.log(response);
-        return response;
-      });
+      .toPromise();
+    console.log('-----API DELETE RESPONSE');
+    console.log(response);
+    return response;
   }
 
   public handleError = error => {
