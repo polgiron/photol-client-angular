@@ -3,9 +3,6 @@
 .header {
   animation: fade-in .4s both;
   padding-top: 3rem;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(3, minmax(30px, 1fr));
@@ -18,12 +15,29 @@
   @include respond-to('small') {
     display: block;
     text-align: center;
-  }
-}
+    padding-top: 2rem;
+    padding-bottom: 0;
 
-.left a {
-  // display: flex;
-  // align-items: flex-end;
+    >div {
+      display: block;
+    }
+
+    .left {
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    // .middle {
+    //   margin-bottom: 1rem;
+    // }
+
+    .right {
+      display: none;
+    }
+  }
 }
 
 .middle {
