@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -24,7 +24,17 @@ export class Api {
   }
 
   post(method: string, params: object) {
-    return this.http.post(this.domain + method, params)
+    let options = new RequestOptions({
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+
+    // if (data instanceof FormData) {
+    //   options.headers.delete('Content-Type');
+    // }
+
+    return this.http.post(this.domain + method, params, options)
       .pipe(map((res: any) => res.json()))
       .pipe(catchError(this.handleError).bind(this))
       .toPromise().then(response => {
