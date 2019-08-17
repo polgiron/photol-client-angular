@@ -15,10 +15,6 @@ export class Utils {
     return this._clearSearch.asObservable();
   }
 
-  // getPhotoUrl(farm: number, server: number, id: number, secret: number, size?: string) {
-  //   return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_${size}.jpg`;
-  // }
-
   clearSearchInput() {
     this._clearSearch.next(true);
   }
@@ -43,13 +39,4 @@ export class Utils {
       }, 600);
     }
   }
-
-  // getBase64(file: File) {
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = error => reject(error);
-  //   });
-  // }
 }

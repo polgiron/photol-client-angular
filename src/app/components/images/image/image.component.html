@@ -7,6 +7,7 @@
     alt=""
     class="fade"
     [src]="src"
+    (error)="onError($event)"
     (load)="onLoad()"
     [ngClass]="{
       'is-loaded': isLoaded,

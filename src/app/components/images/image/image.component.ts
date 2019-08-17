@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { fadeOutAnimation } from 'src/app/utils/animations';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
-  animations: [fadeOutAnimation]
+  animations: [fadeOutAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
@@ -13,6 +15,7 @@ export class ImageComponent implements OnInit {
   @Input() height: number;
   @Input() cover: boolean = false;
   @Input() displayLoader: boolean = false;
+  @Input() id: number;
   @Input() set src(value: string) {
     this.isLoaded = false;
     this._src = value;
@@ -27,7 +30,10 @@ export class ImageComponent implements OnInit {
     return this._src;
   }
 
-  constructor() { }
+  constructor(
+    private ref: ChangeDetectorRef,
+    private imageService: ImageService
+  ) { }
 
   ngOnInit() {
 
@@ -41,14 +47,24 @@ export class ImageComponent implements OnInit {
     }
 
     this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
+
+    this.ref.markForCheck();
   }
 
   onLoad() {
+    // console.log('ON LOAD');
     this.isLoaded = true;
+    this.ref.markForCheck();
+  }
+
+  async onError() {
+    // console.log('ON ERROR');
+    this._src = await this.imageService.getBigSignedUrl(this.id);
+    this.ref.markForCheck();
   }
 
   onDeferLoad() {
-    console.log('IMAGE IN VIEWPORT');
     this.isInViewport = true;
+    this.ref.markForCheck();
   }
 }

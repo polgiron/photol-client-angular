@@ -98,10 +98,8 @@ export class ImagesetImageComponent implements OnInit {
 
   async extendImage() {
     // Image src
-    this.imageService.getImageBigSignedUrl(this.image._id).then((signedUrl: string) => {
-      this.imageSrc = signedUrl;
-      this.ref.markForCheck();
-    });
+    this.imageSrc = await this.imageService.getBigSignedUrl(this.image._id);
+    this.ref.markForCheck();
 
     // Extend tags
     // this.photo.tags.split(' ').forEach(tag => {
