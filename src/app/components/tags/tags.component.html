@@ -1,3 +1,9 @@
-<p class="tags">
+<!-- <p class="tags">
   {{tagString}}
-</p>
+</p> -->
+
+<ul class="tags">
+  <li class="tag" *ngFor="let tag of tags">
+    {{tag.value}}
+  </li>
+</ul>

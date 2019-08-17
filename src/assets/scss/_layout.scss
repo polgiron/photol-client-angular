@@ -119,8 +119,8 @@ img.fade {
   }
 
   @include respond-to('small') {
-    column-count: 1;
-    column-gap: 0;
+    column-count: 3;
+    column-gap: .5rem;
   }
 
   .list__entry {
@@ -130,6 +130,11 @@ img.fade {
     @include respond-to('medium') {
       padding-top: .5rem;
       padding-bottom: .5rem;
+    }
+
+    @include respond-to('small') {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
     }
 
     img {

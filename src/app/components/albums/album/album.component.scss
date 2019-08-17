@@ -3,9 +3,9 @@
 .cover {
   margin-bottom: 1.5rem;
 
-  // @include respond-to('medium') {
-  //   margin-bottom: 1rem;
-  // }
+  @include respond-to('small') {
+    margin-bottom: .25rem;
+  }
 }
 
 .title-wrapper {

@@ -36,7 +36,7 @@ export class ImageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    // this.setPadding();
   }
 
   setPadding() {
@@ -63,7 +63,8 @@ export class ImageComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  onDeferLoad() {
+  async onDeferLoad() {
+    // this._src = await this.imageService.getBigSignedUrl(this.id);
     this.isInViewport = true;
     this.ref.markForCheck();
   }

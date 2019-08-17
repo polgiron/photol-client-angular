@@ -2,16 +2,12 @@
   <div class="loader" *ngIf="!isLoaded && displayLoader">
     <app-loader></app-loader>
   </div>
-  <img
-    *ngIf="isInViewport"
-    alt=""
-    class="fade"
-    [src]="src"
-    (error)="onError($event)"
-    (load)="onLoad()"
-    [ngClass]="{
+  <!-- <img *ngIf="isInViewport" alt="" class="fade" [src]="src" (load)="onLoad()" [ngClass]="{
       'is-loaded': isLoaded,
       'is-cover': cover
-    }"
-  >
+    }"> -->
+  <img *ngIf="isInViewport" alt="" class="fade" [src]="src" (error)="onError($event)" (load)="onLoad()" [ngClass]="{
+      'is-loaded': isLoaded,
+      'is-cover': cover
+    }">
 </div>
