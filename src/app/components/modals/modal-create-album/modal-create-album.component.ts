@@ -140,7 +140,7 @@ export class ModalCreateAlbumComponent implements OnInit {
 
     this.close();
 
-    this.albumService.createAlbum(params).then((album: Album) => {
+    this.albumService.create(params).then((album: Album) => {
       // console.log('Album has been created');
       this.images.forEach(image => image.albums = [album._id]);
       this.uploadService.upload(this.images, album._id);

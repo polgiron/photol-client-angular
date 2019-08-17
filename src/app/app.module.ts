@@ -44,6 +44,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SettingsService } from './services/settings.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { PreventDefaultClickDirective } from './directives/prevent-default-click.directive';
+import { TagService } from './services/tag.service';
 // import { TopbarService } from './services/topbar.service';
 
 @NgModule({
@@ -97,6 +98,7 @@ import { PreventDefaultClickDirective } from './directives/prevent-default-click
     UploadService,
     ModalService,
     SettingsService,
+    TagService
     // TopbarService
   ],
   entryComponents: [

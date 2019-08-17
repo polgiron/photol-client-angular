@@ -1,9 +1,13 @@
-<!-- <p class="tags">
-  {{tagString}}
-</p> -->
+<div class="input-wrapper" *ngIf="editMode">
+  <input type="text" class="input" placeholder="Add a tag..." [(ngModel)]="newTagValue" (keydown.enter)="onKeyEnter()"
+    (focus)="onFocus()">
+</div>
 
-<ul class="tags">
-  <li class="tag" *ngFor="let tag of tags">
+<ul class="tags" [ngClass]="{'is-editmode': editMode}">
+  <li class="tag" *ngFor="let tag of image.tags">
     {{tag.value}}
+    <button *ngIf="editMode" (click)="removeTag(tag)">
+      <i class="material-icons">close</i>
+    </button>
   </li>
 </ul>

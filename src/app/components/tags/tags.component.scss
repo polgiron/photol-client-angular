@@ -9,11 +9,63 @@
 
 .tags {
   display: flex;
+  flex-wrap: wrap;
+  margin-top: .75rem;
+
+  &.is-editmode {
+    .tag {
+      padding-right: .3rem;
+    }
+  }
 }
 
 .tag {
   background: $color-text;
   color: $color-background;
   border-radius: 1000rem;
-  padding: .2rem .4rem;
+  padding: .1rem .5rem;
+  font-weight: 700;
+  font-size: .8rem;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: .2rem;
+    display: flex;
+  }
+
+  i {
+    font-size: 1rem;
+    margin: auto;
+  }
 }
+
+.input-wrapper {
+  width: 10rem;
+
+  .input {
+    font-size: .8rem;
+    height: auto;
+    line-height: 1;
+    padding: .4rem .7rem;
+  }
+}
+
+// .add-tag-button {
+//   background: $color-text;
+//   color: $color-background;
+//   border-radius: 1000rem;
+//   padding: .2rem .6rem;
+//   padding-left: .5rem;
+//   font-weight: 700;
+//   font-size: .8rem;
+//   display: flex;
+//   align-items: center;
+
+//   i {
+//     font-size: 1rem;
+//     margin-right: .3rem;
+//   }
+// }

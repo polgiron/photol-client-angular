@@ -26,16 +26,14 @@ export class AlbumService {
     });
   }
 
-  getAll() {
-    return this.api.get(this.document + 'all').then((response: any) => {
-      return response.albums;
-    });
+  async getAll() {
+    const response: any = await this.api.get(this.document + 'all');
+    return response.albums;
   }
 
-  getAlbum(albumId: number) {
-    return this.api.get(this.document + albumId).then((response: any) => {
-      return response.album;
-    });
+  async getAlbum(albumId: number) {
+    const response: any = await this.api.get(this.document + albumId);
+    return response.album;
   }
 
   // getAlbumByRollId(rollId: number) {
@@ -44,20 +42,19 @@ export class AlbumService {
   //   });
   // }
 
-  rollIdExists(rollId: number) {
-    return this.api.get(this.document + 'roll/' + rollId).then((response: any) => {
-      return response.album != null;
-    });
+  async rollIdExists(rollId: number) {
+    const response: any = await this.api.get(this.document + 'roll/' + rollId);
+    return response.album != null;
   }
 
-  createAlbum(params: Object) {
-    return this.api.post('album', params);
+  async create(params: Object) {
+    const response: any = await this.api.post(this.document, params);
+    return response.album;
   }
 
-  update(albumId: number, params: object) {
-    return this.api.put(this.document + albumId, params).then((response: any) => {
-      return response.album;
-    });
+  async update(albumId: number, params: object) {
+    const response: any = await this.api.put(this.document + albumId, params);
+    return response.album;
   }
 
   delete(albumId: number) {
