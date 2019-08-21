@@ -17,28 +17,21 @@ import { fadeAnimation } from 'src/app/utils/animations';
 export class ImageThumbComponent implements OnInit, OnDestroy {
   @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
   @Input() image: Image;
+  @Input() displayTags: boolean = false;
+  @Input() editMode: boolean = false;
   private _alive: boolean = true;
   isAlbumView: boolean = false;
-  editMode: boolean = false;
   isCover: boolean = false;
 
   constructor(
     private imageService: ImageService,
     private albumService: AlbumService,
-    private ref: ChangeDetectorRef,
-    private settingsService: SettingsService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     // console.log(this.image);
     this.isAlbumView = this.albumService.currentAlbum ? true : false;
-
-    this.settingsService.settingsChannel()
-      .pipe(takeWhile(() => this._alive))
-      .subscribe((settings: Settings) => {
-        this.editMode = settings.editMode;
-        this.ref.markForCheck();
-      });
 
     if (this.isAlbumView) {
       if (this.albumService.currentAlbum.cover) {

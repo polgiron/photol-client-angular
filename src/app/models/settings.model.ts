@@ -1,3 +1,4 @@
 export interface Settings {
-  editMode: boolean
+  editMode: boolean,
+  displayTags: boolean
 }

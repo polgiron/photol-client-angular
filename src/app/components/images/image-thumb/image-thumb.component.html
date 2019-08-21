@@ -18,7 +18,9 @@
     </div>
   </button>
 
-  <div class="tags-wrapper">
+  <div class="tags-wrapper" *ngIf="displayTags || editMode">
     <app-tags [image]="image"></app-tags>
   </div>
+
+  <!-- <h3 class="title" *ngIf="editMode">{{image.title ? image.title : 'No title'}}</h3> -->
 </div>

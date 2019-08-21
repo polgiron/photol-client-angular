@@ -1,8 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
 import { Image } from 'src/app/models/image.model';
+import { SettingsService } from 'src/app/services/settings.service';
+import { takeWhile } from 'rxjs/operators';
+import { Settings } from 'src/app/models/settings.model';
 // import Macy from 'Macy';
 
 @Component({
@@ -11,16 +14,19 @@ import { Image } from 'src/app/models/image.model';
   styleUrls: ['./images.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ImagesComponent implements OnInit {
+export class ImagesComponent implements OnInit, OnDestroy {
   @Input() images: Image[];
   @Input() columns: number = 3;
+  private _alive: boolean = true;
+  settings: Settings;
   // macyInstance: any;
 
   constructor(
     private imageService: ImageService,
     private route: ActivatedRoute,
     private utils: Utils,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
@@ -36,6 +42,15 @@ export class ImagesComponent implements OnInit {
     } else {
       this.utils.hideSplashscreen();
     }
+
+    this.settingsService.settingsChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe((settings: Settings) => {
+        this.settings = settings;
+        console.log('new settings');
+        console.log(this.settings);
+        this.ref.markForCheck();
+      });
 
     // this.macyInstance = Macy({
     //   container: '#images-list',
@@ -90,5 +105,9 @@ export class ImagesComponent implements OnInit {
   onDeleteImage(imageId: number) {
     this.images = this.images.filter(image => image._id != imageId);
     this.ref.markForCheck();
+  }
+
+  ngOnDestroy() {
+    this._alive = false;
   }
 }

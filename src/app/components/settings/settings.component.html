@@ -1,10 +1,18 @@
 <div class="settings">
   <ul class="list">
     <li>
-      <button (click)="onClickSetting()">
+      <button (click)="onClickSetting('editMode')">
         <span>Enable edit mode</span>
         <div class="right">
           <app-checkbox [check]="editMode"></app-checkbox>
+        </div>
+      </button>
+    </li>
+    <li>
+      <button (click)="onClickSetting('displayTags')">
+        <span>Display tags</span>
+        <div class="right">
+          <app-checkbox [check]="displayTags"></app-checkbox>
         </div>
       </button>
     </li>

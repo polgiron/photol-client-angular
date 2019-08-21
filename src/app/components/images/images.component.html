@@ -1,7 +1,10 @@
 <!-- <ul class="masonry-list" [ngStyle]="{'column-count': columns}"> -->
-<ul class="masonry-list">
+<ul [ngClass]="{
+  'masonry-list': !settings.editMode,
+  'grid-list': settings.editMode
+}">
   <li class="list__entry" *ngFor="let image of images">
-    <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)"></app-image-thumb>
-    <h3 class="title" *ngIf="editMode">{{image.title ? image.title : 'No title'}}</h3>
+    <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
+      [displayTags]="settings.displayTags"></app-image-thumb>
   </li>
 </ul>
