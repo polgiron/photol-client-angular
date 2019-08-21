@@ -37,13 +37,8 @@ export class ImagesComponent implements OnInit, OnDestroy {
 
     const params: any = this.route.queryParams;
     const photoId = params.value.open;
-
     if (photoId) {
-      setTimeout(() => {
-        this.openPhotoOnReload(photoId)
-      }, 500);
-    } else {
-      this.utils.hideSplashscreen();
+      this.openPhotoOnReload(photoId)
     }
 
     this.settingsService.settingsChannel()
@@ -100,7 +95,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
   openPhotoOnReload(photoId: number) {
     const photo = this.images.find(photo => photo._id == photoId);
     this.imageService.openPhotoModal(photo);
-    this.utils.hideSplashscreen();
   }
 
   onDeleteImage(imageId: number) {
