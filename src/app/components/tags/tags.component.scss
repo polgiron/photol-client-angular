@@ -1,18 +1,13 @@
 @import '~src/assets/scss/variables';
 
-// .tags {
-//   line-height: 1.5;
-//   text-shadow: 1px 1px 5px rgba($color-black, .6);
-//   opacity: .9;
-//   font-weight: 700;
-// }
-
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin-top: .75rem;
+  margin-top: .3rem;
 
   &.is-editmode {
+    margin-top: .5rem;
+
     .tag {
       padding-right: .3rem;
     }
@@ -50,6 +45,29 @@
     height: auto;
     line-height: 1;
     padding: .4rem .7rem;
+  }
+}
+
+.suggested-tags {
+  margin-top: .5rem;
+
+  h4 {
+    text-transform: uppercase;
+    font-size: .7rem;
+    color: $color-text-lighter;
+  }
+
+  .tags {
+    margin-top: .4rem;
+  }
+
+  .tag {
+    opacity: .6;
+    transition: all .2s;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

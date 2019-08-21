@@ -3,6 +3,17 @@
     (focus)="onFocus()">
 </div>
 
+<div class="suggested-tags" *ngIf="suggestedTags && editMode">
+  <h4>Suggested</h4>
+  <ul class="tags">
+    <li *ngFor="let tag of suggestedTags">
+      <button class="tag" (click)="addExistingTag(tag)">
+        {{tag.value}}
+      </button>
+    </li>
+  </ul>
+</div>
+
 <ul class="tags" [ngClass]="{'is-editmode': editMode}">
   <li class="tag" *ngFor="let tag of image.tags">
     {{tag.value}}
