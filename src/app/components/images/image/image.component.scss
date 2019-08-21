@@ -6,6 +6,10 @@
   background: $color-background-2;
   // border: 1px solid $color-main-border;
   overflow: hidden;
+
+  &.is-flickr-layout {
+    height: 100%;
+  }
 }
 
 .loader {

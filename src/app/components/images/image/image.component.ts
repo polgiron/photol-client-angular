@@ -11,6 +11,7 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class ImageComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
+  @Input() flickrLayout: boolean = false;
   @Input() width: number;
   @Input() height: number;
   @Input() cover: boolean = false;
@@ -19,7 +20,10 @@ export class ImageComponent implements OnInit {
   @Input() set src(value: string) {
     this.isLoaded = false;
     this._src = value;
-    this.setPadding();
+
+    if (!this.flickrLayout) {
+      this.setPadding();
+    }
   };
 
   private _src: string;

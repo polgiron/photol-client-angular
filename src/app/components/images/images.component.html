@@ -1,10 +1,23 @@
-<!-- <ul class="masonry-list" [ngStyle]="{'column-count': columns}"> -->
-<ul [ngClass]="{
-  'masonry-list': !settings.editMode,
-  'grid-list': settings.editMode
-}">
-  <li class="list__entry" *ngFor="let image of images">
-    <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
-      [displayTags]="settings.displayTags"></app-image-thumb>
-  </li>
-</ul>
+<div class="wrapper" #wrapper (window:resize)="onResize()">
+  <!-- Flickr layout -->
+  <ul class="flickr-list" [ngStyle]="{'height': containerHeight + 'px'}" *ngIf="extendedImages && !settings.editMode">
+    <li *ngFor="let image of extendedImages" [ngStyle]="{
+      'width': image.box.width + 'px',
+      'height': image.box.height + 'px',
+      'top': image.box.top + 'px',
+      'left': image.box.left + 'px'
+    }">
+      <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
+        [displayTags]="settings.displayTags"></app-image-thumb>
+    </li>
+  </ul>
+
+
+  <!-- Edit mode layout -->
+  <ul *ngIf="settings.editMode" class="grid-list">
+    <li class="list__entry" *ngFor="let image of images">
+      <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
+        [displayTags]="settings.displayTags"></app-image-thumb>
+    </li>
+  </ul>
+</div>
