@@ -12,6 +12,7 @@
     align-items: center;
     border-radius: 1000rem;
     overflow: hidden;
+    box-shadow: 0 2px 6px rgba($color-black, .15);
 
     &:not(:last-child) {
       margin-right: .5rem;
