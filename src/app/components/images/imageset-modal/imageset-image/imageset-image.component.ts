@@ -28,6 +28,7 @@ export class ImagesetImageComponent implements OnInit {
       this.setQueryParameter();
     }
   }
+  @Input() editMode: boolean = false;
   private _resizeListener: EventListener;
   private _image: any;
   imageSrc: string;

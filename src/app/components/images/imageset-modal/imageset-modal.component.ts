@@ -1,21 +1,29 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Utils } from 'src/app/utils/utils';
+import { SettingsService } from 'src/app/services/settings.service';
+import { takeWhile } from 'rxjs/operators';
+import { Settings } from 'src/app/models/settings.model';
 
 @Component({
   selector: 'app-imageset-modal',
   templateUrl: './imageset-modal.component.html',
-  styleUrls: ['./imageset-modal.component.scss']
+  styleUrls: ['./imageset-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesetModalComponent implements OnInit, OnDestroy {
   @Input() index: number;
   private _keydownListener: EventListener;
+  private _alive: boolean = true;
   images: any;
   displayControl: boolean = true;
+  settings: Settings;
 
   constructor(
     private imageService: ImageService,
-    private utils: Utils
+    private utils: Utils,
+    private settingsService: SettingsService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -23,6 +31,13 @@ export class ImagesetModalComponent implements OnInit, OnDestroy {
     this.displayControl = this.images.length > 1;
     this._keydownListener = this.onKeydown.bind(this);
     window.addEventListener('keydown', this._keydownListener);
+
+    this.settingsService.settingsChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe((settings: Settings) => {
+        this.settings = settings;
+        this.ref.markForCheck();
+      });
   }
 
   getPrevIndex(index: number) {
@@ -47,6 +62,8 @@ export class ImagesetModalComponent implements OnInit, OnDestroy {
     if (this.index < 0) {
       this.index = this.images.length - 1;
     }
+
+    this.ref.markForCheck();
   }
 
   next() {
@@ -55,11 +72,14 @@ export class ImagesetModalComponent implements OnInit, OnDestroy {
     if (this.index >= this.images.length) {
       this.index = 0;
     }
+
+    this.ref.markForCheck();
   }
 
   close() {
     this.imageService.closePhotoModal();
     this.utils.clearOpenQuery();
+    this.ref.markForCheck();
   }
 
   onKeydown(event: any) {
@@ -78,5 +98,6 @@ export class ImagesetModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     window.removeEventListener('keydown', this._keydownListener);
+    this._alive = false;
   }
 }

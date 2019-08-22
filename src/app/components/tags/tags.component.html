@@ -3,7 +3,7 @@
     (focus)="onFocus()">
 </div>
 
-<div class="suggested-tags" *ngIf="suggestedTags && editMode">
+<div class="suggested-tags" *ngIf="suggestedTags && suggestedTags.length && editMode">
   <h4>Suggested</h4>
   <ul class="tags">
     <li *ngFor="let tag of suggestedTags">
@@ -14,7 +14,7 @@
   </ul>
 </div>
 
-<ul class="tags" [ngClass]="{'is-editmode': editMode}">
+<ul class="tags" *ngIf="image.tags.length" [ngClass]="{'is-editmode': editMode}">
   <li class="tag" *ngFor="let tag of image.tags">
     {{tag.value}}
     <button *ngIf="editMode" (click)="removeTag(tag)">

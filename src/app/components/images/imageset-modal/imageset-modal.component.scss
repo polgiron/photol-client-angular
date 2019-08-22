@@ -57,13 +57,13 @@
   }
 
   &.is-prev .inner {
-    transform: translate3d(-6rem, 0, 0);
-    // transform: translate3d(-2rem, 0, 0);
+    // transform: translate3d(-6rem, 0, 0);
+    transform: translate3d(-2rem, 0, 0);
   }
 
   &.is-next .inner {
-    transform: translate3d(6rem, 0, 0);
-    // transform: translate3d(2rem, 0, 0);
+    // transform: translate3d(6rem, 0, 0);
+    transform: translate3d(2rem, 0, 0);
   }
 
   .inner {

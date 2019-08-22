@@ -16,7 +16,6 @@ import flickrLayout from 'justified-layout';
 export class ImagesComponent implements OnInit, OnDestroy {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   @Input() images: Image[];
-  @Input() columns: number = 3;
   private _alive: boolean = true;
   extendedImages: any[];
   settings: Settings;

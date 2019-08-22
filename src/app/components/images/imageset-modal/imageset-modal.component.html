@@ -3,17 +3,13 @@
 
   <ul class="list">
     <li *ngFor="let image of images; let i = index">
-      <div
-        *ngIf="i == index || i == getPrevIndex(index) || i == getNextIndex(index)"
-        class="dialog"
-        [ngClass]="{
+      <div *ngIf="i == index || i == getPrevIndex(index) || i == getNextIndex(index)" class="dialog" [ngClass]="{
           'is-visible': i == index,
           'is-prev': i == getPrevIndex(index) && images.length > 1,
           'is-next': i == getNextIndex(index) && images.length > 1
-        }"
-      >
+        }">
         <div class="inner">
-          <app-imageset-image [image]="image" [active]="i == index"></app-imageset-image>
+          <app-imageset-image [image]="image" [active]="i == index" [editMode]="settings.editMode"></app-imageset-image>
         </div>
       </div>
     </li>

@@ -3,10 +3,10 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin-top: .3rem;
+  margin-bottom: -.4rem;
 
   &.is-editmode {
-    margin-top: .5rem;
+    margin-top: .75rem;
 
     .tag {
       padding-right: .3rem;
@@ -15,14 +15,17 @@
 }
 
 .tag {
-  background: $color-text;
-  color: $color-background;
+  // background: $color-text;
+  // color: $color-background;
+  background: $color-background-2;
+  color: $color-text;
   border-radius: 1000rem;
-  padding: .1rem .5rem;
-  font-weight: 700;
+  padding: .2rem .6rem;
+  font-weight: 400;
+  // letter-spacing: 1px;
   font-size: .8rem;
-  margin-right: .5rem;
-  margin-bottom: .5rem;
+  margin-right: .4rem;
+  margin-bottom: .4rem;
   display: flex;
   align-items: center;
 
@@ -34,35 +37,56 @@
   i {
     font-size: 1rem;
     margin: auto;
+    color: $color-text;
   }
 }
 
 .input-wrapper {
   width: 10rem;
 
+  border-color: $color-background-2;
+
   .input {
     font-size: .8rem;
     height: auto;
     line-height: 1;
     padding: .4rem .7rem;
+
+    color: $color-background-2;
+    font-weight: 500;
+
+    &::placeholder {
+      color: $color-background-2;
+    }
+  }
+
+  &:focus-within,
+  &.is-filled {
+    border-color: $color-background-2;
+    color: $color-background-2;
+
+    i {
+      color: $color-background-2;
+    }
   }
 }
 
 .suggested-tags {
-  margin-top: .5rem;
+  margin-top: .75rem;
 
   h4 {
     text-transform: uppercase;
     font-size: .7rem;
-    color: $color-text-lighter;
+    color: $color-background-2;
+    margin-left: .2rem;
   }
 
   .tags {
-    margin-top: .4rem;
+    margin-top: .3rem;
   }
 
   .tag {
-    opacity: .6;
+    opacity: .5;
     transition: all .2s;
 
     &:hover {
