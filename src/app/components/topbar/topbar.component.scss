@@ -51,11 +51,9 @@
 .title {
   color: $color-text-lighter;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: .1em;
   line-height: 1;
-
-  // display: inline-block;
 }
 
 .subtitle {
@@ -64,15 +62,8 @@
   font-weight: 100;
   letter-spacing: .1em;
   line-height: 1;
-
   margin-top: .3rem;
   margin-left: .15rem;
-
-  // margin-left: .5rem;
-  // vertical-align: text-bottom;
-  // display: inline-block;
-  // position: relative;
-  // top: -1.5px;
 }
 
 .button-icon {
@@ -90,7 +81,6 @@
 }
 
 .bottom {
-  // padding-right: 1rem;
   padding-bottom: 1rem;
 }
 

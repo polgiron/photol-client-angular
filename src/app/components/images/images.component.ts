@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { ActivatedRoute } from '@angular/router';
-import { Utils } from 'src/app/utils/utils';
 import { Image } from 'src/app/models/image.model';
 import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
@@ -26,7 +25,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
   constructor(
     private imageService: ImageService,
     private route: ActivatedRoute,
-    private utils: Utils,
     private ref: ChangeDetectorRef,
     private settingsService: SettingsService
   ) { }
