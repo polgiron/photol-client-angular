@@ -43,17 +43,12 @@ export class ImagesComponent implements OnInit, OnDestroy {
       .subscribe((settings: Settings) => {
         this.settings = settings;
         // console.log('new settings');
-        // console.log(this.settings);
-
-        if (!settings.editMode) {
-          this.refreshFlickrLayout();
-        }
-
+        // console.log(this.settings.editMode);
         this.ref.markForCheck();
       });
   }
 
-  refreshFlickrLayout() {
+  refreshFlickrLayout(rowHeight: number = 220) {
     const layoutArray = [];
     this.images.map(image => {
       layoutArray.push(image.oriWidth / image.oriHeight);
@@ -65,8 +60,9 @@ export class ImagesComponent implements OnInit, OnDestroy {
       containerWidth: containerWidth,
       containerPadding: 0,
       boxSpacing: 24,
-      targetRowHeight: 220,
-      targetRowHeightTolerance: 0.25,
+      targetRowHeight: rowHeight,
+      // targetRowHeightTolerance: .25,
+      targetRowHeightTolerance: .2,
       forceAspectRatio: false,
       showWidows: true,
       fullWidthBreakoutRowCadence: false
@@ -84,9 +80,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
   }
 
   onResize() {
-    if (!this.settings.editMode) {
-      this.refreshFlickrLayout();
-    }
+    this.refreshFlickrLayout();
   }
 
   openPhotoOnReload(photoId: number) {

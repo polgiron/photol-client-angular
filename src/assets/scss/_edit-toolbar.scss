@@ -1,7 +1,7 @@
 .edit-toolbar {
   position: absolute;
-  bottom: .75rem;
-  right: .75rem;
+  bottom: .5rem;
+  right: .5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
     overflow: hidden;
 
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: .5rem;
     }
   }
 
@@ -35,7 +35,7 @@
 
     i {
       margin: auto;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .icon-check {

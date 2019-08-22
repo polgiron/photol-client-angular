@@ -16,7 +16,6 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background: rgba($color-white, .8);
   // background: rgba($color-black, .8);
   // background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .4) 100%);
   color: $color-white;
@@ -26,5 +25,6 @@
 
   &.is-editmode {
     opacity: 1;
+    background: rgba($color-white, .8);
   }
 }

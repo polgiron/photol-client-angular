@@ -45,6 +45,7 @@ import { SettingsService } from './services/settings.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { PreventDefaultClickDirective } from './directives/prevent-default-click.directive';
 import { TagService } from './services/tag.service';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 // import { TopbarService } from './services/topbar.service';
 
 @NgModule({
@@ -87,7 +88,8 @@ import { TagService } from './services/tag.service';
     HttpClientModule,
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [
     Api,

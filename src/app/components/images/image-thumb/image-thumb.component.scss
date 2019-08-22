@@ -6,13 +6,14 @@
   display: block;
   position: relative;
 
-  &:not(.is-editmode) button {
-    height: 100%;
-  }
+  // &:not(.is-editmode) button {
+  //   height: 100%;
+  // }
 
   button {
     width: 100%;
     position: relative;
+    height: 100%;
   }
 }
 

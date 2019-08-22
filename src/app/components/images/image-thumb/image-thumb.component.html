@@ -1,11 +1,13 @@
 <div class="image-thumb" [ngClass]="{'is-editmode': editMode}">
   <button class="image-wrapper" (click)="openPhotoModal()">
-    <app-image [flickrLayout]="!editMode" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight" [id]="image._id"></app-image>
+    <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
+      [id]="image._id"></app-image>
     <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group" *ngIf="isAlbumView">
-        <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}" preventDefaultClick>
+        <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
+          [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
           <i class="material-icons">photo</i>
-          <span *ngIf="!isCover">Set as cover</span>
+          <!-- <span *ngIf="!isCover">Set as cover</span> -->
           <i class="material-icons icon-check" *ngIf="isCover">check</i>
         </button>
       </div>
