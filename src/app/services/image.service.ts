@@ -18,15 +18,25 @@ export class ImageService {
     return response.images;
   }
 
-  async getBigSignedUrl(imageId: number) {
-    const response: any = await this.api.get(this.document + `${imageId}/big`);
-    return response.signedUrl;
+  async getImage(imageId: number) {
+    const response: any = await this.api.get(this.document + `${imageId}`);
+    return response.image;
   }
 
   async getFavorites() {
     const response: any = await this.api.get(this.document + 'favorites');
     return response.images;
   }
+
+  async getSignedUrl(imageId: number, size: string) {
+    const response: any = await this.api.get(this.document + `${imageId}` + '/signedUrl', { size: size });
+    return response.signedUrl;
+  }
+
+  // async getTags(imageId: number) {
+  //   const response: any = await this.api.get(this.document + `${imageId}/tags`);
+  //   return response.tags;
+  // }
 
   update(imageId: number, params: object) {
     this.api.put(this.document + imageId, params);

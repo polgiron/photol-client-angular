@@ -1,0 +1,40 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -.4rem;
+
+  &.is-editmode {
+    margin-top: .75rem;
+
+    .tag {
+      padding-right: .4rem;
+    }
+  }
+}
+
+.tag {
+  // background: $color-text;
+  // color: $color-background;
+  background: $color-background-2;
+  color: $color-text;
+  border-radius: 1000rem;
+  padding: .2rem .65rem;
+  font-weight: 400;
+  // letter-spacing: 1px;
+  font-size: .8rem;
+  margin-right: .4rem;
+  margin-bottom: .4rem;
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: .2rem;
+    display: flex;
+  }
+
+  i {
+    font-size: 1rem;
+    margin: auto;
+    color: $color-text;
+  }
+}

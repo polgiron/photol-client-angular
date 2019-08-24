@@ -63,7 +63,7 @@ export class ImageComponent implements OnInit {
 
   async onError() {
     // console.log('ON ERROR');
-    this._src = await this.imageService.getBigSignedUrl(this.id);
+    this._src = await this.imageService.getSignedUrl(this.id, 'small');
     this.ref.markForCheck();
   }
 

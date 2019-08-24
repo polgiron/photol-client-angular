@@ -1,6 +1,6 @@
   <div class="photo-wrapper" #photoWrapper>
     <app-image
-      *ngIf="imageSrc"
+      *ngIf="image"
       [src]="imageSrc"
       [width]="image.oriWidth"
       [height]="image.oriHeight"
@@ -17,8 +17,8 @@
         [albums]="albums"
       ></app-photo-infos> -->
 
-      <div class="tags-wrapper">
-        <app-tags [image]="image" [editMode]="editMode"></app-tags>
+      <div class="tags-wrapper" *ngIf="tags">
+        <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode"></app-tags>
       </div>
     </div>
   </div>

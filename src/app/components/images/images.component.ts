@@ -51,7 +51,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
   refreshFlickrLayout(rowHeight: number = 220) {
     const layoutArray = [];
     this.images.map(image => {
-      layoutArray.push(image.oriWidth / image.oriHeight);
+      layoutArray.push(image.ratio);
     });
 
     const containerWidth = this.wrapper.nativeElement.clientWidth;

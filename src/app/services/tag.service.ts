@@ -18,4 +18,8 @@ export class TagService {
     const response: any = await this.api.post(this.document, params);
     return response.tag;
   }
+
+  delete(tagId: number) {
+    return this.api.delete(this.document + tagId);
+  }
 }

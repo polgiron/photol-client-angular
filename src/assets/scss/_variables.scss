@@ -11,10 +11,9 @@ $color-red: #e74c3c;
 $color-yellow: #fbc531;
 
 $color-almost-black: #212121;
-// $color-darkgray: #333;
 $color-darkgray: #363636;
-// $color-darkgray-lighter: #4e4e4e;
-$color-darkgray-lighter: #636363;
+$color-darkgray-medium: #3d3d3d;
+$color-darkgray-lighter: #4A4A4A;
 $color-mediumgray-lighter: #a6a6a6;
 
 // Theme
@@ -23,6 +22,7 @@ $color-text-medium: $color-mediumgray-lighter;
 $color-text-lighter: $color-darkgray-lighter;
 $color-background: $color-almost-black;
 $color-background-2: $color-darkgray;
+$color-background-3: $color-darkgray-medium;
 $color-main-border: $color-darkgray-lighter;
 $color-accent: $color-blue;
 

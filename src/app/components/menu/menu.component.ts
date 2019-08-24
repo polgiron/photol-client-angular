@@ -7,7 +7,10 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent implements OnInit {
-  activeSettingsButton: boolean = false;
+  activePopButton: any = {
+    tags: false,
+    settings: false
+  };
 
   constructor(
     private ref: ChangeDetectorRef
@@ -16,13 +19,13 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  onPopSettingsShown() {
-    this.activeSettingsButton = true;
+  onPopShown(type: string) {
+    this.activePopButton[type] = true;
     this.ref.markForCheck();
   }
 
-  onPopSettingsHidden() {
-    this.activeSettingsButton = false;
+  onPopHidden(type: string) {
+    this.activePopButton[type] = false;
     this.ref.markForCheck();
   }
 }

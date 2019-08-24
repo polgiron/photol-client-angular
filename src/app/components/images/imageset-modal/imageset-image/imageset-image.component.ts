@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrateg
 import { ImageService } from 'src/app/services/image.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Utils } from 'src/app/utils/utils';
+import { Tag } from 'src/app/models/tag.model';
+import { Image } from 'src/app/models/image.model';
 
 @Component({
   selector: 'app-imageset-image',
@@ -11,34 +13,29 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class ImagesetImageComponent implements OnInit {
   @ViewChild('photoWrapper', { static: true }) photoWrapperElement: ElementRef;
-  @Input() set image(value: any) {
-    // console.log(value);
-
+  @Input() set image(value: Image) {
     this._image = value;
-
     this.extendImage();
     this.setDialogWidth();
-
-    // this.photoService.getContext(this.photo.id).then(albums => {
-    //   this.albums = albums;
-    // });
   };
   @Input() set active(value: boolean) {
     if (value) {
       this.setQueryParameter();
     }
   }
+  @Input() width: number;
+  @Input() height: number;
   @Input() editMode: boolean = false;
   private _resizeListener: EventListener;
-  private _image: any;
+  private _image: Image;
   imageSrc: string;
   padding: number = 32;
   mobileBreakpoint: number = 767;
-  tags: string[] = [];
-  time: number;
-  contrast: number;
-  aperture: number;
-  albums: any;
+  tags: Tag[];
+  // time: number;
+  // contrast: number;
+  // aperture: number;
+  // albums: any;
 
   get image() {
     return this._image;
@@ -98,22 +95,10 @@ export class ImagesetImageComponent implements OnInit {
   }
 
   async extendImage() {
-    // Image src
-    this.imageSrc = await this.imageService.getBigSignedUrl(this.image._id);
+    const image: Image = await this.imageService.getImage(this._image._id);
+    this.imageSrc = image.signedUrl;
+    this.tags = image.tags;
     this.ref.markForCheck();
-
-    // Extend tags
-    // this.photo.tags.split(' ').forEach(tag => {
-    //   if (tag.includes('settingtime')) {
-    //     this.time = tag.replace('settingtime', '');
-    //   } else if (tag.includes('settingaperture')) {
-    //     this.aperture = tag.replace('settingaperture', '');
-    //   } else if (tag.includes('settingcontrast')) {
-    //     this.contrast = tag.replace('settingcontrast', '');
-    //   } else {
-    //     this.tags.push(tag);
-    //   }
-    // });
   }
 
   ngOnDestroy() {

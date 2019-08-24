@@ -6,9 +6,6 @@
   border-radius: $big-border-radius + .1rem;
   background: $color-background-2;
 
-  // Bug it's not centered
-  // transform: translateX(.5em) !important;
-
   .arrow:after {
     border-bottom-color: $color-background-2;
   }

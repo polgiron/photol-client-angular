@@ -36,7 +36,6 @@ import { ModalCreateAlbumComponent } from './components/modals/modal-create-albu
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ModalUploadProgressComponent } from './components/modals/modal-upload-progress/modal-upload-progress.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeferLoadDirective } from './directives/defer-load.directive';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -46,6 +45,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PreventDefaultClickDirective } from './directives/prevent-default-click.directive';
 import { TagService } from './services/tag.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ManageTagsComponent } from './components/manage-tags/manage-tags.component';
 // import { TopbarService } from './services/topbar.service';
 
 @NgModule({
@@ -71,12 +71,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,
     FavoritesComponent,
-    SidebarComponent,
     DeferLoadDirective,
     SettingsComponent,
     CheckboxComponent,
     MenuComponent,
-    PreventDefaultClickDirective
+    PreventDefaultClickDirective,
+    ManageTagsComponent
   ],
   imports: [
     HttpModule,

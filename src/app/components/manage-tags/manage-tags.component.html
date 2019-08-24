@@ -1,0 +1,17 @@
+<div class="manage-tags">
+  <div class="header">
+    <div class="input-wrapper input-wrapper--medium">
+      <input type="text" class="input" placeholder="Add a tag..." [(ngModel)]="newTagValue"
+        (keydown.enter)="onKeyEnter()">
+    </div>
+  </div>
+
+  <ul class="tags is-editmode">
+    <li class="tag" *ngFor="let tag of tags">
+      {{tag.value}}
+      <button (click)="deleteTag(tag)">
+        <i class="material-icons">close</i>
+      </button>
+    </li>
+  </ul>
+</div>

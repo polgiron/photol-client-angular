@@ -12,7 +12,8 @@ import { SettingsService } from 'src/app/services/settings.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsComponent implements OnInit {
-  @Input() image: Image;
+  @Input() tags: Tag[];
+  @Input() imageId: number;
   @Input() editMode: boolean = false;
   newTagValue: string = '';
   allTags: Tag[];
@@ -25,7 +26,7 @@ export class TagsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.image.tags);
+    // console.log(this.tags);
   }
 
   async onFocus() {
@@ -42,13 +43,13 @@ export class TagsComponent implements OnInit {
 
   updateSuggestedTags() {
     this.suggestedTags = this.allTags.filter(tag => {
-      return !this.image.tags.find(imageTag => imageTag._id == tag._id);
+      return !this.tags.find(imageTag => imageTag._id == tag._id);
     });
     this.ref.markForCheck();
   }
 
   async onKeyEnter() {
-    if (this.newTagValue.length && !this.image.tags.find(tag => tag.value == this.newTagValue)) {
+    if (this.newTagValue.length && !this.tags.find(tag => tag.value == this.newTagValue)) {
       const existingTag = this.allTags.find(tag => tag.value == this.newTagValue);
 
       if (existingTag) {
@@ -65,9 +66,9 @@ export class TagsComponent implements OnInit {
   }
 
   addExistingTag(tag: Tag) {
-    this.image.tags = this.image.tags.concat(tag);
-    this.imageService.update(this.image._id, {
-      tags: this.image.tags
+    this.tags = this.tags.concat(tag);
+    this.imageService.update(this.imageId, {
+      tags: this.tags
     });
     this.updateSuggestedTags();
     this.ref.markForCheck();
@@ -76,16 +77,16 @@ export class TagsComponent implements OnInit {
   async addNewTag(tag: string) {
     const newTag = await this.tagService.create({
       value: tag,
-      images: [this.image._id]
+      images: [this.imageId]
     });
-    this.image.tags = this.image.tags.concat(newTag);
+    this.tags = this.tags.concat(newTag);
     this.ref.markForCheck();
   }
 
   removeTag(deleteTag: Tag) {
-    this.image.tags = this.image.tags.filter(tag => tag._id != deleteTag._id);
-    this.imageService.update(this.image._id, {
-      tags: this.image.tags
+    this.tags = this.tags.filter(tag => tag._id != deleteTag._id);
+    this.imageService.update(this.imageId, {
+      tags: this.tags
     });
     this.updateSuggestedTags();
     this.ref.markForCheck();

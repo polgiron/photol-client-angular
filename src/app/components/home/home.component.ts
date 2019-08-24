@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       .pipe(takeWhile(() => this._alive))
       .subscribe((index: number) => {
         this.index = index;
-        console.log(index);
+        // console.log(index);
         this.ref.markForCheck();
       });
   }

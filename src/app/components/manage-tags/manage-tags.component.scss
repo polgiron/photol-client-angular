@@ -1,0 +1,24 @@
+@import '~src/assets/scss/variables';
+
+.header,
+.tags {
+  padding: .75rem;
+}
+
+.header {
+  border-bottom: 1px solid $color-main-border;
+}
+
+.tags {
+  margin-top: 0;
+  background: $color-background-3;
+}
+
+.tag {
+  background: $color-background;
+  color: $color-text-medium;
+
+  i {
+    color: $color-text-medium;
+  }
+}
