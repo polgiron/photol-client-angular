@@ -6,12 +6,19 @@
     </div>
   </div>
 
-  <ul class="tags is-editmode">
-    <li class="tag" *ngFor="let tag of tags">
-      {{tag.value}}
-      <button (click)="deleteTag(tag)">
-        <i class="material-icons">close</i>
-      </button>
-    </li>
-  </ul>
+  <div class="body">
+    <div class="loader-wrapper" *ngIf="!tags">
+      <div class="inner">
+        <app-loader color="light"></app-loader>
+      </div>
+    </div>
+    <ul class="tags is-editmode" *ngIf="tags" [@fadeInAnimation]>
+      <li class="tag" *ngFor="let tag of tags">
+        {{tag.value}}
+        <button (click)="deleteTag(tag)">
+          <i class="material-icons">close</i>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>

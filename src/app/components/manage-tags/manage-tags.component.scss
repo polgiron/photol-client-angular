@@ -9,9 +9,32 @@
   border-bottom: 1px solid $color-main-border;
 }
 
+.body {
+  background: $color-background-3;
+  min-height: 14rem;
+  overflow: auto;
+  position: relative;
+}
+
+.loader-wrapper,
+.tags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.loader-wrapper {
+  display: flex;
+  height: 100%;
+
+  .inner {
+    margin: auto;
+  }
+}
+
 .tags {
   margin-top: 0;
-  background: $color-background-3;
 }
 
 .tag {

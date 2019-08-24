@@ -13,6 +13,10 @@ $loader-width: 2rem;
   border-radius: 50%;
   border-width: $border-width;
   animation: spin .4s linear infinite;
+
+  &.is-light {
+    border-color: $color-text-lighter transparent transparent $color-text-lighter;
+  }
 }
 
 @keyframes spin {
