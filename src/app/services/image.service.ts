@@ -19,7 +19,7 @@ export class ImageService {
   }
 
   async getImage(imageId: number) {
-    const response: any = await this.api.get(this.document + `${imageId}`);
+    const response: any = await this.api.get(this.document + `${imageId}` + '/big');
     return response.image;
   }
 
@@ -29,12 +29,12 @@ export class ImageService {
   }
 
   async getSignedUrl(imageId: number, size: string) {
-    const response: any = await this.api.get(this.document + `${imageId}` + '/signedUrl', { size: size });
+    const response: any = await this.api.get(this.document + imageId + '/signedUrl', { size: size });
     return response.signedUrl;
   }
 
   // async getTags(imageId: number) {
-  //   const response: any = await this.api.get(this.document + `${imageId}/tags`);
+  //   const response: any = await this.api.get(this.document + imageId + '/tags');
   //   return response.tags;
   // }
 

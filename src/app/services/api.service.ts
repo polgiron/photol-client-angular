@@ -15,8 +15,11 @@ export class Api {
   ) { }
 
   async get(method: string, data?: any) {
-    const params = this.utils.serialize(data);
-    const response = await this.http.get(this.domain + method + '?' + params)
+    let url: string = this.domain + method;
+    if (data) {
+      url += '?' + this.utils.serialize(data);
+    }
+    const response = await this.http.get(url)
       .pipe(catchError(this.handleError).bind(this))
       .toPromise();
     // console.log('-----API GET RESPONSE');
