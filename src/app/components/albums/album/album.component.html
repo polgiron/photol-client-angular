@@ -8,7 +8,7 @@
       {{album.date}}<span *ngIf="album.date && album.rollId">,</span> #{{album.rollId}}
     </div>
   </div>
-  <div class="cover" *ngIf="cover">
+  <!-- <div class="cover main-container--fixed" *ngIf="cover">
     <app-image
       [src]="cover.signedUrl"
       [width]="cover.oriWidth"
@@ -16,7 +16,7 @@
       [cover]="true"
       [displayLoader]="true"
     ></app-image>
-  </div>
+  </div> -->
   <app-images [images]="album.images"></app-images>
   <!-- <app-images [images]="album.images" (onUpdateCover)="onUpdateCover($event)"></app-images> -->
 </div>

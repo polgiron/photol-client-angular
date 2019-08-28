@@ -4,13 +4,9 @@
 // }
 
 .main-container {
-  // padding: 1rem 1.5rem 2rem;
   padding: 1.5rem;
-
-  // .inner {
-  max-width: $container-width;
-  margin: auto;
-  // }
+  // max-width: $container-width;
+  // margin: auto;
 
   @include respond-to('medium') {
     padding: 1rem 1.5rem;
@@ -21,8 +17,12 @@
   }
 }
 
+.main-container--fixed {
+  max-width: $container-width;
+  margin: auto;
+}
+
 .main-loader-wrapper {
-  // width: 100%;
   margin-top: 35vh;
 }
 

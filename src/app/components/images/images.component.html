@@ -1,4 +1,4 @@
-<div class="wrapper" #wrapper (window:resize)="onResize()">
+<div #wrapper (window:resize)="onResize()">
   <!-- Flickr layout -->
   <ul class="flickr-list" [ngStyle]="{'height': containerHeight + 'px'}" *ngIf="extendedImages">
     <li *ngFor="let image of extendedImages" [ngStyle]="{
