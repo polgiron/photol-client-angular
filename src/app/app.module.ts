@@ -46,7 +46,7 @@ import { PreventDefaultClickDirective } from './directives/prevent-default-click
 import { TagService } from './services/tag.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ManageTagsComponent } from './components/manage-tags/manage-tags.component';
-// import { TopbarService } from './services/topbar.service';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -100,8 +100,8 @@ import { ManageTagsComponent } from './components/manage-tags/manage-tags.compon
     UploadService,
     ModalService,
     SettingsService,
-    TagService
-    // TopbarService
+    TagService,
+    SearchService
   ],
   entryComponents: [
     ModalCreateAlbumComponent,

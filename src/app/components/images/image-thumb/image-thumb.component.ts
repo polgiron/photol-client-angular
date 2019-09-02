@@ -30,7 +30,6 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log(this.image.tags);
     this.isAlbumView = this.albumService.currentAlbum ? true : false;
 
     if (this.isAlbumView) {

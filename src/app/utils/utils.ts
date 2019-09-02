@@ -1,23 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class Utils {
-  _clearSearch: Subject<boolean> = new Subject<boolean>();
-
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  clearSearchChannel(): Observable<boolean> {
-    return this._clearSearch.asObservable();
-  }
-
-  clearSearchInput() {
-    this._clearSearch.next(true);
-  }
 
   clearOpenQuery() {
     this.router.navigate([], {

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
-import { Utils } from 'src/app/utils/utils';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-search-input',
@@ -16,33 +16,27 @@ export class SearchInputComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private utils: Utils,
+    private searchService: SearchService,
     private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.utils.clearSearchChannel()
+    this.searchService.searchValueChannel()
       .pipe(takeWhile(() => this._alive))
-      .subscribe(() => {
-        this.searchValue = '';
+      .subscribe((value: string) => {
+        this.searchValue = value;
         this.ref.markForCheck();
       });
   }
 
   onKeyUp() {
     clearTimeout(this.timeout);
-    // if (this.searchValue != '') {
-      this.timeout = setTimeout(() => {
-        this.performSearch();
-      }, 500);
-    // } else {
-    //   this.search.emit(null);
-    // }
+    this.timeout = setTimeout(() => {
+      this.performSearch();
+    }, 500);
   }
 
   performSearch() {
-    // console.log(this.searchValue.replace(' ', '+'));
-
     this.router.navigate(['/', 'search'], {
       queryParams: {
         value: this.searchValue
