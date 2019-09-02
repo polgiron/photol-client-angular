@@ -24,3 +24,25 @@
 .title {
   margin-top: .5rem;
 }
+
+.date,
+.tags {
+  position: absolute;
+  color: $color-white-smoke;
+  text-shadow: 1px 1px 4px rgba($color-black, .6);
+}
+
+.date {
+  top: .75rem;
+  left: .75rem;
+}
+
+.tags {
+  bottom: .75rem;
+  left: .75rem;
+  max-width: 70%;
+
+  li:not(:last-child) {
+    margin-right: .2rem;
+  }
+}

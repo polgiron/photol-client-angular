@@ -96,6 +96,7 @@ export class ImagesetImageComponent implements OnInit {
 
   async extendImage() {
     const image: Image = await this.imageService.getImage(this._image._id);
+    console.log(image);
     this.imageSrc = image.signedUrl;
     this.tags = image.tags;
     this.ref.markForCheck();

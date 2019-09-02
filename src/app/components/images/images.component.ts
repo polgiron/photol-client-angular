@@ -15,11 +15,21 @@ import flickrLayout from 'justified-layout';
 })
 export class ImagesComponent implements OnInit, OnDestroy {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
-  @Input() images: Image[];
+  // @Input() images: Image[];
+  @Input() set images (value: Image[]) {
+    this.updateImages(value);
+  };
   private _alive: boolean = true;
+  private _images: Image[];
   extendedImages: any[];
   settings: Settings;
   containerHeight: number;
+  tabletBreakpoint: number = 992;
+  mobileBreakpoint: number = 767;
+
+  get images() {
+    return this._images;
+  }
 
   constructor(
     private imageService: ImageService,
@@ -29,8 +39,8 @@ export class ImagesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.imageService.currentImages = this.images;
-    this.refreshFlickrLayout();
+    // console.log('---IMAGES');
+    // console.log(this.images);
 
     const params: any = this.route.queryParams;
     const photoId = params.value.open;
@@ -48,7 +58,25 @@ export class ImagesComponent implements OnInit, OnDestroy {
       });
   }
 
-  refreshFlickrLayout(rowHeight: number = 220) {
+  updateImages(images: Image[]) {
+    this._images = images;
+    this.imageService.currentImages = this.images;
+
+    console.log('---IMAGES');
+    console.log(images);
+
+    // Layout
+    // TODO: add window on resize
+    if (window.innerWidth < this.mobileBreakpoint) {
+      this.refreshFlickrLayout(100);
+    } else if (window.innerWidth < this.tabletBreakpoint) {
+      this.refreshFlickrLayout(150);
+    } else {
+      this.refreshFlickrLayout();
+    }
+  }
+
+  refreshFlickrLayout(rowHeight: number = 200) {
     const layoutArray = [];
     this.images.map(image => {
       layoutArray.push(image.ratio);
@@ -91,6 +119,13 @@ export class ImagesComponent implements OnInit, OnDestroy {
   onDeleteImage(imageId: number) {
     this.images = this.images.filter(image => image._id != imageId);
     this.ref.markForCheck();
+  }
+
+  trackByFunction(index, item) {
+    if (!item) {
+      return null;
+    }
+    return item._id;
   }
 
   ngOnDestroy() {

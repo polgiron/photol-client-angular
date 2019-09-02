@@ -1,9 +1,7 @@
-<div class="main-loader-wrapper" *ngIf="!photos" [@fadeAnimation]>
+<div class="main-loader-wrapper" *ngIf="!images" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="main-container" *ngIf="photos" [@fadeAnimation]>
-  <div class="inner">
-    <p class="no-results" *ngIf="!photos.length">No search results :(</p>
-    <app-images [images]="photos" *ngIf="photos.length"></app-images>
-  </div>
+<div class="main-container" *ngIf="images" [@fadeAnimation]>
+  <p class="no-results" *ngIf="!images.length">No search results :(</p>
+  <app-images [images]="images" *ngIf="images.length"></app-images>
 </div>

@@ -88,7 +88,9 @@ export class TagsComponent implements OnInit {
     this.imageService.update(this.imageId, {
       tags: this.tags
     });
-    this.updateSuggestedTags();
+    if (this.suggestedTags) {
+      this.updateSuggestedTags();
+    }
     this.ref.markForCheck();
   }
 }

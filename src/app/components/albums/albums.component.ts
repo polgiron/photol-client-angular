@@ -63,6 +63,13 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     this.modalService.open(ModalCreateAlbumComponent, 'big');
   }
 
+  trackByFunction(index, item) {
+    if (!item) {
+      return null;
+    }
+    return item._id;
+  }
+
   ngOnDestroy() {
     this._alive = false;
   }

@@ -6,7 +6,7 @@
     <h1 class="title-1">Albums</h1>
   </div> -->
   <ul class="grid-list">
-    <li *ngFor="let album of albums">
+    <li *ngFor="let album of albums; trackBy: trackByFunction">
       <app-album-thumb [album]="album" (onDeleteAlbum)="onDeleteAlbum($event)"></app-album-thumb>
     </li>
     <li class="button-add-album" *ngIf="editMode" [@fadeAnimation]>

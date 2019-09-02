@@ -27,6 +27,8 @@ export class ManageTagsComponent implements OnInit {
 
   async getTags() {
     this.tags = await this.tagService.getAll();
+    console.log('---TAGS');
+    console.log(this.tags);
     this.ref.markForCheck();
   }
 

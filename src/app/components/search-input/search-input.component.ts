@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
@@ -6,23 +6,26 @@ import { Utils } from 'src/app/utils/utils';
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+  styleUrls: ['./search-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchInputComponent implements OnInit {
   private _alive: boolean = true;
   searchValue: string = '';
-  timeout;
+  timeout: any;
 
   constructor(
     private router: Router,
-    private utils: Utils
+    private utils: Utils,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.utils.clearSearchChannel()
       .pipe(takeWhile(() => this._alive))
-      .subscribe(clear => {
+      .subscribe(() => {
         this.searchValue = '';
+        this.ref.markForCheck();
       });
   }
 

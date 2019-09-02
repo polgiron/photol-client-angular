@@ -32,7 +32,7 @@ export class UploadService {
     return this._uploadProgress.asObservable();
   }
 
-  upload(images: any[], albumId: number) {
+  upload(images: any[], albumId: number, imageDate: number) {
     // console.log('Upload function');
     // console.log(images);
 
@@ -40,9 +40,13 @@ export class UploadService {
 
     images.forEach(image => {
       let formData: FormData = new FormData();
-      // formData.append('title', image.title);
+
       formData.append('file', image.file);
       formData.append('albums', image.albums);
+
+      if (imageDate) {
+        formData.append('date', String(imageDate));
+      }
 
       const req = new HttpRequest<FormData>(
         'POST',

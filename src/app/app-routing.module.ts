@@ -8,8 +8,6 @@ import { LandpageComponent } from 'src/app/components/landpage/landpage.componen
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'albums', pathMatch: 'full' },
-  // { path: '', redirectTo: 'admin', pathMatch: 'full' },
   {
     path: '',
     component: HomeComponent,
@@ -17,10 +15,8 @@ const routes: Routes = [
       { path: '', component: LandpageComponent },
       { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
-      { path: 'favorites', component: FavoritesComponent }
-      // { path: 'photos/:photoId', component: PhotoComponent },
-      // { path: 'search', component: SearchComponent },
-      // { path: 'admin', component: AdminComponent }
+      { path: 'favorites', component: FavoritesComponent },
+      { path: 'search', component: SearchComponent }
     ]
   },
   { path: '**', redirectTo: '' }

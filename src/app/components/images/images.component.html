@@ -1,7 +1,7 @@
 <div #wrapper (window:resize)="onResize()">
   <!-- Flickr layout -->
   <ul class="flickr-list" [ngStyle]="{'height': containerHeight + 'px'}" *ngIf="extendedImages">
-    <li *ngFor="let image of extendedImages" [ngStyle]="{
+    <li *ngFor="let image of extendedImages; trackBy: trackByFunction" [ngStyle]="{
       'width': image.box.width + 'px',
       'height': image.box.height + 'px',
       'top': image.box.top + 'px',
@@ -11,4 +11,10 @@
         [displayTags]="settings.displayTags"></app-image-thumb>
     </li>
   </ul>
+  <!-- <ul class="masonry-list" *ngIf="images">
+    <li *ngFor="let image of images; trackBy: trackByFunction">
+      <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
+        [displayTags]="settings.displayTags"></app-image-thumb>
+    </li>
+  </ul> -->
 </div>

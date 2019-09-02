@@ -2,6 +2,12 @@
   <button class="image-wrapper" (click)="openPhotoModal()">
     <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
       [id]="image._id"></app-image>
+    <div *ngIf="!isAlbumView" class="date">{{image.date}}</div>
+    <ul class="tags">
+      <li *ngFor="let tag of image.tags; last as isLast">
+        {{tag.value}}<span *ngIf="!isLast">,</span>
+      </li>
+    </ul>
     <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group" *ngIf="isAlbumView">
         <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"

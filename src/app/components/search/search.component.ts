@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { fadeAnimation } from 'src/app/utils/animations';
-import { AlbumService } from 'src/app/services/album.service';
 import { Utils } from 'src/app/utils/utils';
+import { Image } from 'src/app/models/image.model';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnInit {
-  photos: any;
+  images: Image[];
   searchValue: string;
 
   constructor(
@@ -20,7 +21,7 @@ export class SearchComponent implements OnInit {
     private utils: Utils,
     private route: ActivatedRoute,
     private router: Router,
-    private albumService: AlbumService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -40,19 +41,16 @@ export class SearchComponent implements OnInit {
   performSearch(value: string) {
     console.log('Search: ' + value);
 
-    this.photos = null;
-    // this.albumService.setAlbumTitle('Search: ' + value);
+    // this.images = null;
 
-    this.api.get('search/' + value).then((searchResults: any) => {
-      console.log(searchResults);
-      // console.log(searchResults.photo);
-      // this.search.emit(searchResults.photo);
-      this.photos = searchResults.photo;
+    this.api.get('search/' + value).then((response: any) => {
+      this.images = response.results;
+      console.log(response.results);
+      this.ref.markForCheck();
     });
   }
 
   ngOnDestroy() {
-    // this.albumService.setAlbumTitle('');
     this.utils.clearSearchInput();
   }
 }
