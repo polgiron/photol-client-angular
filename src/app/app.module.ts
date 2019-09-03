@@ -17,15 +17,14 @@ import { ImagesComponent } from './components/images/images.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
-import { ImagesetImageComponent } from './components/images/imageset-modal/imageset-image/imageset-image.component';
+import { ImagesetImageComponent } from './components/imageset-modal/imageset-image/imageset-image.component';
 import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageComponent } from 'src/app/components/images/image/image.component';
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
-import { PhotoInfosComponent } from './components/images/photo-infos/photo-infos.component';
-import { ImagesetModalComponent } from './components/images/imageset-modal/imageset-modal.component';
+import { ImagesetModalComponent } from './components/imageset-modal/imageset-modal.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
@@ -67,7 +66,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     TopbarComponent,
     ImageComponent,
     SearchComponent,
-    PhotoInfosComponent,
     ImagesetModalComponent,
     LandpageComponent,
     ModalCreateAlbumComponent,

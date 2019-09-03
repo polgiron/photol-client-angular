@@ -30,19 +30,20 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isAlbumView = this.albumService.currentAlbum ? true : false;
+    console.log(this.isAlbumView);
 
-    if (this.isAlbumView) {
-      if (this.albumService.currentAlbum.cover) {
-        this.isCover = this.albumService.currentAlbum.cover._id == this.image._id;
-      }
+    // if (this.isAlbumView) {
+    //   if (this.albumService.currentAlbum.cover) {
+    //     this.isCover = this.albumService.currentAlbum.cover._id == this.image._id;
+    //   }
 
-      this.albumService.updateCoverChannel()
-        .pipe(takeWhile(() => this._alive))
-        .subscribe((image: Image) => {
-          this.isCover = this.image._id == image._id;
-          this.ref.markForCheck();
-        });
-    }
+    //   this.albumService.updateCoverChannel()
+    //     .pipe(takeWhile(() => this._alive))
+    //     .subscribe((image: Image) => {
+    //       this.isCover = this.image._id == image._id;
+    //       this.ref.markForCheck();
+    //     });
+    // }
   }
 
   openPhotoModal() {
