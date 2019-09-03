@@ -65,13 +65,13 @@ export class SearchComponent implements OnInit {
     }, []);
   }
 
-  updateFilters(tags: Tag[]) {
+  updateFilters(tags: number[]) {
     // console.log(tags);
 
     this.displayImages = this.images.filter(image => {
       let condition: boolean = false;
       tags.map(selectedTag => {
-        condition = condition || image.tags.some(tag => tag._id == selectedTag._id);
+        condition = condition || image.tags.some(tag => tag._id == selectedTag);
       });
       return condition;
     });
