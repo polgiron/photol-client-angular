@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { fadeOutAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
 
@@ -11,6 +11,7 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class ImageComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
+  @Output() onImageLoaded: EventEmitter<boolean> = new EventEmitter();
   @Input() flickrLayout: boolean = false;
   @Input() width: number;
   @Input() height: number;
@@ -58,6 +59,7 @@ export class ImageComponent implements OnInit {
   onLoad() {
     // console.log('ON LOAD');
     this.isLoaded = true;
+    this.onImageLoaded.emit(true);
     this.ref.markForCheck();
   }
 

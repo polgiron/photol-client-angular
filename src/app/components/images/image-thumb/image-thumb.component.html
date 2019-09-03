@@ -1,27 +1,28 @@
 <div class="image-thumb" [ngClass]="{'is-editmode': editMode}">
   <button class="image-wrapper" (click)="openPhotoModal()">
     <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
-      [id]="image._id"></app-image>
-    <div *ngIf="!isAlbumView" class="date">{{image.date}}</div>
-    <ul class="tags">
-      <li *ngFor="let tag of image.tags; last as isLast">
-        {{tag.value}}<span *ngIf="!isLast">,</span>
-      </li>
-    </ul>
-    <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
-      <div class="group" *ngIf="isAlbumView">
-        <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
-          [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
-          <i class="material-icons">photo</i>
-          <!-- <span *ngIf="!isCover">Set as cover</span> -->
-          <i class="material-icons icon-check" *ngIf="isCover">check</i>
-        </button>
-      </div>
-      <div class="group">
-        <button (click)="updateFavorite($event)" class="button-favorite" [ngClass]="{'is-active': image.favorite}"
-          preventDefaultClick><i class="material-icons">star</i></button>
-        <!-- <button><i class="material-icons">edit</i></button> -->
-        <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
+      [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
+
+    <div class="overlay" *ngIf="imageLoaded" [@fadeInAnimation]>
+      <div *ngIf="!isAlbumView" class="date">{{image.date}}</div>
+      <ul class="tags">
+        <li *ngFor="let tag of image.tags; last as isLast">
+          {{tag.value}}<span *ngIf="!isLast">,</span>
+        </li>
+      </ul>
+      <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
+        <div class="group" *ngIf="isAlbumView">
+          <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
+            [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
+            <i class="material-icons">photo</i>
+            <i class="material-icons icon-check" *ngIf="isCover">check</i>
+          </button>
+        </div>
+        <div class="group">
+          <button (click)="updateFavorite($event)" class="button-favorite" [ngClass]="{'is-active': image.favorite}"
+            preventDefaultClick><i class="material-icons">star</i></button>
+          <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
+        </div>
       </div>
     </div>
   </button>

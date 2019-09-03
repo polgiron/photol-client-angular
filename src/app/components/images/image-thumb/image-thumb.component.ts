@@ -2,17 +2,15 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, O
 import { ImageService } from 'src/app/services/image.service';
 import { Image } from 'src/app/models/image.model';
 import { AlbumService } from 'src/app/services/album.service';
-import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
-import { Settings } from 'src/app/models/settings.model';
-import { fadeAnimation } from 'src/app/utils/animations';
+import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-image-thumb',
   templateUrl: './image-thumb.component.html',
   styleUrls: ['./image-thumb.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeAnimation]
+  animations: [fadeAnimation, fadeInAnimation]
 })
 export class ImageThumbComponent implements OnInit, OnDestroy {
   @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
@@ -22,6 +20,7 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   private _alive: boolean = true;
   isAlbumView: boolean = false;
   isCover: boolean = false;
+  imageLoaded: boolean = false;
 
   constructor(
     private imageService: ImageService,
@@ -72,6 +71,10 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
       // this.ref.markForCheck();
       this.onDeleteImage.emit(this.image._id);
     });
+  }
+
+  onImageLoaded() {
+    this.imageLoaded = true;
   }
 
   ngOnDestroy() {
