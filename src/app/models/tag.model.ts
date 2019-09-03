@@ -4,4 +4,5 @@ export interface Tag {
   _id: number;
   value: string;
   images?: Image[];
+  active?: boolean;
 }

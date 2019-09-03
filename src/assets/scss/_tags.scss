@@ -38,3 +38,16 @@
     color: $color-text;
   }
 }
+
+.tag.is-clickable {
+  transition: all .1s;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  &.is-active {
+    background: $color-text;
+    color: $color-background;
+  }
+}

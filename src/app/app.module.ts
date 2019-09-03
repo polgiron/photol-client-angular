@@ -47,6 +47,7 @@ import { TagService } from './services/tag.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ManageTagsComponent } from './components/manage-tags/manage-tags.component';
 import { SearchService } from './services/search.service';
+import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { SearchService } from './services/search.service';
     CheckboxComponent,
     MenuComponent,
     PreventDefaultClickDirective,
-    ManageTagsComponent
+    ManageTagsComponent,
+    FiltersComponent
   ],
   imports: [
     HttpModule,
