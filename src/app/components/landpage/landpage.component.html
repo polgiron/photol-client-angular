@@ -1,7 +1,8 @@
-<div class="main-loader-wrapper" *ngIf="!images" [@fadeAnimation]>
+<div class="main-loader-wrapper" *ngIf="!images.length" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="main-container" *ngIf="images" [@fadeAnimation]>
+<div class="main-container" *ngIf="images.length" [@fadeAnimation] infiniteScroll [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
   <!-- <div class="page-header">
     <h1 class="title-1">All images</h1>
   </div> -->

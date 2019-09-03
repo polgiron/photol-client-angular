@@ -48,6 +48,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ManageTagsComponent } from './components/manage-tags/manage-tags.component';
 import { SearchService } from './services/search.service';
 import { FiltersComponent } from './components/filters/filters.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { FiltersComponent } from './components/filters/filters.component';
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
     PopoverModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    InfiniteScrollModule
   ],
   providers: [
     Api,

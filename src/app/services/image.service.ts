@@ -13,9 +13,13 @@ export class ImageService {
     private api: Api
   ) { }
 
-  async getAll() {
-    const response: any = await this.api.get(this.document + 'all');
-    return response.images;
+  async getAll(page: number = 1, limit: number = 20) {
+    const params = {
+      page: page,
+      limit: limit
+    };
+    const response: any = await this.api.get(this.document + 'all', params);
+    return response;
   }
 
   async getImage(imageId: number) {

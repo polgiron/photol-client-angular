@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ImageService } from 'src/app/services/image.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { Image } from 'src/app/models/image.model';
-// import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-landpage',
@@ -12,21 +11,35 @@ import { Image } from 'src/app/models/image.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandpageComponent implements OnInit {
-  images: Image[];
+  images: Image[] = [];
+  hasMore: boolean = true;
+  page: number = 1;
 
   constructor(
     private imageService: ImageService,
-    private ref: ChangeDetectorRef,
-    // private topbarService: TopbarService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    // this.topbarService.updatePageTitle('Home');
-    this.getLandpage();
+    this.getImages();
   }
 
-  async getLandpage() {
-    this.images = await this.imageService.getAll();
+  onScroll() {
+    if (this.hasMore) {
+      this.getImages(true);
+    }
+  }
+
+  async getImages(more: boolean = false) {
+    if (more) {
+      this.page += 1;
+    }
+
+    const response: any = await this.imageService.getAll(this.page);
+    console.log(response);
+    this.hasMore = response.hasMore;
+    this.images = this.images.concat(response.images);
+
     this.ref.markForCheck();
   }
 }
