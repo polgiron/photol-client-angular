@@ -48,6 +48,7 @@ import { ManageTagsComponent } from './components/manage-tags/manage-tags.compon
 import { SearchService } from './services/search.service';
 import { FiltersComponent } from './components/filters/filters.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxFaceApiJsModule } from 'ngx-face-api-js';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ProgressbarModule.forRoot(),
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgxFaceApiJsModule.forRoot({ modelsUrl: 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights' })
   ],
   providers: [
     Api,

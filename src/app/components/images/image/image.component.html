@@ -6,7 +6,8 @@
       'is-loaded': isLoaded,
       'is-cover': cover
     }"> -->
-  <img *ngIf="isInViewport && src" alt="" class="fade" [src]="src" (error)="onError($event)" (load)="onLoad()" [ngClass]="{
+  <img *ngIf="isInViewport && src" alt="" class="fade" [src]="src" (error)="onError($event)" (load)="onLoad()"
+    [ngClass]="{
       'is-loaded': isLoaded,
       'is-cover': cover
     }">
