@@ -6,11 +6,16 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { LandpageComponent } from 'src/app/components/landpage/landpage.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuardService } from './services/guards/auth-guard.service';
 
 const routes: Routes = [
+  // { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthGuardService],
     children: [
       { path: '', component: LandpageComponent },
       { path: 'albums', component: AlbumsComponent },

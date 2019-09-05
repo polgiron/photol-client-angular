@@ -1,0 +1,61 @@
+@import '~src/assets/scss/variables';
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  background: $color-background;
+  text-align: center;
+}
+
+.content {
+  margin: auto;
+  background: $color-background-2;
+  padding: 2rem 1.5rem 1.5rem;
+  border-radius: $big-border-radius;
+  position: relative;
+}
+
+.logo-title {
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+
+  .input {
+    width: 13rem;
+  }
+}
+
+.button {
+  width: 100%;
+  background: $color-text-medium;
+}
+
+.footer {
+  color: $color-text-medium;
+  margin-top: 1rem;
+
+  button {
+    color: $color-text;
+    margin-left: .2rem;
+  }
+}
+
+.error-wrapper {
+  // margin-top: 1rem;
+  position: absolute;
+  top: 100%;
+  padding-top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.error {
+  color: $color-red;
+
+  &:not(:last-child) {
+    margin-bottom: .2rem;
+  }
+}

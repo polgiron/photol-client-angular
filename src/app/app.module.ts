@@ -48,6 +48,10 @@ import { ManageTagsComponent } from './components/manage-tags/manage-tags.compon
 import { SearchService } from './services/search.service';
 import { FiltersComponent } from './components/filters/filters.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuardService } from './services/guards/auth-guard.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +81,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MenuComponent,
     PreventDefaultClickDirective,
     ManageTagsComponent,
-    FiltersComponent
+    FiltersComponent,
+    LoginComponent
   ],
   imports: [
     HttpModule,
@@ -103,7 +108,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ModalService,
     SettingsService,
     TagService,
-    SearchService
+    SearchService,
+    AuthenticationService,
+    AuthGuardService,
+    UserService
   ],
   entryComponents: [
     ModalCreateAlbumComponent,

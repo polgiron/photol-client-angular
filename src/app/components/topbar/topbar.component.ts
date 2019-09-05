@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 // import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     // private topbarService: TopbarService,
-    // private ref: ChangeDetectorRef
+    // private ref: ChangeDetectorRef,
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class TopbarComponent implements OnInit {
     //     this.pageTitle = pageTitle;
     //     this.ref.markForCheck();
     //   });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   ngOnDestroy() {

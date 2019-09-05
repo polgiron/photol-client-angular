@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <div class="content">
+    <h1 class="logo-title">Photol</h1>
+    <form (submit)="onSubmit()">
+      <div class="input-group">
+        <!-- <label for="email">Email</label> -->
+        <div class="input-wrapper" [ngClass]="{'is-filled': credentials.email?.length}">
+          <input class="input" name="email" type="email" placeholder="email" [(ngModel)]="credentials.email"
+            (keyup)="onKeyUp()" autofocus>
+        </div>
+      </div>
+      <div class="input-group">
+        <!-- <label for="email">Password</label> -->
+        <div class="input-wrapper" [ngClass]="{'is-filled': credentials.password?.length}">
+          <input class="input" name="password" type="password" placeholder="password"
+            [(ngModel)]="credentials.password" (keyup)="onKeyUpPassword()">
+        </div>
+      </div>
+      <div class="input-group" *ngIf="displayRegister">
+        <!-- <label for="email">Repeat password</label> -->
+        <div class="input-wrapper" [ngClass]="{'is-filled': passwordRepeat?.length}">
+          <input class="input" name="password" type="password" placeholder="repeat password"
+            [(ngModel)]="passwordRepeat" (keyup)="onKeyUpPassword()">
+        </div>
+      </div>
+      <button type="submit" class="button" [innerText]="displayRegister ? 'Sign up' : 'Sign in'"
+        [disabled]="disabled"></button>
+    </form>
+    <div class="footer" *ngIf="!displayRegister">
+      No account? <button (click)="switchToRegister(true)">Sign up</button>
+    </div>
+    <div class="footer" *ngIf="displayRegister">
+      Have an account? <button (click)="switchToRegister(false)">Sign in</button>
+    </div>
+    <div class="error-wrapper" *ngIf="errorServer || errorPassword || errorEmail" [@fadeAnimation]>
+      <div class="error" *ngIf="errorServer">{{errorServer}}</div>
+      <div class="error" *ngIf="errorPassword">Passwords don't match</div>
+      <div class="error" *ngIf="errorEmail">Unvalid email</div>
+    </div>
+  </div>
+</div>
