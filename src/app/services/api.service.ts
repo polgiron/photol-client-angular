@@ -3,23 +3,23 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Utils } from '../utils/utils';
+import { AuthenticationService } from './authentication.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class Api {
-  // domain: string = 'https://photol-api.paulgiron.com/';
-  domain: string = 'http://localhost:3333/';
-
   constructor(
     private http: HttpClient,
-    private utils: Utils
+    private utils: Utils,
+    private auth: AuthenticationService
   ) { }
 
   async get(method: string, data?: any) {
-    let url: string = this.domain + method;
+    let url: string = environment.domain + method;
     if (data) {
       url += '?' + this.utils.serialize(data);
     }
-    const response = await this.http.get(url)
+    const response = await this.http.get(url, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise();
     // console.log('-----API GET RESPONSE');
@@ -28,7 +28,7 @@ export class Api {
   }
 
   async post(method: string, params: object) {
-    const response = await this.http.post(this.domain + method, params)
+    const response = await this.http.post(environment.domain + method, params, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise();
     // console.log('-----API POST RESPONSE');
@@ -37,7 +37,7 @@ export class Api {
   }
 
   async put(method: string, params: object) {
-    const response = await this.http.put(this.domain + method, params)
+    const response = await this.http.put(environment.domain + method, params, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise();
     // console.log('-----API PUT RESPONSE');
@@ -46,7 +46,7 @@ export class Api {
   }
 
   async delete(method: string) {
-    const response = await this.http.delete(this.domain + method)
+    const response = await this.http.delete(environment.domain + method, { headers: { Authorization: `Bearer ${this.auth.getToken()}` } })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise();
     // console.log('-----API DELETE RESPONSE');

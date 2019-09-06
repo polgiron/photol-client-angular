@@ -1,31 +1,26 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import {
   HttpClient, HttpRequest,
-  HttpResponse, HttpEvent
+  HttpResponse,
+  HttpHeaders
 } from '@angular/common/http'
-import { Api } from './api.service';
-import { Image } from '../models/image.model';
-import { Utils } from '../utils/utils';
 import { ModalService } from './modal.service';
 import { Router } from '@angular/router';
-import { Headers, Http, RequestOptions, ResponseType, ResponseContentType } from '@angular/http';
-import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class UploadService {
   private _uploadProgress: Subject<number> = new Subject<number>();
   progress: number = 0;
-
-  // httpEmitter: Subscription;
-  // httpEvent: HttpEvent<{}>;
+  httpEmitter: Subscription;
 
   constructor(
-    private api: Api,
-    private utils: Utils,
     private modalService: ModalService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthenticationService
   ) { }
 
   public uploadProgressChannel(): Observable<number> {
@@ -50,21 +45,28 @@ export class UploadService {
 
       const req = new HttpRequest<FormData>(
         'POST',
-        this.api.domain + 'image',
+        environment.domain + 'image',
         formData, {
+          headers: new HttpHeaders({
+            'Authorization': `Bearer ${this.auth.getToken()}`
+          }),
+          withCredentials: true,
           reportProgress: true,
           responseType: 'text'
         });
 
-      this.http.request(req).subscribe(
-        event => {
-          // console.log('sub', event);
-
-          // this.httpEvent = event;
+      this.httpEmitter = this.http.request(req).subscribe(
+        (event: any) => {
+          // console.log('---event');
+          // console.log(event);
+          // const percentage = (event.loaded / event.total) * 100;
+          // console.log(percentage + '%');
 
           if (event instanceof HttpResponse) {
-            // delete this.httpEmitter;
-            console.log('request done', event);
+            delete this.httpEmitter;
+
+            // console.log('-----request done');
+
             this.progress += 1;
             this._uploadProgress.next(this.progress);
 

@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   displayRegister: boolean = false;
   credentials: TokenPayload = {
     email: '',
+    name: '',
     password: ''
   };
   passwordRepeat: string = '';

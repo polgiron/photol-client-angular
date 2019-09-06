@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserDetails, TokenPayload, TokenResponse } from '../models/auth.model';
 import { map } from 'rxjs/operators';
-import { Api } from './api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -12,8 +12,7 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private api: Api
+    private router: Router
   ) { }
 
   saveToken(token: string) {
@@ -56,22 +55,7 @@ export class AuthenticationService {
   }
 
   async request(type: 'login' | 'register', user: TokenPayload) {
-    // const base = this.http.post(this.document + type, user);
-    // // base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
-
-    // const request = base.pipe(
-    //   map((data: TokenResponse) => {
-    //     if (data.token) {
-    //       this.saveToken(data.token);
-    //     }
-    //     return data;
-    //   })
-    // );
-
-    // return request;
-
-
-    const response = await this.http.post(this.api.domain + this.document + type, user)
+    const response = await this.http.post(environment.domain + this.document + type, user)
       .pipe(
         map((data: TokenResponse) => {
           if (data.token) {

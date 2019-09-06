@@ -62,8 +62,8 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this._images = images;
     this.imageService.currentImages = this.images;
 
-    console.log('---IMAGES');
-    console.log(images);
+    // console.log('---IMAGES');
+    // console.log(images);
 
     // Layout
     // TODO: add window on resize
