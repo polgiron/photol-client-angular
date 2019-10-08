@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ImageService } from 'src/app/services/image.service';
 import { takeWhile } from 'rxjs/operators';
 import { fadeFastAnimation } from 'src/app/utils/animations';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private imageService: ImageService,
-    private ref: ChangeDetectorRef
-  ) { }
+    private ref: ChangeDetectorRef,
+    private settings: SettingsService
+  ) {
+    this.settings.init();
+  }
 
   ngOnInit() {
     this.imageService.modalPhotoChannel()

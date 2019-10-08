@@ -13,3 +13,22 @@
   border-radius: $small-border-radius;
   color: $color-text-medium;
 }
+
+.bottom {
+  padding: .4rem;
+}
+
+.button-logout {
+  // padding: .5rem;
+  border-color: $color-text-medium;
+  color: $color-text-medium;
+  // margin: .5rem;
+  width: 100%;
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.title {
+  padding: .5rem;
+}

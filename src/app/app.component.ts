@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Utils } from 'src/app/utils/utils';
-import { SettingsService } from './services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,8 @@ import { SettingsService } from './services/settings.service';
 })
 export class AppComponent {
   constructor(
-    private utils: Utils,
-    private settings: SettingsService
+    private utils: Utils
   ) {
-    this.settings.init();
     this.utils.hideSplashscreen();
   }
 }

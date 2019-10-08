@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="input-list">
-    <div class="input-wrapper input-wrapper--title" [ngClass]="{'is-filled': title?.length}">
+    <div class="input-wrapper" [ngClass]="{'is-filled': title?.length}">
       <input class="input" type="text" placeholder="Album title..." [(ngModel)]="title">
     </div>
     <div class="bottom">
@@ -40,7 +40,7 @@
       <button class="button button--main" (click)="onCreateAlbum()" [disabled]="disableButton">Create Album</button>
     </div>
   </div>
-  <div class="error" *ngIf="rollExists">
-    An album with this roll ID already exists
+  <div class="warning" *ngIf="rollExists">
+    Warning: an album with this roll ID already exists
   </div>
 </div>

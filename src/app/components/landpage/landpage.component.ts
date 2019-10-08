@@ -11,7 +11,7 @@ import { Image } from 'src/app/models/image.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandpageComponent implements OnInit {
-  images: Image[] = [];
+  images: Image[];
   hasMore: boolean = true;
   page: number = 1;
 
@@ -33,6 +33,8 @@ export class LandpageComponent implements OnInit {
   async getImages(more: boolean = false) {
     if (more) {
       this.page += 1;
+    } else {
+      this.images = [];
     }
 
     const response: any = await this.imageService.getAll(this.page);

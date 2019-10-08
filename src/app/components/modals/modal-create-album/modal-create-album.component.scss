@@ -39,11 +39,6 @@
   grid-auto-rows: minmax(120px, 120px);
   overflow: auto;
   height: 22rem;
-  // padding: 1rem;
-
-  // > :last-child {
-  //   margin-bottom: 1rem;
-  // }
 }
 
 .list__entry {
@@ -51,7 +46,6 @@
   display: flex;
   transition: all .2s;
   border-radius: $small-border-radius;
-  // padding-bottom: .5rem;
 
   img {
     max-width: 100%;
@@ -102,11 +96,7 @@
   }
 }
 
-.input-wrapper--title {
-  max-width: 25rem;
-}
-
-.error {
-  color: $color-red;
+.warning {
+  color: $color-orange;
   margin-top: 1rem;
 }

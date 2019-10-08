@@ -25,8 +25,7 @@ export class ModalCreateAlbumComponent implements OnInit {
   rollExists: boolean = false;
 
   get disableButton() {
-    return !this.title || this.title == '' || !this.rollId || this.rollId == null || !this.images.length || this.rollExists;
-    // return false;
+    return !this.title || this.title == '' || !this.rollId || this.rollId == null || !this.images.length;
   }
 
   constructor(

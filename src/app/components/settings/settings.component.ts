@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,15 +11,19 @@ import { SettingsService } from 'src/app/services/settings.service';
 export class SettingsComponent implements OnInit {
   editMode: boolean = false;
   displayTags: boolean = false;
+  email: string;
 
   constructor(
     private settingsService: SettingsService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.editMode = this.settingsService.settings.editMode;
     this.displayTags = this.settingsService.settings.displayTags;
+    const user = this.auth.getUserDetails();
+    this.email = user.email;
   }
 
   onClickSetting(type: string) {
@@ -33,5 +38,9 @@ export class SettingsComponent implements OnInit {
         break;
     }
     this.ref.markForCheck();
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

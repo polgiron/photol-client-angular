@@ -5,6 +5,7 @@ import { Api } from './api.service';
 
 @Injectable()
 export class SettingsService {
+  document: string = 'settings/';
   private _settings: BehaviorSubject<Settings> = new BehaviorSubject<Settings>({
     editMode: true,
     displayTags: true
@@ -19,7 +20,7 @@ export class SettingsService {
   }
 
   async init() {
-    const settings: any = await this.api.get('settings');
+    const settings: any = await this.api.get(this.document);
     // console.log('settings');
     // console.log(settings.settings);
     this._settings.next(settings.settings);
@@ -33,6 +34,6 @@ export class SettingsService {
     const settings = this._settings.value;
     settings[key] = value;
     this._settings.next(settings);
-    this.api.post('settings', { data: settings });
+    this.api.put(this.document, { data: settings });
   }
 }
