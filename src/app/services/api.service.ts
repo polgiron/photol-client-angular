@@ -12,7 +12,9 @@ export class Api {
     private http: HttpClient,
     private utils: Utils,
     private auth: AuthenticationService
-  ) { }
+  ) {
+    console.log(environment.domain);
+  }
 
   async get(method: string, data?: any) {
     let url: string = environment.domain + method;
