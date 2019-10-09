@@ -13,7 +13,7 @@ export class Api {
     private utils: Utils,
     private auth: AuthenticationService
   ) {
-    console.log(environment.domain);
+    // console.log(environment.domain);
   }
 
   async get(method: string, data?: any) {
