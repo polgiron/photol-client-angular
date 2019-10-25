@@ -35,9 +35,7 @@ export class ModalCreateAlbumComponent implements OnInit {
     private modalService: ModalService
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   onUpload(files: File[]) {
     this.extendPhotos(files);

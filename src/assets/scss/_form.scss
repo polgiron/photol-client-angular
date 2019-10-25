@@ -178,3 +178,15 @@ input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
 }
+
+[contenteditable=true] {
+  outline: 0;
+  transition: background .2s;
+  border-radius: .2rem;
+  background: rgba(255, 255, 255, .1);
+  // padding: .2rem .4rem;
+
+  &:focus {
+    background: rgba(255, 255, 255, .15);
+  }
+}

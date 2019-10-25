@@ -3,9 +3,14 @@
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
   <div class="title-wrapper">
-    <h1 class="title-1">{{album.title}}</h1>
+    <h1 class="title-1" [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
+      (blur)="onTextBlur('title', $event)">{{album.title}}</h1>
     <div class="bottom">
-      {{album.date}}<span *ngIf="album.date && album.rollId">,</span> #{{album.rollId}}
+      <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)" (blur)="onTextBlur('date', $event)"
+        (keypress)="onNumberKeyPress($event)">{{album.date}}</span><span class="coma"
+        *ngIf="album.date && album.rollId">,</span>
+      #<span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
+        (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
     </div>
   </div>
   <!-- <div class="cover main-container--fixed" *ngIf="cover">
