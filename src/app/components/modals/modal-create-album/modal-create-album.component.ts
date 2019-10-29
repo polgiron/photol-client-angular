@@ -17,7 +17,7 @@ export class ModalCreateAlbumComponent implements OnInit {
   images = [];
   loading: boolean = false;
   title: string;
-  rollId: number;
+  rollId: string;
   date: number;
   index: number = 0;
   macyInstance: any;

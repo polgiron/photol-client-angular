@@ -14,7 +14,7 @@ import { fadeAnimation } from 'src/app/utils/animations';
   animations: [fadeAnimation]
 })
 export class AlbumThumbComponent implements OnInit, OnDestroy {
-  @Output() onDeleteAlbum: EventEmitter<number> = new EventEmitter();
+  @Output() onDeleteAlbum: EventEmitter<string> = new EventEmitter();
   @Input() album: Album;
   private _alive: boolean = true;
   editMode: boolean = false;

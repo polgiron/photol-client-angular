@@ -19,7 +19,7 @@ export class TagService {
     return response.tag;
   }
 
-  delete(tagId: number) {
+  delete(tagId: string) {
     return this.api.delete(this.document + tagId);
   }
 }

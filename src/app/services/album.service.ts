@@ -18,7 +18,7 @@ export class AlbumService {
     return this._updateCover.asObservable();
   }
 
-  updateCover(imageId: number) {
+  updateCover(imageId: string) {
     this.update(this.currentAlbum._id, {
       cover: imageId
     }).then((album: Album) => {
@@ -31,18 +31,18 @@ export class AlbumService {
     return response.albums;
   }
 
-  async getAlbum(albumId: number) {
+  async getAlbum(albumId: string) {
     const response: any = await this.api.get(this.document + albumId);
     return response.album;
   }
 
-  // getAlbumByRollId(rollId: number) {
+  // getAlbumByRollId(rollId: string) {
   //   return this.api.get('album/roll/' + rollId).then((album: Album) => {
   //     return album;
   //   });
   // }
 
-  async rollIdExists(rollId: number) {
+  async rollIdExists(rollId: string) {
     const response: any = await this.api.get(this.document + 'roll/' + rollId);
     return response.album != null;
   }
@@ -52,12 +52,12 @@ export class AlbumService {
     return response.album;
   }
 
-  async update(albumId: number, params: object) {
+  async update(albumId: string, params: object) {
     const response: any = await this.api.put(this.document + albumId, params);
     return response.album;
   }
 
-  delete(albumId: number) {
+  delete(albumId: string) {
     return this.api.delete(this.document + albumId);
   }
 }

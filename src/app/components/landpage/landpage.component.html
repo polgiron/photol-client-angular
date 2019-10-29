@@ -3,9 +3,5 @@
 </div>
 <div class="main-container" *ngIf="images" [@fadeAnimation] infiniteScroll [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
-  <!-- <div class="page-header">
-    <h1 class="title-1">All images</h1>
-  </div> -->
-  <app-images [images]="images"></app-images>
-  <!-- <app-images [images]="images" [columns]="2"></app-images> -->
+  <app-images></app-images>
 </div>

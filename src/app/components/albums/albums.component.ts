@@ -54,7 +54,7 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     // this.utils.hideSplashscreen();
   }
 
-  onDeleteAlbum(albumId: number) {
+  onDeleteAlbum(albumId: string) {
     this.albums = this.albums.filter(image => image._id != albumId);
     this.ref.markForCheck();
   }

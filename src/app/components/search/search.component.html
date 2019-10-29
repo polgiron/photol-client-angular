@@ -6,5 +6,5 @@
     <app-filters [tags]="tags" (updateFilters)="updateFilters($event)"></app-filters>
   </div>
   <p class="no-results" *ngIf="!displayImages.length">No search results :(</p>
-  <app-images [images]="displayImages" *ngIf="displayImages.length"></app-images>
+  <app-images *ngIf="displayImages.length"></app-images>
 </div>

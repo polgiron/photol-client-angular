@@ -1,7 +1,7 @@
 import { Image } from "./image.model";
 
 export interface Album {
-  _id: number;
+  _id: string;
   title: string;
   rollId?: number;
   date?: number;

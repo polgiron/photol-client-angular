@@ -1,7 +1,7 @@
 import { Image } from "./image.model";
 
 export interface Tag {
-  _id: number;
+  _id: string;
   value: string;
   images?: Image[];
   active?: boolean;

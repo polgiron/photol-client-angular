@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Image } from 'src/app/models/image.model';
 import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
@@ -15,21 +15,13 @@ import flickrLayout from 'justified-layout';
 })
 export class ImagesComponent implements OnInit, OnDestroy {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
-  // @Input() images: Image[];
-  @Input() set images (value: Image[]) {
-    this.updateImages(value);
-  };
   private _alive: boolean = true;
-  private _images: Image[];
+  images: Image[];
   extendedImages: any[];
   settings: Settings;
   containerHeight: number;
   tabletBreakpoint: number = 992;
   mobileBreakpoint: number = 767;
-
-  get images() {
-    return this._images;
-  }
 
   constructor(
     private imageService: ImageService,
@@ -39,15 +31,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // console.log('---IMAGES');
-    // console.log(this.images);
-
-    const params: any = this.route.queryParams;
-    const photoId = params.value.open;
-    if (photoId) {
-      this.openPhotoOnReload(photoId)
-    }
-
     this.settingsService.settingsChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((settings: Settings) => {
@@ -56,14 +39,19 @@ export class ImagesComponent implements OnInit, OnDestroy {
         // console.log(this.settings.editMode);
         this.ref.markForCheck();
       });
+
+    this.imageService.currentImagesChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe((images: Image[]) => {
+        // console.log('UPDATE IMAGES');
+        // console.log(images);
+        this.updateImages(images);
+        this.ref.markForCheck();
+      });
   }
 
   updateImages(images: Image[]) {
-    this._images = images;
-    this.imageService.currentImages = this.images;
-
-    // console.log('---IMAGES');
-    // console.log(images);
+    this.images = images;
 
     // Layout
     // TODO: add window on resize
@@ -73,6 +61,18 @@ export class ImagesComponent implements OnInit, OnDestroy {
       this.refreshFlickrLayout(150);
     } else {
       this.refreshFlickrLayout();
+    }
+
+    this.openLightbox();
+
+    this.ref.markForCheck();
+  }
+
+  openLightbox() {
+    const params: Params = this.route.queryParams;
+    const photoId: string = params.value.open;
+    if (photoId) {
+      this.openPhotoOnReload(photoId)
     }
   }
 
@@ -111,12 +111,12 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this.refreshFlickrLayout();
   }
 
-  openPhotoOnReload(photoId: number) {
+  openPhotoOnReload(photoId: string) {
     const photo = this.images.find(photo => photo._id == photoId);
     this.imageService.openPhotoModal(photo);
   }
 
-  onDeleteImage(imageId: number) {
+  onDeleteImage(imageId: string) {
     this.images = this.images.filter(image => image._id != imageId);
     this.ref.markForCheck();
   }

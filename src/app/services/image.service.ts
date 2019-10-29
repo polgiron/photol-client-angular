@@ -5,13 +5,26 @@ import { Image } from '../models/image.model';
 
 @Injectable()
 export class ImageService {
-  private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  currentImages: Image[];
+  private _modalPhoto: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+  private _currentImages: BehaviorSubject< Image[]> = new BehaviorSubject< Image[]>([]);
+  // currentImages: Image[];
   document: string = 'image/';
 
   constructor(
     private api: Api
   ) { }
+
+  public currentImagesChannel(): Observable<Image[]> {
+    return this._currentImages.asObservable();
+  }
+
+  get currentImages() {
+    return [... this._currentImages.value];
+  }
+
+  updateCurrentImages(images: Image[]) {
+    this._currentImages.next(images);
+  }
 
   async getAll(page: number = 1, limit: number = 20) {
     const params = {
@@ -22,7 +35,7 @@ export class ImageService {
     return response;
   }
 
-  async getImage(imageId: number) {
+  async getImage(imageId: string) {
     const response: any = await this.api.get(this.document + `${imageId}` + '/big');
     return response.image;
   }
@@ -32,7 +45,7 @@ export class ImageService {
     return response.images;
   }
 
-  async getSignedUrl(imageId: number, size: string) {
+  async getSignedUrl(imageId: string, size: string) {
     const response: any = await this.api.get(this.document + imageId + '/signedUrl', { size: size });
     return response.signedUrl;
   }
@@ -42,14 +55,13 @@ export class ImageService {
   //   return response.tags;
   // }
 
-  update(imageId: number, params: object) {
+  update(imageId: string, params: object) {
     this.api.put(this.document + imageId, params);
   }
 
-  delete(imageId: number) {
+  delete(imageId: string) {
     return this.api.delete(this.document + imageId);
   }
-
 
 
 

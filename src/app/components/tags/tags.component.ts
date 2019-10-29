@@ -13,7 +13,7 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class TagsComponent implements OnInit {
   @Input() tags: Tag[];
-  @Input() imageId: number;
+  @Input() imageId: string;
   @Input() editMode: boolean = false;
   newTagValue: string = '';
   allTags: Tag[];
@@ -71,6 +71,7 @@ export class TagsComponent implements OnInit {
       tags: this.tags
     });
     this.updateSuggestedTags();
+    this.updateCurrentImages();
     this.ref.markForCheck();
   }
 
@@ -80,6 +81,7 @@ export class TagsComponent implements OnInit {
       images: [this.imageId]
     });
     this.tags = this.tags.concat(newTag);
+    this.updateCurrentImages();
     this.ref.markForCheck();
   }
 
@@ -91,6 +93,17 @@ export class TagsComponent implements OnInit {
     if (this.suggestedTags) {
       this.updateSuggestedTags();
     }
+    this.updateCurrentImages();
     this.ref.markForCheck();
+  }
+
+  updateCurrentImages() {
+    const images = this.imageService.currentImages;
+    images.map(image => {
+      if (image._id == this.imageId) {
+        image.tags = this.tags;
+      }
+    });
+    this.imageService.updateCurrentImages(images);
   }
 }

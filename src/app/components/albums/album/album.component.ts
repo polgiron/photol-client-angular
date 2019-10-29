@@ -7,7 +7,7 @@ import { Image } from 'src/app/models/image.model';
 import { Album } from 'src/app/models/album.model';
 import { SettingsService } from 'src/app/services/settings.service';
 import { Settings } from 'src/app/models/settings.model';
-// import { TopbarService } from 'src/app/services/topbar.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-album',
@@ -27,13 +27,13 @@ export class AlbumComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
-    // private topbarService: TopbarService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      const albumId = params['albumId'];
+      const albumId: string = params['albumId'];
 
       if (albumId) {
         this.getAlbum(albumId);
@@ -55,7 +55,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     });
   }
 
-  async getAlbum(albumId: number) {
+  async getAlbum(albumId: string) {
     // console.log('Get album');
 
     this.album = await this.albumService.getAlbum(albumId);
@@ -64,6 +64,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
     // this.topbarService.updatePageTitle(this.album.title);
 
     this.albumService.currentAlbum = this.album;
+
+    this.imageService.updateCurrentImages(this.album.images);
 
     if (this.album.cover) {
       this.cover = this.album.cover;

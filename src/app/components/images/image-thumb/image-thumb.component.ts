@@ -4,6 +4,7 @@ import { Image } from 'src/app/models/image.model';
 import { AlbumService } from 'src/app/services/album.service';
 import { takeWhile } from 'rxjs/operators';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
+import { Tag } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-image-thumb',
@@ -13,8 +14,9 @@ import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
   animations: [fadeAnimation, fadeInAnimation]
 })
 export class ImageThumbComponent implements OnInit, OnDestroy {
-  @Output() onDeleteImage: EventEmitter<number> = new EventEmitter();
+  @Output() onDeleteImage: EventEmitter<string> = new EventEmitter();
   @Input() image: Image;
+  @Input() tags: Tag[]; // Separate tags in order to refresh
   @Input() displayTags: boolean = false;
   @Input() editMode: boolean = false;
   private _alive: boolean = true;

@@ -7,8 +7,8 @@
       'top': image.box.top + 'px',
       'left': image.box.left + 'px'
     }">
-      <app-image-thumb [image]="image" (onDeleteImage)="onDeleteImage($event)" [editMode]="settings.editMode"
-        [displayTags]="settings.displayTags"></app-image-thumb>
+      <app-image-thumb [image]="image" [tags]="image.tags" (onDeleteImage)="onDeleteImage($event)"
+        [editMode]="settings.editMode" [displayTags]="settings.displayTags"></app-image-thumb>
     </li>
   </ul>
   <!-- <ul class="masonry-list" *ngIf="images">

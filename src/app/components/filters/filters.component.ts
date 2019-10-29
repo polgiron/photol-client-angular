@@ -14,9 +14,9 @@ export class FiltersComponent implements OnInit {
     this._tags = value;
     this.selectedTags = [];
   };
-  @Output() updateFilters: EventEmitter<number[]> = new EventEmitter();
+  @Output() updateFilters: EventEmitter<string[]> = new EventEmitter();
   private _tags: Tag[];
-  selectedTags: number[];
+  selectedTags: string[];
 
   get tags() {
     return this._tags;

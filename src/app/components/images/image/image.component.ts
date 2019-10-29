@@ -17,7 +17,7 @@ export class ImageComponent implements OnInit {
   @Input() height: number;
   @Input() cover: boolean = false;
   @Input() displayLoader: boolean = false;
-  @Input() id: number;
+  @Input() id: string;
   @Input() set src(value: string) {
     this.isLoaded = false;
     this._src = value;

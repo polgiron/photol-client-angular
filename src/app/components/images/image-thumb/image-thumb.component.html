@@ -2,11 +2,10 @@
   <button class="image-wrapper" (click)="openPhotoModal()">
     <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
       [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
-
     <div class="overlay" *ngIf="imageLoaded" [@fadeInAnimation]>
       <div *ngIf="!isAlbumView" class="date">{{image.date}}</div>
       <ul class="tags">
-        <li *ngFor="let tag of image.tags; last as isLast">
+        <li *ngFor="let tag of tags; last as isLast">
           {{tag.value}}<span *ngIf="!isLast">,</span>
         </li>
       </ul>

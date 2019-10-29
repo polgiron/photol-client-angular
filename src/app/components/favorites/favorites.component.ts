@@ -1,8 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
-import { Image } from 'src/app/models/image.model';
 import { fadeAnimation } from 'src/app/utils/animations';
-// import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-favorites',
@@ -12,21 +10,21 @@ import { fadeAnimation } from 'src/app/utils/animations';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoritesComponent implements OnInit {
-  images: Image[];
+  loading: boolean = true;
 
   constructor(
     private imageService: ImageService,
-    private ref: ChangeDetectorRef,
-    // private topbarService: TopbarService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    // this.topbarService.updatePageTitle('Favorites');
     this.getLandpage();
   }
 
   async getLandpage() {
-    this.images = await this.imageService.getFavorites();
+    const images = await this.imageService.getFavorites();
+    this.imageService.updateCurrentImages(images);
+    this.loading = false;
     this.ref.markForCheck();
   }
 }

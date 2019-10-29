@@ -35,12 +35,15 @@ export class LandpageComponent implements OnInit {
       this.page += 1;
     } else {
       this.images = [];
+      this.imageService.updateCurrentImages([]);
     }
 
     const response: any = await this.imageService.getAll(this.page);
     // console.log(response);
+
     this.hasMore = response.hasMore;
     this.images = this.images.concat(response.images);
+    this.imageService.updateCurrentImages(this.images);
 
     this.ref.markForCheck();
   }

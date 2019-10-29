@@ -27,7 +27,7 @@ export class UploadService {
     return this._uploadProgress.asObservable();
   }
 
-  upload(images: any[], albumId: number, imageDate: number) {
+  upload(images: any[], albumId: string, imageDate: number) {
     // console.log('Upload function');
     // console.log(images);
 

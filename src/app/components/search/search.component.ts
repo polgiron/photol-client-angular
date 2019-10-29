@@ -4,6 +4,7 @@ import { fadeAnimation } from 'src/app/utils/animations';
 import { Image } from 'src/app/models/image.model';
 import { SearchService } from 'src/app/services/search.service';
 import { Tag } from 'src/app/models/tag.model';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +23,8 @@ export class SearchComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private imageService: ImageService
   ) { }
 
   async ngOnInit() {
@@ -43,6 +45,7 @@ export class SearchComponent implements OnInit {
     this.tags = [];
     this.images = await this.searchService.search(value);
     this.displayImages = this.images;
+    this.imageService.updateCurrentImages(this.displayImages);
 
     this.images.map(image => {
       this.tags = this.tags.concat(image.tags);
@@ -65,7 +68,7 @@ export class SearchComponent implements OnInit {
     }, []);
   }
 
-  updateFilters(tags: number[]) {
+  updateFilters(tags: string[]) {
     // console.log(tags);
 
     this.displayImages = this.images.filter(image => {
@@ -79,6 +82,8 @@ export class SearchComponent implements OnInit {
     if (!tags.length) {
       this.displayImages = this.images;
     }
+
+    this.imageService.updateCurrentImages(this.displayImages);
 
     this.ref.markForCheck();
   }
