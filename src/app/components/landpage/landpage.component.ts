@@ -39,7 +39,7 @@ export class LandpageComponent implements OnInit {
     }
 
     const response: any = await this.imageService.getAll(this.page);
-    // console.log(response);
+    console.log(response);
 
     this.hasMore = response.hasMore;
     this.images = this.images.concat(response.images);

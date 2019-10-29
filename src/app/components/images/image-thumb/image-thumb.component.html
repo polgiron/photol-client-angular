@@ -3,7 +3,10 @@
     <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
       [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
     <div class="overlay" *ngIf="imageLoaded" [@fadeInAnimation]>
-      <div *ngIf="!isAlbumView" class="date">{{image.date}}</div>
+      <div *ngIf="!isAlbumView" class="top-left">
+        <span *ngIf="image.date">{{image.date}}</span>
+        <span *ngIf="image.rollId">#{{image.rollId}}</span>
+      </div>
       <ul class="tags">
         <li *ngFor="let tag of tags; last as isLast">
           {{tag.value}}<span *ngIf="!isLast">,</span>

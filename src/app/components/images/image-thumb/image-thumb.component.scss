@@ -25,16 +25,21 @@
   margin-top: .5rem;
 }
 
-.date,
+.top-left,
 .tags {
   position: absolute;
   color: $color-white-smoke;
   text-shadow: 1px 1px 4px rgba($color-black, .6);
 }
 
-.date {
+.top-left {
   top: .75rem;
   left: .75rem;
+  text-align: left;
+
+  span {
+    display: block;
+  }
 }
 
 .tags {
