@@ -5,7 +5,7 @@
     <div class="overlay" *ngIf="imageLoaded" [@fadeInAnimation]>
       <div *ngIf="!isAlbumView" class="top-left">
         <span *ngIf="image.date">{{image.date}}</span>
-        <span *ngIf="image.rollId">#{{image.rollId}}</span>
+        <span *ngIf="image.albums.length">#{{image.albums[0].rollId}}</span>
       </div>
       <ul class="tags">
         <li *ngFor="let tag of tags; last as isLast">
