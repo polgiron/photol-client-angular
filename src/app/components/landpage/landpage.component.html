@@ -1,7 +1,7 @@
-<div class="main-loader-wrapper" *ngIf="!images" [@fadeAnimation]>
+<div class="main-loader-wrapper" *ngIf="loading" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="main-container" *ngIf="images" [@fadeAnimation] infiniteScroll [infiniteScrollDistance]="2"
+<div class="main-container" *ngIf="!loading" [@fadeAnimation] infiniteScroll [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
   <app-images></app-images>
 </div>

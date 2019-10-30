@@ -35,18 +35,15 @@ export class ImagesComponent implements OnInit, OnDestroy {
       .pipe(takeWhile(() => this._alive))
       .subscribe((settings: Settings) => {
         this.settings = settings;
-        // console.log('new settings');
-        // console.log(this.settings.editMode);
         this.ref.markForCheck();
       });
 
     this.imageService.currentImagesChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((images: Image[]) => {
-        // console.log('UPDATE IMAGES');
-        // console.log(images);
-        this.updateImages(images);
-        this.ref.markForCheck();
+        if (images.length) {
+          this.updateImages(images);
+        }
       });
   }
 
@@ -63,16 +60,20 @@ export class ImagesComponent implements OnInit, OnDestroy {
       this.refreshFlickrLayout();
     }
 
+    console.log('getting images');
+    console.log(images);
     this.openLightbox();
 
     this.ref.markForCheck();
   }
 
   openLightbox() {
+    console.log('open lightbox');
     const params: Params = this.route.queryParams;
     const photoId: string = params.value.open;
+
     if (photoId) {
-      this.openPhotoOnReload(photoId)
+      this.openPhotoOnReload(photoId);
     }
   }
 

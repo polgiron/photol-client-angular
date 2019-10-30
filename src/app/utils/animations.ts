@@ -23,10 +23,10 @@ export const fadeAnimation = trigger('fadeAnimation', [
 export const fadeFastAnimation = trigger('fadeFastAnimation', [
   transition(':enter', [
     style({ opacity: 0 }),
-    animate('.1s ease-out')
+    animate('.15s ease')
   ]),
   transition(':leave', [
-    animate('.1s ease-out', style({ opacity: 0 }))
+    animate('.15s ease', style({ opacity: 0 }))
   ])
 ]);
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { Tag } from 'src/app/models/tag.model';
 import { TagService } from 'src/app/services/tag.service';
 import { fadeInAnimation } from 'src/app/utils/animations';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-manage-tags',
@@ -16,7 +17,8 @@ export class ManageTagsComponent implements OnInit {
 
   constructor(
     private ref: ChangeDetectorRef,
-    private tagService: TagService
+    private tagService: TagService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,14 @@ export class ManageTagsComponent implements OnInit {
   deleteTag(deleteTag: Tag) {
     this.tagService.delete(deleteTag._id).then(() => {
       this.tags = this.tags.filter(tag => tag._id != deleteTag._id);
+
+      const currentImages = this.imageService.currentImages;
+      currentImages.map(image => {
+        image.tags = image.tags.filter(tag => tag._id != deleteTag._id);
+      });
+      console.log();
+      this.imageService.updateCurrentImages(currentImages);
+
       this.ref.markForCheck();
     });
   }

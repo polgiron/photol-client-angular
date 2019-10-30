@@ -11,9 +11,10 @@ import { Image } from 'src/app/models/image.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandpageComponent implements OnInit {
-  images: Image[];
+  images: Image[] = [];
   hasMore: boolean = true;
   page: number = 1;
+  loading: boolean = true;
 
   constructor(
     private imageService: ImageService,
@@ -33,17 +34,16 @@ export class LandpageComponent implements OnInit {
   async getImages(more: boolean = false) {
     if (more) {
       this.page += 1;
-    } else {
-      this.images = [];
-      this.imageService.updateCurrentImages([]);
     }
 
     const response: any = await this.imageService.getAll(this.page);
-    console.log(response);
+    // console.log(response);
 
     this.hasMore = response.hasMore;
     this.images = this.images.concat(response.images);
     this.imageService.updateCurrentImages(this.images);
+
+    this.loading = false;
 
     this.ref.markForCheck();
   }
