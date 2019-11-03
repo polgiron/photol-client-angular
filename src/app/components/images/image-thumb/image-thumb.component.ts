@@ -70,13 +70,22 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   delete() {
     this.imageService.delete(this.image._id).then((response: any) => {
-      // this.ref.markForCheck();
       this.onDeleteImage.emit(this.image._id);
     });
   }
 
   onImageLoaded() {
     this.imageLoaded = true;
+  }
+
+  onLeaveRating() {
+    this.imageService.update(this.image._id, {
+      stars: this.image.stars
+    });
+  }
+
+  clearRating() {
+    this.image.stars = 0;
   }
 
   ngOnDestroy() {

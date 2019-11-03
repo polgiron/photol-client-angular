@@ -1,8 +1,10 @@
 <div class="image-thumb" [ngClass]="{'is-editmode': editMode}">
-  <button class="image-wrapper" (click)="openPhotoModal()">
-    <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
-      [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
-    <div class="overlay" *ngIf="imageLoaded" [@fadeInAnimation]>
+  <div class="image-wrapper">
+    <button class="button-lightbox" (click)="openPhotoModal()">
+      <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
+        [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
+    </button>
+    <div *ngIf="imageLoaded" [@fadeInAnimation]>
       <div *ngIf="!isAlbumView" class="top-left">
         <span *ngIf="image.date">{{image.date}}</span>
         <div *ngIf="image.albums.length" class="roll-id-wrapper">
@@ -10,7 +12,13 @@
           {{image.albums[0].rollId}}
         </div>
       </div>
-      <ul class="tags">
+      <div class="top-right" *ngIf="editMode || image.stars > 0">
+        <button class="clear-rating" (click)="clearRating()" *ngIf="editMode">
+          <i class="material-icons">close</i>
+        </button>
+        <rating [(ngModel)]="image.stars" [max]="5" (onLeave)="onLeaveRating()" [readonly]="!editMode"></rating>
+      </div>
+      <ul class="bottom-left">
         <li *ngFor="let tag of tags; last as isLast">
           {{tag.value}}<span *ngIf="!isLast">,</span>
         </li>
@@ -30,11 +38,5 @@
         </div>
       </div>
     </div>
-  </button>
-
-  <!-- <div class="tags-wrapper" *ngIf="(displayTags && image.tags.length) || editMode">
-    <app-tags [image]="image" [editMode]="editMode"></app-tags>
-  </div> -->
-
-  <!-- <h3 class="title" *ngIf="editMode">{{image.title ? image.title : 'No title'}}</h3> -->
+  </div>
 </div>

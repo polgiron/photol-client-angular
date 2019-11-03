@@ -9,6 +9,7 @@ export interface Image {
   signedUrl?: string;
   favorite?: boolean;
   tags?: Tag[];
+  stars: number
 }
 
 // export class Image {

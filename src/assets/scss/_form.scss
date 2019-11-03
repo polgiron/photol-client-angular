@@ -201,3 +201,7 @@ input:-webkit-autofill {
     height: .85em;
   }
 }
+
+rating > span {
+  outline: 0;
+}
