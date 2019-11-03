@@ -31,3 +31,12 @@
     }
   }
 }
+
+.roll-id-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .film-icon path {
+  fill: $color-text-medium;
+}

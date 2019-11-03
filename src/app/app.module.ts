@@ -52,6 +52,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { UserService } from './services/user.service';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import { UserService } from './services/user.service';
     ProgressbarModule.forRoot(),
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    RatingModule.forRoot(),
+    InlineSVGModule.forRoot()
   ],
   providers: [
     Api,

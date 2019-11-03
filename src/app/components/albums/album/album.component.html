@@ -9,8 +9,11 @@
       <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)" (blur)="onTextBlur('date', $event)"
         (keypress)="onNumberKeyPress($event)">{{album.date}}</span><span class="coma"
         *ngIf="album.date && album.rollId">,</span>
-      #<span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
-        (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
+      <div class="roll-id-wrapper">
+        <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
+        <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
+          (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
+      </div>
     </div>
   </div>
   <!-- <div class="cover main-container--fixed" *ngIf="cover">
