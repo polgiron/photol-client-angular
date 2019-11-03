@@ -60,7 +60,11 @@ export class ImageService {
   }
 
   delete(imageId: string) {
-    return this.api.delete(this.document + imageId);
+    this.api.delete(this.document + imageId).then(() => {
+      let images = this.currentImages;
+      images = images.filter(image => image._id != imageId);
+      this.updateCurrentImages(images);
+    });
   }
 
 

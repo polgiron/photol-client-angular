@@ -16,7 +16,7 @@
         <button class="clear-rating" (click)="clearRating()" *ngIf="editMode">
           <i class="material-icons">close</i>
         </button>
-        <rating [(ngModel)]="image.stars" [max]="5" (onLeave)="onLeaveRating()" [readonly]="!editMode"></rating>
+        <rating [(ngModel)]="image.stars" [max]="5" (onLeave)="saveRating()" [readonly]="!editMode"></rating>
       </div>
       <ul class="bottom-left">
         <li *ngFor="let tag of tags; last as isLast">
@@ -32,8 +32,6 @@
           </button>
         </div>
         <div class="group">
-          <button (click)="updateFavorite($event)" class="button-favorite" [ngClass]="{'is-active': image.favorite}"
-            preventDefaultClick><i class="material-icons">star</i></button>
           <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
         </div>
       </div>

@@ -117,11 +117,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this.imageService.openPhotoModal(photo);
   }
 
-  onDeleteImage(imageId: string) {
-    this.images = this.images.filter(image => image._id != imageId);
-    this.ref.markForCheck();
-  }
-
   trackByFunction(index, item) {
     if (!item) {
       return null;

@@ -7,7 +7,6 @@ export interface Image {
   oriHeight: number;
   ratio: number;
   signedUrl?: string;
-  favorite?: boolean;
   tags?: Tag[];
   stars: number
 }

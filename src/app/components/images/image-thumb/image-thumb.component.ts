@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Image } from 'src/app/models/image.model';
 import { AlbumService } from 'src/app/services/album.service';
@@ -14,7 +14,6 @@ import { Tag } from 'src/app/models/tag.model';
   animations: [fadeAnimation, fadeInAnimation]
 })
 export class ImageThumbComponent implements OnInit, OnDestroy {
-  @Output() onDeleteImage: EventEmitter<string> = new EventEmitter();
   @Input() image: Image;
   @Input() tags: Tag[]; // Separate tags in order to refresh
   @Input() displayTags: boolean = false;
@@ -51,17 +50,6 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     this.imageService.openPhotoModal(this.image);
   }
 
-  updateFavorite() {
-    this.image.favorite = !this.image.favorite;
-    this.ref.markForCheck();
-
-    const params = {
-      favorite: this.image.favorite
-    };
-
-    this.imageService.update(this.image._id, params);
-  }
-
   updateCover() {
     if (!this.isCover) {
       this.albumService.updateCover(this.image._id);
@@ -69,23 +57,22 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   }
 
   delete() {
-    this.imageService.delete(this.image._id).then((response: any) => {
-      this.onDeleteImage.emit(this.image._id);
-    });
+    this.imageService.delete(this.image._id);
   }
 
   onImageLoaded() {
     this.imageLoaded = true;
   }
 
-  onLeaveRating() {
+  clearRating() {
+    this.image.stars = 0;
+    this.saveRating();
+  }
+
+  saveRating() {
     this.imageService.update(this.image._id, {
       stars: this.image.stars
     });
-  }
-
-  clearRating() {
-    this.image.stars = 0;
   }
 
   ngOnDestroy() {
