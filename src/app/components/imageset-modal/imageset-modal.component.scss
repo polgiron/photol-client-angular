@@ -10,6 +10,7 @@
 
     .close-button {
       opacity: .3;
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -119,6 +120,7 @@
   transition: all .3s ease-out;
   border-radius: 50%;
   display: flex;
+  transform: translate3d(15%, -15%, 0);
 
   &:hover {
     background: rgba($color-white, .2);
