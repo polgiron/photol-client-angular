@@ -5,8 +5,8 @@
 
 .main-container {
   padding: 1.5rem;
-  // max-width: $container-width;
-  // margin: auto;
+  max-width: $container-width;
+  margin: auto;
 
   @include respond-to('medium') {
     padding: 1rem 1.5rem;
@@ -43,9 +43,9 @@
   }
 }
 
-.grid-list--small {
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-}
+// .grid-list--small {
+//   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+// }
 
 // .grid-list-square {
 //   display: grid;
@@ -104,42 +104,42 @@ img.fade {
 }
 
 // Masonry
-.masonry-list {
-  column-count: 4;
-  // column-gap: 1rem;
-  column-gap: 1.5rem;
+// .masonry-list {
+//   column-count: 4;
+//   // column-gap: 1rem;
+//   column-gap: 1.5rem;
 
-  @include respond-to('large') {
-    column-count: 3;
-    // column-gap: 2rem;
-  }
+//   @include respond-to('large') {
+//     column-count: 3;
+//     // column-gap: 2rem;
+//   }
 
-  @include respond-to('medium') {
-    column-count: 2;
-    column-gap: 1rem;
-  }
+//   @include respond-to('medium') {
+//     column-count: 2;
+//     column-gap: 1rem;
+//   }
 
-  @include respond-to('small') {
-    column-count: 3;
-    column-gap: .5rem;
-  }
+//   @include respond-to('small') {
+//     column-count: 3;
+//     column-gap: .5rem;
+//   }
 
-  .list__entry {
-    padding-bottom: 1.5rem;
-    break-inside: avoid;
+//   .list__entry {
+//     padding-bottom: 1.5rem;
+//     break-inside: avoid;
 
-    @include respond-to('medium') {
-      padding-top: .5rem;
-      padding-bottom: .5rem;
-    }
+//     @include respond-to('medium') {
+//       padding-top: .5rem;
+//       padding-bottom: .5rem;
+//     }
 
-    @include respond-to('small') {
-      padding-top: .25rem;
-      padding-bottom: .25rem;
-    }
+//     @include respond-to('small') {
+//       padding-top: .25rem;
+//       padding-bottom: .25rem;
+//     }
 
-    img {
-      width: 100%;
-    }
-  }
-}
+//     img {
+//       width: 100%;
+//     }
+//   }
+// }
