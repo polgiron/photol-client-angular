@@ -27,7 +27,7 @@
           <input class="input" name="password" type="password" [(ngModel)]="passwordRepeat" (keyup)="onKeyUpPassword()">
         </div>
       </div>
-      <button type="submit" class="button" [innerText]="displayRegister ? 'Sign up' : 'Sign in'"
+      <button type="submit" class="button button--main" [innerText]="displayRegister ? 'Sign up' : 'Sign in'"
         [disabled]="disabled"></button>
     </form>
     <div class="footer" *ngIf="!displayRegister">

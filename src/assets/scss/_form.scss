@@ -2,19 +2,17 @@
   border-radius: 2rem;
   border: 1px solid $color-main-border;
   color: $color-text-lighter;
-  font-size: 1em;
+  font-size: .8rem;
   transition: all .2s;
-  padding: .5rem 1.1rem;
+  padding: .5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba($color-white, .6);
 
   &:disabled {
     cursor: default;
     opacity: .5;
     box-shadow: 0 0 0 transparent;
-  }
-
-  &:not(:disabled):hover {
-    border-color: $color-text-lighter;
-    // background: $color-text-lighter;
   }
 }
 
@@ -48,7 +46,6 @@
 }
 
 .input-wrapper {
-  // background: $color-background-2;
   background: transparent;
   border-radius: 1000rem;
   overflow: hidden;
