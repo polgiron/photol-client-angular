@@ -61,6 +61,7 @@ export class ImageService {
 
   delete(imageId: string) {
     this.api.delete(this.document + imageId).then(() => {
+      console.log('Image has been deleted');
       let images = this.currentImages;
       images = images.filter(image => image._id != imageId);
       this.updateCurrentImages(images);

@@ -41,7 +41,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this.imageService.currentImagesChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((images: Image[]) => {
-        if (images.length) {
+        if (images) {
           this.updateImages(images);
         }
       });
@@ -60,8 +60,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
       this.refreshFlickrLayout();
     }
 
-    console.log('getting images');
-    console.log(images);
     this.openLightbox();
 
     this.ref.markForCheck();
