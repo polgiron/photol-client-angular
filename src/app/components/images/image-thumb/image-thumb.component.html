@@ -7,7 +7,7 @@
     <div *ngIf="imageLoaded" [@fadeInAnimation]>
       <div *ngIf="!isAlbumView" class="top-left">
         <span *ngIf="image.date">{{image.date}}</span>
-        <div *ngIf="image.albums.length" class="roll-id-wrapper">
+        <div *ngIf="image.albums.length && image.albums[0].rollId" class="roll-id-wrapper">
           <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
           {{image.albums[0].rollId}}
         </div>
