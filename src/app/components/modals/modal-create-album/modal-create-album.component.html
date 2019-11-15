@@ -11,18 +11,14 @@
       Add images to upload
     </button>
     <ul class="list">
-      <li class="list__entry" *ngFor="let image of images; trackBy: trackByFunction" [@fadeInAnimation]>
-        <img [src]="image.src" draggable="false" alt="">
+      <li class="list__entry" [ngClass]="{'is-loaded': image.loaded}" *ngFor="let image of images" [@fadeInAnimation]>
+        <img class="fade" [ngClass]="{'is-loaded': image.loaded}" (load)="image.loaded = true" [src]="image.src"
+          draggable="false" alt="">
         <button class="button-remove" (click)="removeImage(image)">
           <img src="assets/images/close-button.svg" alt="">
         </button>
       </li>
     </ul>
-    <div class="loader-wrapper" *ngIf="loading" [@fadeAnimation]>
-      <div class="inner">
-        <app-loader></app-loader>
-      </div>
-    </div>
   </div>
   <div class="input-list">
     <div class="input-wrapper" [ngClass]="{'is-filled': title?.length}">

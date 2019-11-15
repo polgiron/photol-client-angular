@@ -15,7 +15,6 @@ import { Album } from 'src/app/models/album.model';
 })
 export class ModalCreateAlbumComponent implements OnInit {
   images = [];
-  loading: boolean = false;
   title: string;
   rollId: string;
   date: number;
@@ -43,23 +42,27 @@ export class ModalCreateAlbumComponent implements OnInit {
 
   extendPhotos(files: File[]) {
     // console.log(files);
-    this.loading = true;
-    this.files = files;
+
+    files.map(file => {
+      this.images.unshift({
+        file: file,
+        src: null
+      });
+    });
+
+    // this.images = [...files].reverse();
     this.ref.markForCheck();
 
-    files.forEach((file: File) => {
-      this.generatePreviewThumbnail(file);
+    this.images.forEach((image: any) => {
+      this.generatePreviewThumbnail(image);
     });
   }
 
-  generatePreviewThumbnail(file: File) {
-    const imgURL = window.URL.createObjectURL(file);
-    const image = new Image();
+  generatePreviewThumbnail(image: any) {
+    const imgURL = window.URL.createObjectURL(image.file);
+    const imageElement = new Image();
 
-    image.onload = () => {
-      // var canvas, ctx, dataSrc;
-      // const canvas: HTMLCanvasElement;
-      // const ctx: any;
+    imageElement.onload = () => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       let dataSrc: string;
@@ -70,20 +73,8 @@ export class ModalCreateAlbumComponent implements OnInit {
       }
 
       const decodeImage = () => {
-        // Add id for the ng for tracking
-        this.index += 1;
-        this.images.push({
-          id: this.index,
-          file: file,
-          src: dataSrc
-        });
-
-        if (this.index == this.files.length) {
-          this.loading = false;
-        }
-
+        image.src = dataSrc;
         this.ref.markForCheck();
-
         setTimeout(revokeObject, delay);
       }
 
@@ -93,13 +84,13 @@ export class ModalCreateAlbumComponent implements OnInit {
       }
 
       const scaleImage = () => {
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
         setTimeout(encodeImage, delay);
       }
 
       const maxSize = 200;
-      let width = image.width;
-      let height = image.height;
+      let width = imageElement.width;
+      let height = imageElement.height;
 
       if (width > height) {
         if (width > maxSize) {
@@ -119,10 +110,10 @@ export class ModalCreateAlbumComponent implements OnInit {
       setTimeout(scaleImage, delay);
     };
 
-    image.src = imgURL;
+    imageElement.src = imgURL;
   }
 
-  removeImage(image: Object) {
+  removeImage(image: any) {
     this.images.splice(this.images.indexOf(image), 1);
   }
 
@@ -163,10 +154,10 @@ export class ModalCreateAlbumComponent implements OnInit {
     this.modalService.close(this);
   }
 
-  trackByFunction(index, item) {
-    if (!item) {
-      return null;
-    }
-    return item.id;
-  }
+  // trackByFunction(index, item) {
+  //   if (!item) {
+  //     return null;
+  //   }
+  //   return item.id;
+  // }
 }
