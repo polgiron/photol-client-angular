@@ -3,14 +3,14 @@ import { TokenPayload } from 'src/app/models/auth.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { fadeAnimation } from 'src/app/utils/animations';
+import { fadeAnimation, fadeScaleAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeAnimation]
+  animations: [fadeAnimation, fadeScaleAnimation]
 })
 export class LoginComponent implements OnInit {
   displayRegister: boolean = false;
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   errorServer: string;
   errorPassword: boolean;
   errorEmail: boolean;
+  loading: boolean;
 
   get disabled() {
     if (this.displayRegister) {
@@ -54,11 +55,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
+
     if (this.displayRegister) {
       this.auth.register(this.credentials).then(() => {
         this.router.navigateByUrl('/');
       }, err => {
         console.error(err);
+        this.loading = false;
+        this.ref.markForCheck();
       });
     } else {
       this.auth.login(this.credentials).then(() => {
@@ -67,10 +72,10 @@ export class LoginComponent implements OnInit {
         // console.error(error);
         if (error.status == 401) {
           this.errorServer = 'Email or password wrong';
-          this.ref.markForCheck();
         } else {
           this.errorServer = 'Error';
         }
+        this.loading = false;
         this.ref.markForCheck();
       });
     }
