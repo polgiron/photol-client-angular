@@ -46,71 +46,11 @@ export class ModalCreateAlbumComponent implements OnInit {
     files.map(file => {
       this.images.unshift({
         file: file,
-        src: null
+        src: window.URL.createObjectURL(file).toString()
       });
     });
 
-    // this.images = [...files].reverse();
     this.ref.markForCheck();
-
-    this.images.forEach((image: any) => {
-      this.generatePreviewThumbnail(image);
-    });
-  }
-
-  generatePreviewThumbnail(image: any) {
-    const imgURL = window.URL.createObjectURL(image.file);
-    const imageElement = new Image();
-
-    imageElement.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      let dataSrc: string;
-      const delay = 10;
-
-      const revokeObject = () => {
-        URL.revokeObjectURL(imgURL);
-      }
-
-      const decodeImage = () => {
-        image.src = dataSrc;
-        this.ref.markForCheck();
-        setTimeout(revokeObject, delay);
-      }
-
-      const encodeImage = () => {
-        dataSrc = canvas.toDataURL('image/jpeg', .5);
-        setTimeout(decodeImage, delay);
-      }
-
-      const scaleImage = () => {
-        ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
-        setTimeout(encodeImage, delay);
-      }
-
-      const maxSize = 200;
-      let width = imageElement.width;
-      let height = imageElement.height;
-
-      if (width > height) {
-        if (width > maxSize) {
-          height *= maxSize / width;
-          width = maxSize;
-        }
-      } else {
-        if (height > maxSize) {
-          width *= maxSize / height;
-          height = maxSize;
-        }
-      }
-
-      canvas.width = width;
-      canvas.height = height;
-
-      setTimeout(scaleImage, delay);
-    };
-
-    imageElement.src = imgURL;
   }
 
   removeImage(image: any) {

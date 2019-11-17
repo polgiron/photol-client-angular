@@ -12,8 +12,8 @@
     </button>
     <ul class="list">
       <li class="list__entry" [ngClass]="{'is-loaded': image.loaded}" *ngFor="let image of images" [@fadeInAnimation]>
-        <img class="fade" [ngClass]="{'is-loaded': image.loaded}" (load)="image.loaded = true" [src]="image.src"
-          draggable="false" alt="">
+        <img class="fade" [ngClass]="{'is-loaded': image.loaded}" (load)="image.loaded = true"
+          [src]="image.src | safeUrl" draggable="false" alt="">
         <button class="button-remove" (click)="removeImage(image)">
           <img src="assets/images/close-button.svg" alt="">
         </button>

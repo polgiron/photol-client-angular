@@ -33,11 +33,12 @@ export class UploadService {
 
     this.progress = 0;
 
-    images.forEach(image => {
+    images.forEach((image, index) => {
       let formData: FormData = new FormData();
 
       formData.append('file', image.file);
       formData.append('albums', image.albums);
+      formData.append('order', String(index));
 
       if (imageDate) {
         formData.append('date', String(imageDate));

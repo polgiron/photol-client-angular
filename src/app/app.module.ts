@@ -54,6 +54,7 @@ import { AuthGuardService } from './services/guards/auth-guard.service';
 import { UserService } from './services/user.service';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { InlineSVGModule } from 'ng-inline-svg';
+import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { InlineSVGModule } from 'ng-inline-svg';
     PreventDefaultClickDirective,
     ManageTagsComponent,
     FiltersComponent,
-    LoginComponent
+    LoginComponent,
+    SafeUrlPipe
   ],
   imports: [
     HttpModule,
