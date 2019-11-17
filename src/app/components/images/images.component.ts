@@ -66,7 +66,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
   }
 
   openLightbox() {
-    console.log('open lightbox');
+    // console.log('open lightbox');
     const params: Params = this.route.queryParams;
     const photoId: string = params.value.open;
 

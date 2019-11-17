@@ -1,0 +1,18 @@
+<div *ngIf="!isAlbumView" class="top-left">
+  <span *ngIf="image.date">{{image.date}}</span>
+  <div *ngIf="image.albums.length && image.albums[0].rollId" class="roll-id-wrapper">
+    <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
+    {{image.albums[0].rollId}}
+  </div>
+</div>
+<div class="top-right" *ngIf="editMode || stars > 0">
+  <button class="clear-rating" (click)="clearRating()" *ngIf="editMode">
+    <i class="material-icons">close</i>
+  </button>
+  <rating [(ngModel)]="stars" [max]="5" (onLeave)="saveRating()" [readonly]="!editMode"></rating>
+</div>
+<ul class="bottom-left">
+  <li *ngFor="let tag of tags; last as isLast">
+    {{tag.value}}<span *ngIf="!isLast">,</span>
+  </li>
+</ul>

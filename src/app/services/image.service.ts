@@ -56,7 +56,7 @@ export class ImageService {
   // }
 
   update(imageId: string, params: object) {
-    this.api.put(this.document + imageId, params);
+    return this.api.put(this.document + imageId, params);
   }
 
   delete(imageId: string) {

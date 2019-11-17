@@ -1,39 +1,22 @@
-<div class="image-thumb" [ngClass]="{'is-editmode': editMode}">
+<div class="image-thumb">
   <div class="image-wrapper">
     <button class="button-lightbox" (click)="openPhotoModal()">
       <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
         [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
     </button>
-    <div *ngIf="imageLoaded" [@fadeInAnimation]>
-      <div *ngIf="!isAlbumView" class="top-left">
-        <span *ngIf="image.date">{{image.date}}</span>
-        <div *ngIf="image.albums.length && image.albums[0].rollId" class="roll-id-wrapper">
-          <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
-          {{image.albums[0].rollId}}
-        </div>
-      </div>
-      <div class="top-right" *ngIf="editMode || image.stars > 0">
-        <button class="clear-rating" (click)="clearRating()" *ngIf="editMode">
-          <i class="material-icons">close</i>
+    <app-image-overlay *ngIf="imageLoaded" [image]="image" [tags]="tags" [stars]="stars" [isAlbumView]="isAlbumView"
+      [editMode]="editMode" [@fadeInAnimation]>
+    </app-image-overlay>
+    <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
+      <div class="group" *ngIf="isAlbumView">
+        <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
+          [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
+          <i class="material-icons">photo</i>
+          <i class="material-icons icon-check" *ngIf="isCover">check</i>
         </button>
-        <rating [(ngModel)]="image.stars" [max]="5" (onLeave)="saveRating()" [readonly]="!editMode"></rating>
       </div>
-      <ul class="bottom-left">
-        <li *ngFor="let tag of tags; last as isLast">
-          {{tag.value}}<span *ngIf="!isLast">,</span>
-        </li>
-      </ul>
-      <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
-        <div class="group" *ngIf="isAlbumView">
-          <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
-            [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
-            <i class="material-icons">photo</i>
-            <i class="material-icons icon-check" *ngIf="isCover">check</i>
-          </button>
-        </div>
-        <div class="group">
-          <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
-        </div>
+      <div class="group">
+        <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
       </div>
     </div>
   </div>

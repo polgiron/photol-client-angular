@@ -1,18 +1,19 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Utils } from 'src/app/utils/utils';
 import { Tag } from 'src/app/models/tag.model';
 import { Image } from 'src/app/models/image.model';
+import { fadeInAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-imageset-image',
   templateUrl: './imageset-image.component.html',
   styleUrls: ['./imageset-image.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInAnimation]
 })
 export class ImagesetImageComponent implements OnInit {
-  @ViewChild('photoWrapper', { static: true }) photoWrapperElement: ElementRef;
+  @ViewChild('imageWrapper', { static: true }) imageWrapperElement: ElementRef;
   @Input() set image(value: Image) {
     this._image = value;
     this.extendImage();
@@ -32,10 +33,7 @@ export class ImagesetImageComponent implements OnInit {
   padding: number = 32;
   mobileBreakpoint: number = 767;
   tags: Tag[];
-  // time: number;
-  // contrast: number;
-  // aperture: number;
-  // albums: any;
+  imageLoaded: boolean = false;
 
   get image() {
     return this._image;
@@ -88,8 +86,8 @@ export class ImagesetImageComponent implements OnInit {
       newHeight = this.image.oriHeight * newWidth / this.image.oriWidth;
     }
 
-    this.photoWrapperElement.nativeElement.style.width = newWidth + 'px';
-    this.photoWrapperElement.nativeElement.style.height = newHeight + 'px';
+    this.imageWrapperElement.nativeElement.style.width = newWidth + 'px';
+    this.imageWrapperElement.nativeElement.style.height = newHeight + 'px';
 
     this.ref.markForCheck();
   }
@@ -100,6 +98,10 @@ export class ImagesetImageComponent implements OnInit {
     this.imageSrc = image.signedUrl;
     this.tags = image.tags;
     this.ref.markForCheck();
+  }
+
+  onImageLoaded() {
+    this.imageLoaded = true;
   }
 
   ngOnDestroy() {

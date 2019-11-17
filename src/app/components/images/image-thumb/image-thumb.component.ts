@@ -16,6 +16,7 @@ import { Tag } from 'src/app/models/tag.model';
 export class ImageThumbComponent implements OnInit, OnDestroy {
   @Input() image: Image;
   @Input() tags: Tag[]; // Separate tags in order to refresh
+  @Input() stars: number; // Separate stars in order to refresh
   @Input() displayTags: boolean = false;
   @Input() editMode: boolean = false;
   private _alive: boolean = true;
@@ -62,17 +63,6 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   onImageLoaded() {
     this.imageLoaded = true;
-  }
-
-  clearRating() {
-    this.image.stars = 0;
-    this.saveRating();
-  }
-
-  saveRating() {
-    this.imageService.update(this.image._id, {
-      stars: this.image.stars
-    });
   }
 
   ngOnDestroy() {

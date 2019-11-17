@@ -55,6 +55,7 @@ import { UserService } from './services/user.service';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
+import { ImageOverlayComponent } from './components/images/image-overlay/image-overlay.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
     ManageTagsComponent,
     FiltersComponent,
     LoginComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    ImageOverlayComponent
   ],
   imports: [
     HttpModule,

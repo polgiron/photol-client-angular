@@ -1,5 +1,3 @@
-@import '~src/assets/scss/variables';
-
 .image-thumb {
   width: 100%;
   height: 100%;
@@ -16,65 +14,4 @@
     width: 100%;
     height: 100%;
   }
-}
-
-.top-left,
-.top-right,
-.bottom-left {
-  position: absolute;
-  color: $color-white-smoke;
-  text-shadow: 1px 1px 4px rgba($color-black, .6);
-}
-
-.top-left {
-  top: .75rem;
-  left: .75rem;
-  text-align: left;
-
-  span {
-    display: block;
-  }
-}
-
-.top-right {
-  top: .75rem;
-  right: .75rem;
-  text-shadow: 1px 1px 4px rgba($color-black, .3);
-  display: flex;
-
-  .clear-rating {
-    margin-right: .1em;
-    display: flex;
-    position: relative;
-    top: 1px;
-
-    i {
-      margin: auto;
-      font-size: 1.2em;
-      color: $color-white;
-      text-shadow: 1px 1px 4px rgba($color-black, .4);
-    }
-  }
-}
-
-.bottom-left {
-  bottom: 0;
-  left: 0;
-  padding: .75rem;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 70%;
-
-  li:not(:last-child) {
-    margin-right: .2rem;
-  }
-}
-
-// .is-editmode .bottom-left {
-//   max-width: 70%;
-// }
-
-.roll-id-wrapper {
-  display: flex;
-  align-items: center;
 }

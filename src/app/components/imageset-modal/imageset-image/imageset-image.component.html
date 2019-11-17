@@ -1,24 +1,12 @@
-  <div class="photo-wrapper" #photoWrapper>
-    <app-image
-      *ngIf="image"
-      [src]="imageSrc"
-      [width]="image.oriWidth"
-      [height]="image.oriHeight"
-      [displayLoader]="true"
-    ></app-image>
-    <div class="infos" [ngClass]="{'is-editmode': editMode}" *ngIf="image.tags.length || editMode">
-      <!-- <app-photo-infos
-        [title]="photo.title"
-        [description]="photo.description._content"
-        [tags]="tags"
-        [time]="time"
-        [contrast]="contrast"
-        [aperture]="aperture"
-        [albums]="albums"
-      ></app-photo-infos> -->
-
-      <div class="tags-wrapper" *ngIf="tags">
-        <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode"></app-tags>
-      </div>
+<div class="image-wrapper" [ngClass]="{'is-editmode': editMode}" #imageWrapper>
+  <app-image *ngIf="image" [src]="imageSrc" [width]="image.oriWidth" [height]="image.oriHeight"
+    [displayLoader]="true" (onImageLoaded)="onImageLoaded()"></app-image>
+  <div class="image-overlay-wrapper" *ngIf="imageLoaded" [@fadeInAnimation]>
+    <app-image-overlay [image]="image" [stars]="image.stars" [editMode]="editMode"></app-image-overlay>
+  </div>
+  <div class="infos" *ngIf="(image.tags.length || editMode) && imageLoaded" [@fadeInAnimation]>
+    <div class="tags-wrapper" *ngIf="tags">
+      <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode"></app-tags>
     </div>
   </div>
+</div>
