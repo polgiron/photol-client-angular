@@ -3,13 +3,13 @@
 </div>
 <div class="main-container" *ngIf="albums" [@fadeAnimation]>
   <ul class="grid-list">
-    <li *ngFor="let album of albums; trackBy: trackByFunction">
-      <app-album-thumb [album]="album" (onDeleteAlbum)="onDeleteAlbum($event)"></app-album-thumb>
-    </li>
     <li class="button-add-album" *ngIf="editMode" [@fadeAnimation]>
       <button (click)="onClickAddAlbum()">
         <i class="material-icons">add</i>
       </button>
+    </li>
+    <li *ngFor="let album of albums; trackBy: trackByFunction">
+      <app-album-thumb [album]="album" (onDeleteAlbum)="onDeleteAlbum($event)"></app-album-thumb>
     </li>
   </ul>
 </div>
