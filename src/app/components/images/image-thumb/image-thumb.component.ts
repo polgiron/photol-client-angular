@@ -48,7 +48,7 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   }
 
   openPhotoModal() {
-    this.imageService.openPhotoModal(this.image);
+    this.imageService.openLightbox(this.image);
   }
 
   updateCover() {

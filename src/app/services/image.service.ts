@@ -5,8 +5,8 @@ import { Image } from '../models/image.model';
 
 @Injectable()
 export class ImageService {
-  private _modalPhoto: BehaviorSubject<number> = new BehaviorSubject<number>(null);
-  private _currentImages: BehaviorSubject< Image[]> = new BehaviorSubject< Image[]>([]);
+  private _lightboxIndex: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+  private _currentImages: BehaviorSubject<Image[]> = new BehaviorSubject<Image[]>([]);
   // currentImages: Image[];
   document: string = 'image/';
 
@@ -68,24 +68,19 @@ export class ImageService {
     });
   }
 
+  // Lightbox
 
-
-
-
-  public modalPhotoChannel(): Observable<any> {
-    return this._modalPhoto.asObservable();
+  public lightboxIndexChannel(): Observable<any> {
+    return this._lightboxIndex.asObservable();
   }
 
-  openPhotoModal(photo: any) {
-    // console.log('open photo modal');
-    // console.log(this.currentImages);
-    // console.log(photo._id);
-    this._modalPhoto.next(this.currentImages.indexOf(photo));
+  openLightbox(image: Image) {
+    this._lightboxIndex.next(this.currentImages.indexOf(image));
     document.body.classList.add('is-static');
   }
 
-  closePhotoModal() {
-    this._modalPhoto.next(null);
+  closeLightbox() {
+    this._lightboxIndex.next(null);
     document.body.classList.remove('is-static');
   }
 }

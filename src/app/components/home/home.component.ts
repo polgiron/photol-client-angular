@@ -24,11 +24,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imageService.modalPhotoChannel()
+    this.imageService.lightboxIndexChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((index: number) => {
         this.index = index;
-        // console.log(index);
         this.ref.markForCheck();
       });
   }

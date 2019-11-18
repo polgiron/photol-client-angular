@@ -5,7 +5,6 @@
         (keydown.enter)="onKeyEnter()">
     </div>
   </div>
-
   <div class="body">
     <div class="loader-wrapper" *ngIf="!tags">
       <div class="inner">
@@ -13,10 +12,12 @@
       </div>
     </div>
     <ul class="tags is-editmode" *ngIf="tags" [@fadeInAnimation]>
-      <li class="tag" *ngFor="let tag of tags">
-        {{tag.value}}
-        <button (click)="deleteTag(tag)">
-          <i class="material-icons">close</i>
+      <li *ngFor="let tag of tags">
+        <button class="tag is-clickable" (click)="onClickTag(tag.value)">
+          {{tag.value}}
+          <button (click)="deleteTag($event, tag)">
+            <i class="material-icons">close</i>
+          </button>
         </button>
       </li>
     </ul>

@@ -3,6 +3,7 @@ import { Tag } from 'src/app/models/tag.model';
 import { TagService } from 'src/app/services/tag.service';
 import { fadeInAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-tags',
@@ -18,7 +19,8 @@ export class ManageTagsComponent implements OnInit {
   constructor(
     private ref: ChangeDetectorRef,
     private tagService: TagService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -45,7 +47,9 @@ export class ManageTagsComponent implements OnInit {
     }
   }
 
-  deleteTag(deleteTag: Tag) {
+  deleteTag(event: any, deleteTag: Tag) {
+    event.stopPropagation();
+
     this.tagService.delete(deleteTag._id).then(() => {
       this.tags = this.tags.filter(tag => tag._id != deleteTag._id);
 
@@ -58,5 +62,9 @@ export class ManageTagsComponent implements OnInit {
 
       this.ref.markForCheck();
     });
+  }
+
+  onClickTag(tag: string) {
+    this.router.navigateByUrl('/search?value=' + tag);
   }
 }

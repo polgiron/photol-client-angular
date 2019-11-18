@@ -17,14 +17,14 @@ import { ImagesComponent } from './components/images/images.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
-import { ImagesetImageComponent } from './components/imageset-modal/imageset-image/imageset-image.component';
+import { LightboxEntryComponent } from './components/lightbox/lightbox-entry/lightbox-entry.component';
 import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageComponent } from 'src/app/components/images/image/image.component';
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
-import { ImagesetModalComponent } from './components/imageset-modal/imageset-modal.component';
+import { LightboxComponent } from './components/lightbox/lightbox.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
@@ -70,11 +70,11 @@ import { ImageOverlayComponent } from './components/images/image-overlay/image-o
     ImageThumbComponent,
     TagsComponent,
     DarkroomSettingsComponent,
-    ImagesetImageComponent,
+    LightboxEntryComponent,
     TopbarComponent,
     ImageComponent,
     SearchComponent,
-    ImagesetModalComponent,
+    LightboxComponent,
     LandpageComponent,
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,

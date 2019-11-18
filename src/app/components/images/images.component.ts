@@ -112,7 +112,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
 
   openPhotoOnReload(photoId: string) {
     const photo = this.images.find(photo => photo._id == photoId);
-    this.imageService.openPhotoModal(photo);
+    this.imageService.openLightbox(photo);
   }
 
   trackByFunction(index, item) {

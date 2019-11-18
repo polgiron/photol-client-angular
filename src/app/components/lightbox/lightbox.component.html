@@ -1,4 +1,4 @@
-<div class="image-collection-modal">
+<div class="lightbox">
   <div class="overlay" (click)="close()"></div>
 
   <ul class="list">
@@ -9,7 +9,7 @@
           'is-next': i == getNextIndex(index) && images.length > 1
         }">
         <div class="inner">
-          <app-imageset-image [image]="image" [active]="i == index" [editMode]="settings.editMode"></app-imageset-image>
+          <app-lightbox-entry [image]="image" [active]="i == index" [editMode]="settings.editMode"></app-lightbox-entry>
         </div>
       </div>
     </li>

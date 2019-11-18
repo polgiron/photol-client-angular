@@ -6,12 +6,12 @@ import { takeWhile } from 'rxjs/operators';
 import { Settings } from 'src/app/models/settings.model';
 
 @Component({
-  selector: 'app-imageset-modal',
-  templateUrl: './imageset-modal.component.html',
-  styleUrls: ['./imageset-modal.component.scss'],
+  selector: 'app-lightbox',
+  templateUrl: './lightbox.component.html',
+  styleUrls: ['./lightbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ImagesetModalComponent implements OnInit, OnDestroy {
+export class LightboxComponent implements OnInit, OnDestroy {
   @Input() index: number;
   private _keydownListener: EventListener;
   private _alive: boolean = true;
@@ -77,7 +77,7 @@ export class ImagesetModalComponent implements OnInit, OnDestroy {
   }
 
   close() {
-    this.imageService.closePhotoModal();
+    this.imageService.closeLightbox();
     this.utils.clearOpenQuery();
     this.ref.markForCheck();
   }

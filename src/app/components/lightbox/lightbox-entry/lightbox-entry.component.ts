@@ -6,13 +6,13 @@ import { Image } from 'src/app/models/image.model';
 import { fadeInAnimation } from 'src/app/utils/animations';
 
 @Component({
-  selector: 'app-imageset-image',
-  templateUrl: './imageset-image.component.html',
-  styleUrls: ['./imageset-image.component.scss'],
+  selector: 'app-lightbox-entry',
+  templateUrl: './lightbox-entry.component.html',
+  styleUrls: ['./lightbox-entry.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation]
 })
-export class ImagesetImageComponent implements OnInit {
+export class LightboxEntryComponent implements OnInit {
   @ViewChild('imageWrapper', { static: true }) imageWrapperElement: ElementRef;
   @Input() set image(value: Image) {
     this._image = value;

@@ -4,6 +4,7 @@ import { Tag } from 'src/app/models/tag.model';
 import { Image } from 'src/app/models/image.model';
 import { ImageService } from 'src/app/services/image.service';
 import { SettingsService } from 'src/app/services/settings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tags',
@@ -22,7 +23,8 @@ export class TagsComponent implements OnInit {
   constructor(
     private tagService: TagService,
     private imageService: ImageService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -111,5 +113,10 @@ export class TagsComponent implements OnInit {
       }
     });
     this.imageService.updateCurrentImages(images);
+  }
+
+  onClickTag(tag: string) {
+    this.imageService.closeLightbox();
+    this.router.navigateByUrl('/search?value=' + tag);
   }
 }
