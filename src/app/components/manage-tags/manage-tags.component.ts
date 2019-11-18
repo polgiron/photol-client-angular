@@ -14,7 +14,7 @@ import { PopoverDirective } from 'ngx-bootstrap';
   animations: [fadeInAnimation]
 })
 export class ManageTagsComponent implements OnInit {
-  @Input() popover: PopoverDirective;
+  @Input() popoverTags: PopoverDirective;
   newTagValue: string = '';
   tags: Tag[];
 
@@ -26,15 +26,13 @@ export class ManageTagsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // setTimeout(() => {
-      this.getTags();
-    // }, 2000);
+    this.getTags();
   }
 
   async getTags() {
     this.tags = await this.tagService.getAll();
-    console.log('---TAGS');
-    console.log(this.tags);
+    // console.log('---TAGS');
+    // console.log(this.tags);
     this.ref.markForCheck();
   }
 
@@ -67,7 +65,7 @@ export class ManageTagsComponent implements OnInit {
   }
 
   onClickTag(tag: string) {
-    this.popover.hide();
+    this.popoverTags.hide();
     this.router.navigateByUrl('/search?value=' + tag);
   }
 }
