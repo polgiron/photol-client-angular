@@ -12,7 +12,8 @@
   <rating [(ngModel)]="stars" [max]="5" (onLeave)="saveRating()" [readonly]="!editMode"></rating>
 </div>
 <ul class="bottom-left">
-  <li *ngFor="let tag of tags; last as isLast">
+  <li *ngFor="let tag of displayedTags; last as isLast">
     {{tag.value}}<span *ngIf="!isLast">,</span>
   </li>
+  <li *ngIf="tags && tags.length > maxTags">and {{tags.length - maxTags}} more</li>
 </ul>

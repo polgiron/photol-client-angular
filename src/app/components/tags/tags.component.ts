@@ -25,8 +25,13 @@ export class TagsComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // console.log(this.tags);
+
+    if (this.editMode) {
+      this.allTags = await this.tagService.getAll();
+      this.updateSuggestedTags();
+    }
   }
 
   async onFocus() {
@@ -45,6 +50,7 @@ export class TagsComponent implements OnInit {
     this.suggestedTags = this.allTags.filter(tag => {
       return !this.tags.find(imageTag => imageTag._id == tag._id);
     });
+    this.suggestedTags = this.suggestedTags.reverse().slice(0, 10);
     this.ref.markForCheck();
   }
 
