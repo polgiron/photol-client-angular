@@ -16,8 +16,7 @@ export class MenuComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onPopShown(type: string) {
     this.activePopButton[type] = true;

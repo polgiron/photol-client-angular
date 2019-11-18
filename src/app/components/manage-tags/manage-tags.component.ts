@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { Tag } from 'src/app/models/tag.model';
 import { TagService } from 'src/app/services/tag.service';
 import { fadeInAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
 import { Router } from '@angular/router';
+import { PopoverDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-manage-tags',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   animations: [fadeInAnimation]
 })
 export class ManageTagsComponent implements OnInit {
+  @Input() popover: PopoverDirective;
   newTagValue: string = '';
   tags: Tag[];
 
@@ -65,6 +67,7 @@ export class ManageTagsComponent implements OnInit {
   }
 
   onClickTag(tag: string) {
+    this.popover.hide();
     this.router.navigateByUrl('/search?value=' + tag);
   }
 }

@@ -22,7 +22,7 @@
     <li>
       <button class="menu__entry" [ngClass]="{'is-active': activePopButton.tags}" [popover]="popTagsContent"
         containerClass="popover--tags" placement="bottom" container="body" outsideClick="true"
-        (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')">
+        (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')" #popoverTags="bs-popover">
         <i class="material-icons">tag</i>
         <span>Tags</span>
       </button>
@@ -39,7 +39,7 @@
 </nav>
 
 <ng-template #popTagsContent>
-  <app-manage-tags></app-manage-tags>
+  <app-manage-tags [popover]="popoverTags"></app-manage-tags>
 </ng-template>
 
 <ng-template #popSettingsContent>
