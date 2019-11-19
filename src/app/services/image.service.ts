@@ -26,7 +26,7 @@ export class ImageService {
     this._currentImages.next(images);
   }
 
-  async getAll(page: number = 1, limit: number = 20) {
+  async getAll(page: number = 1, limit: number = 30) {
     const params = {
       page: page,
       limit: limit
