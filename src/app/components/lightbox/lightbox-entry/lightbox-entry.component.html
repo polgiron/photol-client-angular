@@ -6,7 +6,7 @@
   </div>
   <div class="infos" *ngIf="(image.tags.length || editMode) && imageLoaded" [@fadeInAnimation]>
     <div class="tags-wrapper" *ngIf="tags">
-      <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode"></app-tags>
+      <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode" [reload]="active"></app-tags>
     </div>
   </div>
 </div>

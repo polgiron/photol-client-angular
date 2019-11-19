@@ -16,6 +16,14 @@ export class TagsComponent implements OnInit {
   @Input() tags: Tag[];
   @Input() imageId: string;
   @Input() editMode: boolean = false;
+  @Input() set reload(value: boolean) {
+    if (value && this.editMode) {
+      this.tagService.getAll().then((allTags: Tag[]) => {
+        this.allTags = allTags;
+        this.updateSuggestedTags();
+      });
+    }
+  };
   newTagValue: string = '';
   allTags: Tag[];
   suggestedTags: Tag[];
@@ -28,8 +36,6 @@ export class TagsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    // console.log(this.tags);
-
     if (this.editMode) {
       this.allTags = await this.tagService.getAll();
       this.updateSuggestedTags();

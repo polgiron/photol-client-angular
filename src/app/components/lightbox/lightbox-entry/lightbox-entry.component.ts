@@ -23,12 +23,14 @@ export class LightboxEntryComponent implements OnInit {
     if (value) {
       this.setQueryParameter();
     }
+    this._active = value;
   }
   @Input() width: number;
   @Input() height: number;
   @Input() editMode: boolean = false;
   private _resizeListener: EventListener;
   private _image: Image;
+  private _active: boolean;
   imageSrc: string;
   padding: number = 32;
   mobileBreakpoint: number = 767;
@@ -37,6 +39,10 @@ export class LightboxEntryComponent implements OnInit {
 
   get image() {
     return this._image;
+  }
+
+  get active() {
+    return this._active;
   }
 
   constructor(

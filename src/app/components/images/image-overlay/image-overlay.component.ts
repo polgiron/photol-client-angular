@@ -16,6 +16,8 @@ export class ImageOverlayComponent implements OnInit {
     this._tags = value;
     if (value.length > this.maxTags) {
       this.displayedTags = value.slice(0, this.maxTags);
+    } else {
+      this.displayedTags = value;
     }
   };
   @Input() stars: number;

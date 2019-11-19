@@ -4,6 +4,7 @@ import { Utils } from 'src/app/utils/utils';
 import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
 import { Settings } from 'src/app/models/settings.model';
+import { Image } from 'src/app/models/image.model';
 
 @Component({
   selector: 'app-lightbox',
@@ -15,7 +16,7 @@ export class LightboxComponent implements OnInit, OnDestroy {
   @Input() index: number;
   private _keydownListener: EventListener;
   private _alive: boolean = true;
-  images: any;
+  images: Image[];
   displayControl: boolean = true;
   settings: Settings;
 
