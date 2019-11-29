@@ -14,6 +14,11 @@ export class TagService {
     return response.tags;
   }
 
+  async getLastUsed() {
+    const response: any = await this.api.get(this.document + 'lastused');
+    return response.tags;
+  }
+
   async create(params: Object) {
     const response: any = await this.api.post(this.document, params);
     return response.tag;

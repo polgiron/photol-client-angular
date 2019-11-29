@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TagService } from 'src/app/services/tag.service';
 import { Tag } from 'src/app/models/tag.model';
-import { Image } from 'src/app/models/image.model';
 import { ImageService } from 'src/app/services/image.service';
-import { SettingsService } from 'src/app/services/settings.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -54,11 +52,15 @@ export class TagsComponent implements OnInit {
   //   this.ref.markForCheck();
   // }
 
-  updateSuggestedTags() {
-    this.suggestedTags = this.allTags.filter(tag => {
+  async updateSuggestedTags() {
+    // this.suggestedTags = this.allTags.filter(tag => {
+    //   return !this.tags.find(imageTag => imageTag._id == tag._id);
+    // });
+    // this.suggestedTags = this.suggestedTags.reverse().slice(0, 10);
+    this.suggestedTags = await this.tagService.getLastUsed();
+    this.suggestedTags = this.suggestedTags.filter(tag => {
       return !this.tags.find(imageTag => imageTag._id == tag._id);
     });
-    this.suggestedTags = this.suggestedTags.reverse().slice(0, 10);
     this.ref.markForCheck();
   }
 
