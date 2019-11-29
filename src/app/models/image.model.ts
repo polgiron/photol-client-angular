@@ -8,20 +8,6 @@ export interface Image {
   ratio: number;
   signedUrl?: string;
   tags?: Tag[];
+  albums?: string[];
   stars: number
 }
-
-// export class Image {
-//   _id: number;
-//   title?: string;
-//   oriWidth: number;
-//   oriHeight: number;
-//   ratio: number;
-//   signedUrl?: string;
-//   favorite?: boolean;
-//   tags?: Tag[];
-
-//   constructor(data: any) {
-//     this.ratio = data.oriWidth / data.oriHeight;
-//   }
-// }

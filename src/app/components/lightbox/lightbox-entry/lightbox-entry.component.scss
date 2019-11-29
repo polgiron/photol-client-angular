@@ -8,6 +8,7 @@
 
   &:hover .infos,
   &:hover .image-overlay-wrapper,
+  &:hover .go-to-album,
   &.is-editmode .infos,
   &.is-editmode .image-overlay-wrapper {
     opacity: 1;
@@ -28,10 +29,15 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  // background: rgba($color-black, .8);
-  // background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .4) 100%);
-  // color: $color-white;
   padding: .75rem;
+  opacity: 0;
+  transition: all .2s;
+}
+
+.go-to-album {
+  position: absolute;
+  right: .75rem;
+  bottom: .75rem;
   opacity: 0;
   transition: all .2s;
 }

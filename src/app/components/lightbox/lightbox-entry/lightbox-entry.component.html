@@ -1,6 +1,6 @@
 <div class="image-wrapper" [ngClass]="{'is-editmode': editMode}" #imageWrapper>
-  <app-image *ngIf="image" [src]="imageSrc" [width]="image.oriWidth" [height]="image.oriHeight"
-    [displayLoader]="true" (onImageLoaded)="onImageLoaded()"></app-image>
+  <app-image *ngIf="image" [src]="imageSrc" [width]="image.oriWidth" [height]="image.oriHeight" [displayLoader]="true"
+    (onImageLoaded)="onImageLoaded()"></app-image>
   <div class="image-overlay-wrapper" *ngIf="imageLoaded" [@fadeInAnimation]>
     <app-image-overlay [image]="image" [stars]="image.stars" [editMode]="editMode"></app-image-overlay>
   </div>
@@ -8,5 +8,9 @@
     <div class="tags-wrapper" *ngIf="tags">
       <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode" [reload]="active"></app-tags>
     </div>
+  </div>
+  <div class="go-to-album" *ngIf="!editMode && albumId && !isAlbumView">
+    <a class="button button--white" [routerLink]="['/', 'albums', albumId]" (click)="onClickGoToAlbum()"><i
+        class="material-icons">collections</i> Go to album</a>
   </div>
 </div>

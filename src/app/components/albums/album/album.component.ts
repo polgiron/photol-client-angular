@@ -102,7 +102,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.album = null;
     const currentIndex = this.albumService.getCurrentAlbumIndex(currentAlbum);
     const albumId = this.albumService.currentAlbums[currentIndex - 1]._id;
-    this.router.navigate(['albums', albumId]);
+    this.router.navigate(['/', 'albums', albumId]);
   }
 
   next() {
@@ -110,7 +110,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.album = null;
     const currentIndex = this.albumService.getCurrentAlbumIndex(currentAlbum);
     const albumId = this.albumService.currentAlbums[currentIndex + 1]._id;
-    this.router.navigate(['albums', albumId]);
+    this.router.navigate(['/', 'albums', albumId]);
   }
 
   ngOnDestroy() {

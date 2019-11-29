@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Tag } from 'src/app/models/tag.model';
 import { Image } from 'src/app/models/image.model';
 import { fadeInAnimation } from 'src/app/utils/animations';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-lightbox-entry',
@@ -36,6 +37,8 @@ export class LightboxEntryComponent implements OnInit {
   mobileBreakpoint: number = 767;
   tags: Tag[];
   imageLoaded: boolean = false;
+  albumId: string;
+  isAlbumView: boolean = false;
 
   get image() {
     return this._image;
@@ -49,12 +52,14 @@ export class LightboxEntryComponent implements OnInit {
     private imageService: ImageService,
     private router: Router,
     private route: ActivatedRoute,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private albumService: AlbumService
   ) { }
 
   ngOnInit() {
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
+    this.isAlbumView = this.albumService.currentAlbum ? true : false;
   }
 
   setQueryParameter() {
@@ -103,11 +108,18 @@ export class LightboxEntryComponent implements OnInit {
     // console.log(image);
     this.imageSrc = image.signedUrl;
     this.tags = image.tags;
+    if (image.albums && image.albums.length) {
+      this.albumId = image.albums[0];
+    }
     this.ref.markForCheck();
   }
 
   onImageLoaded() {
     this.imageLoaded = true;
+  }
+
+  onClickGoToAlbum() {
+    this.imageService.closeLightbox();
   }
 
   ngOnDestroy() {

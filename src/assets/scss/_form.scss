@@ -8,11 +8,19 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: rgba($color-white, .6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:disabled {
     cursor: default;
     opacity: .5;
     box-shadow: 0 0 0 transparent;
+  }
+
+  i {
+    margin-right: .3rem;
+    font-size: 1rem;
   }
 }
 
@@ -26,6 +34,18 @@
     border-color: $color-accent;
     opacity: .9;
     box-shadow: 0 2px 7px rgba($color-black, .1);
+  }
+}
+
+.button--white {
+  text-transform: none;
+  background: rgba($color-white, .5);
+  border: 0;
+  color: $color-almost-black;
+
+  &:not(:disabled):hover {
+    opacity: .9;
+    color: $color-almost-black;
   }
 }
 
@@ -208,6 +228,6 @@ input:-webkit-autofill {
   }
 }
 
-rating > span {
+rating>span {
   outline: 0;
 }
