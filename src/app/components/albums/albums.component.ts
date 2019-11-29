@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
@@ -8,7 +7,6 @@ import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-cr
 import { SettingsService } from 'src/app/services/settings.service';
 import { takeWhile } from 'rxjs/operators';
 import { Settings } from 'src/app/models/settings.model';
-// import { TopbarService } from 'src/app/services/topbar.service';
 
 @Component({
   selector: 'app-albums',
@@ -23,17 +21,14 @@ export class AlbumsComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
 
   constructor(
-    private datePipe: DatePipe,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
     private modalService: ModalService,
-    private settingsService: SettingsService,
-    // private topbarService: TopbarService
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
-    // this.topbarService.updatePageTitle('Albums');
-    this.getAlbums();
+    this.albumService.getAll()
 
     this.settingsService.settingsChannel()
       .pipe(takeWhile(() => this._alive))
@@ -41,23 +36,13 @@ export class AlbumsComponent implements OnInit, OnDestroy {
         this.editMode = settings.editMode;
         this.ref.markForCheck();
       });
-  }
 
-  async getAlbums() {
-    // this.albums = await this.api.get('albums');
-    this.albums = await this.albumService.getAll();
-    this.albums = this.albums.reverse();
-    // console.log('get albums', this.albums);
-    this.ref.markForCheck();
-    // this.albums.forEach((album: Album) => {
-      // album.year = this.datePipe.transform(album.primary_photo_extras.datetaken, 'y');
-    // });
-    // this.utils.hideSplashscreen();
-  }
-
-  onDeleteAlbum(albumId: string) {
-    this.albums = this.albums.filter(image => image._id != albumId);
-    this.ref.markForCheck();
+    this.albumService.currentAlbumsChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe((albums: Album[]) => {
+        this.albums = albums;
+        this.ref.markForCheck();
+      });
   }
 
   onClickAddAlbum() {

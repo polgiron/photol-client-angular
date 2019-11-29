@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { AlbumService } from 'src/app/services/album.service';
 import { Album } from 'src/app/models/album.model';
 import { takeWhile } from 'rxjs/operators';
@@ -14,7 +14,6 @@ import { fadeAnimation } from 'src/app/utils/animations';
   animations: [fadeAnimation]
 })
 export class AlbumThumbComponent implements OnInit, OnDestroy {
-  @Output() onDeleteAlbum: EventEmitter<string> = new EventEmitter();
   @Input() album: Album;
   private _alive: boolean = true;
   editMode: boolean = false;
@@ -37,10 +36,7 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
   delete(event: any) {
     event.preventDefault();
     event.stopPropagation();
-    this.albumService.delete(this.album._id).then((response: any) => {
-      // this.ref.markForCheck();
-      this.onDeleteAlbum.emit(this.album._id);
-    });
+    this.albumService.delete(this.album._id);
   }
 
   ngOnDestroy() {

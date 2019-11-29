@@ -2,8 +2,7 @@
 
 .lightbox {
   &:hover {
-    .prev,
-    .next {
+    .navigation-button {
       opacity: .3;
       transform: translate3d(0, -50%, 0);
     }
@@ -37,10 +36,6 @@
   z-index: 1;
   visibility: hidden;
 
-  // &:hover .close-button {
-  //   opacity: .5;
-  // }
-
   &.is-visible {
     visibility: visible;
 
@@ -73,8 +68,7 @@
   }
 }
 
-.prev,
-.next {
+.navigation-button {
   position: absolute;
   top: 50%;
   height: 16rem;
@@ -83,20 +77,6 @@
   transition: all .2s ease-out;
   opacity: 0;
   z-index: 1;
-
-  &:hover i {
-    background: rgba($color-white, .2);
-  }
-
-  i {
-    margin: auto;
-    color: $color-white;
-    font-size: 3.2rem;
-    text-shadow: 1px 1px 5px rgba($color-black, .05);
-    border-radius: 50%;
-    padding: .5rem;
-    transition: all .2s;
-  }
 }
 
 .prev {

@@ -46,17 +46,7 @@ export class TagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  // onBlur() {
-  //   console.log('ON BLUR');
-  //   this.suggestedTags = null;
-  //   this.ref.markForCheck();
-  // }
-
   async updateSuggestedTags() {
-    // this.suggestedTags = this.allTags.filter(tag => {
-    //   return !this.tags.find(imageTag => imageTag._id == tag._id);
-    // });
-    // this.suggestedTags = this.suggestedTags.reverse().slice(0, 10);
     this.suggestedTags = await this.tagService.getLastUsed();
     this.suggestedTags = this.suggestedTags.filter(tag => {
       return !this.tags.find(imageTag => imageTag._id == tag._id);

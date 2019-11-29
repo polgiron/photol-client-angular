@@ -15,7 +15,9 @@
     </li>
   </ul>
 
-  <button *ngIf="displayControl" class="prev" (click)="prev()"><i class="material-icons">navigate_before</i></button>
-  <button *ngIf="displayControl" class="next" (click)="next()"><i class="material-icons">navigate_next</i></button>
+  <button *ngIf="displayControl" class="navigation-button prev" (click)="prev()"><i
+      class="material-icons">navigate_before</i></button>
+  <button *ngIf="displayControl" class="navigation-button next" (click)="next()"><i
+      class="material-icons">navigate_next</i></button>
   <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
 </div>

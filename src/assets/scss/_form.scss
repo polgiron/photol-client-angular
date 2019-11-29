@@ -29,6 +29,24 @@
   }
 }
 
+.navigation-button {
+  opacity: .3;
+
+  &:hover i {
+    background: rgba($color-white, .2);
+  }
+
+  i {
+    margin: auto;
+    color: $color-white;
+    font-size: 3.2rem;
+    text-shadow: 1px 1px 5px rgba($color-black, .05);
+    border-radius: 50%;
+    padding: .5rem;
+    transition: all .2s;
+  }
+}
+
 .input-group {
   display: flex;
   flex-direction: column;

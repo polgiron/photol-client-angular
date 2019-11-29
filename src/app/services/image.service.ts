@@ -7,7 +7,6 @@ import { Image } from '../models/image.model';
 export class ImageService {
   private _lightboxIndex: BehaviorSubject<number> = new BehaviorSubject<number>(null);
   private _currentImages: BehaviorSubject<Image[]> = new BehaviorSubject<Image[]>([]);
-  // currentImages: Image[];
   document: string = 'image/';
 
   constructor(
@@ -50,18 +49,13 @@ export class ImageService {
     return response.signedUrl;
   }
 
-  // async getTags(imageId: number) {
-  //   const response: any = await this.api.get(this.document + imageId + '/tags');
-  //   return response.tags;
-  // }
-
   update(imageId: string, params: object) {
     return this.api.put(this.document + imageId, params);
   }
 
   delete(imageId: string) {
     this.api.delete(this.document + imageId).then(() => {
-      console.log('Image has been deleted');
+      // console.log('Image has been deleted');
       let images = this.currentImages;
       images = images.filter(image => image._id != imageId);
       this.updateCurrentImages(images);

@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Api } from './api.service';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Image } from '../models/image.model';
 import { Album } from '../models/album.model';
 
 @Injectable()
 export class AlbumService {
   private _updateCover: Subject<Image> = new Subject<Image>();
+  private _currentAlbums: BehaviorSubject<Album[]> = new BehaviorSubject<Album[]>([]);
   document: string = 'album/';
   currentAlbum: Album;
 
   constructor(
     private api: Api
   ) { }
+
+  public currentAlbumsChannel(): Observable<Album[]> {
+    return this._currentAlbums.asObservable();
+  }
+
+  get currentAlbums() {
+    return [... this._currentAlbums.value];
+  }
+
+  updateCurrentAlbums(albums: Album[]) {
+    this._currentAlbums.next(albums);
+  }
 
   public updateCoverChannel(): Observable<Image> {
     return this._updateCover.asObservable();
@@ -26,21 +39,25 @@ export class AlbumService {
     });
   }
 
+  getCurrentAlbumIndex(albumToFind: Album) {
+    const currentAlbum = this.currentAlbums.find(album => album._id == albumToFind._id);
+    return this.currentAlbums.indexOf(currentAlbum);
+  }
+
   async getAll() {
     const response: any = await this.api.get(this.document + 'all');
-    return response.albums;
+    this.updateCurrentAlbums(response.albums.reverse());
   }
 
   async getAlbum(albumId: string) {
     const response: any = await this.api.get(this.document + albumId);
+
+    if (!this.currentAlbums.length) {
+      await this.getAll();
+    }
+
     return response.album;
   }
-
-  // getAlbumByRollId(rollId: string) {
-  //   return this.api.get('album/roll/' + rollId).then((album: Album) => {
-  //     return album;
-  //   });
-  // }
 
   async rollIdExists(rollId: string) {
     const response: any = await this.api.get(this.document + 'roll/' + rollId);
@@ -57,7 +74,10 @@ export class AlbumService {
     return response.album;
   }
 
-  delete(albumId: string) {
-    return this.api.delete(this.document + albumId);
+  async delete(albumId: string) {
+    await this.api.delete(this.document + albumId);
+    let albums = this.currentAlbums;
+    albums = albums.filter(album => album._id != albumId);
+    this.updateCurrentAlbums(albums);
   }
 }

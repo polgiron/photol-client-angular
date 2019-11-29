@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { takeWhile } from 'rxjs/operators';
@@ -19,16 +19,18 @@ import { ImageService } from 'src/app/services/image.service';
 export class AlbumComponent implements OnInit, OnDestroy {
   private _alive: boolean = true;
   album: Album;
-  cover: Image;
   settings: Settings;
   currentEditTextValue: string;
+  displayPrev: boolean = false;
+  displayNext: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
     private settingsService: SettingsService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -37,13 +39,6 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
       if (albumId) {
         this.getAlbum(albumId);
-
-        this.albumService.updateCoverChannel()
-          .pipe(takeWhile(() => this._alive))
-          .subscribe((image: Image) => {
-            this.cover = image;
-            this.ref.markForCheck();
-          });
 
         this.settingsService.settingsChannel()
           .pipe(takeWhile(() => this._alive))
@@ -56,32 +51,38 @@ export class AlbumComponent implements OnInit, OnDestroy {
   }
 
   async getAlbum(albumId: string) {
-    // console.log('Get album');
+    // console.log('GET ALBUM');
 
     this.album = await this.albumService.getAlbum(albumId);
     // console.log(this.album);
-
-    // this.topbarService.updatePageTitle(this.album.title);
 
     this.albumService.currentAlbum = this.album;
 
     this.imageService.updateCurrentImages(this.album.images);
 
-    if (this.album.cover) {
-      this.cover = this.album.cover;
-    }
+    this.displayNavigationButtons();
 
     this.ref.markForCheck();
   }
 
+  displayNavigationButtons() {
+    this.displayPrev = false;
+    this.displayNext = false;
+
+    if (this.albumService.getCurrentAlbumIndex(this.album) != 0) {
+      this.displayPrev = true;
+    }
+
+    if (this.albumService.getCurrentAlbumIndex(this.album) != this.albumService.currentAlbums.length - 1) {
+      this.displayNext = true;
+    }
+  }
+
   onTextFocus(event: any) {
-    // console.log(event.target.textContent);
     this.currentEditTextValue = event.target.textContent;
   }
 
   onTextBlur(key: string, event: any) {
-    // console.log(event.target.textContent);
-
     const params = {};
     params[key] = event.target.textContent;
 
@@ -94,6 +95,22 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
   onNumberKeyPress(event: any) {
     if (!isFinite(event.key)) event.preventDefault();
+  }
+
+  prev() {
+    const currentAlbum = this.album;
+    this.album = null;
+    const currentIndex = this.albumService.getCurrentAlbumIndex(currentAlbum);
+    const albumId = this.albumService.currentAlbums[currentIndex - 1]._id;
+    this.router.navigate(['albums', albumId]);
+  }
+
+  next() {
+    const currentAlbum = this.album;
+    this.album = null;
+    const currentIndex = this.albumService.getCurrentAlbumIndex(currentAlbum);
+    const albumId = this.albumService.currentAlbums[currentIndex + 1]._id;
+    this.router.navigate(['albums', albumId]);
   }
 
   ngOnDestroy() {

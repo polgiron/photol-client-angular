@@ -9,7 +9,7 @@
       </button>
     </li>
     <li *ngFor="let album of albums; trackBy: trackByFunction">
-      <app-album-thumb [album]="album" (onDeleteAlbum)="onDeleteAlbum($event)"></app-album-thumb>
+      <app-album-thumb [album]="album"></app-album-thumb>
     </li>
   </ul>
 </div>

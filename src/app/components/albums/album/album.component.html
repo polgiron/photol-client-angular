@@ -3,28 +3,28 @@
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
   <div class="title-wrapper">
-    <h1 class="title-1" [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
-      (blur)="onTextBlur('title', $event)">{{album.title}}</h1>
-    <div class="bottom">
-      <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)" (blur)="onTextBlur('date', $event)"
-        (keypress)="onNumberKeyPress($event)">{{album.date}}</span><span class="coma"
-        *ngIf="(album.date && album.rollId) || settings.editMode">,</span>
-      <div class="roll-id-wrapper" *ngIf="album.rollId || settings.editMode">
-        <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
+    <div class="left">
+      <button *ngIf="displayPrev" class="navigation-button prev" (click)="prev()"><i
+          class="material-icons">navigate_before</i></button>
+    </div>
+    <div class="middle">
+      <h1 class="title-1" [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
+        (blur)="onTextBlur('title', $event)">{{album.title}}</h1>
+      <div class="bottom">
         <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
-          (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
+          (blur)="onTextBlur('date', $event)" (keypress)="onNumberKeyPress($event)">{{album.date}}</span><span
+          class="coma" *ngIf="(album.date && album.rollId) || settings.editMode">,</span>
+        <div class="roll-id-wrapper" *ngIf="album.rollId || settings.editMode">
+          <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
+          <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
+            (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
+        </div>
       </div>
     </div>
+    <div class="right">
+      <button *ngIf="displayNext" class="navigation-button next" (click)="next()"><i
+          class="material-icons">navigate_next</i></button>
+    </div>
   </div>
-  <!-- <div class="cover main-container--fixed" *ngIf="cover">
-    <app-image
-      [src]="cover.signedUrl"
-      [width]="cover.oriWidth"
-      [height]="cover.oriHeight"
-      [cover]="true"
-      [displayLoader]="true"
-    ></app-image>
-  </div> -->
   <app-images></app-images>
-  <!-- <app-images [images]="album.images" (onUpdateCover)="onUpdateCover($event)"></app-images> -->
 </div>
