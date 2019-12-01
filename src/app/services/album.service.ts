@@ -46,7 +46,7 @@ export class AlbumService {
 
   async getAll() {
     const response: any = await this.api.get(this.document + 'all');
-    this.updateCurrentAlbums(response.albums.reverse());
+    this.updateCurrentAlbums(response.albums);
   }
 
   async getAlbum(albumId: string) {
