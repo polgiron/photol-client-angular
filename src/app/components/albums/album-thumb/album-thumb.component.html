@@ -5,11 +5,11 @@
     <!-- <app-image *ngIf="album.cover" [src]="album.cover.signedUrl" [width]="album.cover.oriWidth"
         [height]="album.cover.oriHeight"></app-image> -->
     <!-- </div> -->
+    <img *ngIf="album.cover" [src]="album.cover.signedUrl" class="fade" [ngClass]="{ 'is-loaded': isLoaded }"
+      (load)="isLoaded = true" alt="">
     <div *ngIf="album.rollId" class="top-left">
       #{{album.rollId}}
     </div>
-    <img *ngIf="album.cover" [src]="album.cover.signedUrl" class="fade" [ngClass]="{ 'is-loaded': isLoaded }"
-      (load)="isLoaded = true" alt="">
     <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group">
         <button (click)="delete($event)"><i class="material-icons">delete</i></button>
