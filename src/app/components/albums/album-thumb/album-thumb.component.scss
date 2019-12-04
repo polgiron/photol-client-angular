@@ -27,10 +27,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $color-text-medium;
   }
 }
-
-@import '~src/assets/scss/variables';
 
 .top-left {
   position: absolute;
