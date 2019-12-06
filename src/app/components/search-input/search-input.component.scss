@@ -1,10 +1,12 @@
+@import '~src/assets/scss/variables';
+
 .input-wrapper {
   width: 12rem;
 
-  // @include respond-to('small') {
-  //   margin: auto;
-  //   margin-top: 1rem;
-  // }
+  @include respond-to('small') {
+    width: 18rem;
+    margin: auto;
+  }
 
   i {
     width: 2.5rem;

@@ -51,9 +51,8 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this.images = images;
 
     // Layout
-    // TODO: add window on resize
     if (window.innerWidth < this.mobileBreakpoint) {
-      this.refreshFlickrLayout(100);
+      this.refreshFlickrLayout(300, 16);
     } else if (window.innerWidth < this.tabletBreakpoint) {
       this.refreshFlickrLayout(150);
     } else {
@@ -75,7 +74,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  refreshFlickrLayout(rowHeight: number = 200) {
+  refreshFlickrLayout(rowHeight: number = 200, boxSpacing: number = 24) {
     const layoutArray = [];
     this.images.map(image => {
       layoutArray.push(image.ratio);
@@ -86,7 +85,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
     const layoutGeometry = flickrLayout(layoutArray, {
       containerWidth: containerWidth,
       containerPadding: 0,
-      boxSpacing: 24,
+      boxSpacing: boxSpacing,
       targetRowHeight: rowHeight,
       // targetRowHeightTolerance: .25,
       targetRowHeightTolerance: .2,

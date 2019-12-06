@@ -11,6 +11,11 @@
   column-gap: 1rem;
   grid-template-columns: 4rem 1fr 4rem;
 
+  @include respond-to('small') {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
   .title-1 {
     text-align: center;
     display: inline-block;
@@ -24,6 +29,10 @@
     color: $color-text-medium;
     font-weight: 200;
     letter-spacing: .1em;
+
+    @include respond-to('small') {
+      font-size: .85rem;
+    }
 
     .coma {
       margin-right: .3rem;
@@ -42,4 +51,8 @@
 
 .navigation-button {
   transform: scale(.8);
+
+  @include respond-to('small') {
+    display: none;
+  }
 }

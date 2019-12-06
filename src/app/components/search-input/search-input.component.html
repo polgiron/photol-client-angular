@@ -1,9 +1,4 @@
 <div class="input-wrapper input-wrapper--i-left" [ngClass]="{'is-filled': searchValue?.length}">
   <i class="material-icons">search</i>
-  <input
-    class="input"
-    type="text"
-    placeholder="Search..."
-    [(ngModel)]="searchValue"
-    (keyup)="onKeyUp()">
+  <input class="input" type="text" placeholder="Search..." [(ngModel)]="searchValue" (keyup)="onKeyUp()">
 </div>

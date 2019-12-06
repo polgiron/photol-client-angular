@@ -13,7 +13,8 @@
   }
 
   @include respond-to('small') {
-    padding: 1rem .5rem;
+    // padding: 1rem .5rem;
+    padding: 1rem;
   }
 }
 
@@ -34,8 +35,12 @@
 
 .grid-list {
   display: grid;
-  grid-gap: 1.5rem;
+  gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+
+  @include respond-to('small') {
+    gap: 1rem;
+  }
 
   img {
     width: 100%;
