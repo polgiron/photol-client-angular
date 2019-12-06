@@ -18,10 +18,10 @@ export class FavoritesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getLandpage();
+    this.getFavorites();
   }
 
-  async getLandpage() {
+  async getFavorites() {
     const images = await this.imageService.getFavorites();
     this.imageService.updateCurrentImages(images);
     this.loading = false;

@@ -40,9 +40,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   switchToRegister(value: boolean) {
     this.displayRegister = value;
