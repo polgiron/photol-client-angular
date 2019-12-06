@@ -7,7 +7,7 @@ import { Api } from './api.service';
 export class SettingsService {
   document: string = 'settings/';
   private _settings: BehaviorSubject<Settings> = new BehaviorSubject<Settings>({
-    editMode: true,
+    editMode: false,
     displayTags: true
   });
 
