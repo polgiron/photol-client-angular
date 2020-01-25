@@ -15,7 +15,7 @@
           (blur)="onTextBlur('date', $event)" (keypress)="onNumberKeyPress($event)">{{album.date}}</span><span
           class="coma" *ngIf="(album.date && album.rollId) || settings.editMode">,</span>
         <div class="roll-id-wrapper" *ngIf="album.rollId || settings.editMode">
-          <i class="film-icon" [inlineSVG]="'/assets/images/icon-film.svg'"></i>
+          #
           <span [attr.contenteditable]="settings.editMode" (focus)="onTextFocus($event)"
             (blur)="onTextBlur('rollId', $event)" (keypress)="onNumberKeyPress($event)">{{album.rollId}}</span>
         </div>
