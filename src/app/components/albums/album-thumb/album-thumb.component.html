@@ -1,24 +1,17 @@
 <a class="album-thumb" [routerLink]="['/', 'albums', album._id]">
   <div class="cover">
-    <!-- <img [src]="album.primary_photo_extras.url_m" alt=""> -->
-    <!-- <div class="inner"> -->
-    <!-- <app-image *ngIf="album.cover" [src]="album.cover.signedUrl" [width]="album.cover.oriWidth"
-        [height]="album.cover.oriHeight"></app-image> -->
-    <!-- </div> -->
     <img *ngIf="album.cover" [src]="album.cover.signedUrl" class="fade" [ngClass]="{ 'is-loaded': isLoaded }"
       (load)="isLoaded = true" alt="">
     <div *ngIf="album.rollId" class="top-left">
       #{{album.rollId}}
+    </div>
+    <div class="infos" [ngClass]="{'is-edit-mode': editMode}">
+      <h2 class="title">{{album.title}}</h2>
     </div>
     <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group">
         <button (click)="delete($event)"><i class="material-icons">delete</i></button>
       </div>
     </div>
-  </div>
-  <div class="infos">
-    <h2 class="title">{{album.title}}</h2>
-    <!-- <div class="year">{{album.year}}</div> -->
-    <!-- <p class="description">{{album.description._content}}</p> -->
   </div>
 </a>

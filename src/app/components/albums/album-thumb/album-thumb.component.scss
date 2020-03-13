@@ -1,7 +1,6 @@
 @import '~src/assets/scss/variables';
 
 .cover {
-  // padding-top: 66.67%;
   padding-top: 100%;
   background: $color-background-2;
   position: relative;
@@ -19,15 +18,24 @@
 }
 
 .infos {
-  margin-top: .5rem;
   width: 100%;
-  padding: 0 .25rem;
+  padding: .75rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .65) 100%);
+
+  &.is-edit-mode {
+    padding-right: 3rem;
+  }
 
   .title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $color-text-medium;
+    color: $color-white-smoke;
+    font-weight: 400;
   }
 }
 
@@ -39,4 +47,5 @@
   left: .75rem;
   text-align: left;
   z-index: 2;
+  font-weight: 500;
 }
