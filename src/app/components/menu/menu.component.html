@@ -9,30 +9,30 @@
     </li> -->
     <li>
       <a class="menu__entry" [routerLink]="['/', 'albums']" routerLinkActive="is-active">
-        <i class="material-icons">collections</i>
-        <span>Albums</span>
+        <span>albums</span>
       </a>
     </li>
     <li>
       <a class="menu__entry" [routerLink]="['/', 'favorites']" routerLinkActive="is-active">
-        <i class="material-icons">star</i>
-        <span>Favorites</span>
+        <span>favorites</span>
       </a>
     </li>
-    <li>
+    <!-- <li>
       <button class="menu__entry" [ngClass]="{'is-active': activePopButton.tags}" [popover]="popTagsContent"
         containerClass="popover--tags" placement="bottom" container="body" outsideClick="true"
         (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')" #popoverTags="bs-popover">
-        <i class="material-icons">tag</i>
-        <span>Tags</span>
+        <span>tags</span>
       </button>
+    </li> -->
+    <li>
+      <app-search-input></app-search-input>
     </li>
     <li>
-      <button class="menu__entry" [ngClass]="{'is-active': activePopButton.settings}" [popover]="popSettingsContent"
-        containerClass="popover--settings" placement="bottom" container="body" outsideClick="true"
-        (onShown)="onPopShown('settings')" (onHidden)="onPopHidden('settings')">
+      <button class="menu__entry menu__entry--icon" [ngClass]="{'is-active': activePopButton.settings}"
+        [popover]="popSettingsContent" containerClass="popover--settings" placement="bottom" container="body"
+        outsideClick="true" (onShown)="onPopShown('settings')" (onHidden)="onPopHidden('settings')">
+        <!-- <span>settings</span> -->
         <i class="material-icons">settings</i>
-        <span>Settings</span>
       </button>
     </li>
   </ul>

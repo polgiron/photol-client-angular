@@ -8,7 +8,7 @@
   // grid-template-columns: repeat(3, minmax(30px, 1fr));
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   max-width: $container-width-header;
 
   >div {
@@ -40,13 +40,18 @@
   }
 }
 
-.middle {
-  justify-content: center;
-}
+// .middle {
+//   justify-content: center;
+// }
 
 .right {
-  justify-content: flex-end;
+  // justify-content: flex-end;
+  margin-left: auto;
 }
+
+// .menu-wrapper {
+//   margin-right: 2rem;
+// }
 
 .button-icon {
   color: $color-text-lighter;

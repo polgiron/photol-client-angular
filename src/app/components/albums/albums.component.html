@@ -5,7 +5,9 @@
   <ul class="grid-list">
     <li class="button-add-album" *ngIf="editMode" [@fadeAnimation]>
       <button (click)="onClickAddAlbum()">
-        <i class="material-icons">add</i>
+        <div class="inner">
+          <i class="material-icons">add</i>
+        </div>
       </button>
     </li>
     <li *ngFor="let album of albums; trackBy: trackByFunction">

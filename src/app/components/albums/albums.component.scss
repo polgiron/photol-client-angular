@@ -3,7 +3,6 @@
 .button-add-album button {
   width: 100%;
   padding-top: 100%;
-  // background: $color-background-2;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
@@ -11,21 +10,26 @@
   transition: all .2s;
 
   &:hover {
-    border-color: rgba($color-white, .3);
+    border-color: $color-text;
 
     i {
-      color: rgba($color-white, .3);
+      color: $color-text;
+      transform: scale(1.4) rotate(90deg);
     }
   }
 
-  i {
+  .inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
+  }
+
+  i {
     font-size: 2.2rem;
     border-radius: 50%;
-    color: $color-text-lighter;
+    color: $color-text-medium;
     transition: all .2s;
+    transform-origin: center center;
   }
 }

@@ -2,7 +2,7 @@
   border-radius: 2rem;
   border: 1px solid $color-main-border;
   color: $color-text-lighter;
-  font-size: .8rem;
+  font-size: .85rem;
   transition: all .2s;
   padding: .5rem 1rem;
   text-transform: uppercase;
@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
 
   &:disabled {
     cursor: default;
@@ -50,13 +51,28 @@
 }
 
 .navigation-button {
-  opacity: .3;
 
-  &:hover i {
-    background: rgba($color-white, .2);
+  // &:hover i {
+  // background: rgba($color-white, .2);
+  // }
+
+  &:hover:not(:disabled) i {
+    opacity: 1;
+    background: $color-text;
+    color: $color-background;
+  }
+
+  &:disabled {
+    cursor: default;
+
+    i {
+      // background: transparent;
+      opacity: .1;
+    }
   }
 
   i {
+    opacity: .3;
     margin: auto;
     color: $color-white;
     font-size: 3.2rem;
@@ -64,6 +80,8 @@
     border-radius: 50%;
     padding: .5rem;
     transition: all .2s;
+
+    background: rgba($color-white, .2);
   }
 }
 
@@ -85,19 +103,19 @@
 
 .input-wrapper {
   background: transparent;
-  border-radius: 1000rem;
+  // border-radius: 1000rem;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $color-main-border;
+  border-bottom: 1px solid $color-main-border;
+  // border: 1px solid $color-main-border;
   color: $color-main-border;
   font-size: 1em;
   transition: border .2s;
 
   .input {
     border: 0;
-    // padding: .55rem 1rem;
     flex: 1;
     outline: 0;
     font-size: 1rem;
@@ -113,21 +131,21 @@
   i,
   span {
     display: block;
-    width: 3rem;
+    width: 2rem;
     text-align: center;
     color: $color-main-border;
-    padding-left: .3rem;
+    padding-right: .3rem;
     font-size: 1.4em;
     transition: border .2s;
   }
 
   &:focus-within,
   &.is-filled {
-    border-color: $color-text-medium;
-    color: $color-text-medium;
+    border-color: $color-text;
+    color: $color-text;
 
     i {
-      color: $color-text-medium;
+      color: $color-text;
     }
   }
 }

@@ -24,7 +24,8 @@ $color-text-lighter: $color-darkgray-lighter;
 $color-background: $color-almost-black;
 $color-background-2: $color-darkgray;
 $color-background-3: $color-darkgray-medium;
-$color-main-border: $color-darkgray-lighter;
+// $color-main-border: $color-darkgray-lighter;
+$color-main-border: $color-mediumgray-lighter;
 $color-accent: $color-blue;
 
 // Font
@@ -33,10 +34,12 @@ $font-family: 'Inter', sans-serif;
 $base-font-size: 1rem;
 
 // Sizes
-$container-width: 100rem;
-$container-width-header: 75rem;
-$small-border-radius: .3rem;
-$big-border-radius: .8rem;
+// $container-width: 100rem;
+$container-width: 100%;
+// $container-width-header: 75rem;
+$container-width-header: 100%;
+$small-border-radius: .35rem;
+$big-border-radius: .85rem;
 $sidebar-width: 4rem;
 
 // Easing
