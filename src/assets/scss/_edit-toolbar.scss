@@ -2,7 +2,6 @@
   position: absolute;
   bottom: .75rem;
   right: .75rem;
-  // width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -43,11 +42,11 @@
       font-size: .8rem;
     }
 
-    span {
-      font-size: .8rem;
-      font-weight: 500;
-      margin-left: .3rem;
-      margin-right: .3rem;
-    }
+    // span {
+    //   font-size: .8rem;
+    //   font-weight: 500;
+    //   margin-left: .3rem;
+    //   margin-right: .3rem;
+    // }
   }
 }
