@@ -5,6 +5,7 @@ import { Image } from 'src/app/models/image.model';
 import { SearchService } from 'src/app/services/search.service';
 import { Tag } from 'src/app/models/tag.model';
 import { ImageService } from 'src/app/services/image.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-search',
@@ -24,7 +25,8 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private ref: ChangeDetectorRef,
     private searchService: SearchService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private utils: Utils
   ) { }
 
   async ngOnInit() {
@@ -51,21 +53,10 @@ export class SearchComponent implements OnInit {
       this.tags = this.tags.concat(image.tags);
     });
 
-    this.tags = this.removeDuplicates(this.tags);
+    this.tags = this.utils.removeDuplicates(this.tags);
     // console.log(this.tags);
 
     this.ref.markForCheck();
-  }
-
-  removeDuplicates(array: any) {
-    return array.reduce((acc, current) => {
-      const x = acc.find(item => item._id === current._id);
-      if (!x) {
-        return acc.concat([current]);
-      } else {
-        return acc;
-      }
-    }, []);
   }
 
   updateFilters(tags: string[]) {

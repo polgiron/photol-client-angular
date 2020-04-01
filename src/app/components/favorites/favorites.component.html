@@ -2,5 +2,6 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="!loading" [@fadeAnimation]>
+  <app-filters [tags]="tags" (updateFilters)="updateFilters($event)"></app-filters>
   <app-images></app-images>
 </div>
