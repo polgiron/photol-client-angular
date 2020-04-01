@@ -1,12 +1,18 @@
 @import '~src/assets/scss/variables';
 
-.input-wrapper {
-  width: 12rem;
+:host {
+  width: 100%;
+}
 
-  @include respond-to('small') {
-    width: 18rem;
-    margin: auto;
-  }
+.input-wrapper {
+  width: 100%;
+  max-width: 32rem;
+  margin: auto;
+
+  // @include respond-to('small') {
+  //   width: 18rem;
+  //   margin: auto;
+  // }
 
   // i {
   //   width: 2.5rem;

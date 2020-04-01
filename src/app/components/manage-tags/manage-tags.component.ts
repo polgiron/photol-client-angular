@@ -36,16 +36,16 @@ export class ManageTagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  async onKeyEnter() {
-    if (this.newTagValue.length && !this.tags.find(tag => tag.value == this.newTagValue)) {
-      const newTag = await this.tagService.create({
-        value: this.newTagValue
-      });
-      this.tags = this.tags.concat(newTag);
-      this.newTagValue = '';
-      this.ref.markForCheck();
-    }
-  }
+  // async onKeyEnter() {
+  //   if (this.newTagValue.length && !this.tags.find(tag => tag.value == this.newTagValue)) {
+  //     const newTag = await this.tagService.create({
+  //       value: this.newTagValue
+  //     });
+  //     this.tags = this.tags.concat(newTag);
+  //     this.newTagValue = '';
+  //     this.ref.markForCheck();
+  //   }
+  // }
 
   deleteTag(event: any, deleteTag: Tag) {
     event.stopPropagation();

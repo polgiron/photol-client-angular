@@ -17,15 +17,16 @@
         <span>favorites</span>
       </a>
     </li>
-    <!-- <li>
-      <button class="menu__entry" [ngClass]="{'is-active': activePopButton.tags}" [popover]="popTagsContent"
-        containerClass="popover--tags" placement="bottom" container="body" outsideClick="true"
-        (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')" #popoverTags="bs-popover">
-        <span>tags</span>
-      </button>
-    </li> -->
     <li>
       <app-search-input></app-search-input>
+    </li>
+    <li>
+      <button class="menu__entry menu__entry--icon" [ngClass]="{'is-active': activePopButton.tags}"
+        [popover]="popTagsContent" containerClass="popover--tags" placement="bottom" container="body"
+        outsideClick="true" (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')" #popoverTags="bs-popover">
+        <!-- <span>tags</span> -->
+        <i class="material-icons">tag</i>
+      </button>
     </li>
     <li>
       <button class="menu__entry menu__entry--icon" [ngClass]="{'is-active': activePopButton.settings}"

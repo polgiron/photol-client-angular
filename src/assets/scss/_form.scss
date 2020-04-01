@@ -103,14 +103,14 @@
 
 .input-wrapper {
   background: transparent;
-  // border-radius: 1000rem;
+  border-radius: $medium-border-radius;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid $color-main-border;
-  // border: 1px solid $color-main-border;
-  color: $color-main-border;
+  // border-bottom: 1px solid $color-main-border;
+  border: 1px solid $color-text-medium;
+  color: $color-text-medium;
   font-size: 1em;
   transition: border .2s;
 
@@ -121,8 +121,9 @@
     font-size: 1rem;
     background: transparent;
     color: inherit;
-    height: 35.78px;
-    line-height: 35.78px;
+    // height: 35.78px;
+    // line-height: 35.78px;
+    height: 2.5rem;
     padding: 0 1rem;
     font-weight: 300;
     width: 100%;
@@ -131,10 +132,10 @@
   i,
   span {
     display: block;
-    width: 2rem;
+    width: 2.8rem;
     text-align: center;
-    color: $color-main-border;
-    padding-right: .3rem;
+    color: $color-text-medium;
+    // padding-left: .3rem;
     font-size: 1.4em;
     transition: border .2s;
   }

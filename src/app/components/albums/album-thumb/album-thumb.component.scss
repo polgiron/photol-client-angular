@@ -1,10 +1,14 @@
 @import '~src/assets/scss/variables';
 
+.album-thumb:hover .infos {
+  opacity: 1;
+}
+
 .cover {
-  padding-top: 100%;
+  padding-top: 67%;
   background: $color-background-2;
   position: relative;
-  border-radius: 1rem;
+  border-radius: $medium-border-radius;
   overflow: hidden;
 
   img {
@@ -25,6 +29,8 @@
   left: 0;
   z-index: 2;
   background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .65) 100%);
+  opacity: 0;
+  transition: opacity .2s;
 
   &.is-edit-mode {
     padding-right: 3rem;
@@ -47,4 +53,5 @@
   left: .75rem;
   text-align: left;
   z-index: 2;
+  font-weight: 500;
 }

@@ -62,21 +62,21 @@
   border: 1px solid transparent;
   border-radius: 1000rem;
 
-  @include respond-to('topbar') {
-    flex-direction: column;
-    height: $sidebar-width;
-    width: $sidebar-width;
+  // @include respond-to('topbar') {
+  //   flex-direction: column;
+  //   height: $sidebar-width;
+  //   width: $sidebar-width;
 
-    i {
-      font-size: 2.6em;
-      margin: 0 !important;
-    }
+  //   i {
+  //     font-size: 2.6em;
+  //     margin: 0 !important;
+  //   }
 
-    span {
-      font-size: .6rem;
-      margin-top: .5rem;
-    }
-  }
+  //   span {
+  //     font-size: .6rem;
+  //     margin-top: .5rem;
+  //   }
+  // }
 
   &:hover {
     color: $color-text;
