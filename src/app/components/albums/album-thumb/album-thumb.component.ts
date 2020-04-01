@@ -17,6 +17,7 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
   @Input() album: Album;
   private _alive: boolean = true;
   editMode: boolean = false;
+  isInViewport: boolean = false;
 
   constructor(
     private albumService: AlbumService,
@@ -33,13 +34,18 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngOnDestroy() {
+    this._alive = false;
+  }
+
   delete(event: any) {
     event.preventDefault();
     event.stopPropagation();
     this.albumService.delete(this.album._id);
   }
 
-  ngOnDestroy() {
-    this._alive = false;
+  async onDeferLoad() {
+    this.isInViewport = true;
+    this.ref.markForCheck();
   }
 }

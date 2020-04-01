@@ -1,7 +1,7 @@
-<a class="album-thumb" [routerLink]="['/', 'albums', album._id]">
+<a class="album-thumb" [routerLink]="['/', 'albums', album._id]" (deferLoad)="onDeferLoad()">
   <div class="cover">
-    <img *ngIf="album.cover" [src]="album.cover.signedUrl" class="fade" [ngClass]="{ 'is-loaded': isLoaded }"
-      (load)="isLoaded = true" alt="">
+    <img *ngIf="album.cover && isInViewport" [src]="album.cover.signedUrl" class="fade"
+      [ngClass]="{ 'is-loaded': isLoaded }" (load)="isLoaded = true" alt="">
     <div *ngIf="album.rollId" class="top-left">
       #{{album.rollId}}
     </div>
