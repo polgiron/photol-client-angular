@@ -22,15 +22,15 @@
   </div>
   <div class="input-list">
     <div class="input-wrapper" [ngClass]="{'is-filled': title?.length}">
-      <input class="input" type="text" placeholder="Album title..." [(ngModel)]="title">
+      <input class="input" type="text" placeholder="Album title" [(ngModel)]="title">
     </div>
     <div class="bottom">
       <div class="input-wrapper" [ngClass]="{'is-filled': rollId}">
-        <input class="input" type="number" placeholder="Roll id..." [(ngModel)]="rollId"
+        <input class="input" type="number" placeholder="Roll id" [(ngModel)]="rollId"
           onkeydown="return event.keyCode !== 69" (keyup)="onRollKeyup()">
       </div>
       <div class="input-wrapper" [ngClass]="{'is-filled': date}">
-        <input class="input" type="number" placeholder="Album year..." [(ngModel)]="date"
+        <input class="input" type="number" placeholder="Album year" [(ngModel)]="date"
           onkeydown="return event.keyCode !== 69">
       </div>
       <button class="button button--main" (click)="onCreateAlbum()" [disabled]="disableButton">Create Album</button>

@@ -9,15 +9,17 @@
     </li> -->
     <li>
       <a class="menu__entry" [routerLink]="['/', 'albums']" routerLinkActive="is-active">
+        <i class="material-icons">collections</i>
         <span>albums</span>
       </a>
     </li>
     <li>
       <a class="menu__entry" [routerLink]="['/', 'favorites']" routerLinkActive="is-active">
+        <i class="material-icons">star</i>
         <span>favorites</span>
       </a>
     </li>
-    <li>
+    <li class="search-entry">
       <app-search-input></app-search-input>
     </li>
     <li>

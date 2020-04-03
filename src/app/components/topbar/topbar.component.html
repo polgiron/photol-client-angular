@@ -1,18 +1,15 @@
 <header class="header main-container main-container--fixed">
-  <div class="left">
-    <a class="logo" [routerLink]="['/']">
-      <h1 class="logo-title">photol</h1>
-    </a>
-    <!-- <div class="topbar-entry">
-      <app-search-input></app-search-input>
-    </div> -->
-  </div>
-  <!-- <div class="middle">
-    <app-search-input></app-search-input>
-  </div> -->
-  <div class="right">
-    <div class="menu-wrapper">
+  <div class="content">
+    <div class="left">
+      <a class="logo" [routerLink]="['/']">
+        <h1 class="logo-title">photol</h1>
+      </a>
+    </div>
+    <div class="right">
       <app-menu></app-menu>
     </div>
+  </div>
+  <div class="search-wrapper">
+    <app-search-input></app-search-input>
   </div>
 </header>
