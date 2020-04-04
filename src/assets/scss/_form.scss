@@ -40,13 +40,36 @@
 
 .button--white {
   text-transform: none;
-  background: rgba($color-white, .5);
+  // background: rgba($color-white, .5);
+  background: $color-white;
   border: 0;
   color: $color-almost-black;
 
   &:not(:disabled):hover {
     opacity: .9;
     color: $color-almost-black;
+  }
+}
+
+.button-overlay {
+  display: flex;
+  color: $color-darkgray;
+  background: rgba($color-white, .9);
+  border-radius: 1000rem;
+  box-shadow: 0 2px 6px rgba($color-black, .15);
+  transition: all .2s;
+
+  &:not(.is-disabled):hover {
+    background: rgba($color-white, 1);
+  }
+
+  &.is-disabled {
+    cursor: default;
+  }
+
+  i {
+    margin: auto;
+    font-size: 1rem;
   }
 }
 

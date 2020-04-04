@@ -35,12 +35,17 @@ export class ImageOverlayComponent implements OnInit {
 
   ngOnInit() { }
 
-  clearRating() {
-    this.stars = 0;
-    this.saveRating();
+  onRatingClick(event: any) {
+    this.saveRating(event.target.title);
   }
 
-  saveRating() {
+  clearRating() {
+    this.saveRating(0);
+  }
+
+  saveRating(value: number) {
+    console.log('save rating');
+    this.stars = value;
     this.imageService.update(this.image._id, {
       stars: this.stars
     }).then(() => {

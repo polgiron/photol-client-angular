@@ -14,4 +14,32 @@
     width: 100%;
     height: 100%;
   }
+
+  &:hover .to-print-button {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+:host ::ng-deep .image-thumb:hover .top-right {
+  opacity: 1;
+  visibility: visible;
+}
+
+.to-print-button {
+  position: absolute;
+  top: -.5em;
+  right: -.5em;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.add-to-print:hover {
+    transform: scale(1.1) rotate(90deg);
+  }
 }

@@ -44,6 +44,11 @@ export class ImageService {
     return response.images;
   }
 
+  async getToPrint() {
+    const response: any = await this.api.get(this.document + 'toprint');
+    return response.images;
+  }
+
   async getSignedUrl(imageId: string, size: string) {
     const response: any = await this.api.get(this.document + imageId + '/signedUrl', { size: size });
     return response.signedUrl;

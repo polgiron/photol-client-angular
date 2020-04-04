@@ -23,12 +23,28 @@
   right: .75rem;
   text-shadow: 1px 1px 4px rgba($color-black, .3);
   display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .2s;
+
+  &.is-always-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover .clear-rating {
+    opacity: 1;
+    visibility: visible;
+  }
 
   .clear-rating {
     margin-right: .1em;
     display: flex;
     position: relative;
     top: 1px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s;
 
     i {
       margin: auto;

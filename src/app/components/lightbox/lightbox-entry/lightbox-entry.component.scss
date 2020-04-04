@@ -19,6 +19,11 @@
   }
 }
 
+:host ::ng-deep .image-wrapper:hover .top-right {
+  opacity: 1;
+  visibility: visible;
+}
+
 .image-overlay-wrapper {
   transition: all .2s;
   opacity: 0;

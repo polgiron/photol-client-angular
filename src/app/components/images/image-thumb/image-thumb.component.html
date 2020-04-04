@@ -7,17 +7,23 @@
     <app-image-overlay *ngIf="imageLoaded" [image]="image" [tags]="tags" [stars]="stars" [isAlbumView]="isAlbumView"
       [editMode]="editMode" [@fadeInAnimation]>
     </app-image-overlay>
-    <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
-      <div class="group" *ngIf="isAlbumView">
-        <button (click)="updateCover($event)" [ngClass]="{'is-disabled': isCover}"
+    <div class="edit-toolbar">
+      <div class="group" *ngIf="isAlbumView && editMode" [@fadeAnimation]>
+        <button class="button-overlay" (click)="updateCover()" [ngClass]="{'is-disabled': isCover}"
           [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
           <i class="material-icons">photo</i>
           <i class="material-icons icon-check" *ngIf="isCover">check</i>
         </button>
       </div>
-      <div class="group">
-        <button (click)="delete($event)" preventDefaultClick><i class="material-icons">delete</i></button>
+      <div class="group" *ngIf="editMode" [@fadeAnimation]>
+        <button class="button-overlay" (click)="delete()" preventDefaultClick><i
+            class="material-icons">delete</i></button>
       </div>
     </div>
+    <button class="to-print-button button-overlay" [ngClass]="{'add-to-print': !image.toPrint}"
+      (click)="toggleToPrint()" container="body" preventDefaultClick>
+      <i class="material-icons" *ngIf="!image.toPrint">add</i>
+      <i class="material-icons" *ngIf="image.toPrint">check</i>
+    </button>
   </div>
 </div>

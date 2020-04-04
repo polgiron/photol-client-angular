@@ -9,5 +9,6 @@ export interface Image {
   signedUrl?: string;
   tags?: Tag[];
   albums?: string[];
-  stars: number
+  stars: number;
+  toPrint: boolean;
 }

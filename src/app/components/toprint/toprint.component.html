@@ -1,0 +1,6 @@
+<div class="main-loader-wrapper" *ngIf="loading" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<div class="main-container" *ngIf="!loading" [@fadeAnimation]>
+  <app-images></app-images>
+</div>

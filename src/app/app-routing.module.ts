@@ -7,6 +7,7 @@ import { SearchComponent } from 'src/app/components/search/search.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
+import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
 // import { LandpageComponent } from 'src/app/components/landpage/landpage.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
       { path: 'favorites', component: FavoritesComponent },
+      { path: 'toprint', component: ToPrintComponent },
       { path: 'search', component: SearchComponent }
     ]
   },

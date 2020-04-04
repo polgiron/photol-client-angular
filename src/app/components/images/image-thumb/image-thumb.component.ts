@@ -47,6 +47,10 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     }
   }
 
+  ngOnDestroy() {
+    this._alive = false;
+  }
+
   openPhotoModal() {
     this.imageService.openLightbox(this.image);
   }
@@ -65,7 +69,18 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     this.imageLoaded = true;
   }
 
-  ngOnDestroy() {
-    this._alive = false;
+  toggleToPrint() {
+    this.image.toPrint = !this.image.toPrint;
+    this.imageService.update(this.image._id, {
+      toPrint: this.image.toPrint
+    }).then(() => {
+      const images = this.imageService.currentImages;
+      images.map((image: Image) => {
+        if (image._id == this.image._id) {
+          image.toPrint = this.image.toPrint
+        }
+      });
+      this.imageService.updateCurrentImages(images);
+    });
   }
 }

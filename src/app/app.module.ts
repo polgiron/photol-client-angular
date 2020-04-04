@@ -56,6 +56,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
 import { ImageOverlayComponent } from './components/images/image-overlay/image-overlay.component';
+import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ImageOverlayComponent } from './components/images/image-overlay/image-o
     FiltersComponent,
     LoginComponent,
     SafeUrlPipe,
-    ImageOverlayComponent
+    ImageOverlayComponent,
+    ToPrintComponent
   ],
   imports: [
     HttpModule,
