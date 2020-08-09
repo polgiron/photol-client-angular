@@ -10,7 +10,7 @@
   // }
 
   li:not(:last-child) {
-    margin-right: .75rem;
+    margin-right: 1rem;
   }
 }
 
@@ -21,10 +21,10 @@
   color: $color-text-medium;
   position: relative;
   transition: .2s all;
-  font-size: .85rem;
-  padding: .45rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 1000rem;
+  font-size: .75rem;
+  padding: .4rem 0;
+  border-bottom: 1px solid transparent;
+  text-transform: uppercase;
 
   @include respond-to('small') {
     padding: 0;
@@ -71,6 +71,9 @@
 }
 
 .search-entry {
+  margin-left: 1rem;
+  margin-right: 2rem;
+
   @include respond-to('small') {
     display: none;
   }
