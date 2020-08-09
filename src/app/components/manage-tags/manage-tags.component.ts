@@ -4,7 +4,7 @@ import { TagService } from 'src/app/services/tag.service';
 import { fadeInAnimation } from 'src/app/utils/animations';
 import { ImageService } from 'src/app/services/image.service';
 import { Router } from '@angular/router';
-import { PopoverDirective } from 'ngx-bootstrap';
+import { PopoverDirective } from 'ngx-bootstrap/popover';
 
 @Component({
   selector: 'app-manage-tags',

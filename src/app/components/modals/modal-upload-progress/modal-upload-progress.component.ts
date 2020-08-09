@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ModalOptions } from 'ngx-bootstrap';
 import { UploadService } from 'src/app/services/upload.service';
 import { takeWhile } from 'rxjs/operators';
+import { ModalOptions } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modal-upload-progress',

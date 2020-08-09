@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { Api } from 'src/app/services/api.service';
-import { HttpModule } from '@angular/http';
 import { HomeComponent } from './components/home/home.component';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { AlbumComponent } from './components/albums/album/album.component';
@@ -93,7 +92,6 @@ import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
     ToPrintComponent
   ],
   imports: [
-    HttpModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
