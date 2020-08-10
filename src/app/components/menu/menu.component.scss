@@ -25,6 +25,7 @@
   padding: .4rem 0;
   border-bottom: 1px solid transparent;
   text-transform: uppercase;
+  font-weight: 500;
 
   @include respond-to('small') {
     padding: 0;
