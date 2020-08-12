@@ -7,6 +7,7 @@
   padding: 1.5rem;
   max-width: $container-width;
   margin: auto;
+  // padding-top: 5.5rem;
 
   @include respond-to('medium') {
     padding: 1rem 1.5rem;

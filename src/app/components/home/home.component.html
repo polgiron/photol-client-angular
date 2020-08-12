@@ -1,4 +1,7 @@
 <app-topbar></app-topbar>
+<div *ngIf="displayStickyHeader" class="sticky-header" [@transAnimation]>
+  <app-topbar [sticky]="true"></app-topbar>
+</div>
 
 <router-outlet></router-outlet>
 

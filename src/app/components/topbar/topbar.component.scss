@@ -3,10 +3,23 @@
 .header {
   animation: fade-in .4s both;
   padding-top: 3rem;
+  display: flex;
+  align-items: center;
   max-width: $container-width-header;
+  background: $color-background-4;
+
+  &.is-sticky {
+    width: 100%;
+    background: rgba($color-background-4, .9);
+    border-bottom: 1px solid $color-main-border;
+    backdrop-filter: blur(15px);
+    padding: 0 1.5rem;
+    height: 4rem;
+  }
 }
 
 .content {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

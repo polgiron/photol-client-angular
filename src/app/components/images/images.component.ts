@@ -41,8 +41,6 @@ export class ImagesComponent implements OnInit, OnDestroy {
     this.imageService.currentImagesChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((images: Image[]) => {
-        console.log('here');
-        console.log(images);
         if (images) {
           this.updateImages(images);
         }

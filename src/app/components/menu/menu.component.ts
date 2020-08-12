@@ -16,15 +16,19 @@ export class MenuComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) { }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  onPopShown(type: string) {
+  onPopShown(type: string): void {
     this.activePopButton[type] = true;
     this.ref.markForCheck();
   }
 
-  onPopHidden(type: string) {
+  onPopHidden(type: string): void {
     this.activePopButton[type] = false;
     this.ref.markForCheck();
+  }
+
+  onClickMenu(): void {
+    window.scrollTo(0, 0);
   }
 }

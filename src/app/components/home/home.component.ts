@@ -1,19 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, HostListener } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { takeWhile } from 'rxjs/operators';
-import { fadeFastAnimation } from 'src/app/utils/animations';
+import { fadeFastAnimation, transAnimation } from 'src/app/utils/animations';
 import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [fadeFastAnimation],
+  animations: [fadeFastAnimation, transAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   private _alive: boolean = true;
   index: number;
+  displayStickyHeader: boolean = false;
+  lastScrollPosition: number = 0;
 
   constructor(
     private imageService: ImageService,
@@ -23,7 +25,16 @@ export class HomeComponent implements OnInit {
     this.settings.init();
   }
 
-  ngOnInit() {
+  @HostListener('window:scroll') onScroll() {
+    if (window.scrollY >= this.lastScrollPosition && window.scrollY >= 120) {
+      this.displayStickyHeader = true;
+    } else {
+      this.displayStickyHeader = false;
+    }
+    this.lastScrollPosition = window.scrollY;
+  };
+
+  ngOnInit(): void {
     this.imageService.lightboxIndexChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((index: number) => {
@@ -32,7 +43,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._alive = false;
   }
 }

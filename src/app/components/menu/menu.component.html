@@ -8,19 +8,19 @@
       </a>
     </li> -->
     <li>
-      <a class="menu__entry" [routerLink]="['/', 'albums']" routerLinkActive="is-active">
+      <a class="menu__entry" [routerLink]="['/', 'albums']" (click)="onClickMenu()" routerLinkActive="is-active">
         <i class="material-icons">collections</i>
         <span>albums</span>
       </a>
     </li>
     <li>
-      <a class="menu__entry" [routerLink]="['/', 'favorites']" routerLinkActive="is-active">
+      <a class="menu__entry" [routerLink]="['/', 'favorites']" (click)="onClickMenu()" routerLinkActive="is-active">
         <i class="material-icons">star</i>
         <span>favorites</span>
       </a>
     </li>
     <li>
-      <a class="menu__entry" [routerLink]="['/', 'toprint']" routerLinkActive="is-active">
+      <a class="menu__entry" [routerLink]="['/', 'toprint']" (click)="onClickMenu()" routerLinkActive="is-active">
         <i class="material-icons">check</i>
         <span>to print</span>
       </a>
