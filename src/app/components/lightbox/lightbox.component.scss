@@ -1,9 +1,9 @@
 @import '~src/assets/scss/variables';
 
 .lightbox {
-  &:hover {
+  // &:hover {
     .navigation-button {
-      opacity: .3;
+      opacity: 1;
       transform: translate3d(0, -50%, 0);
     }
 
@@ -11,7 +11,7 @@
       opacity: .3;
       transform: translate3d(0, 0, 0);
     }
-  }
+  // }
 
   @include respond-to('small') {
     padding: 1rem;
@@ -77,6 +77,12 @@
   transition: all .2s ease-out;
   opacity: 0;
   z-index: 1;
+
+  i {
+    opacity: 1;
+    color: $color-background;
+    transition: none;
+  }
 }
 
 .prev {

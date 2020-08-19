@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, HostListener } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Utils } from 'src/app/utils/utils';
 import { SettingsService } from 'src/app/services/settings.service';
@@ -19,6 +19,7 @@ export class LightboxComponent implements OnInit, OnDestroy {
   images: Image[];
   displayControl: boolean = true;
   settings: Settings;
+  navButtonLeftOpacity: number = 0;
 
   constructor(
     private imageService: ImageService,
@@ -26,6 +27,36 @@ export class LightboxComponent implements OnInit, OnDestroy {
     private settingsService: SettingsService,
     private ref: ChangeDetectorRef
   ) { }
+
+  @HostListener('document:mousemove', ['$event']) onMousemove(event: MouseEvent): void {
+    const mouseX: number = event.clientX;
+    const mouseY: number = event.clientY;
+
+    const pointX: number = 64;
+    const pointY: number = window.innerHeight / 2;
+
+    // Distance to point from mouse
+    const distance: number = Math.sqrt(Math.pow((pointY - mouseY), 2) + Math.pow((pointX - mouseX), 2));
+    console.log('distance: ' + distance);
+
+
+
+
+
+    if (distance < 100) {
+      this.navButtonLeftOpacity = 1;
+    } else if (distance >= 100 && distance <= 300) {
+      this.navButtonLeftOpacity = 1 - (distance / 100);
+      // this.navButtonLeftOpacity = .5;
+    } else if (distance > 300) {
+      this.navButtonLeftOpacity = .1;
+    }
+
+    // console.log(mouseX);
+    console.log(this.navButtonLeftOpacity);
+
+    this.ref.markForCheck();
+  };
 
   ngOnInit() {
     this.images = this.imageService.currentImages;

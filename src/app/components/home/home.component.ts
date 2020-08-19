@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     this.settings.init();
   }
 
-  @HostListener('window:scroll') onScroll() {
+  @HostListener('window:scroll') onScroll(): void {
     if (window.scrollY >= this.lastScrollPosition && window.scrollY >= 120) {
       this.displayStickyHeader = true;
     } else {
