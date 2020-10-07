@@ -11,6 +11,10 @@
 
   li:not(:last-child) {
     margin-right: 1rem;
+
+    @include respond-to('small') {
+      margin-right: .25rem;
+    }
   }
 }
 

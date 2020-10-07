@@ -8,6 +8,10 @@
   max-width: $container-width-header;
   background: $color-background-4;
 
+  @include respond-to('small') {
+    display: block;
+  }
+
   &.is-sticky {
     width: 100%;
     background: rgba($color-background-4, .9);
@@ -15,6 +19,15 @@
     backdrop-filter: blur(15px);
     padding: 0 1.5rem;
     height: 4rem;
+
+    @include respond-to('small') {
+      height: auto;
+      padding: 1rem;
+    }
+
+    .search-wrapper {
+      display: none;
+    }
   }
 }
 
