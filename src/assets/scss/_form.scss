@@ -1,13 +1,11 @@
 .button {
   border-radius: 2rem;
-  border: 1px solid $color-main-border;
-  color: $color-text-lighter;
+  color: $color-background;
   font-size: .85rem;
   transition: all .2s;
   padding: .5rem 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba($color-white, .6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,9 +24,13 @@
 }
 
 .button--main {
-  background: $color-accent;
-  border-color: $color-accent;
-  color: rgba($color-white, 1);
+  // background: $color-accent;
+  // border-color: $color-accent;
+  // color: rgba($color-white, 1);
+  // box-shadow: 0 2px 5px rgba($color-black, .1);
+  background: $color-text;
+  // border-color: $color-accent;
+  // color: rgba($color-white, 1);
   box-shadow: 0 2px 5px rgba($color-black, .1);
 
   &:not(:disabled):hover {
@@ -42,7 +44,7 @@
   text-transform: none;
   // background: rgba($color-white, .5);
   background: $color-white;
-  border: 0;
+  // border: 0;
   color: $color-almost-black;
 
   &:not(:disabled):hover {
@@ -74,11 +76,6 @@
 }
 
 .navigation-button {
-
-  // &:hover i {
-  // background: rgba($color-white, .2);
-  // }
-
   &:hover:not(:disabled) i {
     opacity: 1;
     background: $color-text;
@@ -89,7 +86,6 @@
     cursor: default;
 
     i {
-      // background: transparent;
       opacity: .1;
     }
   }
@@ -98,7 +94,7 @@
     opacity: .3;
     margin: auto;
     color: $color-white;
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     text-shadow: 1px 1px 5px rgba($color-black, .05);
     border-radius: 50%;
     padding: .5rem;
@@ -143,8 +139,6 @@
     font-size: 1rem;
     background: transparent;
     color: inherit;
-    // height: 35.78px;
-    // line-height: 35.78px;
     height: 2.5rem;
     padding: 0 1rem;
     font-weight: 300;
@@ -157,7 +151,6 @@
     width: 2.8rem;
     text-align: center;
     color: $color-text-medium;
-    // padding-left: .3rem;
     font-size: 1.4em;
     transition: border .2s;
   }

@@ -4,18 +4,23 @@
 // }
 
 .main-container {
-  padding: 1.5rem;
-  max-width: $container-width;
-  margin: auto;
+  // max-width: $container-width;
+  // max-width: 100%;
+  // margin: auto;
   // padding-top: 5.5rem;
 
-  @include respond-to('medium') {
-    padding: 1rem 1.5rem;
-  }
+  .inner {
+    padding: $container-padding;
+    max-width: $container-width;
+    margin: auto;
 
-  @include respond-to('small') {
-    // padding: 1rem .5rem;
-    padding: 1rem;
+    // @include respond-to('medium') {
+    //   padding: 1rem 1.5rem;
+    // }
+
+    @include respond-to('small') {
+      padding: 1rem;
+    }
   }
 }
 

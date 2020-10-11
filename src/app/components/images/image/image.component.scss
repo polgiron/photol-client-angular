@@ -4,13 +4,10 @@
   width: 100%;
   position: relative;
   background: $color-background-2;
-  // border: 1px solid $color-main-border;
   overflow: hidden;
+  border-radius: $small-border-radius;
 
   height: 100%;
-  // &.is-flickr-layout {
-  //   height: 100%;
-  // }
 }
 
 .loader {
@@ -28,9 +25,4 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  // box-shadow: -2px 2px 15px rgba(0, 0, 0, .15);
-
-  // &.is-cover {
-  //   height: auto;
-  // }
 }

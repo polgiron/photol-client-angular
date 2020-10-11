@@ -1,0 +1,10 @@
+<button class="user-menu" *ngIf="user" [ngClass]="{'is-active': activePop}" [popover]="popContent"
+  containerClass="popover--user-menu" placement="bottom" outsideClick="true" (onShown)="onPopShown()"
+  (onHidden)="onPopHidden()">
+  <i class="material-icons">account_circle</i> {{user.name}}
+  <!-- <span class="material-icons">person</span> {{user.name}} -->
+</button>
+
+<ng-template #popContent>
+  <app-settings></app-settings>
+</ng-template>

@@ -1,0 +1,17 @@
+@import '~src/assets/scss/variables';
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  color: $color-text-medium;
+  transition: all .1s;
+
+  &.is-active {
+    color: $color-text;
+  }
+
+  i {
+    margin-right: .5rem;
+    font-size: 1.2em;
+  }
+}

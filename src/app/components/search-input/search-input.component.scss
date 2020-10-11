@@ -1,10 +1,45 @@
 @import '~src/assets/scss/variables';
 
-:host {
-  width: 100%;
+// :host {
+//   width: 100%;
+// }
+
+// .input-wrapper {
+//   width: 100%;
+//   border-color: $color-text-medium;
+// }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .25rem;
+  transition: all .2s;
+
+  &:focus-within,
+  &.is-filled {
+    border-color: $color-text-medium;
+    color: $color-text;
+
+    .input {
+      width: 8rem;
+    }
+  }
+
+  i {
+    margin-right: .5rem;
+    font-size: 1.2em;
+    color: $color-text-medium;
+  }
 }
 
-.input-wrapper {
-  width: 100%;
-  border-color: $color-text-medium;
+.input {
+  background: transparent;
+  border: 0;
+  font-size: 1rem;
+  padding: 0;
+  outline: 0;
+  color: $color-text;
+  width: 5rem;
+  transition: all .2s;
 }

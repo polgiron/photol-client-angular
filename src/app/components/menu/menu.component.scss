@@ -5,16 +5,12 @@
   align-items: center;
   justify-content: center;
 
-  // @include respond-to('topbar') {
-  //   flex-direction: column;
-  // }
-
   li:not(:last-child) {
     margin-right: 1rem;
 
-    @include respond-to('small') {
-      margin-right: .25rem;
-    }
+    // @include respond-to('small') {
+    //   margin-right: .25rem;
+    // }
   }
 }
 
@@ -27,24 +23,23 @@
   transition: .2s all;
   font-size: .75rem;
   padding: .4rem 0;
-  border-bottom: 1px solid transparent;
   text-transform: uppercase;
   font-weight: 500;
 
-  @include respond-to('small') {
-    padding: 0;
-    border: 0;
-    width: 2.25rem;
-    height: 2.25rem;
+  // @include respond-to('small') {
+  //   padding: 0;
+  //   border: 0;
+  //   width: 2.25rem;
+  //   height: 2.25rem;
 
-    span {
-      display: none;
-    }
+  //   span {
+  //     display: none;
+  //   }
 
-    i {
-      display: block !important;
-    }
-  }
+  //   i {
+  //     display: block !important;
+  //   }
+  // }
 
   &:hover {
     color: $color-text;
@@ -52,12 +47,12 @@
 
   &.is-active {
     color: $color-text;
-    border-color: $color-text;
+    // border-color: $color-text;
   }
 
-  i {
-    display: none;
-  }
+  // i {
+  //   display: none;
+  // }
 
   span {
     letter-spacing: .1em;

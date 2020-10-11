@@ -1,10 +1,10 @@
 .title-1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 300;
 
-  @include respond-to('small') {
-    font-size: 1.4rem;
-  }
+  // @include respond-to('small') {
+  //   font-size: 1.4rem;
+  // }
 }
 
 .logo-title {
@@ -14,15 +14,3 @@
   letter-spacing: .05em;
   line-height: 1;
 }
-
-// .logo-title {
-//   display: inline-block;
-//   color: $color-background;
-//   font-size: 1.2rem;
-//   font-weight: 500;
-//   letter-spacing: .1em;
-//   line-height: 1;
-//   background: $color-text;
-//   border-radius: .3rem;
-//   padding: .5rem .6rem;
-// }

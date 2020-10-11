@@ -14,8 +14,8 @@ import { SettingsService } from 'src/app/services/settings.service';
 export class HomeComponent implements OnInit {
   private _alive: boolean = true;
   index: number;
-  displayStickyHeader: boolean = false;
-  lastScrollPosition: number = 0;
+  // displayStickyHeader: boolean = false;
+  // lastScrollPosition: number = 0;
 
   constructor(
     private imageService: ImageService,
@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit {
     this.settings.init();
   }
 
-  @HostListener('window:scroll') onScroll() {
-    if (window.scrollY >= this.lastScrollPosition && window.scrollY >= 120) {
-      this.displayStickyHeader = true;
-    } else {
-      this.displayStickyHeader = false;
-    }
-    this.lastScrollPosition = window.scrollY;
-  };
+  // @HostListener('window:scroll') onScroll() {
+  //   if (window.scrollY >= this.lastScrollPosition && window.scrollY >= 120) {
+  //     this.displayStickyHeader = true;
+  //   } else {
+  //     this.displayStickyHeader = false;
+  //   }
+  //   this.lastScrollPosition = window.scrollY;
+  // };
 
   ngOnInit(): void {
     this.imageService.lightboxIndexChannel()

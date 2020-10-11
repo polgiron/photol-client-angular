@@ -1,4 +1,4 @@
-<div class="image-thumb">
+<div class="image-thumb" [ngClass]="{'is-loaded': imageLoaded}">
   <div class="image-wrapper">
     <button class="button-lightbox" (click)="openPhotoModal()">
       <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"

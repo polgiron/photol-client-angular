@@ -56,6 +56,7 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
 import { ImageOverlayComponent } from './components/images/image-overlay/image-overlay.component';
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
+import { UserMenuComponent } from './components/topbar/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
     LoginComponent,
     SafeUrlPipe,
     ImageOverlayComponent,
-    ToPrintComponent
+    ToPrintComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,

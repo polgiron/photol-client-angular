@@ -23,3 +23,21 @@
   overflow: hidden;
   color: $color-text;
 }
+
+// .popover--user-menu {
+//   transform: translate3d(77px, 52px, 0) !important;
+
+//   .arrow {
+//     // transform: translateX(2) !important;
+//     left: 5px !important;
+//   }
+// }
+
+.popover--user-menu {
+  // left: 70px !important;
+  left: 57px !important;
+
+  .arrow {
+    left: 5px !important;
+  }
+}
