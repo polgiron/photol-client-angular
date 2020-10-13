@@ -4,10 +4,10 @@
       <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
         [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
     </button>
-    <app-image-overlay *ngIf="imageLoaded" [image]="image" [tags]="tags" [stars]="stars" [isAlbumView]="isAlbumView"
-      [editMode]="editMode" [@fadeInAnimation]>
+    <app-image-overlay *ngIf="imageLoaded && isLoggedIn" [image]="image" [tags]="tags" [stars]="stars"
+      [isAlbumView]="isAlbumView" [editMode]="editMode" [@fadeInAnimation]>
     </app-image-overlay>
-    <div class="edit-toolbar">
+    <div class="edit-toolbar" *ngIf="isLoggedIn">
       <div class="group" *ngIf="isAlbumView && editMode" [@fadeAnimation]>
         <button class="button-overlay" (click)="updateCover()" [ngClass]="{'is-disabled': isCover}"
           [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
@@ -25,6 +25,6 @@
       <i class="material-icons" *ngIf="!image.toPrint">add</i>
       <i class="material-icons" *ngIf="image.toPrint">check</i>
     </button> -->
-    <app-button-add-menu [image]="image"></app-button-add-menu>
+    <app-button-add-menu *ngIf="isLoggedIn" [image]="image"></app-button-add-menu>
   </div>
 </div>

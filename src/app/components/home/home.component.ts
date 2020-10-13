@@ -3,6 +3,7 @@ import { ImageService } from 'src/app/services/image.service';
 import { takeWhile } from 'rxjs/operators';
 import { fadeFastAnimation, transAnimation } from 'src/app/utils/animations';
 import { SettingsService } from 'src/app/services/settings.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,12 @@ export class HomeComponent implements OnInit {
   constructor(
     private imageService: ImageService,
     private ref: ChangeDetectorRef,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private auth: AuthenticationService
   ) {
-    this.settings.init();
+    if (this.auth.isLoggedIn) {
+      this.settings.init();
+    }
   }
 
   // @HostListener('window:scroll') onScroll() {

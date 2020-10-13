@@ -1,7 +1,7 @@
 <header class="header main-container main-container--fixed" [ngClass]="{'is-sticky': sticky}">
   <!-- <div class="content"> -->
 
-    <div class="top-buttons">
+    <div class="top-buttons" *ngIf="isLoggedIn">
       <app-user-menu></app-user-menu>
       <app-search-input></app-search-input>
     </div>
@@ -14,7 +14,7 @@
       </a>
     <!-- </div> -->
     <!-- <div class="right"> -->
-      <app-menu></app-menu>
+      <app-menu *ngIf="isLoggedIn"></app-menu>
     <!-- </div> -->
   <!-- </div> -->
   <!-- <div class="search-wrapper">

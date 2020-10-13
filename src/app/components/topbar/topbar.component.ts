@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-topbar',
@@ -9,7 +10,13 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 export class TopbarComponent implements OnInit {
   @Input() sticky: boolean = false;
 
-  constructor() { }
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
+  }
+
+  constructor(
+    private auth: AuthenticationService
+  ) { }
 
   ngOnInit(): void { }
 }

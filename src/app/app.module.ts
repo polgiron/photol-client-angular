@@ -24,7 +24,6 @@ import { ImageComponent } from 'src/app/components/images/image/image.component'
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
-import { LandpageComponent } from './components/landpage/landpage.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -80,7 +79,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ImageComponent,
     SearchComponent,
     LightboxComponent,
-    LandpageComponent,
     ModalCreateAlbumComponent,
     ModalUploadProgressComponent,
     FavoritesComponent,

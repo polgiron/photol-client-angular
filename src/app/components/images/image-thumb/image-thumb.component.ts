@@ -5,6 +5,7 @@ import { AlbumService } from 'src/app/services/album.service';
 import { takeWhile } from 'rxjs/operators';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 import { Tag } from 'src/app/models/tag.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-image-thumb',
@@ -25,7 +26,12 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   imageLoaded: boolean = false;
   addMenuOpen: boolean = false;
 
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
+  }
+
   constructor(
+    private auth: AuthenticationService,
     private imageService: ImageService,
     private albumService: AlbumService,
     private ref: ChangeDetectorRef
