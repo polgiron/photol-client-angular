@@ -19,7 +19,7 @@ export class Utils {
   }
 
   hideSplashscreen() {
-    console.log('hide splashscreen');
+    // console.log('hide splashscreen');
     const splashscreen: any = document.querySelector('#splashscreen');
     if (splashscreen && !splashscreen.classList.contains('is-hidden')) {
       splashscreen.classList.add('is-hidden');

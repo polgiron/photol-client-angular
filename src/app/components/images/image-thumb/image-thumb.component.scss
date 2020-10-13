@@ -21,7 +21,7 @@
     height: 100%;
   }
 
-  &:hover .to-print-button {
+  &:hover .add-button {
     opacity: 1;
     visibility: visible;
   }
@@ -32,7 +32,7 @@
   visibility: visible;
 }
 
-.to-print-button {
+.add-button {
   position: absolute;
   top: -.5em;
   right: -.5em;
@@ -43,9 +43,5 @@
 
   &:hover {
     transform: scale(1.1);
-  }
-
-  &.add-to-print:hover {
-    transform: scale(1.1) rotate(90deg);
   }
 }

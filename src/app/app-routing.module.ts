@@ -8,6 +8,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
+import { PublicComponent } from './components/public/public.component';
 // import { LandpageComponent } from 'src/app/components/landpage/landpage.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'albums/:albumId', component: AlbumComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'toprint', component: ToPrintComponent },
+      { path: 'public', component: PublicComponent },
       { path: 'search', component: SearchComponent }
     ]
   },

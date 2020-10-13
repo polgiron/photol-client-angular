@@ -1,26 +1,10 @@
-// .animated-router-outlet ~ * {
-//   position: absolute;
-//   width: 100%;
-// }
+.main-container .inner {
+  padding: $container-padding;
+  max-width: $container-width;
+  margin: auto;
 
-.main-container {
-  // max-width: $container-width;
-  // max-width: 100%;
-  // margin: auto;
-  // padding-top: 5.5rem;
-
-  .inner {
-    padding: $container-padding;
-    max-width: $container-width;
-    margin: auto;
-
-    // @include respond-to('medium') {
-    //   padding: 1rem 1.5rem;
-    // }
-
-    @include respond-to('small') {
-      padding: 1rem;
-    }
+  @include respond-to('small') {
+    padding: 1rem;
   }
 }
 
@@ -53,30 +37,6 @@
   }
 }
 
-// .grid-list--small {
-//   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-// }
-
-// .grid-list-square {
-//   display: grid;
-//   grid-gap: 2rem;
-//   grid-template-columns: repeat(6, minmax(2rem, 1fr));
-//   grid-auto-rows: 1fr;
-
-//   &:before {
-//     content: '';
-//     width: 0;
-//     padding-bottom: 100%;
-//     grid-row: 1 / 1;
-//     grid-column: 1 / 1;
-//   }
-
-//   >*:first-child {
-//     grid-row: 1 / 1;
-//     grid-column: 1 / 1;
-//   }
-// }
-
 body.is-static {
   overflow: hidden;
 }
@@ -90,16 +50,7 @@ img.fade {
   }
 }
 
-// .image-wrapper {
-//   transition: .2s all;
-// }
-
-// .modal .image-wrapper {
-//   border: 0 !important;
-//   transition: 0s all !important;
-// }
-
-.image-thumb .image-wrapper,
+.image-thumb .button-lightbox,
 .album-thumb .cover {
   transition: all .3s $ease-out-quint;
 
@@ -113,43 +64,17 @@ img.fade {
   border-color: $color-main-border transparent transparent $color-main-border !important;
 }
 
-// Masonry
-// .masonry-list {
-//   column-count: 4;
-//   // column-gap: 1rem;
-//   column-gap: 1.5rem;
+.checkbox-list__button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+  border-radius: $small-border-radius;
+  color: $color-text-medium;
+  transition: all .1s;
 
-//   @include respond-to('large') {
-//     column-count: 3;
-//     // column-gap: 2rem;
-//   }
-
-//   @include respond-to('medium') {
-//     column-count: 2;
-//     column-gap: 1rem;
-//   }
-
-//   @include respond-to('small') {
-//     column-count: 3;
-//     column-gap: .5rem;
-//   }
-
-//   .list__entry {
-//     padding-bottom: 1.5rem;
-//     break-inside: avoid;
-
-//     @include respond-to('medium') {
-//       padding-top: .5rem;
-//       padding-bottom: .5rem;
-//     }
-
-//     @include respond-to('small') {
-//       padding-top: .25rem;
-//       padding-bottom: .25rem;
-//     }
-
-//     img {
-//       width: 100%;
-//     }
-//   }
-// }
+  &:hover {
+    background: $color-background-3;
+  }
+}

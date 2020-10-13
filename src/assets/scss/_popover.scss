@@ -41,3 +41,15 @@
     left: 5px !important;
   }
 }
+
+.popover--add-menu {
+  transform: translate3d(85px, -11px, 0px) !important;
+
+  .arrow {
+    display: none;
+  }
+}
+
+.popover-content {
+  padding: .3rem;
+}

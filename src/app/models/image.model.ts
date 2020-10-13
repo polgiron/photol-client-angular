@@ -11,4 +11,5 @@ export interface Image {
   albums?: string[];
   stars: number;
   toPrint: boolean;
+  public: boolean;
 }

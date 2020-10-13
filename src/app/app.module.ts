@@ -57,6 +57,8 @@ import { SafeUrlPipe } from 'src/app/pipes/safe-url.pipe';
 import { ImageOverlayComponent } from './components/images/image-overlay/image-overlay.component';
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
 import { UserMenuComponent } from './components/topbar/user-menu/user-menu.component';
+import { PublicComponent } from './components/public/public.component';
+import { AddMenuComponent } from './components/add-menu/add-menu.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { UserMenuComponent } from './components/topbar/user-menu/user-menu.compo
     SafeUrlPipe,
     ImageOverlayComponent,
     ToPrintComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    PublicComponent,
+    AddMenuComponent
   ],
   imports: [
     BrowserModule,

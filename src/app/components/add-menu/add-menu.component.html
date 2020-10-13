@@ -1,0 +1,20 @@
+<div class="popover-content">
+  <ul>
+    <li>
+      <button class="checkbox-list__button" (click)="onClickAddToPrint()">
+        <span>Add to print</span>
+        <div class="right">
+          <app-checkbox [check]="image.toPrint"></app-checkbox>
+        </div>
+      </button>
+    </li>
+    <li>
+      <button class="checkbox-list__button" (click)="onClickAddToPublic()">
+        <span>Add to public page</span>
+        <div class="right">
+          <app-checkbox [check]="image.public"></app-checkbox>
+        </div>
+      </button>
+    </li>
+  </ul>
+</div>

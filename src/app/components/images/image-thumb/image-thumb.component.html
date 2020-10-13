@@ -20,10 +20,18 @@
             class="material-icons">delete</i></button>
       </div>
     </div>
-    <button class="to-print-button button-overlay" [ngClass]="{'add-to-print': !image.toPrint}"
+    <!-- <button class="to-print-button button-overlay" [ngClass]="{'add-to-print': !image.toPrint}"
       (click)="toggleToPrint()" container="body" preventDefaultClick>
       <i class="material-icons" *ngIf="!image.toPrint">add</i>
       <i class="material-icons" *ngIf="image.toPrint">check</i>
+    </button> -->
+    <button class="add-button button-overlay" [popover]="popContent" containerClass="popover--add-menu"
+      outsideClick="true" preventDefaultClick>
+      <i class="material-icons">add</i>
     </button>
   </div>
 </div>
+
+<ng-template #popContent>
+  <app-add-menu [image]="image"></app-add-menu>
+</ng-template>
