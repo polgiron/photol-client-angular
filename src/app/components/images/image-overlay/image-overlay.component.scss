@@ -9,8 +9,8 @@
 }
 
 .top-left {
-  top: .75rem;
-  left: .75rem;
+  top: $overlay-padding;
+  left: $overlay-padding;
   text-align: left;
 
   span {
@@ -19,8 +19,8 @@
 }
 
 .top-right {
-  top: .75rem;
-  right: .75rem;
+  top: $overlay-padding;
+  right: $overlay-padding;
   text-shadow: 1px 1px 4px rgba($color-black, .3);
   display: flex;
   opacity: 0;
@@ -58,7 +58,7 @@
 .bottom-left {
   bottom: 0;
   left: 0;
-  padding: .75rem;
+  padding: $overlay-padding;
   display: flex;
   flex-wrap: wrap;
   max-width: 70%;

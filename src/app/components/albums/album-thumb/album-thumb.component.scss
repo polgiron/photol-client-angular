@@ -23,7 +23,7 @@
 
 .infos {
   width: 100%;
-  padding: .75rem;
+  padding: $overlay-padding;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -49,8 +49,8 @@
   position: absolute;
   color: $color-white-smoke;
   text-shadow: 1px 1px 4px rgba($color-black, .6);
-  top: .75rem;
-  left: .75rem;
+  top: $overlay-padding;
+  left: $overlay-padding;
   text-align: left;
   z-index: 2;
   font-weight: 500;
