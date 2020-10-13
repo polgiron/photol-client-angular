@@ -23,6 +23,7 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   isAlbumView: boolean = false;
   isCover: boolean = false;
   imageLoaded: boolean = false;
+  addMenuOpen: boolean = false;
 
   constructor(
     private imageService: ImageService,
@@ -67,20 +68,5 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   onImageLoaded() {
     this.imageLoaded = true;
-  }
-
-  toggleToPrint() {
-    this.image.toPrint = !this.image.toPrint;
-    this.imageService.update(this.image._id, {
-      toPrint: this.image.toPrint
-    }).then(() => {
-      const images = this.imageService.currentImages;
-      images.map((image: Image) => {
-        if (image._id == this.image._id) {
-          image.toPrint = this.image.toPrint
-        }
-      });
-      this.imageService.updateCurrentImages(images);
-    });
   }
 }

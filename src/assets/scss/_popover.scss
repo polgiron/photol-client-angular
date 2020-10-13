@@ -1,4 +1,5 @@
-.popover {
+.popover,
+.dropdown-menu {
   width: 14rem;
   max-width: 14rem;
   font-family: inherit;
@@ -33,14 +34,14 @@
 //   }
 // }
 
-.popover--user-menu {
-  // left: 70px !important;
-  left: 57px !important;
+// .popover--user-menu {
+//   // left: 70px !important;
+//   left: 57px !important;
 
-  .arrow {
-    left: 5px !important;
-  }
-}
+//   .arrow {
+//     left: 5px !important;
+//   }
+// }
 
 .popover--add-menu {
   transform: translate3d(85px, -11px, 0px) !important;

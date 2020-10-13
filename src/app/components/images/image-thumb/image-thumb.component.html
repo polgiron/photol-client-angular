@@ -25,13 +25,6 @@
       <i class="material-icons" *ngIf="!image.toPrint">add</i>
       <i class="material-icons" *ngIf="image.toPrint">check</i>
     </button> -->
-    <button class="add-button button-overlay" [popover]="popContent" containerClass="popover--add-menu"
-      outsideClick="true" preventDefaultClick>
-      <i class="material-icons">add</i>
-    </button>
+    <app-button-add-menu [image]="image"></app-button-add-menu>
   </div>
 </div>
-
-<ng-template #popContent>
-  <app-add-menu [image]="image"></app-add-menu>
-</ng-template>

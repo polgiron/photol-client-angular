@@ -1,0 +1,22 @@
+.wrapper {
+  // position: relative;
+  position: absolute;
+  top: -.5em;
+  right: -.5em;
+}
+
+.add-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.dropdown-menu {
+  transform: translate3d(-196px, -32px, 0) !important;
+  padding: .3rem;
+}

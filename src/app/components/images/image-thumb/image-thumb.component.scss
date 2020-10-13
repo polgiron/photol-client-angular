@@ -20,28 +20,10 @@
     width: 100%;
     height: 100%;
   }
-
-  &:hover .add-button {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
-:host ::ng-deep .image-thumb:hover .top-right {
+:host ::ng-deep .image-thumb:hover .top-right,
+:host ::ng-deep .image-thumb:hover .add-button {
   opacity: 1;
   visibility: visible;
-}
-
-.add-button {
-  position: absolute;
-  top: -.5em;
-  right: -.5em;
-  width: 1.5rem;
-  height: 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 }

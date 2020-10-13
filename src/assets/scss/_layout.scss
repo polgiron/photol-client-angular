@@ -73,6 +73,8 @@ img.fade {
   border-radius: $small-border-radius;
   color: $color-text-medium;
   transition: all .1s;
+  font-size: .85rem;
+  font-weight: 500;
 
   &:hover {
     background: $color-background-3;

@@ -1,5 +1,9 @@
-<div class="popover-content">
-  <ul>
+<div dropdown (isOpenChange)="onOpenChange($event)" #dropdown="bs-dropdown" placement="left" class="wrapper">
+  <button dropdownToggle class="add-button button-overlay" aria-label="Button add menu"
+    aria-controls="button-add" preventDefaultClick>
+    <i class="material-icons">add</i>
+  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-add">
     <li>
       <button class="checkbox-list__button" (click)="onClickAddToPrint()">
         <span>Add to print</span>

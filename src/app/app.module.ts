@@ -58,7 +58,9 @@ import { ImageOverlayComponent } from './components/images/image-overlay/image-o
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
 import { UserMenuComponent } from './components/topbar/user-menu/user-menu.component';
 import { PublicComponent } from './components/public/public.component';
-import { AddMenuComponent } from './components/add-menu/add-menu.component';
+import { ButtonAddMenuComponent } from './components/button-add-menu/button-add-menu.component';
+import { AddMenuService } from './services/add-menu.service';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,7 @@ import { AddMenuComponent } from './components/add-menu/add-menu.component';
     ToPrintComponent,
     UserMenuComponent,
     PublicComponent,
-    AddMenuComponent
+    ButtonAddMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +112,8 @@ import { AddMenuComponent } from './components/add-menu/add-menu.component';
     TooltipModule.forRoot(),
     InfiniteScrollModule,
     RatingModule.forRoot(),
-    InlineSVGModule.forRoot()
+    InlineSVGModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [
     Api,
@@ -125,7 +128,8 @@ import { AddMenuComponent } from './components/add-menu/add-menu.component';
     SearchService,
     AuthenticationService,
     AuthGuardService,
-    UserService
+    UserService,
+    AddMenuService
   ],
   entryComponents: [
     ModalCreateAlbumComponent,

@@ -49,6 +49,11 @@ export class ImageService {
     return response.images;
   }
 
+  async getPublic() {
+    const response: any = await this.api.get(this.document + 'public');
+    return response.images;
+  }
+
   async getSignedUrl(imageId: string, size: string) {
     const response: any = await this.api.get(this.document + imageId + '/signedUrl', { size: size });
     return response.signedUrl;

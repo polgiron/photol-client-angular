@@ -24,7 +24,7 @@ export class PublicComponent implements OnInit {
   }
 
   async getImages() {
-    this.images = await this.imageService.getToPrint();
+    this.images = await this.imageService.getPublic();
     this.imageService.updateCurrentImages(this.images);
     this.loading = false;
     this.ref.markForCheck();
