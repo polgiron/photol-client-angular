@@ -8,7 +8,7 @@ export class Utils {
     private route: ActivatedRoute
   ) { }
 
-  clearOpenQuery() {
+  clearOpenQuery(): void {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
@@ -18,18 +18,7 @@ export class Utils {
     });
   }
 
-  hideSplashscreen() {
-    console.log('hide splashscreen');
-    const splashscreen: any = document.querySelector('#splashscreen');
-    if (splashscreen && !splashscreen.classList.contains('is-hidden')) {
-      splashscreen.classList.add('is-hidden');
-      setTimeout(() => {
-        splashscreen.remove();
-      }, 600);
-    }
-  }
-
-  serialize(obj: any) {
+  serialize(obj: any): string {
     let str = '';
     for (let key in obj) {
       if (str != '') {
@@ -40,7 +29,7 @@ export class Utils {
     return str;
   }
 
-  removeFromArray(array: any, element: any) {
+  removeFromArray(array: any, element: any): any[] {
     const index = array.indexOf(element);
     if (index > -1) {
       array.splice(index, 1);
@@ -48,7 +37,7 @@ export class Utils {
     return array;
   }
 
-  removeDuplicates(array: any) {
+  removeDuplicates(array: any): any[] {
     return array.reduce((acc, current) => {
       const x = acc.find(item => item._id === current._id);
       if (!x) {
