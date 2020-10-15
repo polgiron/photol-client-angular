@@ -1,23 +1,13 @@
-<header class="header main-container main-container--fixed" [ngClass]="{'is-sticky': sticky}">
-  <!-- <div class="content"> -->
-
-    <div class="top-buttons">
-      <app-user-menu></app-user-menu>
-      <app-search-input></app-search-input>
-    </div>
-
-    <!-- <div class="left"> -->
-      <a class="logo" [routerLink]="['/']">
-        <!-- <h1 class="logo-title">photol</h1> -->
-        <img src="/assets/images/photol-logo-light-border.svg" alt="">
-        <!-- <img src="/assets/images/photol-logo-severine.svg" alt=""> -->
-      </a>
-    <!-- </div> -->
-    <!-- <div class="right"> -->
-      <app-menu></app-menu>
-    <!-- </div> -->
-  <!-- </div> -->
-  <!-- <div class="search-wrapper">
+<!-- <header class="header main-container main-container--fixed" [ngClass]="{'is-sticky': sticky}"> -->
+<header class="header main-container main-container--fixed">
+  <div class="top-buttons">
+    <app-user-menu></app-user-menu>
     <app-search-input></app-search-input>
-  </div> -->
+  </div>
+  <a class="logo" [routerLink]="['/']">
+    <img src="/assets/images/photol-logo-light-border.svg" alt="">
+  </a>
+  <div class="menu-wrapper">
+    <app-menu></app-menu>
+  </div>
 </header>

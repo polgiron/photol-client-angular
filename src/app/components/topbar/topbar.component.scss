@@ -2,14 +2,8 @@
 
 .header {
   animation: fade-in .4s both;
-  // padding-top: 3rem;
-  // display: flex;
-  // align-items: center;
   max-width: $container-width;
   padding: $container-padding;
-  // background: $color-background-4;
-  // padding-top: 5rem;
-  // padding-bottom: 2rem;
 
   @include respond-to('small') {
     display: block;
@@ -35,56 +29,25 @@
   // }
 }
 
-// .content {
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: space-between;
-// }
-
 .logo {
   width: 16rem;
   margin: auto;
   margin-top: 4rem;
   margin-bottom: .75rem;
   display: block;
+  animation: fade-in-from-bottom 1s $ease-out-quint both .1s;
 
   img {
     width: 100%;
   }
 }
 
-// .search-wrapper {
-//   margin-top: 1rem;
-//   display: none;
-
-//   @include respond-to('small') {
-//     display: block;
-//   }
-// }
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .top-buttons {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
-  // padding: 1.5rem;
-  // opacity: .5;
+  animation: fade-in-from-top 1s $ease-out-quint both;
 
   .settings {
     display: flex;
@@ -94,5 +57,33 @@
       margin-right: .5rem;
       font-size: 1.2em;
     }
+  }
+}
+
+.menu-wrapper {
+  animation: fade-in-from-bottom 1s $ease-out-quint both .2s;
+}
+
+@keyframes fade-in-from-top {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -.5rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-in-from-bottom {
+  from {
+    opacity: 0;
+    transform: translate3d(0, .5rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
