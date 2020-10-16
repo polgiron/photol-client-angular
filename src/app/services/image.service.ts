@@ -34,8 +34,8 @@ export class ImageService {
     return response;
   }
 
-  async getImage(imageId: string) {
-    const response: any = await this.api.get(this.document + `${imageId}` + '/big');
+  async getImage(imageId: string, isPublic: boolean = false) {
+    const response: any = await this.api.get(this.document + `${imageId}/big/${isPublic ? 'public' : ''}`);
     return response.image;
   }
 

@@ -104,7 +104,7 @@ export class LightboxEntryComponent implements OnInit {
   }
 
   async extendImage() {
-    const image: Image = await this.imageService.getImage(this._image._id);
+    const image: Image = await this.imageService.getImage(this._image._id, this._image.public);
     // console.log(image);
     this.imageSrc = image.signedUrl;
     this.tags = image.tags;

@@ -1,6 +1,5 @@
 .button {
   border-radius: 2rem;
-  color: $color-background;
   font-size: .85rem;
   transition: all .2s;
   padding: .5rem 1rem;
@@ -10,6 +9,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  color: $color-text-medium;
+  border: 1px solid $color-text-medium;
 
   &:disabled {
     cursor: default;
@@ -24,13 +25,9 @@
 }
 
 .button--main {
-  // background: $color-accent;
-  // border-color: $color-accent;
-  // color: rgba($color-white, 1);
-  // box-shadow: 0 2px 5px rgba($color-black, .1);
   background: $color-text;
-  // border-color: $color-accent;
-  // color: rgba($color-white, 1);
+  color: $color-background;
+  border-color: $color-text;
   box-shadow: 0 2px 5px rgba($color-black, .1);
 
   &:not(:disabled):hover {
