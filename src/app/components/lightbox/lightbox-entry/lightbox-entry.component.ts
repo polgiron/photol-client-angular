@@ -5,6 +5,7 @@ import { Tag } from 'src/app/models/tag.model';
 import { Image } from 'src/app/models/image.model';
 import { fadeInAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-lightbox-entry',
@@ -40,12 +41,16 @@ export class LightboxEntryComponent implements OnInit {
   albumId: string;
   isAlbumView: boolean = false;
 
-  get image() {
+  get image(): Image {
     return this._image;
   }
 
-  get active() {
+  get active(): boolean {
     return this._active;
+  }
+
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
   }
 
   constructor(
@@ -53,16 +58,21 @@ export class LightboxEntryComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef,
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private auth: AuthenticationService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
     this.isAlbumView = this.albumService.currentAlbum ? true : false;
   }
 
-  setQueryParameter() {
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this._resizeListener);
+  }
+
+  setQueryParameter(): void {
     // changes the route without moving from the current view or
     // triggering a navigation event,
     this.router.navigate([], {
@@ -77,11 +87,11 @@ export class LightboxEntryComponent implements OnInit {
     });
   }
 
-  onWindowResize() {
+  onWindowResize(): void {
     this.setDialogWidth();
   }
 
-  setDialogWidth() {
+  setDialogWidth(): void {
     if (window.innerWidth < this.mobileBreakpoint) {
       return;
     }
@@ -103,7 +113,7 @@ export class LightboxEntryComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  async extendImage() {
+  async extendImage(): Promise<void> {
     const image: Image = await this.imageService.getImage(this._image._id, this._image.public);
     // console.log(image);
     this.imageSrc = image.signedUrl;
@@ -114,15 +124,11 @@ export class LightboxEntryComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  onImageLoaded() {
+  onImageLoaded(): void {
     this.imageLoaded = true;
   }
 
-  onClickGoToAlbum() {
+  onClickGoToAlbum(): void {
     this.imageService.closeLightbox();
-  }
-
-  ngOnDestroy() {
-    window.removeEventListener('resize', this._resizeListener);
   }
 }
