@@ -1,6 +1,4 @@
 .modal-dialog {
-  // font-size: 1rem;
-
   &.small {
     max-width: 18rem;
   }
@@ -11,6 +9,10 @@
 
   &.upload {
     margin-top: 12rem;
+  }
+
+  &.image-infos {
+    max-width: 28rem;
   }
 }
 

@@ -1,0 +1,8 @@
+.darkroom-settings {
+  display: flex;
+  align-items: center;
+
+  .input-wrapper:not(:last-child) {
+    margin-right: .5rem;
+  }
+}

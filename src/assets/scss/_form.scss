@@ -39,9 +39,7 @@
 
 .button--white {
   text-transform: none;
-  // background: rgba($color-white, .5);
   background: $color-white;
-  // border: 0;
   color: $color-almost-black;
 
   &:not(:disabled):hover {

@@ -6,6 +6,8 @@ import { takeWhile } from 'rxjs/operators';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 import { Tag } from 'src/app/models/tag.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component';
 
 @Component({
   selector: 'app-image-thumb',
@@ -34,10 +36,11 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     private auth: AuthenticationService,
     private imageService: ImageService,
     private albumService: AlbumService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private modalService: ModalService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isAlbumView = this.albumService.currentAlbum ? true : false;
 
     if (this.isAlbumView) {
@@ -54,25 +57,31 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._alive = false;
   }
 
-  openPhotoModal() {
+  openPhotoModal(): void {
     this.imageService.openLightbox(this.image);
   }
 
-  updateCover() {
+  updateCover(): void {
     if (!this.isCover) {
       this.albumService.updateCover(this.image._id);
     }
   }
 
-  delete() {
+  delete(): void {
     this.imageService.delete(this.image._id);
   }
 
-  onImageLoaded() {
+  onImageLoaded(): void {
     this.imageLoaded = true;
+  }
+
+  onClickInfos(): void {
+    this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
+      image: this.image
+    });
   }
 }

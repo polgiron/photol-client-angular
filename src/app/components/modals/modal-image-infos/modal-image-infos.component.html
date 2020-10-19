@@ -1,0 +1,28 @@
+<div class="modal-body">
+  <div class="input-group">
+    <h2 class="title-2">Darkroom Settings</h2>
+    <div class="darkroom-settings">
+      <div class="input-wrapper input-wrapper--i-left" [ngClass]="{'is-filled': image.darkroomSettings.duration}">
+        <i class="material-icons">schedule</i>
+        <input class="input" type="number" placeholder="Duration" [(ngModel)]="image.darkroomSettings.duration"
+          onkeydown="return event.keyCode !== 69">
+      </div>
+      <div class="input-wrapper input-wrapper--i-left" [ngClass]="{'is-filled': image.darkroomSettings.contrast}">
+        <i class="material-icons">exposure</i>
+        <input class="input" type="number" placeholder="Contrast" [(ngModel)]="image.darkroomSettings.contrast"
+          onkeydown="return event.keyCode !== 69">
+      </div>
+      <div class="input-wrapper input-wrapper--i-left" [ngClass]="{'is-filled': image.darkroomSettings.aperture}">
+        <i class="material-icons">camera</i>
+        <input class="input" type="number" placeholder="Aperture" [(ngModel)]="image.darkroomSettings.aperture"
+          onkeydown="return event.keyCode !== 69">
+      </div>
+    </div>
+  </div>
+  <div class="input-group">
+    <h2 class="title-2">Note</h2>
+    <textarea class="textarea">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, obcaecati in ex nam voluptates reprehenderit qui illum perspiciatis eveniet sequi odit facilis commodi! Nesciunt nihil sint amet, quasi reiciendis aliquam?
+    </textarea>
+  </div>
+</div>

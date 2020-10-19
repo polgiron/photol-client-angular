@@ -60,6 +60,7 @@ import { PublicComponent } from './components/public/public.component';
 import { ButtonAddMenuComponent } from './components/button-add-menu/button-add-menu.component';
 import { AddMenuService } from './services/add-menu.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalImageInfosComponent } from './components/modals/modal-image-infos/modal-image-infos.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ToPrintComponent,
     UserMenuComponent,
     PublicComponent,
-    ButtonAddMenuComponent
+    ButtonAddMenuComponent,
+    ModalImageInfosComponent
   ],
   imports: [
     BrowserModule,

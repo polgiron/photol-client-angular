@@ -23,7 +23,7 @@ export class ModalCreateAlbumComponent implements OnInit {
   files: File[];
   rollExists: boolean = false;
 
-  get disableButton() {
+  get disableButton(): boolean {
     return !this.title || this.title == '' || !this.images.length;
   }
 
@@ -34,13 +34,13 @@ export class ModalCreateAlbumComponent implements OnInit {
     private modalService: ModalService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  onUpload(files: File[]) {
+  onUpload(files: File[]): void {
     this.extendPhotos(files);
   }
 
-  extendPhotos(files: File[]) {
+  extendPhotos(files: File[]): void{
     // console.log(files);
 
     files.map(file => {
@@ -53,11 +53,11 @@ export class ModalCreateAlbumComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  removeImage(image: any) {
+  removeImage(image: any): void {
     this.images.splice(this.images.indexOf(image), 1);
   }
 
-  onCreateAlbum() {
+  onCreateAlbum(): void {
     // console.log('ON CREATE ALBUM');
 
     const params = {
@@ -80,8 +80,7 @@ export class ModalCreateAlbumComponent implements OnInit {
     });
   }
 
-  async onRollKeyup() {
-    // console.log(this.rollId);
+  async onRollKeyup(): Promise<void> {
     if (this.rollId) {
       this.rollExists = await this.albumService.rollIdExists(this.rollId);
     } else {
@@ -90,14 +89,7 @@ export class ModalCreateAlbumComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  close() {
+  close(): void {
     this.modalService.close(this);
   }
-
-  // trackByFunction(index, item) {
-  //   if (!item) {
-  //     return null;
-  //   }
-  //   return item.id;
-  // }
 }

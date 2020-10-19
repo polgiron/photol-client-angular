@@ -12,7 +12,7 @@ export class ImageOverlayComponent implements OnInit {
   @Input() image: Image;
   @Input() isAlbumView: boolean;
   @Input() editMode: boolean = false;
-  @Input() set tags (value: Tag[]) {
+  @Input() set tags(value: Tag[]) {
     this._tags = value;
     if (value.length > this.maxTags) {
       this.displayedTags = value.slice(0, this.maxTags);
@@ -25,7 +25,7 @@ export class ImageOverlayComponent implements OnInit {
   displayedTags: Tag[];
   maxTags: number = 4;
 
-  get tags() {
+  get tags(): Tag[] {
     return this._tags;
   }
 
@@ -33,17 +33,17 @@ export class ImageOverlayComponent implements OnInit {
     private imageService: ImageService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  onRatingClick(event: any) {
+  onRatingClick(event: any): void {
     this.saveRating(event.target.title);
   }
 
-  clearRating() {
+  clearRating(): void {
     this.saveRating(0);
   }
 
-  saveRating(value: number) {
+  saveRating(value: number): void {
     console.log('save rating');
     this.stars = value;
     this.imageService.update(this.image._id, {
