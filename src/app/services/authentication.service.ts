@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
-export class AuthenticationService {
+export class AuthService {
   private token: string;
   document: string = 'auth/';
 

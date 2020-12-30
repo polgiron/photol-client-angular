@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { AuthService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,9 +12,11 @@ export class MenuComponent implements OnInit {
     tags: false,
     settings: false
   };
+  isLoggedIn: boolean = this.authService.isLoggedIn;
 
   constructor(
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void { }
@@ -28,7 +31,7 @@ export class MenuComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  onClickMenu(): void {
-    window.scrollTo(0, 0);
-  }
+  // onClickMenu(): void {
+  //   window.scrollTo(0, 0);
+  // }
 }

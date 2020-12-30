@@ -71,14 +71,14 @@
 
   .bottom {
     display: flex;
-    margin-top: 1rem;
+    margin-top: .5rem;
 
     >div {
       flex: 1;
     }
 
     .input-wrapper {
-      margin-right: 1rem;
+      margin-right: .5rem;
     }
   }
 }

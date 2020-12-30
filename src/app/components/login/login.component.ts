@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TokenPayload } from 'src/app/models/auth.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { fadeAnimation, fadeScaleAnimation } from 'src/app/utils/animations';
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(
-    private auth: AuthenticationService,
+    private auth: AuthService,
     private router: Router,
     private ref: ChangeDetectorRef,
     private userService: UserService

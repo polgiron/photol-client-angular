@@ -11,7 +11,7 @@ import { ToPrintComponent } from 'src/app/components/toprint/toprint.component';
 import { PublicComponent } from './components/public/public.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'public', pathMatch: 'full' },
+  { path: '', redirectTo: 'albums', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   {
     path: '',

@@ -8,7 +8,7 @@ import {
 import { ModalService } from './modal.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { AuthenticationService } from './authentication.service';
+import { AuthService } from './authentication.service';
 
 @Injectable()
 export class UploadService {
@@ -20,7 +20,7 @@ export class UploadService {
     private modalService: ModalService,
     private router: Router,
     private http: HttpClient,
-    private auth: AuthenticationService
+    private auth: AuthService
   ) { }
 
   public uploadProgressChannel(): Observable<number> {

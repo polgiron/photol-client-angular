@@ -9,27 +9,27 @@
         <div class="input-group">
           <label for="email">Email</label>
           <div class="input-wrapper" [ngClass]="{'is-filled': credentials.email?.length}">
-            <input class="input" name="email" type="email" [(ngModel)]="credentials.email" (keyup)="onKeyUp()"
+            <input class="input input--medium" name="email" type="email" [(ngModel)]="credentials.email" (keyup)="onKeyUp()"
               autofocus>
           </div>
         </div>
         <div class="input-group" *ngIf="displayRegister">
           <label for="name">Name</label>
           <div class="input-wrapper" [ngClass]="{'is-filled': credentials.name?.length}">
-            <input class="input" name="name" type="text" [(ngModel)]="credentials.name">
+            <input class="input input--medium" name="name" type="text" [(ngModel)]="credentials.name">
           </div>
         </div>
         <div class="input-group">
           <label for="email">Password</label>
           <div class="input-wrapper" [ngClass]="{'is-filled': credentials.password?.length}">
-            <input class="input" name="password" type="password" [(ngModel)]="credentials.password"
+            <input class="input input--medium" name="password" type="password" [(ngModel)]="credentials.password"
               (keyup)="onKeyUpPassword()">
           </div>
         </div>
         <div class="input-group" *ngIf="displayRegister">
           <label for="email">Repeat password</label>
           <div class="input-wrapper" [ngClass]="{'is-filled': passwordRepeat?.length}">
-            <input class="input" name="password" type="password" [(ngModel)]="passwordRepeat"
+            <input class="input input--medium" name="password" type="password" [(ngModel)]="passwordRepeat"
               (keyup)="onKeyUpPassword()">
           </div>
         </div>

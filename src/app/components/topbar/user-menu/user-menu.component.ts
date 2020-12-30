@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDetails } from 'src/app/models/auth.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -12,7 +12,7 @@ export class UserMenuComponent implements OnInit {
   activePop: boolean;
 
   constructor(
-    private auth: AuthenticationService
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {

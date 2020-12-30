@@ -1,8 +1,8 @@
 .button {
   border-radius: 2rem;
-  font-size: .85rem;
+  // font-size: .85rem;
   transition: all .2s;
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   display: flex;
@@ -12,6 +12,8 @@
   color: $color-text-medium;
   border: 1px solid $color-text-medium;
 
+  height: 2.25rem;
+
   &:disabled {
     cursor: default;
     opacity: .5;
@@ -19,7 +21,7 @@
   }
 
   i {
-    margin-right: .3rem;
+    margin-right: .35rem;
     font-size: 1rem;
   }
 }
@@ -38,9 +40,10 @@
 }
 
 .button--white {
-  text-transform: none;
+  // text-transform: none;
   background: $color-white;
   color: $color-almost-black;
+  font-size: .75rem;
 
   &:not(:disabled):hover {
     opacity: .9;
@@ -104,6 +107,10 @@
   flex-direction: column;
   align-items: flex-start;
 
+  &:not(:last-child) {
+    margin-bottom: .5rem;
+  }
+
   label {
     color: $color-text-medium;
     margin-left: .2rem;
@@ -117,36 +124,43 @@
 
 .input-wrapper {
   background: transparent;
-  border-radius: $medium-border-radius;
+  // border-radius: $medium-border-radius;
+  border-radius: 1000rem;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid $color-main-border;
   color: $color-text-medium;
-  font-size: 1em;
+  // font-size: 1em;
   transition: border .2s;
+  background: $color-background;
 
   .input {
     border: 0;
     flex: 1;
     outline: 0;
-    font-size: 1rem;
+    // font-size: 1rem;
     background: transparent;
     color: inherit;
-    height: 2.5rem;
-    padding: 0 1rem;
+    // height: 2.5rem;
+    // padding: 0 1rem;
+    padding: .25rem .5rem;
     font-weight: 300;
     width: 100%;
+  }
+
+  .input--medium {
+    padding: .5rem .75rem;
   }
 
   i,
   span {
     display: block;
-    width: 2.8rem;
+    width: 2.25rem;
     text-align: center;
     color: $color-text-medium;
-    font-size: 1.4em;
+    font-size: 1.2em;
     transition: border .2s;
   }
 
@@ -177,26 +191,26 @@
   border-color: $color-background-2;
 
   .input {
-    font-size: .8rem;
+    // font-size: .8rem;
     height: auto;
     line-height: 1;
     padding: .4rem .7rem;
-    color: $color-background-2;
-    font-weight: 500;
+    // color: $color-background-2;
+    // font-weight: 500;
 
     &::placeholder {
-      color: $color-background-2;
+      color: $color-text-medium;
     }
   }
 
   &:focus-within,
   &.is-filled {
     border-color: $color-background-2;
-    color: $color-background-2;
+    // color: $color-background-2;
 
-    i {
-      color: $color-background-2;
-    }
+    // i {
+    //   color: $color-background-2;
+    // }
   }
 }
 
@@ -212,6 +226,30 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.textarea {
+  background: $color-background;
+  width: 100%;
+  border: 1px solid $color-main-border;
+  color: $color-text-medium;
+  transition: border .2s;
+  padding: .5rem .75rem;
+  border-radius: $big-border-radius;
+  resize: none;
+  outline: 0;
+  line-height: 1.2;
+  min-height: 8rem;
+
+  &:focus,
+  &.is-filled {
+    border-color: $color-text;
+    color: $color-text;
+
+    i {
+      color: $color-text;
+    }
+  }
 }
 
 .progress {

@@ -3,7 +3,7 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Utils } from '../utils/utils';
-import { AuthenticationService } from './authentication.service';
+import { AuthService } from './authentication.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class Api {
   constructor(
     private http: HttpClient,
     private utils: Utils,
-    private auth: AuthenticationService
+    private auth: AuthService
   ) {
     // console.log(environment.domain);
   }

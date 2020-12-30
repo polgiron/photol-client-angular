@@ -1,5 +1,5 @@
 <div class="filters">
-  <ul class="tags">
+  <ul class="tags-list">
     <li *ngFor="let tag of tags">
       <button class="tag is-clickable" [ngClass]="{'is-active': tag.active}"
         (click)="onClickFilter(tag)">{{tag.value}}</button>

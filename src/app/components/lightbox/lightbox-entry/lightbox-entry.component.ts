@@ -5,7 +5,9 @@ import { Tag } from 'src/app/models/tag.model';
 import { Image } from 'src/app/models/image.model';
 import { fadeInAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthService } from 'src/app/services/authentication.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component';
 
 @Component({
   selector: 'app-lightbox-entry',
@@ -59,7 +61,8 @@ export class LightboxEntryComponent implements OnInit {
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef,
     private albumService: AlbumService,
-    private auth: AuthenticationService
+    private auth: AuthService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -129,5 +132,11 @@ export class LightboxEntryComponent implements OnInit {
 
   onClickGoToAlbum(): void {
     this.imageService.closeLightbox();
+  }
+
+  onClickInfos(): void {
+    this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
+      image: this.image
+    });
   }
 }

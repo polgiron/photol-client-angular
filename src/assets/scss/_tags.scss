@@ -1,10 +1,12 @@
-.tags {
+$tags-spacing: .25rem;
+
+.tags-list {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: -.4rem;
+  margin-bottom: -$tags-spacing;
 
   &.is-editmode {
-    margin-top: .75rem;
+    // margin-top: .75rem;
 
     .tag {
       padding-right: .4rem;
@@ -16,23 +18,41 @@
   background: $color-background-2;
   color: $color-text;
   border-radius: 1000rem;
-  padding: .35rem .85rem;
+  padding: .5rem .75rem .45rem;
   // font-weight: 400;
-  font-size: .85rem;
-  margin-right: .5rem;
-  margin-bottom: .5rem;
+  // font-size: .85rem;
+  margin-right: $tags-spacing;
+  margin-bottom: $tags-spacing;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
+  font-size: $font-size-mini;
+  font-weight: 600;
+  letter-spacing: .05em;
+  line-height: 1;
+
+  // background: $color-white-smoke;
+  // border: 1px solid $color-background;
+  // color: $color-background;
+
+  &.tag--small {
+    font-size: .55rem;
+    padding: .4rem .65rem .35rem;
+  }
 
   button {
-    margin-left: .2rem;
-    display: flex;
+    margin-left: .25rem;
+    position: relative;
+    width: 1rem;
   }
 
   i {
-    font-size: 1rem;
-    margin: auto;
+    font-size: 1.6em;
     color: $color-text;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
   }
 }
 

@@ -33,20 +33,20 @@ export class TagsComponent implements OnInit {
     private router: Router
   ) { }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     if (this.editMode) {
       this.allTags = await this.tagService.getAll();
       this.updateSuggestedTags();
     }
   }
 
-  async onFocus() {
+  async onFocus(): Promise<void> {
     this.allTags = await this.tagService.getAll();
     this.updateSuggestedTags();
     this.ref.markForCheck();
   }
 
-  async updateSuggestedTags() {
+  async updateSuggestedTags(): Promise<void> {
     this.suggestedTags = await this.tagService.getLastUsed();
     this.suggestedTags = this.suggestedTags.filter(tag => {
       return !this.tags.find(imageTag => imageTag._id == tag._id);
@@ -54,7 +54,7 @@ export class TagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  async onKeyEnter() {
+  async onKeyEnter(): Promise<void> {
     if (this.newTagValue.length && !this.tags.find(tag => tag.value == this.newTagValue)) {
       const existingTag = this.allTags.find(tag => tag.value == this.newTagValue);
 
@@ -71,7 +71,7 @@ export class TagsComponent implements OnInit {
     }
   }
 
-  addExistingTag(tag: Tag) {
+  addExistingTag(tag: Tag): void {
     this.tags = this.tags.concat(tag);
     this.imageService.update(this.imageId, {
       tags: this.tags
@@ -81,7 +81,7 @@ export class TagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  async addNewTag(tag: string) {
+  async addNewTag(tag: string): Promise<void> {
     const newTag = await this.tagService.create({
       value: tag,
       images: [this.imageId]
@@ -91,7 +91,7 @@ export class TagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  removeTag(deleteTag: Tag) {
+  removeTag(deleteTag: Tag): void {
     this.tags = this.tags.filter(tag => tag._id != deleteTag._id);
     this.imageService.update(this.imageId, {
       tags: this.tags
@@ -103,7 +103,7 @@ export class TagsComponent implements OnInit {
     this.ref.markForCheck();
   }
 
-  updateCurrentImages() {
+  updateCurrentImages(): void {
     const images = this.imageService.currentImages;
     images.map(image => {
       if (image._id == this.imageId) {
@@ -113,7 +113,7 @@ export class TagsComponent implements OnInit {
     this.imageService.updateCurrentImages(images);
   }
 
-  onClickTag(tag: string) {
+  onClickTag(tag: string): void {
     this.imageService.closeLightbox();
     this.router.navigateByUrl('/search?value=' + tag);
   }

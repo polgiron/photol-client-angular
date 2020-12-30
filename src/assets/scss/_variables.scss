@@ -32,13 +32,15 @@ $color-accent: $color-blue;
 
 // Font
 $font-family: 'Inter', sans-serif;
-// $base-font-size: .85rem;
-$base-font-size: 1rem;
+$font-size: .85rem;
+$font-size-small: .75rem;
+$font-size-mini: .65rem;
 
 // Sizes
 $container-width: 82rem;
 $container-padding: 1.5rem;
 $overlay-padding: .5rem;
+$lightbox-edit-tags-height: 129px;
 
 // $container-width: 100%;
 // $container-width-header: 75rem;

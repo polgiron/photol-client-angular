@@ -5,9 +5,7 @@ import { AlbumService } from 'src/app/services/album.service';
 import { takeWhile } from 'rxjs/operators';
 import { fadeAnimation, fadeInAnimation } from 'src/app/utils/animations';
 import { Tag } from 'src/app/models/tag.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ModalService } from 'src/app/services/modal.service';
-import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component';
+import { AuthService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-image-thumb',
@@ -33,11 +31,10 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private auth: AuthenticationService,
+    private auth: AuthService,
     private imageService: ImageService,
     private albumService: AlbumService,
-    private ref: ChangeDetectorRef,
-    private modalService: ModalService
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -77,11 +74,5 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
 
   onImageLoaded(): void {
     this.imageLoaded = true;
-  }
-
-  onClickInfos(): void {
-    this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
-      image: this.image
-    });
   }
 }

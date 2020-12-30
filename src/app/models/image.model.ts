@@ -10,7 +10,7 @@ export interface Image {
   ratio: number;
   signedUrl?: string;
   tags?: Tag[];
-  albums?: Album[] | string[];
+  albums?: Album[] & string[];
   stars: number;
   toPrint: boolean;
   public: boolean;
@@ -21,4 +21,5 @@ export interface DarkroomSettings {
   duration: number;
   contrast: number;
   aperture: number;
+  note: string;
 }

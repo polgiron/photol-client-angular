@@ -7,28 +7,33 @@
         <span>Images</span>
       </a>
     </li> -->
-    <li>
-      <a class="menu__entry" [routerLink]="['/', 'albums']" (click)="onClickMenu()" routerLinkActive="is-active">
+    <li *ngIf="isLoggedIn">
+      <a class="menu__entry" [routerLink]="['/albums']" routerLinkActive="is-active">
         <span>film rolls</span>
       </a>
     </li>
-    <li>
-      <a class="menu__entry" [routerLink]="['/', 'favorites']" (click)="onClickMenu()" routerLinkActive="is-active">
+    <li *ngIf="isLoggedIn">
+      <a class="menu__entry" [routerLink]="['/favorites']" routerLinkActive="is-active">
         <span>favorites</span>
       </a>
     </li>
-    <li>
-      <a class="menu__entry" [routerLink]="['/', 'toprint']" (click)="onClickMenu()" routerLinkActive="is-active">
+    <li *ngIf="isLoggedIn">
+      <a class="menu__entry" [routerLink]="['/toprint']" routerLinkActive="is-active">
         <span>to print</span>
       </a>
     </li>
+    <li *ngIf="!isLoggedIn">
+      <a class="menu__entry" [routerLink]="['/login']" routerLinkActive="is-active">
+        <span>log in</span>
+      </a>
+    </li>
     <!-- <li>
-      <a class="menu__entry" [routerLink]="['/', 'public']" (click)="onClickMenu()" routerLinkActive="is-active">
+      <a class="menu__entry" [routerLink]="['/', 'public']" routerLinkActive="is-active">
         <span>public</span>
       </a>
     </li> -->
     <!-- <li>
-      <a class="menu__entry" [routerLink]="['/', 'toprint']" (click)="onClickMenu()" routerLinkActive="is-active">
+      <a class="menu__entry" [routerLink]="['/', 'toprint']" routerLinkActive="is-active">
         <i class="material-icons">search</i>
         <span>search</span>
       </a>

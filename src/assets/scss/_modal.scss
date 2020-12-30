@@ -9,11 +9,26 @@
 
   &.upload {
     margin-top: 12rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
   }
 
   &.image-infos {
-    max-width: 28rem;
+    max-width: 22rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
   }
+}
+
+.modal.fade .image-infos {
+  transform: scale(.95);
+  transition-duration: .15s;
 }
 
 .modal.fade .modal-dialog.upload {

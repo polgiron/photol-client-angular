@@ -4,10 +4,10 @@
     <app-user-menu></app-user-menu>
     <app-search-input></app-search-input>
   </div>
-  <a class="logo" [routerLink]="['/']">
+  <a class="logo" [routerLink]="['/albums']">
     <img src="/assets/images/photol-logo-light-border.svg" alt="">
   </a>
-  <div class="menu-wrapper" *ngIf="isLoggedIn">
+  <div class="menu-wrapper">
     <app-menu></app-menu>
   </div>
 </header>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalOptions } from 'ngx-bootstrap/modal';
 import { Image } from 'src/app/models/image.model';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-modal-image-infos',
@@ -11,17 +12,19 @@ export class ModalImageInfosComponent implements OnInit {
   image: Image;
 
   constructor(
-    private options: ModalOptions
+    private options: ModalOptions,
+    private imageService: ImageService
   ) { }
 
   ngOnInit(): void {
     if (this.options.initialState) {
       this.image = this.options.initialState['image'];
-      this.image.darkroomSettings = {
-        duration: 12.8,
-        contrast: 3.5,
-        aperture: 4
-      }
     }
+  }
+
+  update(): void {
+    this.imageService.update(this.image._id, {
+      darkroomSettings: this.image.darkroomSettings
+    });
   }
 }

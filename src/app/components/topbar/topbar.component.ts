@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-topbar',
@@ -15,7 +15,7 @@ export class TopbarComponent implements OnInit {
   }
 
   constructor(
-    private auth: AuthenticationService
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void { }

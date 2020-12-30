@@ -46,20 +46,16 @@
   }
 
   &.is-prev .inner {
-    // transform: translate3d(-6rem, 0, 0);
     transform: translate3d(-2rem, 0, 0);
   }
 
   &.is-next .inner {
-    // transform: translate3d(6rem, 0, 0);
     transform: translate3d(2rem, 0, 0);
   }
 
   .inner {
     opacity: 0;
     transition: 1s $ease-out-quint;
-    // transition: .2s ease-out;
-    // box-shadow: 0 5px 15px rgba($color-black, .5);
   }
 
   @include respond-to('small') {

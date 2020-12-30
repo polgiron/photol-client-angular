@@ -15,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 import { ImagesComponent } from './components/images/images.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
-import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
 import { LightboxEntryComponent } from './components/lightbox/lightbox-entry/lightbox-entry.component';
 import { ImageService } from 'src/app/services/image.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
@@ -47,7 +46,7 @@ import { SearchService } from './services/search.service';
 import { FiltersComponent } from './components/filters/filters.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoginComponent } from './components/login/login.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthService } from './services/authentication.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { UserService } from './services/user.service';
 import { RatingModule } from 'ngx-bootstrap/rating';
@@ -74,7 +73,6 @@ import { ModalImageInfosComponent } from './components/modals/modal-image-infos/
     ImagesComponent,
     ImageThumbComponent,
     TagsComponent,
-    DarkroomSettingsComponent,
     LightboxEntryComponent,
     TopbarComponent,
     ImageComponent,
@@ -126,7 +124,7 @@ import { ModalImageInfosComponent } from './components/modals/modal-image-infos/
     SettingsService,
     TagService,
     SearchService,
-    AuthenticationService,
+    AuthService,
     AuthGuardService,
     UserService,
     AddMenuService
