@@ -1,4 +1,9 @@
-<div class="image-wrapper" [ngClass]="{'is-flickr-layout': flickrLayout}" (deferLoad)="onDeferLoad()" #wrapper>
+<div
+  class="image-wrapper"
+  [ngClass]="{ 'is-flickr-layout': flickrLayout }"
+  (deferLoad)="onDeferLoad()"
+  #wrapper
+>
   <div class="loader" *ngIf="!isLoaded && displayLoader">
     <app-loader></app-loader>
   </div>
@@ -6,6 +11,13 @@
       'is-loaded': isLoaded,
       'is-cover': cover
     }"> -->
-  <img *ngIf="isInViewport && src" alt="" class="fade" [src]="src" (error)="onError($event)" (load)="onLoad()"
-    [ngClass]="{'is-loaded': isLoaded, 'is-cover': cover}">
+  <img
+    *ngIf="isInViewport && src"
+    alt=""
+    class="fade"
+    [src]="src"
+    (error)="onError($event)"
+    (load)="onLoad()"
+    [ngClass]="{ 'is-loaded': isLoaded, 'is-cover': cover }"
+  />
 </div>

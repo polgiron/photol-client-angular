@@ -1,23 +1,43 @@
-<div class="image-thumb" [ngClass]="{'is-loaded': imageLoaded}">
+<div class="image-thumb" [ngClass]="{ 'is-loaded': imageLoaded }">
   <div class="image-wrapper">
     <button class="button-lightbox" (click)="openPhotoModal()">
-      <app-image [flickrLayout]="true" [src]="image.signedUrl" [width]="image.oriWidth" [height]="image.oriHeight"
-        [id]="image._id" (onImageLoaded)="onImageLoaded()"></app-image>
+      <app-image
+        [flickrLayout]="true"
+        [src]="image.signedUrl"
+        [width]="image.oriWidth"
+        [height]="image.oriHeight"
+        [id]="image._id"
+        (onImageLoaded)="onImageLoaded()"
+      ></app-image>
     </button>
-    <app-image-overlay *ngIf="imageLoaded && isLoggedIn" [image]="image" [tags]="tags" [stars]="stars"
-      [isAlbumView]="isAlbumView" [editMode]="editMode" [@fadeInAnimation]>
+    <app-image-overlay
+      *ngIf="imageLoaded && isLoggedIn"
+      [image]="image"
+      [tags]="tags"
+      [stars]="stars"
+      [isAlbumView]="isAlbumView"
+      [editMode]="editMode"
+      [@fadeInAnimation]
+    >
     </app-image-overlay>
     <div class="edit-toolbar" *ngIf="isLoggedIn">
       <div class="group" *ngIf="isAlbumView && editMode" [@fadeAnimation]>
-        <button class="button-overlay" (click)="updateCover()" [ngClass]="{'is-disabled': isCover}"
-          [tooltip]="isCover ? null : 'Set as Cover'" container="body" preventDefaultClick>
+        <button
+          class="button-overlay"
+          (click)="updateCover()"
+          [ngClass]="{ 'is-disabled': isCover }"
+          [tooltip]="isCover ? null : 'Set as Cover'"
+          container="body"
+          preventDefaultClick
+        >
           <i class="material-icons">photo</i>
           <i class="material-icons icon-check" *ngIf="isCover">check</i>
         </button>
       </div>
       <div class="group" *ngIf="editMode" [@fadeAnimation]>
-        <button class="button-overlay" (click)="delete()" preventDefaultClick><i
-            class="material-icons">delete</i></button>
+        <button class="button-overlay" (click)="delete()" preventDefaultClick>
+          <i class="material-icons">delete</i>
+        </button>
       </div>
       <!-- <div class="group" [@fadeAnimation]>
         <button class="button-overlay" (click)="onClickInfos()" preventDefaultClick><i
@@ -29,6 +49,9 @@
       <i class="material-icons" *ngIf="!image.toPrint">add</i>
       <i class="material-icons" *ngIf="image.toPrint">check</i>
     </button> -->
-    <app-button-add-menu *ngIf="isLoggedIn" [image]="image"></app-button-add-menu>
+    <app-button-add-menu
+      *ngIf="isLoggedIn"
+      [image]="image"
+    ></app-button-add-menu>
   </div>
 </div>
