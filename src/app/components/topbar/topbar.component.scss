@@ -1,7 +1,7 @@
 @import '~src/assets/scss/variables';
 
 .header {
-  animation: fade-in .4s both;
+  animation: fade-in 0.4s both;
   max-width: $container-width;
   padding: $container-padding;
 
@@ -33,9 +33,9 @@
   width: 16rem;
   margin: auto;
   margin-top: 4rem;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   display: block;
-  animation: fade-in-from-bottom 1s $ease-out-quint both .1s;
+  animation: fade-in-from-bottom 1s $ease-out-quint both 0.1s;
 
   img {
     width: 100%;
@@ -54,20 +54,20 @@
     align-items: center;
 
     span {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       font-size: 1.2em;
     }
   }
 }
 
 .menu-wrapper {
-  animation: fade-in-from-bottom 1s $ease-out-quint both .2s;
+  animation: fade-in-from-bottom 1s $ease-out-quint both 0.2s;
 }
 
 @keyframes fade-in-from-top {
   from {
     opacity: 0;
-    transform: translate3d(0, -.5rem, 0);
+    transform: translate3d(0, -0.5rem, 0);
   }
 
   to {
@@ -79,7 +79,7 @@
 @keyframes fade-in-from-bottom {
   from {
     opacity: 0;
-    transform: translate3d(0, .5rem, 0);
+    transform: translate3d(0, 0.5rem, 0);
   }
 
   to {

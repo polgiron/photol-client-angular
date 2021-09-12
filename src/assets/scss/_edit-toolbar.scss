@@ -1,7 +1,7 @@
 .edit-toolbar {
   position: absolute;
-  bottom: .75rem;
-  right: .75rem;
+  bottom: 0.75rem;
+  right: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -12,20 +12,20 @@
     align-items: center;
     border-radius: 1000rem;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba($color-black, .15);
+    box-shadow: 0 2px 6px rgba($color-black, 0.15);
 
     &:not(:last-child) {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
   }
 
   .button-overlay {
-    padding: .4rem;
+    padding: 0.4rem;
     border-radius: 0;
     box-shadow: 0 0 0 transparent;
 
     .icon-check {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 }

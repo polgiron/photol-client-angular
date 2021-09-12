@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ChangeDetectionStrategy
+} from '@angular/core'
 
 @Component({
   selector: 'app-checkbox',
@@ -7,17 +14,15 @@ import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements OnInit {
-  @Input() check: boolean = false;
-  @Output() setCheckState: EventEmitter<boolean> = new EventEmitter();
+  @Input() check: boolean = false
+  @Output() setCheckState: EventEmitter<boolean> = new EventEmitter()
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   toggleCheck() {
-    this.check = !this.check;
-    this.setCheckState.emit(this.check);
+    this.check = !this.check
+    this.setCheckState.emit(this.check)
   }
 }

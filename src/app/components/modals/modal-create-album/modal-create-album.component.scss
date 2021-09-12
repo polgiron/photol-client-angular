@@ -29,17 +29,17 @@
 .list__entry {
   position: relative;
   display: flex;
-  transition: all .2s;
+  transition: all 0.2s;
   border-radius: $small-border-radius;
   margin-bottom: 1rem;
-  transition: all .2s;
+  transition: all 0.2s;
 
   &:not(.is-loaded) {
     background: $color-background-2;
   }
 
   &:hover .button-remove {
-    opacity: .8;
+    opacity: 0.8;
     transform: scale(1);
   }
 
@@ -53,13 +53,13 @@
 
 .button-remove {
   position: absolute;
-  top: .3rem;
-  right: .2rem;
+  top: 0.3rem;
+  right: 0.2rem;
   width: 1.2rem;
   height: 1.2rem;
-  transition: all .2s;
+  transition: all 0.2s;
   opacity: 0;
-  transform: scale(.8);
+  transform: scale(0.8);
 
   img {
     width: 100%;
@@ -71,14 +71,14 @@
 
   .bottom {
     display: flex;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 
-    >div {
+    > div {
       flex: 1;
     }
 
     .input-wrapper {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
   }
 }

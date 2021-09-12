@@ -3,7 +3,10 @@
 </div>
 <div class="main-container" *ngIf="displayImages" [@fadeAnimation]>
   <div class="inner">
-    <app-filters [tags]="tags" (updateFilters)="updateFilters($event)"></app-filters>
+    <app-filters
+      [tags]="tags"
+      (updateFilters)="updateFilters($event)"
+    ></app-filters>
     <p class="no-results" *ngIf="!displayImages.length">No search results :(</p>
     <app-images *ngIf="displayImages.length"></app-images>
   </div>

@@ -1,7 +1,15 @@
-<button class="user-menu" *ngIf="user" [ngClass]="{'is-active': activePop}" [popover]="popContent"
-  containerClass="popover--user-menu" placement="bottom left" outsideClick="true" (onShown)="onPopShown()"
-  (onHidden)="onPopHidden()">
-  <i class="material-icons">account_circle</i> {{user.name}}
+<button
+  class="user-menu"
+  *ngIf="user"
+  [ngClass]="{ 'is-active': activePop }"
+  [popover]="popContent"
+  containerClass="popover--user-menu"
+  placement="bottom left"
+  outsideClick="true"
+  (onShown)="onPopShown()"
+  (onHidden)="onPopHidden()"
+>
+  <i class="material-icons">account_circle</i> {{ user.name }}
   <!-- <i class="material-icons">person</i> {{user.name}} -->
 </button>
 

@@ -5,7 +5,7 @@
 .bottom-left {
   position: absolute;
   color: $color-white-smoke;
-  text-shadow: 1px 1px 4px rgba($color-black, .6);
+  text-shadow: 1px 1px 4px rgba($color-black, 0.6);
 }
 
 .top-left {
@@ -21,11 +21,11 @@
 .top-right {
   top: $overlay-padding;
   right: $overlay-padding;
-  text-shadow: 1px 1px 4px rgba($color-black, .3);
+  text-shadow: 1px 1px 4px rgba($color-black, 0.3);
   display: flex;
   opacity: 0;
   visibility: hidden;
-  transition: all .2s;
+  transition: all 0.2s;
 
   &.is-always-visible {
     opacity: 1;
@@ -38,19 +38,19 @@
   }
 
   .clear-rating {
-    margin-right: .1em;
+    margin-right: 0.1em;
     display: flex;
     position: relative;
     top: 1px;
     opacity: 0;
     visibility: hidden;
-    transition: all .2s;
+    transition: all 0.2s;
 
     i {
       margin: auto;
       font-size: 1.2em;
       color: $color-white;
-      text-shadow: 1px 1px 4px rgba($color-black, .4);
+      text-shadow: 1px 1px 4px rgba($color-black, 0.4);
     }
   }
 }
@@ -64,7 +64,7 @@
   max-width: 70%;
 
   li:not(:last-child) {
-    margin-right: .2rem;
+    margin-right: 0.2rem;
   }
 }
 

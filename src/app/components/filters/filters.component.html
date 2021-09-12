@@ -1,8 +1,13 @@
 <div class="filters">
   <ul class="tags-list">
     <li *ngFor="let tag of tags">
-      <button class="tag is-clickable" [ngClass]="{'is-active': tag.active}"
-        (click)="onClickFilter(tag)">{{tag.value}}</button>
+      <button
+        class="tag is-clickable"
+        [ngClass]="{ 'is-active': tag.active }"
+        (click)="onClickFilter(tag)"
+      >
+        {{ tag.value }}
+      </button>
     </li>
   </ul>
 </div>

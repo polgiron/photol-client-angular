@@ -1,4 +1,10 @@
-<div class="wrapper" [ngClass]="{'is-filled': searchValue?.length}">
+<div class="wrapper" [ngClass]="{ 'is-filled': searchValue?.length }">
   <i class="material-icons">search</i>
-  <input class="input" type="text" placeholder="search..." [(ngModel)]="searchValue" (keyup)="onKeyUp()">
+  <input
+    class="input"
+    type="text"
+    placeholder="search..."
+    [(ngModel)]="searchValue"
+    (keyup)="onKeyUp()"
+  />
 </div>

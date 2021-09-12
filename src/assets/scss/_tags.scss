@@ -1,4 +1,4 @@
-$tags-spacing: .25rem;
+$tags-spacing: 0.25rem;
 
 .tags-list {
   display: flex;
@@ -9,7 +9,7 @@ $tags-spacing: .25rem;
     // margin-top: .75rem;
 
     .tag {
-      padding-right: .4rem;
+      padding-right: 0.4rem;
     }
   }
 }
@@ -18,7 +18,7 @@ $tags-spacing: .25rem;
   background: $color-background-2;
   color: $color-text;
   border-radius: 1000rem;
-  padding: .5rem .75rem .45rem;
+  padding: 0.5rem 0.75rem 0.45rem;
   // font-weight: 400;
   // font-size: .85rem;
   margin-right: $tags-spacing;
@@ -28,7 +28,7 @@ $tags-spacing: .25rem;
   text-transform: uppercase;
   font-size: $font-size-mini;
   font-weight: 600;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   line-height: 1;
 
   // background: $color-white-smoke;
@@ -36,12 +36,12 @@ $tags-spacing: .25rem;
   // color: $color-background;
 
   &.tag--small {
-    font-size: .55rem;
-    padding: .4rem .65rem .35rem;
+    font-size: 0.55rem;
+    padding: 0.4rem 0.65rem 0.35rem;
   }
 
   button {
-    margin-left: .25rem;
+    margin-left: 0.25rem;
     position: relative;
     width: 1rem;
   }
@@ -57,10 +57,10 @@ $tags-spacing: .25rem;
 }
 
 .tag.is-clickable {
-  transition: all .1s;
+  transition: all 0.1s;
 
   &:hover {
-    opacity: .7;
+    opacity: 0.7;
   }
 
   &.is-active {

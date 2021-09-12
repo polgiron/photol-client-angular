@@ -7,7 +7,7 @@
   display: flex;
   background: #212121;
   z-index: 9999;
-  transition: all .6s ease-out;
+  transition: all 0.6s ease-out;
   /* pointer-events: none; */
 }
 
@@ -31,7 +31,7 @@
 #splashscreen img {
   width: 3rem;
   height: 3rem;
-  opacity: .7;
+  opacity: 0.7;
   animation: spin 3s infinite both linear;
 }
 

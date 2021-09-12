@@ -1,7 +1,15 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { Tag } from 'src/app/models/tag.model';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
+} from '@angular/core'
+import { Tag } from 'src/app/models/tag.model'
 // import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Utils } from 'src/app/utils/utils';
+import { Utils } from 'src/app/utils/utils'
 
 @Component({
   selector: 'app-filters',
@@ -10,16 +18,16 @@ import { Utils } from 'src/app/utils/utils';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent implements OnInit {
-  @Input() set tags (value: Tag[]) {
-    this._tags = value;
-    this.selectedTags = [];
-  };
-  @Output() updateFilters: EventEmitter<string[]> = new EventEmitter();
-  private _tags: Tag[];
-  selectedTags: string[];
+  @Input() set tags(value: Tag[]) {
+    this._tags = value
+    this.selectedTags = []
+  }
+  @Output() updateFilters: EventEmitter<string[]> = new EventEmitter()
+  private _tags: Tag[]
+  selectedTags: string[]
 
   get tags() {
-    return this._tags;
+    return this._tags
   }
 
   constructor(
@@ -27,7 +35,7 @@ export class FiltersComponent implements OnInit {
     // private route: ActivatedRoute,
     // private router: Router,
     private utils: Utils
-  ) { }
+  ) {}
 
   ngOnInit() {
     // this.route.queryParams.subscribe((params: Params) => {
@@ -39,14 +47,14 @@ export class FiltersComponent implements OnInit {
 
   onClickFilter(tag: Tag) {
     if (!tag.active) {
-      tag.active = true;
-      this.selectedTags.push(tag._id);
+      tag.active = true
+      this.selectedTags.push(tag._id)
     } else {
-      tag.active = false;
-      this.selectedTags = this.utils.removeFromArray(this.selectedTags, tag._id);
+      tag.active = false
+      this.selectedTags = this.utils.removeFromArray(this.selectedTags, tag._id)
     }
 
-    this.updateFilters.emit(this.selectedTags);
+    this.updateFilters.emit(this.selectedTags)
 
     // this.router.navigate([], {
     //   relativeTo: this.route,

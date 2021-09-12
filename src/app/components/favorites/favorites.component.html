@@ -3,7 +3,10 @@
 </div>
 <div class="main-container" *ngIf="!loading" [@fadeAnimation]>
   <div class="inner">
-    <app-filters [tags]="tags" (updateFilters)="updateFilters($event)"></app-filters>
+    <app-filters
+      [tags]="tags"
+      (updateFilters)="updateFilters($event)"
+    ></app-filters>
     <app-images></app-images>
   </div>
 </div>

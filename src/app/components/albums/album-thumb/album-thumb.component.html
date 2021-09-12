@@ -1,16 +1,26 @@
-<a class="album-thumb" [routerLink]="['/', 'albums', album._id]" (deferLoad)="onDeferLoad()">
+<a
+  class="album-thumb"
+  [routerLink]="['/', 'albums', album._id]"
+  (deferLoad)="onDeferLoad()"
+>
   <div class="cover">
-    <img *ngIf="album.cover && isInViewport" [src]="album.cover.signedUrl" class="fade"
-      [ngClass]="{ 'is-loaded': isLoaded }" (load)="isLoaded = true" alt="">
-    <div *ngIf="album.rollId" class="top-left">
-      #{{album.rollId}}
-    </div>
-    <div class="infos" [ngClass]="{'is-edit-mode': editMode}">
-      <h2 class="title">{{album.title}}</h2>
+    <img
+      *ngIf="album.cover && isInViewport"
+      [src]="album.cover.signedUrl"
+      class="fade"
+      [ngClass]="{ 'is-loaded': isLoaded }"
+      (load)="isLoaded = true"
+      alt=""
+    />
+    <div *ngIf="album.rollId" class="top-left">#{{ album.rollId }}</div>
+    <div class="infos" [ngClass]="{ 'is-edit-mode': editMode }">
+      <h2 class="title">{{ album.title }}</h2>
     </div>
     <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
       <div class="group">
-        <button class="button-overlay" (click)="delete($event)"><i class="material-icons">delete</i></button>
+        <button class="button-overlay" (click)="delete($event)">
+          <i class="material-icons">delete</i>
+        </button>
       </div>
     </div>
   </div>

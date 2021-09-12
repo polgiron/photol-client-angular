@@ -1,9 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, HostListener } from '@angular/core';
-import { ImageService } from 'src/app/services/image.service';
-import { takeWhile } from 'rxjs/operators';
-import { fadeFastAnimation, transAnimation } from 'src/app/utils/animations';
-import { SettingsService } from 'src/app/services/settings.service';
-import { AuthService } from 'src/app/services/authentication.service';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  HostListener
+} from '@angular/core'
+import { ImageService } from 'src/app/services/image.service'
+import { takeWhile } from 'rxjs/operators'
+import { fadeFastAnimation, transAnimation } from 'src/app/utils/animations'
+import { SettingsService } from 'src/app/services/settings.service'
+import { AuthService } from 'src/app/services/authentication.service'
 
 @Component({
   selector: 'app-home',
@@ -13,8 +19,8 @@ import { AuthService } from 'src/app/services/authentication.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  private _alive: boolean = true;
-  index: number;
+  private _alive: boolean = true
+  index: number
   // displayStickyHeader: boolean = false;
   // lastScrollPosition: number = 0;
 
@@ -25,7 +31,7 @@ export class HomeComponent implements OnInit {
     private auth: AuthService
   ) {
     if (this.auth.isLoggedIn) {
-      this.settings.init();
+      this.settings.init()
     }
   }
 
@@ -39,15 +45,16 @@ export class HomeComponent implements OnInit {
   // };
 
   ngOnInit(): void {
-    this.imageService.lightboxIndexChannel()
+    this.imageService
+      .lightboxIndexChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((index: number) => {
-        this.index = index;
-        this.ref.markForCheck();
-      });
+        this.index = index
+        this.ref.markForCheck()
+      })
   }
 
   ngOnDestroy(): void {
-    this._alive = false;
+    this._alive = false
   }
 }

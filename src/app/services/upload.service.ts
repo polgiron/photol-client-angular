@@ -1,60 +1,63 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { Observable, Subject, Subscription } from 'rxjs'
 import {
-  HttpClient, HttpRequest,
+  HttpClient,
+  HttpRequest,
   HttpResponse,
   HttpHeaders
 } from '@angular/common/http'
-import { ModalService } from './modal.service';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import { AuthService } from './authentication.service';
+import { ModalService } from './modal.service'
+import { Router } from '@angular/router'
+import { environment } from 'src/environments/environment'
+import { AuthService } from './authentication.service'
 
 @Injectable()
 export class UploadService {
-  private _uploadProgress: Subject<number> = new Subject<number>();
-  progress: number = 0;
-  httpEmitter: Subscription;
+  private _uploadProgress: Subject<number> = new Subject<number>()
+  progress: number = 0
+  httpEmitter: Subscription
 
   constructor(
     private modalService: ModalService,
     private router: Router,
     private http: HttpClient,
     private auth: AuthService
-  ) { }
+  ) {}
 
   public uploadProgressChannel(): Observable<number> {
-    return this._uploadProgress.asObservable();
+    return this._uploadProgress.asObservable()
   }
 
   upload(images: any[], albumId: string, imageDate: number) {
     // console.log('Upload function');
     // console.log(images);
 
-    this.progress = 0;
+    this.progress = 0
 
     images.forEach((image, index) => {
-      let formData: FormData = new FormData();
+      let formData: FormData = new FormData()
 
-      formData.append('file', image.file);
-      formData.append('albums', image.albums);
-      formData.append('order', String(index));
+      formData.append('file', image.file)
+      formData.append('albums', image.albums)
+      formData.append('order', String(index))
 
       if (imageDate) {
-        formData.append('date', String(imageDate));
+        formData.append('date', String(imageDate))
       }
 
       const req = new HttpRequest<FormData>(
         'POST',
         environment.domain + 'image',
-        formData, {
+        formData,
+        {
           headers: new HttpHeaders({
-            'Authorization': `Bearer ${this.auth.getToken()}`
+            Authorization: `Bearer ${this.auth.getToken()}`
           }),
           withCredentials: true,
           reportProgress: true,
           responseType: 'text'
-        });
+        }
+      )
 
       this.httpEmitter = this.http.request(req).subscribe(
         (event: any) => {
@@ -64,25 +67,25 @@ export class UploadService {
           // console.log(percentage + '%');
 
           if (event instanceof HttpResponse) {
-            delete this.httpEmitter;
+            delete this.httpEmitter
 
             // console.log('-----request done');
 
-            this.progress += 1;
-            this._uploadProgress.next(this.progress);
+            this.progress += 1
+            this._uploadProgress.next(this.progress)
 
             if (this.progress == images.length) {
-              console.log('UPLOAD DONE!');
+              console.log('UPLOAD DONE!')
 
               setTimeout(() => {
-                this.modalService.closeAll();
-                this.router.navigate(['/', 'albums', albumId]);
-              }, 600);
+                this.modalService.closeAll()
+                this.router.navigate(['/', 'albums', albumId])
+              }, 600)
             }
           }
         },
-        error => console.error('Error Uploading Files: ' + error.message)
-      );
-    });
+        (error) => console.error('Error Uploading Files: ' + error.message)
+      )
+    })
   }
 }

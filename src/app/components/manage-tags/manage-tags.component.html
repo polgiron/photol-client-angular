@@ -14,7 +14,7 @@
     <ul class="tags is-editmode" *ngIf="tags" [@fadeInAnimation]>
       <li *ngFor="let tag of tags">
         <button class="tag is-clickable" (click)="onClickTag(tag.value)">
-          {{tag.value}}
+          {{ tag.value }}
           <button (click)="deleteTag($event, tag)">
             <i class="material-icons">close</i>
           </button>

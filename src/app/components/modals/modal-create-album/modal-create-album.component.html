@@ -6,34 +6,73 @@
 </div>
 <div class="modal-body">
   <div class="upload-list-wrapper">
-    <button *ngIf="!images.length" ngfSelect class="button" accept="image/*" multiple="1"
-      (filesChange)="onUpload($event)">
+    <button
+      *ngIf="!images.length"
+      ngfSelect
+      class="button"
+      accept="image/*"
+      multiple="1"
+      (filesChange)="onUpload($event)"
+    >
       Add images to upload
     </button>
     <ul class="list">
-      <li class="list__entry" [ngClass]="{'is-loaded': image.loaded}" *ngFor="let image of images" [@fadeInAnimation]>
-        <img class="fade" [ngClass]="{'is-loaded': image.loaded}" (load)="image.loaded = true"
-          [src]="image.src | safeUrl" draggable="false" alt="">
+      <li
+        class="list__entry"
+        [ngClass]="{ 'is-loaded': image.loaded }"
+        *ngFor="let image of images"
+        [@fadeInAnimation]
+      >
+        <img
+          class="fade"
+          [ngClass]="{ 'is-loaded': image.loaded }"
+          (load)="image.loaded = true"
+          [src]="image.src | safeUrl"
+          draggable="false"
+          alt=""
+        />
         <button class="button-remove" (click)="removeImage(image)">
-          <img src="assets/images/close-button.svg" alt="">
+          <img src="assets/images/close-button.svg" alt="" />
         </button>
       </li>
     </ul>
   </div>
   <div class="input-list">
-    <div class="input-wrapper" [ngClass]="{'is-filled': title?.length}">
-      <input class="input input--medium" type="text" placeholder="Album title" [(ngModel)]="title">
+    <div class="input-wrapper" [ngClass]="{ 'is-filled': title?.length }">
+      <input
+        class="input input--medium"
+        type="text"
+        placeholder="Album title"
+        [(ngModel)]="title"
+      />
     </div>
     <div class="bottom">
-      <div class="input-wrapper" [ngClass]="{'is-filled': rollId}">
-        <input class="input input--medium" type="number" placeholder="Roll id" [(ngModel)]="rollId"
-          onkeydown="return event.keyCode !== 69" (keyup)="onRollKeyup()">
+      <div class="input-wrapper" [ngClass]="{ 'is-filled': rollId }">
+        <input
+          class="input input--medium"
+          type="number"
+          placeholder="Roll id"
+          [(ngModel)]="rollId"
+          onkeydown="return event.keyCode !== 69"
+          (keyup)="onRollKeyup()"
+        />
       </div>
-      <div class="input-wrapper" [ngClass]="{'is-filled': date}">
-        <input class="input input--medium" type="number" placeholder="Album year" [(ngModel)]="date"
-          onkeydown="return event.keyCode !== 69">
+      <div class="input-wrapper" [ngClass]="{ 'is-filled': date }">
+        <input
+          class="input input--medium"
+          type="number"
+          placeholder="Album year"
+          [(ngModel)]="date"
+          onkeydown="return event.keyCode !== 69"
+        />
       </div>
-      <button class="button button--main" (click)="onCreateAlbum()" [disabled]="disableButton">Create Album</button>
+      <button
+        class="button button--main"
+        (click)="onCreateAlbum()"
+        [disabled]="disableButton"
+      >
+        Create Album
+      </button>
     </div>
   </div>
   <div class="warning" *ngIf="rollExists">

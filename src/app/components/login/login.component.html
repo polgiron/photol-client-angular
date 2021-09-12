@@ -1,49 +1,95 @@
 <div class="wrapper">
   <div class="content">
-    <img class="logo" src="/assets/images/photol-logo-light-border.svg" alt="">
-    <div class="loading-wrapper" [ngClass]="{'is-visible': loading}">
+    <img
+      class="logo"
+      src="/assets/images/photol-logo-light-border.svg"
+      alt=""
+    />
+    <div class="loading-wrapper" [ngClass]="{ 'is-visible': loading }">
       <app-loader></app-loader>
     </div>
-    <div class="form-wrapper" [ngClass]="{'is-visible': !loading}">
+    <div class="form-wrapper" [ngClass]="{ 'is-visible': !loading }">
       <form (submit)="onSubmit()">
         <div class="input-group">
           <label for="email">Email</label>
-          <div class="input-wrapper" [ngClass]="{'is-filled': credentials.email?.length}">
-            <input class="input input--medium" name="email" type="email" [(ngModel)]="credentials.email" (keyup)="onKeyUp()"
-              autofocus>
+          <div
+            class="input-wrapper"
+            [ngClass]="{ 'is-filled': credentials.email?.length }"
+          >
+            <input
+              class="input input--medium"
+              name="email"
+              type="email"
+              [(ngModel)]="credentials.email"
+              (keyup)="onKeyUp()"
+              autofocus
+            />
           </div>
         </div>
         <div class="input-group" *ngIf="displayRegister">
           <label for="name">Name</label>
-          <div class="input-wrapper" [ngClass]="{'is-filled': credentials.name?.length}">
-            <input class="input input--medium" name="name" type="text" [(ngModel)]="credentials.name">
+          <div
+            class="input-wrapper"
+            [ngClass]="{ 'is-filled': credentials.name?.length }"
+          >
+            <input
+              class="input input--medium"
+              name="name"
+              type="text"
+              [(ngModel)]="credentials.name"
+            />
           </div>
         </div>
         <div class="input-group">
           <label for="email">Password</label>
-          <div class="input-wrapper" [ngClass]="{'is-filled': credentials.password?.length}">
-            <input class="input input--medium" name="password" type="password" [(ngModel)]="credentials.password"
-              (keyup)="onKeyUpPassword()">
+          <div
+            class="input-wrapper"
+            [ngClass]="{ 'is-filled': credentials.password?.length }"
+          >
+            <input
+              class="input input--medium"
+              name="password"
+              type="password"
+              [(ngModel)]="credentials.password"
+              (keyup)="onKeyUpPassword()"
+            />
           </div>
         </div>
         <div class="input-group" *ngIf="displayRegister">
           <label for="email">Repeat password</label>
-          <div class="input-wrapper" [ngClass]="{'is-filled': passwordRepeat?.length}">
-            <input class="input input--medium" name="password" type="password" [(ngModel)]="passwordRepeat"
-              (keyup)="onKeyUpPassword()">
+          <div
+            class="input-wrapper"
+            [ngClass]="{ 'is-filled': passwordRepeat?.length }"
+          >
+            <input
+              class="input input--medium"
+              name="password"
+              type="password"
+              [(ngModel)]="passwordRepeat"
+              (keyup)="onKeyUpPassword()"
+            />
           </div>
         </div>
-        <button type="submit" class="button button--main" [innerText]="displayRegister ? 'Sign up' : 'Sign in'"
-          [disabled]="disabled"></button>
+        <button
+          type="submit"
+          class="button button--main"
+          [innerText]="displayRegister ? 'Sign up' : 'Sign in'"
+          [disabled]="disabled"
+        ></button>
       </form>
       <div class="footer" *ngIf="!displayRegister">
         No account? <button (click)="switchToRegister(true)">Sign up</button>
       </div>
       <div class="footer" *ngIf="displayRegister">
-        Have an account? <button (click)="switchToRegister(false)">Sign in</button>
+        Have an account?
+        <button (click)="switchToRegister(false)">Sign in</button>
       </div>
-      <div class="error-wrapper" *ngIf="errorServer || errorPassword || errorEmail" [@fadeAnimation]>
-        <div class="error" *ngIf="errorServer">{{errorServer}}</div>
+      <div
+        class="error-wrapper"
+        *ngIf="errorServer || errorPassword || errorEmail"
+        [@fadeAnimation]
+      >
+        <div class="error" *ngIf="errorServer">{{ errorServer }}</div>
         <div class="error" *ngIf="errorPassword">Passwords don't match</div>
         <div class="error" *ngIf="errorEmail">Unvalid email</div>
       </div>

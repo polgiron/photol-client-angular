@@ -1,7 +1,13 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { UploadService } from 'src/app/services/upload.service';
-import { takeWhile } from 'rxjs/operators';
-import { ModalOptions } from 'ngx-bootstrap/modal';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core'
+import { UploadService } from 'src/app/services/upload.service'
+import { takeWhile } from 'rxjs/operators'
+import { ModalOptions } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'app-modal-upload-progress',
@@ -10,32 +16,33 @@ import { ModalOptions } from 'ngx-bootstrap/modal';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalUploadProgressComponent implements OnInit, OnDestroy {
-  private _alive: boolean = true;
-  albumTitle: string;
-  totalImages: number;
-  progress: number = 0;
+  private _alive: boolean = true
+  albumTitle: string
+  totalImages: number
+  progress: number = 0
 
   constructor(
     private options: ModalOptions,
     private uploadService: UploadService,
     private ref: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (this.options.initialState) {
-      this.albumTitle = this.options.initialState['albumTitle'];
-      this.totalImages = this.options.initialState['totalImages'];
+      this.albumTitle = this.options.initialState['albumTitle']
+      this.totalImages = this.options.initialState['totalImages']
     }
 
-    this.uploadService.uploadProgressChannel()
+    this.uploadService
+      .uploadProgressChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe((progress: number) => {
-        this.progress = progress;
-        this.ref.markForCheck();
-      });
+        this.progress = progress
+        this.ref.markForCheck()
+      })
   }
 
   ngOnDestroy() {
-    this._alive = false;
+    this._alive = false
   }
 }

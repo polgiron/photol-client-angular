@@ -1,15 +1,45 @@
-<div class="image-wrapper" [ngClass]="{'is-editmode': editMode}" #imageWrapper>
-  <app-image *ngIf="image" [src]="imageSrc" [width]="image.oriWidth" [height]="image.oriHeight" [displayLoader]="true"
-    (onImageLoaded)="onImageLoaded()"></app-image>
-  <div class="image-overlay-wrapper" *ngIf="imageLoaded && isLoggedIn" [@fadeInAnimation]>
-    <app-image-overlay [image]="image" [stars]="image.stars" [editMode]="editMode"></app-image-overlay>
+<div
+  class="image-wrapper"
+  [ngClass]="{ 'is-editmode': editMode }"
+  #imageWrapper
+>
+  <app-image
+    *ngIf="image"
+    [src]="imageSrc"
+    [width]="image.oriWidth"
+    [height]="image.oriHeight"
+    [displayLoader]="true"
+    (onImageLoaded)="onImageLoaded()"
+  ></app-image>
+  <div
+    class="image-overlay-wrapper"
+    *ngIf="imageLoaded && isLoggedIn"
+    [@fadeInAnimation]
+  >
+    <app-image-overlay
+      [image]="image"
+      [stars]="image.stars"
+      [editMode]="editMode"
+    ></app-image-overlay>
   </div>
   <div class="bottom" *ngIf="imageLoaded && isLoggedIn" [@fadeInAnimation]>
-    <app-tags [imageId]="image._id" [tags]="tags" [editMode]="editMode" [reload]="active"></app-tags>
+    <app-tags
+      [imageId]="image._id"
+      [tags]="tags"
+      [editMode]="editMode"
+      [reload]="active"
+    ></app-tags>
   </div>
   <div class="bottom-right" *ngIf="imageLoaded && isLoggedIn">
-    <button class="button button--white" (click)="onClickInfos()"><i class="material-icons">info</i> Infos</button>
-    <a *ngIf="albumId && !isAlbumView" class="button button--white" [routerLink]="['/', 'albums', albumId]"
-      (click)="onClickGoToAlbum()"><i class="material-icons">collections</i> Go to album</a>
+    <button class="button button--white" (click)="onClickInfos()">
+      <i class="material-icons">info</i> Infos
+    </button>
+    <a
+      *ngIf="albumId && !isAlbumView"
+      class="button button--white"
+      [routerLink]="['/', 'albums', albumId]"
+      (click)="onClickGoToAlbum()"
+      ><i class="material-icons">collections</i> Go to album</a
+    >
   </div>
 </div>

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  domain: 'http://localhost:3333/'
+  domain: 'http://localhost:3000/'
   // domain: 'https://photol-api.paulgiron.com/'
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

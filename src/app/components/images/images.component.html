@@ -1,13 +1,25 @@
 <div #wrapper (window:resize)="onResize()">
-  <ul class="flickr-list" [ngStyle]="{'height': containerHeight + 'px'}" *ngIf="extendedImages">
-    <li *ngFor="let image of extendedImages; trackBy: trackByFunction" [ngStyle]="{
-      'width': image.box.width + 'px',
-      'height': image.box.height + 'px',
-      'top': image.box.top + 'px',
-      'left': image.box.left + 'px'
-    }">
-      <app-image-thumb [image]="image" [tags]="image.tags" [stars]="image.stars" [editMode]="settings.editMode"
-        [displayTags]="settings.displayTags"></app-image-thumb>
+  <ul
+    class="flickr-list"
+    [ngStyle]="{ height: containerHeight + 'px' }"
+    *ngIf="extendedImages"
+  >
+    <li
+      *ngFor="let image of extendedImages; trackBy: trackByFunction"
+      [ngStyle]="{
+        width: image.box.width + 'px',
+        height: image.box.height + 'px',
+        top: image.box.top + 'px',
+        left: image.box.left + 'px'
+      }"
+    >
+      <app-image-thumb
+        [image]="image"
+        [tags]="image.tags"
+        [stars]="image.stars"
+        [editMode]="settings.editMode"
+        [displayTags]="settings.displayTags"
+      ></app-image-thumb>
     </li>
   </ul>
 </div>

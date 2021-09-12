@@ -1,17 +1,17 @@
 export interface UserDetails {
-  _id: string;
-  email: string;
-  name: string;
-  exp: number;
-  iat: number;
+  _id: string
+  email: string
+  name: string
+  exp: number
+  iat: number
 }
 
 export interface TokenResponse {
-  token: string;
+  access_token: string
 }
 
 export interface TokenPayload {
-  email: string;
-  password: string;
-  name?: string;
+  email: string
+  password: string
+  name?: string
 }

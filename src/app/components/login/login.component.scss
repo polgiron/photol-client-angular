@@ -19,10 +19,10 @@
 }
 
 .loading-wrapper {
-  transform: scale(1.05) translate3d(0, -.5rem, 0);
+  transform: scale(1.05) translate3d(0, -0.5rem, 0);
   // transform: scale(1.1);
   opacity: 0;
-  transition: all .4s $ease-out-quint;
+  transition: all 0.4s $ease-out-quint;
   position: absolute;
   top: 6rem;
   left: 0;
@@ -38,10 +38,10 @@
 }
 
 .form-wrapper {
-  transform: scale(.95) translate3d(0, .5rem, 0);
+  transform: scale(0.95) translate3d(0, 0.5rem, 0);
   // transform: scale(.8);
   opacity: 0;
-  transition: all .4s $ease-out-quint;
+  transition: all 0.4s $ease-out-quint;
   visibility: hidden;
 
   &.is-visible {
@@ -62,7 +62,7 @@
 
 .button {
   width: 100%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .footer {
@@ -71,7 +71,7 @@
 
   button {
     color: $color-text;
-    margin-left: .2rem;
+    margin-left: 0.2rem;
   }
 }
 
@@ -88,6 +88,6 @@
   color: $color-red;
 
   &:not(:last-child) {
-    margin-bottom: .2rem;
+    margin-bottom: 0.2rem;
   }
 }

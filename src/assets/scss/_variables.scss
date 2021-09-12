@@ -4,7 +4,7 @@ $color-black: #000;
 $color-white-smoke: #f5f6f7;
 $color-gray: #828a92;
 $color-lightgray: #cdcdcd;
-$color-mediumgray: #8A8A8A;
+$color-mediumgray: #8a8a8a;
 $color-blue: #54a0ff;
 $color-green: #27ae60;
 $color-red: #e74c3c;
@@ -12,10 +12,10 @@ $color-yellow: #fbc531;
 $color-orange: #f39c12;
 
 $color-almost-black: #212121;
-$color-almost-black-2: #1C1C1C;
+$color-almost-black-2: #1c1c1c;
 $color-darkgray: #363636;
 $color-darkgray-medium: #3d3d3d;
-$color-darkgray-lighter: #4A4A4A;
+$color-darkgray-lighter: #4a4a4a;
 $color-mediumgray-lighter: #a6a6a6;
 
 // Theme
@@ -32,26 +32,26 @@ $color-accent: $color-blue;
 
 // Font
 $font-family: 'Inter', sans-serif;
-$font-size: .85rem;
-$font-size-small: .75rem;
-$font-size-mini: .65rem;
+$font-size: 0.85rem;
+$font-size-small: 0.75rem;
+$font-size-mini: 0.65rem;
 
 // Sizes
 $container-width: 82rem;
 $container-padding: 1.5rem;
-$overlay-padding: .5rem;
+$overlay-padding: 0.5rem;
 $lightbox-edit-tags-height: 129px;
 
 // $container-width: 100%;
 // $container-width-header: 75rem;
 // $container-width-header: 100%;
-$small-border-radius: .35rem;
-$medium-border-radius: .5rem;
-$big-border-radius: .85rem;
+$small-border-radius: 0.35rem;
+$medium-border-radius: 0.5rem;
+$big-border-radius: 0.85rem;
 $sidebar-width: 4rem;
 
 // Easing
-$ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 
 // Breakpoints
 @import '~src/assets/scss/breakpoints';

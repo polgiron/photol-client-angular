@@ -28,9 +28,13 @@
   bottom: 0;
   left: 0;
   z-index: 2;
-  background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .65) 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba($color-black, 0.65) 100%
+  );
   opacity: 0;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 
   &.is-edit-mode {
     padding-right: 3rem;
@@ -48,7 +52,7 @@
 .top-left {
   position: absolute;
   color: $color-white-smoke;
-  text-shadow: 1px 1px 4px rgba($color-black, .6);
+  text-shadow: 1px 1px 4px rgba($color-black, 0.6);
   top: $overlay-padding;
   left: $overlay-padding;
   text-align: left;

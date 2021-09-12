@@ -1,2 +1,2 @@
-export = macy;
-declare const macy: any;
+export = macy
+declare const macy: any

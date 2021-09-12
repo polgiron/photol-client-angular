@@ -1,78 +1,76 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { UserDetails, TokenPayload, TokenResponse } from '../models/auth.model';
-import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Router } from '@angular/router'
+import { UserDetails, TokenPayload, TokenResponse } from '../models/auth.model'
+import { map } from 'rxjs/operators'
+import { environment } from 'src/environments/environment'
 
 @Injectable()
 export class AuthService {
-  private token: string;
-  document: string = 'auth/';
+  private token: string
+  document: string = 'auth/'
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   saveToken(token: string) {
-    localStorage.setItem('token', token);
-    this.token = token;
+    localStorage.setItem('token', token)
+    this.token = token
   }
 
   getToken() {
     if (!this.token) {
-      this.token = localStorage.getItem('token');
+      this.token = localStorage.getItem('token')
     }
-    return this.token;
+    return this.token
   }
 
   logout() {
-    this.token = null;
-    window.localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+    this.token = null
+    window.localStorage.removeItem('token')
+    this.router.navigateByUrl('/login')
   }
 
   getUserDetails(): UserDetails {
-    const token = this.getToken();
-    let payload: any;
+    const token = this.getToken()
+    let payload: any
     if (token) {
-      payload = token.split('.')[1];
-      payload = window.atob(payload);
-      return JSON.parse(payload);
+      payload = token.split('.')[1]
+      payload = window.atob(payload)
+      return JSON.parse(payload)
     } else {
-      return null;
+      return null
     }
   }
 
   get isLoggedIn(): boolean {
-    const user = this.getUserDetails();
+    const user = this.getUserDetails()
     if (user) {
-      return user.exp > Date.now() / 1000;
+      return user.exp > Date.now() / 1000
     } else {
-      return false;
+      return false
     }
   }
 
   async request(type: 'login' | 'register', user: TokenPayload) {
-    const response = await this.http.post(environment.domain + this.document + type, user)
+    const response = await this.http
+      .post(environment.domain + this.document + type, user)
       .pipe(
         map((data: TokenResponse) => {
-          if (data.token) {
-            this.saveToken(data.token);
+          if (data.access_token) {
+            this.saveToken(data.access_token)
           }
-          return data;
+          return data
         })
       )
-      .toPromise();
-    return response;
+      .toPromise()
+    return response
   }
 
   register(user: TokenPayload) {
-    return this.request('register', user);
+    return this.request('register', user)
   }
 
   login(user: TokenPayload) {
-    return this.request('login', user);
+    return this.request('login', user)
   }
 }

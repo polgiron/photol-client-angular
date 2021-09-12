@@ -1,6 +1,6 @@
 @import '~src/assets/scss/variables';
 
-$border-width: .2rem;
+$border-width: 0.2rem;
 $loader-width: 2rem;
 
 .loader {
@@ -12,14 +12,19 @@ $loader-width: 2rem;
   border-image: initial;
   border-radius: 50%;
   border-width: $border-width;
-  animation: spin .4s linear infinite;
+  animation: spin 0.4s linear infinite;
 
   &.is-light {
-    border-color: $color-text-lighter transparent transparent $color-text-lighter;
+    border-color: $color-text-lighter transparent transparent
+      $color-text-lighter;
   }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

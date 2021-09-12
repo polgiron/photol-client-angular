@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid transparent;
-  padding-bottom: .25rem;
-  transition: all .2s;
+  padding-bottom: 0.25rem;
+  transition: all 0.2s;
 
   &:focus-within,
   &.is-filled {
@@ -27,7 +27,7 @@
   }
 
   i {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     font-size: 1.2em;
     color: $color-text-medium;
   }
@@ -41,5 +41,5 @@
   outline: 0;
   color: $color-text;
   width: 5rem;
-  transition: all .2s;
+  transition: all 0.2s;
 }

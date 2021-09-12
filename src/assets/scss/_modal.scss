@@ -27,8 +27,8 @@
 }
 
 .modal.fade .image-infos {
-  transform: scale(.95);
-  transition-duration: .15s;
+  transform: scale(0.95);
+  transition-duration: 0.15s;
 }
 
 .modal.fade .modal-dialog.upload {
@@ -61,7 +61,7 @@
   height: 1.5rem;
   z-index: 2;
   display: flex;
-  opacity: .5;
+  opacity: 0.5;
 
   i {
     font-size: 1.3rem;
@@ -85,7 +85,7 @@
 .modal__paragraph {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 1.4;
   color: $color-text-lighter;
 

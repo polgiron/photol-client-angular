@@ -43,7 +43,7 @@ body.is-static {
 
 img.fade {
   opacity: 0;
-  transition: opacity 1s $ease-out-quint, box-shadow .3s $ease-out-quint;
+  transition: opacity 1s $ease-out-quint, box-shadow 0.3s $ease-out-quint;
 
   &.is-loaded {
     opacity: 1;
@@ -52,11 +52,11 @@ img.fade {
 
 .image-thumb .button-lightbox,
 .album-thumb .cover {
-  transition: all .3s $ease-out-quint;
+  transition: all 0.3s $ease-out-quint;
 
   &:hover,
   &:hover .cover {
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 
@@ -69,11 +69,11 @@ img.fade {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: $small-border-radius;
   color: $color-text-medium;
-  transition: all .1s;
-  font-size: .85rem;
+  transition: all 0.1s;
+  font-size: 0.85rem;
   font-weight: 500;
 
   &:hover {

@@ -24,17 +24,17 @@
   .bottom {
     display: flex;
     align-items: center;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: $color-text-medium;
     font-weight: 300;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
 
     @include respond-to('small') {
-      font-size: .85rem;
+      font-size: 0.85rem;
     }
 
     .coma {
-      margin-right: .3rem;
+      margin-right: 0.3rem;
     }
   }
 }
@@ -45,7 +45,7 @@
 }
 
 .navigation-button {
-  transform: scale(.85);
+  transform: scale(0.85);
 
   @include respond-to('small') {
     display: none;

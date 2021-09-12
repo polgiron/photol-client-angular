@@ -1,5 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from 'src/app/services/authentication.service';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core'
+import { AuthService } from 'src/app/services/authentication.service'
 
 @Component({
   selector: 'app-menu',
@@ -11,24 +16,24 @@ export class MenuComponent implements OnInit {
   activePopButton: any = {
     tags: false,
     settings: false
-  };
-  isLoggedIn: boolean = this.authService.isLoggedIn;
+  }
+  isLoggedIn: boolean = this.authService.isLoggedIn
 
   constructor(
     private ref: ChangeDetectorRef,
     private authService: AuthService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onPopShown(type: string): void {
-    this.activePopButton[type] = true;
-    this.ref.markForCheck();
+    this.activePopButton[type] = true
+    this.ref.markForCheck()
   }
 
   onPopHidden(type: string): void {
-    this.activePopButton[type] = false;
-    this.ref.markForCheck();
+    this.activePopButton[type] = false
+    this.ref.markForCheck()
   }
 
   // onClickMenu(): void {
