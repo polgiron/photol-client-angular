@@ -25,6 +25,7 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
   private _alive: boolean = true
   editMode: boolean = false
   isInViewport: boolean = false
+  isLoaded: boolean = false
 
   constructor(
     private albumService: AlbumService,

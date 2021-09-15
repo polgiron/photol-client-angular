@@ -16,7 +16,7 @@
     alt=""
     class="fade"
     [src]="src"
-    (error)="onError($event)"
+    (error)="onError()"
     (load)="onLoad()"
     [ngClass]="{ 'is-loaded': isLoaded, 'is-cover': cover }"
   />

@@ -74,7 +74,7 @@
         containerClass="popover--tags"
         placement="bottom"
         container="body"
-        outsideClick="true"
+        [outsideClick]="true"
         (onShown)="onPopShown('tags')"
         (onHidden)="onPopHidden('tags')"
         #popoverTags="bs-popover"
