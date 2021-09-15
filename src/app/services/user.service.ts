@@ -8,7 +8,6 @@ export class UserService {
   constructor(private api: Api) {}
 
   async getByEmail(email: string) {
-    const response: any = await this.api.get(this.document + 'email/' + email)
-    return response.user
+    return await this.api.get(`${this.document}email/${email}`)
   }
 }
