@@ -41,21 +41,17 @@ export class ImageOverlayComponent implements OnInit {
     this.saveRating(0)
   }
 
-  saveRating(value: number): void {
-    console.log('save rating')
+  async saveRating(value: number): Promise<void> {
     this.stars = value
-    this.imageService
-      .update(this.image._id, {
-        stars: this.stars
-      })
-      .then(() => {
-        const images = this.imageService.currentImages
-        images.map((image) => {
-          if (image._id == this.image._id) {
-            image.stars = this.stars
-          }
-        })
-        this.imageService.updateCurrentImages(images)
-      })
+    await this.imageService.update(this.image._id, {
+      stars: this.stars
+    })
+    const images = this.imageService.currentImages
+    images.forEach((image) => {
+      if (image._id === this.image._id) {
+        image.stars = this.stars
+      }
+    })
+    this.imageService.updateCurrentImages(images)
   }
 }

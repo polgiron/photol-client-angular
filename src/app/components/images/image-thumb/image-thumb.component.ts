@@ -56,8 +56,8 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
       this.albumService
         .updateCoverChannel()
         .pipe(takeWhile(() => this._alive))
-        .subscribe((image: Image) => {
-          this.isCover = this.image._id == image._id
+        .subscribe((imageId: string) => {
+          this.isCover = this.image._id === imageId
           this.ref.markForCheck()
         })
     }

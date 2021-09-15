@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component'
 import { AuthGuardService } from './services/guards/auth-guard.service'
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component'
 import { PublicComponent } from './components/public/public.component'
+import { AllComponent } from './components/all/all.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'albums', pathMatch: 'full' },
@@ -17,6 +18,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'all',
+        component: AllComponent,
+        canActivate: [AuthGuardService]
+      },
       {
         path: 'albums',
         component: AlbumsComponent,

@@ -35,9 +35,11 @@
   transform: translate3d(-50%, -50%, 0);
   z-index: 1;
   visibility: hidden;
+  pointer-events: none;
 
   &.is-visible {
     visibility: visible;
+    pointer-events: all;
 
     .inner {
       opacity: 1;

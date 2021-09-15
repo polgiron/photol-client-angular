@@ -53,21 +53,16 @@ export class ManageTagsComponent implements OnInit {
   //   }
   // }
 
-  deleteTag(event: any, deleteTag: Tag) {
+  async deleteTag(event: any, deleteTag: Tag) {
     event.stopPropagation()
-
-    this.tagService.delete(deleteTag._id).then(() => {
-      this.tags = this.tags.filter((tag) => tag._id != deleteTag._id)
-
-      const currentImages = this.imageService.currentImages
-      currentImages.map((image) => {
-        image.tags = image.tags.filter((tag) => tag._id != deleteTag._id)
-      })
-      console.log()
-      this.imageService.updateCurrentImages(currentImages)
-
-      this.ref.markForCheck()
+    await this.tagService.delete(deleteTag._id)
+    this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
+    const currentImages = this.imageService.currentImages
+    currentImages.map((image) => {
+      image.tags = image.tags.filter((tag) => tag._id !== deleteTag._id)
     })
+    this.imageService.updateCurrentImages(currentImages)
+    this.ref.markForCheck()
   }
 
   onClickTag(tag: string) {

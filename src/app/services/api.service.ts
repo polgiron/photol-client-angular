@@ -32,7 +32,7 @@ export class Api {
     return response
   }
 
-  async post(method: string, params: object) {
+  async post(method: string, params: object): Promise<any> {
     const response = await this.http
       .post(environment.domain + method, params, {
         headers: { Authorization: `Bearer ${this.auth.getToken()}` }
@@ -44,27 +44,27 @@ export class Api {
     return response
   }
 
-  async put(method: string, params: object) {
+  async put(method: string, params: object): Promise<any> {
     const response = await this.http
       .put(environment.domain + method, params, {
         headers: { Authorization: `Bearer ${this.auth.getToken()}` }
       })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise()
-    // console.log('-----API PUT RESPONSE');
-    // console.log(response);
+    console.log('-----API PUT RESPONSE')
+    console.log(response)
     return response
   }
 
-  async delete(method: string) {
+  async delete(method: string): Promise<any> {
     const response = await this.http
       .delete(environment.domain + method, {
         headers: { Authorization: `Bearer ${this.auth.getToken()}` }
       })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise()
-    // console.log('-----API DELETE RESPONSE');
-    // console.log(response);
+    console.log('-----API DELETE RESPONSE')
+    console.log(response)
     return response
   }
 

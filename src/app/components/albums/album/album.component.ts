@@ -96,7 +96,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     const params = {}
     params[key] = event.target.textContent
 
-    if (event.target.textContent != '') {
+    if (event.target.textContent !== '') {
       this.albumService.update(this.album._id, params)
     } else {
       event.target.textContent = this.currentEditTextValue

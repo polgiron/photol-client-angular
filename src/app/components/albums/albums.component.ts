@@ -13,6 +13,7 @@ import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-cr
 import { SettingsService } from 'src/app/services/settings.service'
 import { takeWhile } from 'rxjs/operators'
 import { Settings } from 'src/app/models/settings.model'
+import { ImageSize } from 'src/app/models/image.model'
 
 @Component({
   selector: 'app-albums',
@@ -54,7 +55,7 @@ export class AlbumsComponent implements OnInit, OnDestroy {
   }
 
   onClickAddAlbum() {
-    this.modalService.open(ModalCreateAlbumComponent, 'big')
+    this.modalService.open(ModalCreateAlbumComponent, ImageSize.BIG)
   }
 
   trackByFunction(index, item) {

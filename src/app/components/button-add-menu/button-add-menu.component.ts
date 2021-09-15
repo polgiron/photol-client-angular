@@ -48,43 +48,36 @@ export class ButtonAddMenuComponent implements OnInit, OnDestroy {
   onOpenChange(opened: boolean): void {
     this.keepOpen = true
     this.addMenuService.closeAll()
-
     if (opened) {
       this.keepOpen = false
     }
   }
 
-  onClickAddToPrint(): void {
+  async onClickAddToPrint(): Promise<void> {
     this.image.toPrint = !this.image.toPrint
-    this.imageService
-      .update(this.image._id, {
-        toPrint: this.image.toPrint
-      })
-      .then(() => {
-        const images = this.imageService.currentImages
-        images.map((image: Image) => {
-          if (image._id == this.image._id) {
-            image.toPrint = this.image.toPrint
-          }
-        })
-        this.imageService.updateCurrentImages(images)
-      })
+    await this.imageService.update(this.image._id, {
+      toPrint: this.image.toPrint
+    })
+    const images = this.imageService.currentImages
+    images.forEach((image: Image) => {
+      if (image._id === this.image._id) {
+        image.toPrint = this.image.toPrint
+      }
+    })
+    this.imageService.updateCurrentImages(images)
   }
 
-  onClickAddToPublic(): void {
+  async onClickAddToPublic(): Promise<void> {
     this.image.public = !this.image.public
-    this.imageService
-      .update(this.image._id, {
-        public: this.image.public
-      })
-      .then(() => {
-        const images = this.imageService.currentImages
-        images.map((image: Image) => {
-          if (image._id == this.image._id) {
-            image.public = this.image.public
-          }
-        })
-        this.imageService.updateCurrentImages(images)
-      })
+    await this.imageService.update(this.image._id, {
+      public: this.image.public
+    })
+    const images = this.imageService.currentImages
+    images.forEach((image: Image) => {
+      if (image._id === this.image._id) {
+        image.public = this.image.public
+      }
+    })
+    this.imageService.updateCurrentImages(images)
   }
 }

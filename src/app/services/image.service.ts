@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Api } from 'src/app/services/api.service'
-import { Image } from '../models/image.model'
+import { Image, ImageSize } from '../models/image.model'
 
 @Injectable()
 export class ImageService {
@@ -27,13 +27,15 @@ export class ImageService {
     this._currentImages.next(images)
   }
 
-  async getAll(page: number = 1, limit: number = 30) {
-    const params = {
-      page: page,
-      limit: limit
-    }
-    const response: any = await this.api.get(this.document + 'all', params)
-    return response
+  // async getAll(page: number = 1, limit: number = 30): Promise<Image[]> {
+  //   return await this.api.get(`${this.document}all`, {
+  //     page: page,
+  //     limit: limit
+  //   })
+  // }
+
+  async getAll(): Promise<Image[]> {
+    return await this.api.get(`${this.document}all`)
   }
 
   async getImage(imageId: string, isPublic: boolean = false): Promise<Image> {
@@ -46,19 +48,20 @@ export class ImageService {
     return await this.api.get(this.document + 'favorites')
   }
 
-  async getToPrint() {
-    const response: any = await this.api.get(this.document + 'toprint')
-    return response.images
+  async getToPrint(): Promise<Image[]> {
+    return await this.api.get(this.document + 'toprint')
   }
 
   async getPublic(): Promise<Image[]> {
     return await this.api.get(this.document + 'public')
   }
 
-  async getSignedUrl(imageId: string, size: string) {
-    const response: any = await this.api.get(
-      this.document + imageId + '/signedUrl',
-      { size: size }
+  async getSignedUrl(id: string, size: ImageSize.SMALL): Promise<string> {
+    const response: { signedUrl: string } = await this.api.get(
+      `${this.document}${id}/signedUrl`,
+      {
+        size: size
+      }
     )
     return response.signedUrl
   }
@@ -67,13 +70,11 @@ export class ImageService {
     return this.api.put(this.document + imageId, params)
   }
 
-  delete(imageId: string) {
-    this.api.delete(this.document + imageId).then(() => {
-      // console.log('Image has been deleted');
-      let images = this.currentImages
-      images = images.filter((image) => image._id != imageId)
-      this.updateCurrentImages(images)
-    })
+  async delete(imageId: string) {
+    await this.api.delete(this.document + imageId)
+    let images = this.currentImages
+    images = images.filter((image) => image._id !== imageId)
+    this.updateCurrentImages(images)
   }
 
   // Lightbox

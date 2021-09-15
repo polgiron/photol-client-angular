@@ -11,6 +11,7 @@ import {
 } from '@angular/core'
 import { fadeOutAnimation } from 'src/app/utils/animations'
 import { ImageService } from 'src/app/services/image.service'
+import { ImageSize } from 'src/app/models/image.model'
 
 @Component({
   selector: 'app-image',
@@ -50,9 +51,7 @@ export class ImageComponent implements OnInit {
     private imageService: ImageService
   ) {}
 
-  ngOnInit() {
-    // this.setPadding();
-  }
+  ngOnInit() {}
 
   setPadding() {
     let ratio = (this.height / this.width) * 100
@@ -74,8 +73,7 @@ export class ImageComponent implements OnInit {
   }
 
   async onError() {
-    // console.log('ON ERROR');
-    this._src = await this.imageService.getSignedUrl(this.id, 'small')
+    this._src = await this.imageService.getSignedUrl(this.id, ImageSize.SMALL)
     this.ref.markForCheck()
   }
 

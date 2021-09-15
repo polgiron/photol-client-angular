@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Observable, Subject, Subscription } from 'rxjs'
-import {
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-  HttpHeaders
-} from '@angular/common/http'
+import { Observable, Subject } from 'rxjs'
+import { HttpClient, HttpResponse } from '@angular/common/http'
 import { ModalService } from './modal.service'
 import { Router } from '@angular/router'
 import { environment } from 'src/environments/environment'
@@ -15,7 +10,6 @@ import { AuthService } from './authentication.service'
 export class UploadService {
   private _uploadProgress: Subject<number> = new Subject<number>()
   progress: number = 0
-  httpEmitter: Subscription
 
   constructor(
     private modalService: ModalService,
@@ -28,64 +22,59 @@ export class UploadService {
     return this._uploadProgress.asObservable()
   }
 
-  upload(images: any[], albumId: string, imageDate: number) {
-    // console.log('Upload function');
-    // console.log(images);
-
+  upload(
+    images: { file: File; albums: string[] }[],
+    albumId: string,
+    imageDate: number
+  ) {
     this.progress = 0
 
     images.forEach((image, index) => {
-      let formData: FormData = new FormData()
+      const formData: FormData = new FormData()
 
       formData.append('file', image.file)
-      formData.append('albums', image.albums)
       formData.append('order', String(index))
-
+      for (let i = 0; i < image.albums.length; i++) {
+        formData.append('albums[]', image.albums[i])
+      }
       if (imageDate) {
         formData.append('date', String(imageDate))
       }
 
-      const req = new HttpRequest<FormData>(
-        'POST',
-        environment.domain + 'image',
-        formData,
-        {
-          headers: new HttpHeaders({
+      this.http
+        .post<FormData>(`${environment.domain}image`, formData, {
+          headers: {
             Authorization: `Bearer ${this.auth.getToken()}`
-          }),
-          withCredentials: true,
+          },
           reportProgress: true,
-          responseType: 'text'
-        }
-      )
-
-      this.httpEmitter = this.http.request(req).subscribe(
-        (event: any) => {
-          // console.log('---event');
-          // console.log(event);
-          // const percentage = (event.loaded / event.total) * 100;
-          // console.log(percentage + '%');
-
-          if (event instanceof HttpResponse) {
-            delete this.httpEmitter
-
-            // console.log('-----request done');
-
-            this.progress += 1
-            this._uploadProgress.next(this.progress)
-
-            if (this.progress == images.length) {
-              console.log('UPLOAD DONE!')
-
-              setTimeout(() => {
-                this.modalService.closeAll()
-                this.router.navigate(['/', 'albums', albumId])
-              }, 600)
-            }
-          }
-        },
-        (error) => console.error('Error Uploading Files: ' + error.message)
-      )
+          observe: 'events'
+        })
+        .subscribe(
+          (event) => {
+            this.postRequestEvent(event, images.length, albumId)
+          },
+          (err) => console.log(err)
+        )
     })
+  }
+
+  postRequestEvent(event: unknown, imagesLength: number, albumId: string) {
+    console.log('---event')
+    console.log(event)
+
+    // const percentage = (event.loaded / event.total) * 100;
+    // console.log(percentage + '%');
+
+    if (event instanceof HttpResponse) {
+      this.progress += 1
+      this._uploadProgress.next(this.progress)
+
+      if (this.progress === imagesLength) {
+        setTimeout(() => {
+          this.modalService.closeAll()
+          this.router.navigate(['/', 'albums', albumId])
+        }, 600)
+      }
+    }
   }
 }

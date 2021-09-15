@@ -60,6 +60,7 @@ import { ButtonAddMenuComponent } from './components/button-add-menu/button-add-
 import { AddMenuService } from './services/add-menu.service'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalImageInfosComponent } from './components/modals/modal-image-infos/modal-image-infos.component'
+import { AllComponent } from './components/all/all.component'
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { ModalImageInfosComponent } from './components/modals/modal-image-infos/
     UserMenuComponent,
     PublicComponent,
     ButtonAddMenuComponent,
-    ModalImageInfosComponent
+    ModalImageInfosComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,

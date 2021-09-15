@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core'
 import { Api } from './api.service'
 import { Subject, Observable, BehaviorSubject } from 'rxjs'
-import { Image } from '../models/image.model'
 import { Album } from '../models/album.model'
 
 @Injectable()
 export class AlbumService {
-  private _updateCover: Subject<Image> = new Subject<Image>()
+  private _updateCover: Subject<string> = new Subject<string>()
   private _currentAlbums: BehaviorSubject<Album[]> = new BehaviorSubject<
     Album[]
   >([])
@@ -27,53 +26,50 @@ export class AlbumService {
     this._currentAlbums.next(albums)
   }
 
-  public updateCoverChannel(): Observable<Image> {
+  public updateCoverChannel(): Observable<string> {
     return this._updateCover.asObservable()
   }
 
-  updateCover(imageId: string) {
-    this.update(this.currentAlbum._id, {
+  async updateCover(imageId: string) {
+    await this.update(this.currentAlbum._id, {
       cover: imageId
-    }).then((album: Album) => {
-      this._updateCover.next(album.cover)
     })
+    this._updateCover.next(imageId)
   }
 
   getCurrentAlbumIndex(albumToFind: Album) {
     const currentAlbum = this.currentAlbums.find(
-      (album) => album._id == albumToFind._id
+      (album) => album._id === albumToFind._id
     )
     return this.currentAlbums.indexOf(currentAlbum)
   }
 
   async getAll() {
-    const response: any = await this.api.get(this.document + 'all')
-    this.updateCurrentAlbums(response.albums)
+    const response = await this.api.get(`${this.document}all`)
+    this.updateCurrentAlbums(response)
   }
 
-  async getAlbum(albumId: string) {
-    const response: any = await this.api.get(this.document + albumId)
+  async getAlbum(albumId: string): Promise<Album> {
+    const response = await this.api.get(`${this.document}${albumId}`)
 
     if (!this.currentAlbums.length) {
       await this.getAll()
     }
 
-    return response.album
+    return response
   }
 
   async rollIdExists(rollId: string) {
-    const response: any = await this.api.get(this.document + 'roll/' + rollId)
-    return response.album != null
+    const response = await this.api.get(`${this.document}roll/${rollId}`)
+    return response !== null
   }
 
-  async create(params: Object) {
-    const response: any = await this.api.post(this.document, params)
-    return response.album
+  async create(params: Object): Promise<Album> {
+    return await this.api.post(this.document, params)
   }
 
-  async update(albumId: string, params: object) {
-    const response: any = await this.api.put(this.document + albumId, params)
-    return response.album
+  async update(albumId: string, params: any): Promise<Album> {
+    return await this.api.put(`${this.document}${albumId}`, params)
   }
 
   async delete(albumId: string) {

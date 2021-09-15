@@ -10,6 +10,15 @@
     <li *ngIf="isLoggedIn">
       <a
         class="menu__entry"
+        [routerLink]="['/all']"
+        routerLinkActive="is-active"
+      >
+        <span>all</span>
+      </a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a
+        class="menu__entry"
         [routerLink]="['/albums']"
         routerLinkActive="is-active"
       >
@@ -57,14 +66,23 @@
     <!-- <li class="search-entry">
       <app-search-input></app-search-input>
     </li> -->
-    <!-- <li>
-      <button class="menu__entry menu__entry--icon" [ngClass]="{'is-active': activePopButton.tags}"
-        [popover]="popTagsContent" containerClass="popover--tags" placement="bottom" container="body"
-        outsideClick="true" (onShown)="onPopShown('tags')" (onHidden)="onPopHidden('tags')" #popoverTags="bs-popover">
+    <li>
+      <button
+        class="menu__entry menu__entry--icon"
+        [ngClass]="{ 'is-active': activePopButton.tags }"
+        [popover]="popTagsContent"
+        containerClass="popover--tags"
+        placement="bottom"
+        container="body"
+        outsideClick="true"
+        (onShown)="onPopShown('tags')"
+        (onHidden)="onPopHidden('tags')"
+        #popoverTags="bs-popover"
+      >
         <span>tags</span>
         <i class="material-icons">tag</i>
       </button>
-    </li> -->
+    </li>
     <!-- <li>
       <button class="menu__entry" [ngClass]="{'is-active': activePopButton.settings}"
         [popover]="popSettingsContent" containerClass="popover--settings" placement="bottom" container="body"
@@ -76,6 +94,6 @@
   </ul>
 </nav>
 
-<!-- <ng-template #popTagsContent>
+<ng-template #popTagsContent>
   <app-manage-tags [popoverTags]="popoverTags"></app-manage-tags>
-</ng-template> -->
+</ng-template>

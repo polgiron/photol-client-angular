@@ -23,3 +23,8 @@ export interface DarkroomSettings {
   aperture: number
   note: string
 }
+
+export enum ImageSize {
+  SMALL = 'SMALL',
+  BIG = 'BIG'
+}

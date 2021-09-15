@@ -9,21 +9,18 @@ export class TagService {
   constructor(private api: Api) {}
 
   async getAll(): Promise<Tag[]> {
-    const response: any = await this.api.get(this.document + 'all')
-    return response.tags
+    return await this.api.get(`${this.document}all`)
   }
 
   async getLastUsed(): Promise<Tag[]> {
-    const response: any = await this.api.get(this.document + 'lastused')
-    return response.tags
+    return await this.api.get(`${this.document}lastused`)
   }
 
   async create(params: Object): Promise<Tag> {
-    const response: any = await this.api.post(this.document, params)
-    return response.tag
+    return await this.api.post(this.document, params)
   }
 
-  delete(tagId: string): Promise<any> {
-    return this.api.delete(this.document + tagId)
+  async delete(id: string): Promise<void> {
+    await this.api.delete(`${this.document}${id}`)
   }
 }

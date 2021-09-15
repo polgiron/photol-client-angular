@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Api } from './api.service'
 import { Observable, BehaviorSubject } from 'rxjs'
+import { Image } from '../models/image.model'
 
 @Injectable()
 export class SearchService {
@@ -19,10 +20,8 @@ export class SearchService {
     this._searchValue.next(value)
   }
 
-  async search(value: string) {
-    // console.log('Search: ' + value);
+  async search(value: string): Promise<Image[]> {
     this.setSearchValue(value)
-    const response: any = await this.api.get(this.document + value)
-    return response.results
+    return await this.api.get(this.document + value)
   }
 }
