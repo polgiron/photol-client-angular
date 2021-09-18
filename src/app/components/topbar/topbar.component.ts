@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/authentication.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopbarComponent implements OnInit {
-  @Input() sticky: boolean = false
+  // @Input() sticky: boolean = false
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn

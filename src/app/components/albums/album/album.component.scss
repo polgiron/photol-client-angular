@@ -1,21 +1,23 @@
 @import '~src/assets/scss/variables';
 
-.main-loader-wrapper,
-.main-container {
-  position: absolute;
-  width: 100%;
-}
-
 .title-wrapper {
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 0.5rem;
 
   @include respond-to('small') {
     display: block;
     margin-bottom: 1.5rem;
   }
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
   .title-1 {
     display: inline-block;
@@ -24,6 +26,7 @@
   .bottom {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 0.85rem;
     color: $color-text-medium;
     font-weight: 300;
@@ -45,13 +48,13 @@
 }
 
 .navigation-button {
-  transform: scale(0.85);
+  // transform: scale(0.85);
 
   @include respond-to('small') {
     display: none;
   }
 
   // &:first-child {
-  //   margin-right: .25rem;
+  //   margin-right: 0.5rem;
   // }
 }

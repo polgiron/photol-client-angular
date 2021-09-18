@@ -1,11 +1,11 @@
 @import '~src/assets/scss/variables';
 
-.top-left,
-.top-right,
-.bottom-left {
+.image-overlay-entry {
   position: absolute;
   color: $color-white-smoke;
   text-shadow: 1px 1px 4px rgba($color-black, 0.6);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .top-left {
@@ -22,15 +22,31 @@
   top: $overlay-padding;
   right: $overlay-padding;
   text-shadow: 1px 1px 4px rgba($color-black, 0.3);
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  padding: $overlay-padding;
   display: flex;
-  opacity: 0;
-  visibility: hidden;
+  flex-wrap: wrap;
+  max-width: 70%;
+
+  li:not(:last-child) {
+    margin-right: 0.2rem;
+  }
+}
+
+.rating-wrapper {
+  display: flex;
+  // opacity: 0;
+  // visibility: hidden;
   transition: all 0.2s;
 
-  &.is-always-visible {
-    opacity: 1;
-    visibility: visible;
-  }
+  // &.is-always-visible {
+  //   opacity: 1;
+  //   visibility: visible;
+  // }
 
   &:hover .clear-rating {
     opacity: 1;
@@ -55,20 +71,7 @@
   }
 }
 
-.bottom-left {
-  bottom: 0;
-  left: 0;
-  padding: $overlay-padding;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 70%;
-
-  li:not(:last-child) {
-    margin-right: 0.2rem;
-  }
-}
-
-.roll-id-wrapper {
-  display: flex;
-  align-items: center;
-}
+// .roll-id-wrapper {
+//   display: flex;
+//   align-items: center;
+// }

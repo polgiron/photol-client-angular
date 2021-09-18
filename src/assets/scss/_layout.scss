@@ -1,17 +1,19 @@
-.main-container .inner {
+.main-container {
   padding: $container-padding;
+  // padding-top: 0.5rem;
   max-width: $container-width;
   margin: auto;
+  animation: fade-in-from-bottom 1s $ease-out-quint both 0.4s;
 
   @include respond-to('small') {
-    padding: 1rem;
+    // padding: 1rem;
   }
 }
 
-.main-container--fixed {
-  max-width: $container-width;
-  margin: auto;
-}
+// .main-container--fixed {
+//   max-width: $container-width;
+//   margin: auto;
+// }
 
 .main-loader-wrapper {
   margin-top: 35vh;
@@ -25,7 +27,7 @@
 
 .grid-list {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 
   @include respond-to('small') {

@@ -32,14 +32,14 @@
   </div>
   <div class="bottom-right" *ngIf="imageLoaded && isLoggedIn">
     <button class="button button--white" (click)="onClickInfos()">
-      <i class="material-icons">info</i> Infos
+      <i class="bi bi-info-circle"></i> Infos
     </button>
     <a
       *ngIf="albumId && !isAlbumView"
       class="button button--white"
       [routerLink]="['/', 'albums', albumId]"
       (click)="onClickGoToAlbum()"
-      ><i class="material-icons">collections</i> Go to album</a
+      ><i class="bi bi-film"></i> Go to album</a
     >
   </div>
 </div>

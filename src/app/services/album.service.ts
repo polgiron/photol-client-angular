@@ -32,7 +32,7 @@ export class AlbumService {
 
   async updateCover(imageId: string) {
     await this.update(this.currentAlbum._id, {
-      cover: imageId
+      covers: [imageId]
     })
     this._updateCover.next(imageId)
   }

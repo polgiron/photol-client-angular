@@ -2,61 +2,58 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="album" [@fadeAnimation]>
-  <div class="inner">
-    <div class="title-wrapper">
-      <div class="left">
-        <h1
-          class="title-1"
+  <div class="title-wrapper">
+    <button
+      [disabled]="!displayPrev"
+      class="navigation-button prev"
+      (click)="prev()"
+    >
+      <!-- <i class="bi bi-arrow-left-circle-fill"></i> -->
+      <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="infos">
+      <h1
+        class="title-1"
+        [attr.contenteditable]="settings.editMode"
+        (focus)="onTextFocus($event)"
+        (blur)="onTextBlur('title', $event)"
+      >
+        {{ album.title }}
+      </h1>
+      <div class="bottom">
+        <span
           [attr.contenteditable]="settings.editMode"
           (focus)="onTextFocus($event)"
-          (blur)="onTextBlur('title', $event)"
+          (blur)="onTextBlur('date', $event)"
+          (keypress)="onNumberKeyPress($event)"
+          >{{ album.date }}</span
+        ><span
+          class="coma"
+          *ngIf="(album.date && album.rollId) || settings.editMode"
+          >,</span
         >
-          {{ album.title }}
-        </h1>
-        <div class="bottom">
+        <div class="roll-id-wrapper" *ngIf="album.rollId || settings.editMode">
+          #
           <span
             [attr.contenteditable]="settings.editMode"
             (focus)="onTextFocus($event)"
-            (blur)="onTextBlur('date', $event)"
+            (blur)="onTextBlur('rollId', $event)"
             (keypress)="onNumberKeyPress($event)"
-            >{{ album.date }}</span
-          ><span
-            class="coma"
-            *ngIf="(album.date && album.rollId) || settings.editMode"
-            >,</span
+            >{{ album.rollId }}</span
           >
-          <div
-            class="roll-id-wrapper"
-            *ngIf="album.rollId || settings.editMode"
-          >
-            #
-            <span
-              [attr.contenteditable]="settings.editMode"
-              (focus)="onTextFocus($event)"
-              (blur)="onTextBlur('rollId', $event)"
-              (keypress)="onNumberKeyPress($event)"
-              >{{ album.rollId }}</span
-            >
-          </div>
         </div>
       </div>
-      <div class="right">
-        <button
-          [disabled]="!displayPrev"
-          class="navigation-button prev"
-          (click)="prev()"
-        >
-          <i class="material-icons">navigate_before</i>
-        </button>
-        <button
-          [disabled]="!displayNext"
-          class="navigation-button next"
-          (click)="next()"
-        >
-          <i class="material-icons">navigate_next</i>
-        </button>
-      </div>
     </div>
-    <app-images></app-images>
+    <!-- <div class="right"> -->
+    <button
+      [disabled]="!displayNext"
+      class="navigation-button next"
+      (click)="next()"
+    >
+      <!-- <i class="bi bi-arrow-right-circle-fill"></i> -->
+      <i class="bi bi-arrow-right"></i>
+    </button>
+    <!-- </div> -->
   </div>
+  <app-images></app-images>
 </div>

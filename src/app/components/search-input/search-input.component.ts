@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef
 } from '@angular/core'
 import { Router } from '@angular/router'
 import { takeWhile } from 'rxjs/operators'
@@ -16,8 +18,9 @@ import { SearchService } from 'src/app/services/search.service'
 })
 export class SearchInputComponent implements OnInit {
   private _alive: boolean = true
+  @ViewChild('input') input: ElementRef
   searchValue: string = ''
-  timeout: any
+  timeout: number
 
   constructor(
     private router: Router,
@@ -35,9 +38,13 @@ export class SearchInputComponent implements OnInit {
       })
   }
 
+  ngOnDestroy() {
+    this._alive = false
+  }
+
   onKeyUp() {
     clearTimeout(this.timeout)
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.performSearch()
     }, 500)
   }
@@ -50,7 +57,14 @@ export class SearchInputComponent implements OnInit {
     })
   }
 
-  ngOnDestroy() {
-    this._alive = false
+  clear() {
+    this.searchValue = ''
+    // this.router.navigate(['/', 'search'], {
+    //   queryParams: {
+    //     value: ''
+    //   }
+    // })
+    this.input.nativeElement.focus()
+    this.ref.markForCheck()
   }
 }

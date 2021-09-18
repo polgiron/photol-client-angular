@@ -30,25 +30,16 @@
           container="body"
           preventDefaultClick
         >
-          <i class="material-icons">photo</i>
-          <i class="material-icons icon-check" *ngIf="isCover">check</i>
+          <i class="bi bi-image"></i>
+          <i class="bi bi-check" *ngIf="isCover"></i>
         </button>
       </div>
       <div class="group" *ngIf="editMode" [@fadeAnimation]>
         <button class="button-overlay" (click)="delete()" preventDefaultClick>
-          <i class="material-icons">delete</i>
+          <i class="bi bi-trash"></i>
         </button>
       </div>
-      <!-- <div class="group" [@fadeAnimation]>
-        <button class="button-overlay" (click)="onClickInfos()" preventDefaultClick><i
-            class="material-icons">info</i></button>
-      </div> -->
     </div>
-    <!-- <button class="to-print-button button-overlay" [ngClass]="{'add-to-print': !image.toPrint}"
-      (click)="toggleToPrint()" container="body" preventDefaultClick>
-      <i class="material-icons" *ngIf="!image.toPrint">add</i>
-      <i class="material-icons" *ngIf="image.toPrint">check</i>
-    </button> -->
     <app-button-add-menu
       *ngIf="isLoggedIn"
       [image]="image"

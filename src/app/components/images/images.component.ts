@@ -85,7 +85,7 @@ export class ImagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  refreshFlickrLayout(rowHeight: number = 200, boxSpacing: number = 24) {
+  refreshFlickrLayout(rowHeight: number = 150, boxSpacing: number = 16) {
     const layoutArray = []
     this.images.map((image) => {
       layoutArray.push(image.ratio)

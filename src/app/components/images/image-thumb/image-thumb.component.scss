@@ -22,7 +22,7 @@
   }
 }
 
-:host ::ng-deep .image-thumb:hover .top-right,
+:host ::ng-deep .image-thumb:hover .image-overlay-entry,
 :host ::ng-deep .image-thumb:hover .add-button {
   opacity: 1;
   visibility: visible;

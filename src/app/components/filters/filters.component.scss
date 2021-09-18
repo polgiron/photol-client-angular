@@ -1,9 +1,11 @@
+@import '~src/assets/scss/variables';
+
 .filters {
-  margin-bottom: 2rem;
+  margin-bottom: $container-padding;
 }
 
 .tags-list {
-  justify-content: center;
+  // justify-content: center;
   margin-bottom: -0.75rem;
 }
 

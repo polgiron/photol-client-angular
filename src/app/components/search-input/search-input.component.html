@@ -1,10 +1,14 @@
 <div class="wrapper" [ngClass]="{ 'is-filled': searchValue?.length }">
-  <i class="material-icons">search</i>
+  <i class="bi bi-search"></i>
   <input
+    #input
     class="input"
     type="text"
     placeholder="search..."
     [(ngModel)]="searchValue"
     (keyup)="onKeyUp()"
   />
+  <button *ngIf="searchValue !== ''" class="button-clear" (click)="clear()">
+    <i class="bi bi-x-circle-fill"></i>
+  </button>
 </div>

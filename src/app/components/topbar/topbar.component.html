@@ -1,5 +1,5 @@
 <!-- <header class="header main-container main-container--fixed" [ngClass]="{'is-sticky': sticky}"> -->
-<header class="header main-container main-container--fixed">
+<!-- <header class="header main-container main-container--fixed">
   <div class="top-buttons" *ngIf="isLoggedIn">
     <app-user-menu></app-user-menu>
     <app-search-input></app-search-input>
@@ -9,5 +9,17 @@
   </a>
   <div class="menu-wrapper">
     <app-menu></app-menu>
+  </div>
+</header> -->
+<header class="main-container">
+  <div class="inner">
+    <a class="title" [routerLink]="['/albums']"><h1>Photol</h1></a>
+    <div class="right">
+      <app-menu></app-menu>
+    </div>
+    <div class="top-buttons" *ngIf="isLoggedIn">
+      <app-user-menu></app-user-menu>
+      <!-- <app-search-input></app-search-input> -->
+    </div>
   </div>
 </header>
