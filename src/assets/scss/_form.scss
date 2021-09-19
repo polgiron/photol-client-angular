@@ -216,17 +216,17 @@ input[type='number']::-webkit-outer-spin-button {
   }
 }
 
-@-webkit-keyframes autofill {
-  to {
-    color: var(--color-text-medium);
-    background: transparent;
-  }
-}
+// @-webkit-keyframes autofill {
+//   to {
+//     color: var(--color-text-medium);
+//     background: transparent;
+//   }
+// }
 
-input:-webkit-autofill {
-  -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both;
-}
+// input:-webkit-autofill {
+//   -webkit-animation-name: autofill;
+//   -webkit-animation-fill-mode: both;
+// }
 
 [contenteditable='true'] {
   outline: 0;
