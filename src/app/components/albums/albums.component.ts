@@ -7,7 +7,7 @@ import {
 } from '@angular/core'
 import { fadeAnimation } from 'src/app/utils/animations'
 import { AlbumService } from 'src/app/services/album.service'
-import { Album } from 'src/app/models/album.model'
+import { Album, MultipleAlbum } from 'src/app/models/album.model'
 import { ModalService } from 'src/app/services/modal.service'
 import { ModalCreateAlbumComponent } from '../modals/modal-create-album/modal-create-album.component'
 import { SettingsService } from 'src/app/services/settings.service'
@@ -24,7 +24,7 @@ import { ImageSize } from 'src/app/models/image.model'
 })
 export class AlbumsComponent implements OnInit, OnDestroy {
   private _alive: boolean = true
-  albums: Album[]
+  albums: MultipleAlbum[]
   editMode: boolean = false
 
   constructor(
@@ -48,7 +48,7 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     this.albumService
       .currentAlbumsChannel()
       .pipe(takeWhile(() => this._alive))
-      .subscribe((albums: Album[]) => {
+      .subscribe((albums: MultipleAlbum[]) => {
         this.albums = albums
         this.ref.markForCheck()
       })

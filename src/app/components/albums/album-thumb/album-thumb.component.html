@@ -3,15 +3,25 @@
   [routerLink]="['/', 'albums', album._id]"
   (deferLoad)="onDeferLoad()"
 >
-  <img
-    *ngIf="album.cover && isInViewport"
-    [src]="album.cover.signedUrl"
-    class="fade"
-    [ngClass]="{ 'is-loaded': isLoaded }"
-    (load)="isLoaded = true"
-    alt=""
-  />
-  <div *ngIf="album.rollId" class="top-left">#{{ album.rollId }}</div>
+  <ul
+    class="covers"
+    [ngClass]="{
+      'has-2-covers': album.covers.length === 2,
+      'has-3-covers-or-more': album.covers.length >= 3
+    }"
+    *ngIf="album.covers.length && isInViewport"
+  >
+    <li class="covers__entry" *ngFor="let cover of album.covers">
+      <img
+        [src]="cover.signedUrl"
+        class="covers__image fade"
+        [ngClass]="{ 'is-loaded': isLoaded }"
+        (load)="isLoaded = true"
+        alt="Album cover"
+      />
+    </li>
+  </ul>
+  <div *ngIf="album.rollId" class="top-left">{{ album.rollId }}</div>
   <div class="infos" [ngClass]="{ 'is-edit-mode': editMode }">
     <h2 class="title">{{ album.title }}</h2>
   </div>

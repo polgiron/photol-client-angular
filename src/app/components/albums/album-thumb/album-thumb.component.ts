@@ -7,7 +7,7 @@ import {
   OnDestroy
 } from '@angular/core'
 import { AlbumService } from 'src/app/services/album.service'
-import { Album } from 'src/app/models/album.model'
+import { Album, MultipleAlbum } from 'src/app/models/album.model'
 import { takeWhile } from 'rxjs/operators'
 import { SettingsService } from 'src/app/services/settings.service'
 import { Settings } from 'src/app/models/settings.model'
@@ -21,7 +21,7 @@ import { fadeAnimation } from 'src/app/utils/animations'
   animations: [fadeAnimation]
 })
 export class AlbumThumbComponent implements OnInit, OnDestroy {
-  @Input() album: Album
+  @Input() album: MultipleAlbum
   private _alive: boolean = true
   editMode: boolean = false
   isInViewport: boolean = false

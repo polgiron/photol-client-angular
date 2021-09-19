@@ -25,7 +25,6 @@
         <button
           class="button-overlay"
           (click)="updateCover()"
-          [ngClass]="{ 'is-disabled': isCover }"
           [tooltip]="isCover ? null : 'Set as Cover'"
           container="body"
           preventDefaultClick

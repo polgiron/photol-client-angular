@@ -17,15 +17,15 @@
   font-weight: 500;
   background: rgba($color-black, 0.1);
   border-radius: $small-border-radius;
-  // height: 40px;
   height: 32px;
-  // width: 12rem;
-  width: 10rem;
+  width: 12rem;
+  position: relative;
 
   &:focus-within,
   &.is-filled {
     color: $color-text;
     background: rgba($color-black, 0.2);
+    padding-right: 2rem;
   }
 
   i {
@@ -43,7 +43,6 @@
   font-size: 0.7rem;
   padding: 0;
   outline: 0;
-  // width: 8rem;
   color: inherit;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -52,6 +51,10 @@
 .button-clear {
   margin-left: 0.5rem;
   transition: all 0.15s;
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
 
   &:active {
     transform: scale(0.6);

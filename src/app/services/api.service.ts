@@ -27,8 +27,8 @@ export class Api {
       })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise()
-    console.log('-----API GET RESPONSE')
-    console.log(response)
+    // console.log('-----API GET RESPONSE')
+    // console.log(response)
     return response
   }
 
@@ -51,8 +51,8 @@ export class Api {
       })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise()
-    console.log('-----API PUT RESPONSE')
-    console.log(response)
+    // console.log('-----API PUT RESPONSE')
+    // console.log(response)
     return response
   }
 
@@ -63,8 +63,8 @@ export class Api {
       })
       .pipe(catchError(this.handleError).bind(this))
       .toPromise()
-    console.log('-----API DELETE RESPONSE')
-    console.log(response)
+    // console.log('-----API DELETE RESPONSE')
+    // console.log(response)
     return response
   }
 

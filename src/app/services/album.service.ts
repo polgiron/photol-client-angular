@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core'
 import { Api } from './api.service'
 import { Subject, Observable, BehaviorSubject } from 'rxjs'
-import { Album } from '../models/album.model'
+import { Album, MultipleAlbum, OneAlbum } from '../models/album.model'
 
 @Injectable()
 export class AlbumService {
-  private _updateCover: Subject<string> = new Subject<string>()
-  private _currentAlbums: BehaviorSubject<Album[]> = new BehaviorSubject<
-    Album[]
-  >([])
+  // private _updateCover: Subject<string> = new Subject<string>()
+  private _currentAlbums: BehaviorSubject<MultipleAlbum[]> =
+    new BehaviorSubject<MultipleAlbum[]>([])
   document: string = 'album/'
-  currentAlbum: Album
+  currentAlbum: OneAlbum
 
   constructor(private api: Api) {}
 
-  public currentAlbumsChannel(): Observable<Album[]> {
+  public currentAlbumsChannel(): Observable<MultipleAlbum[]> {
     return this._currentAlbums.asObservable()
   }
 
@@ -22,19 +21,27 @@ export class AlbumService {
     return [...this._currentAlbums.value]
   }
 
-  updateCurrentAlbums(albums: Album[]) {
-    this._currentAlbums.next(albums)
-  }
+  // public updateCoverChannel(): Observable<string> {
+  //   return this._updateCover.asObservable()
+  // }
 
-  public updateCoverChannel(): Observable<string> {
-    return this._updateCover.asObservable()
-  }
-
-  async updateCover(imageId: string) {
+  async addCover(imageId: string) {
+    this.currentAlbum.covers.push(imageId)
     await this.update(this.currentAlbum._id, {
-      covers: [imageId]
+      covers: this.currentAlbum.covers
     })
-    this._updateCover.next(imageId)
+    // this._updateCover.next(imageId)
+  }
+
+  async removeCover(imageId: string) {
+    this.currentAlbum.covers.splice(
+      this.currentAlbum.covers.indexOf(imageId),
+      1
+    )
+    await this.update(this.currentAlbum._id, {
+      covers: this.currentAlbum.covers
+    })
+    // this._updateCover.next(imageId)
   }
 
   getCurrentAlbumIndex(albumToFind: Album) {
@@ -46,10 +53,10 @@ export class AlbumService {
 
   async getAll() {
     const response = await this.api.get(`${this.document}all`)
-    this.updateCurrentAlbums(response)
+    this._currentAlbums.next(response)
   }
 
-  async getAlbum(albumId: string): Promise<Album> {
+  async getAlbum(albumId: string): Promise<OneAlbum> {
     const response = await this.api.get(`${this.document}${albumId}`)
 
     if (!this.currentAlbums.length) {
@@ -76,6 +83,6 @@ export class AlbumService {
     await this.api.delete(this.document + albumId)
     let albums = this.currentAlbums
     albums = albums.filter((album) => album._id != albumId)
-    this.updateCurrentAlbums(albums)
+    this._currentAlbums.next(albums)
   }
 }

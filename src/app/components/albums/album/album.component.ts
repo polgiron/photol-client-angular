@@ -9,8 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { AlbumService } from 'src/app/services/album.service'
 import { fadeAnimation } from 'src/app/utils/animations'
 import { takeWhile } from 'rxjs/operators'
-import { Image } from 'src/app/models/image.model'
-import { Album } from 'src/app/models/album.model'
+import { Album, OneAlbum } from 'src/app/models/album.model'
 import { SettingsService } from 'src/app/services/settings.service'
 import { Settings } from 'src/app/models/settings.model'
 import { ImageService } from 'src/app/services/image.service'
@@ -24,7 +23,7 @@ import { ImageService } from 'src/app/services/image.service'
 })
 export class AlbumComponent implements OnInit, OnDestroy {
   private _alive: boolean = true
-  album: Album
+  album: OneAlbum
   settings: Settings
   currentEditTextValue: string
   displayPrev: boolean = false
@@ -57,11 +56,13 @@ export class AlbumComponent implements OnInit, OnDestroy {
     })
   }
 
-  async getAlbum(albumId: string) {
-    // console.log('GET ALBUM');
+  ngOnDestroy() {
+    this._alive = false
+    this.albumService.currentAlbum = null
+  }
 
+  async getAlbum(albumId: string) {
     this.album = await this.albumService.getAlbum(albumId)
-    // console.log(this.album);
 
     this.albumService.currentAlbum = this.album
 
@@ -121,10 +122,5 @@ export class AlbumComponent implements OnInit, OnDestroy {
     const currentIndex = this.albumService.getCurrentAlbumIndex(currentAlbum)
     const albumId = this.albumService.currentAlbums[currentIndex + 1]._id
     this.router.navigate(['/', 'albums', albumId])
-  }
-
-  ngOnDestroy() {
-    this._alive = false
-    this.albumService.currentAlbum = null
   }
 }

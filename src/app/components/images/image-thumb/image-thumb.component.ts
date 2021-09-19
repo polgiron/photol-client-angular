@@ -25,16 +25,25 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   @Input() image: Image
   @Input() tags: Tag[] // Separate tags in order to refresh
   @Input() stars: number // Separate stars in order to refresh
-  @Input() displayTags: boolean = false
+  // @Input() displayTags: boolean = false
   @Input() editMode: boolean = false
   private _alive: boolean = true
-  isAlbumView: boolean = false
-  isCover: boolean = false
   imageLoaded: boolean = false
   addMenuOpen: boolean = false
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn
+  }
+
+  get isAlbumView(): boolean {
+    return this.albumService.currentAlbum ? true : false
+  }
+
+  get isCover(): boolean {
+    return (
+      this.isAlbumView &&
+      this.albumService.currentAlbum.covers.includes(this.image._id)
+    )
   }
 
   constructor(
@@ -45,22 +54,15 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.isAlbumView = this.albumService.currentAlbum ? true : false
-
-    if (this.isAlbumView) {
-      if (this.albumService.currentAlbum.cover) {
-        this.isCover =
-          this.albumService.currentAlbum.cover._id == this.image._id
-      }
-
-      this.albumService
-        .updateCoverChannel()
-        .pipe(takeWhile(() => this._alive))
-        .subscribe((imageId: string) => {
-          this.isCover = this.image._id === imageId
-          this.ref.markForCheck()
-        })
-    }
+    // if (this.isAlbumView) {
+    //   this.albumService
+    //     .updateCoverChannel()
+    //     .pipe(takeWhile(() => this._alive))
+    //     .subscribe((imageId: string) => {
+    //       this.isCover = this.image._id === imageId
+    //       this.ref.markForCheck()
+    //     })
+    // }
   }
 
   ngOnDestroy(): void {
@@ -72,8 +74,10 @@ export class ImageThumbComponent implements OnInit, OnDestroy {
   }
 
   updateCover(): void {
-    if (!this.isCover) {
-      this.albumService.updateCover(this.image._id)
+    if (this.isCover) {
+      this.albumService.removeCover(this.image._id)
+    } else {
+      this.albumService.addCover(this.image._id)
     }
   }
 
