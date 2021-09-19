@@ -15,25 +15,19 @@ $tags-spacing: 0.25rem;
 }
 
 .tag {
-  background: $color-background-2;
-  color: $color-text;
+  background: var(--color-background-2);
+  color: var(--color-text);
   border-radius: 1000rem;
   padding: 0.5rem 0.75rem 0.45rem;
-  // font-weight: 400;
-  // font-size: .85rem;
   margin-right: $tags-spacing;
   margin-bottom: $tags-spacing;
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  font-size: $font-size-mini;
+  font-size: var(--font-size-mini);
   font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1;
-
-  // background: $color-white-smoke;
-  // border: 1px solid $color-background;
-  // color: $color-background;
 
   &.tag--small {
     font-size: 0.55rem;
@@ -48,7 +42,7 @@ $tags-spacing: 0.25rem;
 
   i {
     font-size: 1.6em;
-    color: $color-text;
+    color: var(--color-text);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -64,7 +58,7 @@ $tags-spacing: 0.25rem;
   }
 
   &.is-active {
-    background: $color-text;
-    color: $color-background;
+    background: var(--color-text);
+    color: var(--color-background);
   }
 }

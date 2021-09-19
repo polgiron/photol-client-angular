@@ -42,7 +42,7 @@
 .modal-content {
   border-radius: $big-border-radius;
   overflow: hidden;
-  background: $color-background-2;
+  background: var(--color-background-2);
 }
 
 .modal-header {
@@ -65,7 +65,7 @@
 
   i {
     font-size: 1rem;
-    color: $color-text-medium;
+    color: var(--color-text-medium);
     margin: auto;
   }
 }
@@ -79,7 +79,7 @@
 .modal__subtitle {
   text-align: center;
   font-weight: 500;
-  color: $color-text-lighter;
+  color: var(--color-text-lighter);
 }
 
 .modal__paragraph {
@@ -87,7 +87,7 @@
   margin-bottom: 2rem;
   font-size: 0.9rem;
   line-height: 1.4;
-  color: $color-text-lighter;
+  color: var(--color-text-lighter);
 
   // a {
   //   color: var(--color-blue);

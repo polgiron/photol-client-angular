@@ -3,13 +3,13 @@
   width: 14rem;
   max-width: 14rem;
   font-family: inherit;
-  box-shadow: 0 6px 18px rgba($color-black, 0.3);
+  box-shadow: 0 6px 18px rgba(var(--color-black-rgb), 0.3);
   border-radius: $medium-border-radius + 0.1rem;
-  background: $color-background-2;
+  background: var(--color-background-2);
   margin-right: 1rem;
 
   .arrow:after {
-    border-bottom-color: $color-background-2;
+    border-bottom-color: var(--color-background-2);
   }
 }
 
@@ -22,7 +22,7 @@
   padding: 0;
   border-radius: $medium-border-radius;
   overflow: hidden;
-  color: $color-text;
+  color: var(--color-text);
 }
 
 // .popover--user-menu {

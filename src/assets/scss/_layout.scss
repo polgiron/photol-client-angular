@@ -63,7 +63,8 @@ img.fade {
 }
 
 .image-wrapper .loader {
-  border-color: $color-main-border transparent transparent $color-main-border !important;
+  border-color: var(--color-main-border) transparent transparent
+    var(--color-main-border) !important;
 }
 
 .checkbox-list__button {
@@ -73,12 +74,12 @@ img.fade {
   justify-content: space-between;
   padding: 0.5rem;
   border-radius: $small-border-radius;
-  color: $color-text-medium;
+  color: var(--color-text-medium);
   transition: all 0.1s;
   font-size: 0.85rem;
   font-weight: 500;
 
   &:hover {
-    background: $color-background-3;
+    background: var(--color-background-3);
   }
 }

@@ -1,7 +1,7 @@
 @import '~src/assets/scss/variables';
 
 .upload-list-wrapper {
-  background: $color-background;
+  background: var(--color-background);
   border-radius: $small-border-radius;
   display: flex;
   position: relative;
@@ -35,7 +35,7 @@
   transition: all 0.2s;
 
   &:not(.is-loaded) {
-    background: $color-background-2;
+    background: var(--color-background-2);
   }
 
   &:hover .button-remove {
@@ -84,6 +84,6 @@
 }
 
 .warning {
-  color: $color-orange;
+  color: var(--color-orange);
   margin-top: 1rem;
 }

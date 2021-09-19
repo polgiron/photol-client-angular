@@ -2,8 +2,9 @@
 
 .add-tags-wrapper {
   padding: 0.75rem;
-  background: rgba($color-white-smoke, 0.8);
+  background: rgba(var(--color-white-rgb), 0.6);
   height: $lightbox-edit-tags-height;
+  backdrop-filter: blur(10px);
 }
 
 .tags {
@@ -15,8 +16,8 @@
 
   .title {
     text-transform: uppercase;
-    font-size: $font-size-small;
-    color: $color-background-2;
+    font-size: var(--font-size-mini);
+    color: var(--color-background-2);
     font-weight: 500;
     margin-bottom: 0.25rem;
     margin-left: 0.25rem;

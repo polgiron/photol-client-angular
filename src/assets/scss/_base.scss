@@ -67,11 +67,11 @@ td {
 }
 
 body {
-  font-family: $font-family;
-  font-size: $font-size;
+  font-family: var(--font-family);
+  font-size: var(--base-font-size);
   font-style: normal;
-  color: $color-text;
-  background: $color-background;
+  color: var(--color-text);
+  background: var(--color-background);
   font-weight: 400;
 }
 

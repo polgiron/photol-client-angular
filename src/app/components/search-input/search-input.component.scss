@@ -6,7 +6,7 @@
 
 // .input-wrapper {
 //   width: 100%;
-//   border-color: $color-text-medium;
+//   border-color: var(--color-text-medium);
 // }
 
 .wrapper {
@@ -15,7 +15,7 @@
   transition: all 0.2s;
   padding: 0.75rem 1rem;
   font-weight: 500;
-  background: rgba($color-black, 0.1);
+  background: rgba(var(--color-black-rgb), 0.1);
   border-radius: $small-border-radius;
   height: 32px;
   width: 12rem;
@@ -23,13 +23,13 @@
 
   &:focus-within,
   &.is-filled {
-    color: $color-text;
-    background: rgba($color-black, 0.2);
+    color: var(--color-text);
+    background: rgba(var(--color-black-rgb), 0.2);
     padding-right: 2rem;
   }
 
   i {
-    color: $color-text-medium;
+    color: var(--color-text-medium);
   }
 
   .bi-search {

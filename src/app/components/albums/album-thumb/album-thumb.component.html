@@ -26,10 +26,8 @@
     <h2 class="title">{{ album.title }}</h2>
   </div>
   <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
-    <div class="group">
-      <button class="button-overlay" (click)="delete($event)">
-        <i class="bi bi-trash"></i>
-      </button>
-    </div>
+    <button class="button button--icon" (click)="delete($event)">
+      <i class="bi bi-trash"></i>
+    </button>
   </div>
 </a>

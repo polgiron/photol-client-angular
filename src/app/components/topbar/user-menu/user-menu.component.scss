@@ -3,11 +3,11 @@
 .user-menu {
   display: flex;
   align-items: center;
-  color: $color-text-medium;
+  color: var(--color-text-medium);
   transition: all 0.1s;
 
   &.is-active {
-    color: $color-text;
+    color: var(--color-text);
   }
 
   i {

@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: $color-background-2;
+  background: var(--color-background-2);
   border-radius: $small-border-radius;
   overflow: hidden;
   display: block;
@@ -59,7 +59,7 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba($color-black, 0.65) 100%
+    rgba(var(--color-black-rgb), 0.65) 100%
   );
   opacity: 0;
   transition: opacity 0.2s;
@@ -72,28 +72,28 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $color-white-smoke;
+    // color: var(--color-text);;
     font-weight: 400;
   }
 }
 
 .top-left {
   position: absolute;
-  color: $color-white-smoke;
-  text-shadow: 1px 1px 4px rgba($color-black, 0.6);
+  // color: var(--color-text);;
+  text-shadow: 1px 1px 4px rgba(var(--color-black-rgb), 0.6);
   top: $overlay-padding;
   left: $overlay-padding;
   text-align: left;
   z-index: 2;
   font-weight: 500;
-  background: $color-background-3;
+  background: var(--color-background-3);
   border-radius: 50%;
   width: 1.6rem;
   height: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: var(--font-size-small);
   font-weight: 500;
   // letter-spacing: 0.1em;
 }

@@ -6,11 +6,11 @@
 }
 
 .header {
-  border-bottom: 1px solid $color-main-border;
+  border-bottom: 1px solid var(--color-main-border);
 }
 
 .body {
-  background: $color-background-3;
+  background: var(--color-background-3);
   min-height: 14rem;
   overflow: auto;
   position: relative;
@@ -38,10 +38,10 @@
 }
 
 .tag {
-  background: $color-background;
-  color: $color-text-medium;
+  background: var(--color-background);
+  color: var(--color-text-medium);
 
   i {
-    color: $color-text-medium;
+    color: var(--color-text-medium);
   }
 }

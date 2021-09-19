@@ -2,7 +2,7 @@
 
 .checkbox {
   display: flex;
-  border: 1px solid $color-text;
+  border: 1px solid var(--color-text);
   border-radius: 50%;
   width: 1.3rem;
   height: 1.3rem;
@@ -11,16 +11,16 @@
   i {
     margin: auto;
     font-size: 1.4em;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &.is-checked {
-    background: $color-text;
+    background: var(--color-text);
     border-style: solid;
     opacity: 1;
 
     i {
-      color: $color-background;
+      color: var(--color-background);
       display: block;
     }
   }

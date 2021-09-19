@@ -21,23 +21,28 @@
     >
     </app-image-overlay>
     <div class="edit-toolbar" *ngIf="isLoggedIn">
-      <div class="group" *ngIf="isAlbumView && editMode" [@fadeAnimation]>
-        <button
-          class="button-overlay"
-          (click)="updateCover()"
-          [tooltip]="isCover ? null : 'Set as Cover'"
-          container="body"
-          preventDefaultClick
-        >
-          <i class="bi bi-image"></i>
-          <i class="bi bi-check" *ngIf="isCover"></i>
-        </button>
-      </div>
-      <div class="group" *ngIf="editMode" [@fadeAnimation]>
-        <button class="button-overlay" (click)="delete()" preventDefaultClick>
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
+      <button
+        *ngIf="isAlbumView && editMode"
+        [@fadeAnimation]
+        class="button"
+        [ngClass]="{ 'button--icon': !isCover }"
+        (click)="updateCover()"
+        [tooltip]="isCover ? null : 'Set as Cover'"
+        container="body"
+        preventDefaultClick
+      >
+        <i class="bi bi-image"></i>
+        <i class="bi bi-check" *ngIf="isCover"></i>
+      </button>
+      <button
+        *ngIf="editMode"
+        [@fadeAnimation]
+        class="button button--icon"
+        (click)="delete()"
+        preventDefaultClick
+      >
+        <i class="bi bi-trash"></i>
+      </button>
     </div>
     <app-button-add-menu
       *ngIf="isLoggedIn"

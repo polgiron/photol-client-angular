@@ -24,7 +24,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba($color-background, 0.97);
+  background: rgba(var(--color-almost-black-rgb), 0.8);
+  // backdrop-filter: blur(5px);
 }
 
 .dialog {
@@ -105,13 +106,13 @@
   transform: translate3d(15%, -15%, 0);
 
   &:hover {
-    background: rgba($color-white, 0.2);
+    background: rgba(var(--color-white-rgb), 0.2);
   }
 
   i {
     font-size: 2.4em;
     margin: auto;
-    color: $color-lightgray;
-    text-shadow: 1px 1px 5px rgba($color-black, 0.05);
+    color: var(--color-text);
+    text-shadow: 1px 1px 5px rgba(var(--color-black-rgb), 0.05);
   }
 }

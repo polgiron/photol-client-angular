@@ -3,7 +3,7 @@
 .image-wrapper {
   width: 100%;
   position: relative;
-  background: $color-background-2;
+  background: var(--color-background-2);
   overflow: hidden;
   border-radius: $small-border-radius;
   height: 100%;

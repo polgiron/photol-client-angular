@@ -8,15 +8,16 @@ $loader-width: 2rem;
   width: $loader-width;
   height: $loader-width;
   border-style: solid;
-  border-color: $color-background-2 transparent transparent $color-background-2;
+  border-color: var(--color-background-2) transparent transparent
+    var(--color-background-2);
   border-image: initial;
   border-radius: 50%;
   border-width: $border-width;
   animation: spin 0.4s linear infinite;
 
   &.is-light {
-    border-color: $color-text-lighter transparent transparent
-      $color-text-lighter;
+    border-color: var(--color-text-lighter) transparent transparent
+      var(--color-text-lighter);
   }
 }
 
