@@ -7,11 +7,12 @@ import {
   OnDestroy
 } from '@angular/core'
 import { AlbumService } from 'src/app/services/album.service'
-import { Album, MultipleAlbum } from 'src/app/models/album.model'
+import { MultipleAlbum } from 'src/app/models/album.model'
 import { takeWhile } from 'rxjs/operators'
 import { SettingsService } from 'src/app/services/settings.service'
 import { Settings } from 'src/app/models/settings.model'
 import { fadeAnimation } from 'src/app/utils/animations'
+import { Image } from 'src/app/models/image.model'
 
 @Component({
   selector: 'app-album-thumb',
@@ -26,6 +27,10 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
   editMode: boolean = false
   isInViewport: boolean = false
   isLoaded: boolean = false
+
+  get covers(): Image[] {
+    return this.album?.covers?.slice(0, 4)
+  }
 
   constructor(
     private albumService: AlbumService,

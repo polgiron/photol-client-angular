@@ -11,15 +11,10 @@
     }"
     *ngIf="album.covers.length && isInViewport"
   >
-    <li class="covers__entry" *ngFor="let cover of album.covers">
-      <img
-        [src]="cover.signedUrl"
-        class="covers__image fade"
-        [ngClass]="{ 'is-loaded': isLoaded }"
-        (load)="isLoaded = true"
-        alt="Album cover"
-      />
-    </li>
+    <app-cover-image
+      *ngFor="let cover of covers"
+      [src]="cover.signedUrl"
+    ></app-cover-image>
   </ul>
   <div *ngIf="album.rollId" class="top-left">{{ album.rollId }}</div>
   <div class="infos" [ngClass]="{ 'is-edit-mode': editMode }">

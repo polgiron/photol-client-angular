@@ -1,0 +1,9 @@
+<li class="wrapper" [ngClass]="{ 'is-loaded': isLoaded }">
+  <img
+    alt="Cover image"
+    class="fade"
+    [src]="src"
+    (load)="onLoad()"
+    [ngClass]="{ 'is-loaded': isLoaded }"
+  />
+</li>

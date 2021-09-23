@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  domain: 'http://localhost:3000/'
-  // domain: 'https://photol-api.paulgiron.com/'
+  // domain: 'http://localhost:3000/'
+  domain: 'https://photol-api.paulgiron.com/'
 }
 
 /*

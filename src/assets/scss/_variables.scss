@@ -49,6 +49,7 @@
   --color-accent: var(--color-blue);
   --color-menu-background: rgba(var(--color-black-rgb), 0.1);
   --color-menu-background-hover: rgba(var(--color-black-rgb), 0.2);
+  --main-shadow: 0 2px 10px rgba(var(--color-black-rgb), 0.2);
 }
 
 [data-theme='light'] {
@@ -62,4 +63,5 @@
   --color-accent: var(--color-blue);
   --color-menu-background: rgba(var(--color-black-rgb), 0.05);
   --color-menu-background-hover: rgba(var(--color-black-rgb), 0.08);
+  --main-shadow: 0 2px 10px rgba(var(--color-black-rgb), 0.1);
 }

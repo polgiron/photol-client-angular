@@ -7,10 +7,6 @@
   <div class="loader" *ngIf="!isLoaded && displayLoader">
     <app-loader></app-loader>
   </div>
-  <!-- <img *ngIf="isInViewport" alt="" class="fade" [src]="src" (load)="onLoad()" [ngClass]="{
-      'is-loaded': isLoaded,
-      'is-cover': cover
-    }"> -->
   <img
     *ngIf="isInViewport && src"
     alt=""
@@ -18,6 +14,6 @@
     [src]="src"
     (error)="onError()"
     (load)="onLoad()"
-    [ngClass]="{ 'is-loaded': isLoaded, 'is-cover': cover }"
+    [ngClass]="{ 'is-loaded': isLoaded }"
   />
 </div>

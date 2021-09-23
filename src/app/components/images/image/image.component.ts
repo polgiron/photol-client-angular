@@ -26,7 +26,6 @@ export class ImageComponent implements OnInit {
   @Input() flickrLayout: boolean = false
   @Input() width: number
   @Input() height: number
-  @Input() cover: boolean = false
   @Input() displayLoader: boolean = false
   @Input() id: string
   @Input() set src(value: string) {
@@ -37,7 +36,6 @@ export class ImageComponent implements OnInit {
       this.setPadding()
     }
   }
-
   private _src: string
   isLoaded: boolean = false
   isInViewport: boolean = false
@@ -54,19 +52,12 @@ export class ImageComponent implements OnInit {
   ngOnInit() {}
 
   setPadding() {
-    let ratio = (this.height / this.width) * 100
-
-    if (this.cover) {
-      ratio = 36
-    }
-
+    const ratio = (this.height / this.width) * 100
     this.wrapper.nativeElement.style.paddingBottom = ratio + '%'
-
     this.ref.markForCheck()
   }
 
   onLoad() {
-    // console.log('ON LOAD');
     this.isLoaded = true
     this.onImageLoaded.emit(true)
     this.ref.markForCheck()
@@ -78,7 +69,6 @@ export class ImageComponent implements OnInit {
   }
 
   async onDeferLoad() {
-    // this._src = await this.imageService.getBigSignedUrl(this.id);
     this.isInViewport = true
     this.ref.markForCheck()
   }
