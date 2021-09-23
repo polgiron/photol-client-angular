@@ -1,9 +1,9 @@
 .main-container {
-  padding: $container-padding;
+  padding: var(--container-padding);
   // padding-top: 0.5rem;
-  max-width: $container-width;
+  max-width: var(--container-width);
   margin: auto;
-  animation: fade-in-from-bottom 1s $ease-out-quint both 0.4s;
+  animation: fade-in-from-bottom 1s var(--ease-out-quint) both 0.4s;
 
   @include respond-to('small') {
     // padding: 1rem;
@@ -11,7 +11,7 @@
 }
 
 // .main-container--fixed {
-//   max-width: $container-width;
+//   max-width: var(--container-width);
 //   margin: auto;
 // }
 
@@ -45,7 +45,8 @@ body.is-static {
 
 img.fade {
   opacity: 0;
-  transition: opacity 1s $ease-out-quint, box-shadow 0.3s $ease-out-quint;
+  transition: opacity 1s var(--ease-out-quint),
+    box-shadow 0.3s var(--ease-out-quint);
 
   &.is-loaded {
     opacity: 1;
@@ -54,7 +55,7 @@ img.fade {
 
 .image-thumb .button-lightbox,
 .album-thumb .cover {
-  transition: all 0.3s $ease-out-quint;
+  transition: all 0.3s var(--ease-out-quint);
 
   &:hover,
   &:hover .cover {
@@ -73,7 +74,7 @@ img.fade {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
   color: var(--color-text-medium);
   transition: all 0.1s;
   font-size: 0.85rem;

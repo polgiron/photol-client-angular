@@ -1,8 +1,6 @@
-@import '~src/assets/scss/variables';
-
 .upload-list-wrapper {
   background: var(--color-background);
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
   display: flex;
   position: relative;
 
@@ -30,7 +28,7 @@
   position: relative;
   display: flex;
   transition: all 0.2s;
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
   margin-bottom: 1rem;
   transition: all 0.2s;
 
@@ -39,30 +37,45 @@
   }
 
   &:hover .button-remove {
-    opacity: 0.8;
+    opacity: 1;
     transform: scale(1);
   }
 
   img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: $small-border-radius;
+    border-radius: var(--small-border-radius);
     margin: auto;
   }
 }
 
 .button-remove {
   position: absolute;
-  top: 0.3rem;
-  right: 0.2rem;
+  top: 0.25rem;
+  right: -0.5rem;
   width: 1.2rem;
   height: 1.2rem;
   transition: all 0.2s;
-  opacity: 0;
   transform: scale(0.8);
+  opacity: 0;
 
-  img {
-    width: 100%;
+  &:before {
+    background: var(--color-white-smoke);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    content: '';
+    width: 80%;
+    height: 80%;
+    z-index: 0;
+  }
+
+  i {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
   }
 }
 

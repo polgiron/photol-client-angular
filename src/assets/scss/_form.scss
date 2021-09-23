@@ -17,7 +17,7 @@
   &:hover {
     opacity: 0.9;
     color: var(--color-almost-black);
-    box-shadow: 0 2px 7px rgba(var(--color-black-rgb), 0.1);
+    box-shadow: 0 2px 15px rgba(var(--color-black-rgb), 0.3);
   }
 
   &:disabled {
@@ -40,12 +40,21 @@
   }
 }
 
+.button--inverted {
+  background: var(--color-text);
+  color: var(--color-background);
+
+  &:hover {
+    color: var(--color-background-2);
+  }
+}
+
 .navigation-button {
-  color: var(--color-text-lighter);
+  color: var(--color-mediumgray);
   transition: all 0.2s;
 
   &:hover:not(:disabled) {
-    color: var(--color-text);
+    color: var(--color-gray);
   }
 
   &:disabled {
@@ -54,7 +63,7 @@
   }
 
   i {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -80,7 +89,7 @@
 
 .input-wrapper {
   background: transparent;
-  // border-radius: $medium-border-radius;
+  // border-radius: var(--medium-border-radius);
   border-radius: 1000rem;
   overflow: hidden;
   display: flex;
@@ -170,10 +179,6 @@
   }
 }
 
-// .input-wrapper--i-right .input {
-//   padding-right: 0 !important;
-// }
-
 .input-wrapper--i-left .input {
   padding-left: 0 !important;
 }
@@ -191,7 +196,7 @@ input[type='number']::-webkit-outer-spin-button {
   color: var(--color-text-medium);
   transition: border 0.2s;
   padding: 0.5rem 0.75rem;
-  border-radius: $big-border-radius;
+  border-radius: var(--big-border-radius);
   resize: none;
   outline: 0;
   line-height: 1.2;
@@ -232,11 +237,13 @@ input[type='number']::-webkit-outer-spin-button {
   outline: 0;
   transition: background 0.2s;
   border-radius: 0.2rem;
-  background: rgba(255, 255, 255, 0.1);
+  // background: rgba(255, 255, 255, 0.1);
+  background: var(--color-background-2);
   padding: 0.2rem 0.4rem;
 
   &:focus {
-    background: rgba(255, 255, 255, 0.15);
+    // background: rgba(255, 255, 255, 0.15);
+    background: var(--color-background-3);
   }
 }
 

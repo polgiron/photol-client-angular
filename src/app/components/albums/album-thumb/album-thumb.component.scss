@@ -1,5 +1,3 @@
-@import '~src/assets/scss/variables';
-
 .album-thumb {
   position: absolute;
   top: 0;
@@ -7,9 +5,11 @@
   width: 100%;
   height: 100%;
   background: var(--color-background-2);
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
   overflow: hidden;
   display: block;
+  color: var(--color-white-smoke);
+  box-shadow: 0 2px 10px rgba(var(--color-black-rgb), 0.2);
 }
 
 .covers {
@@ -19,7 +19,6 @@
   width: 100%;
   height: 100%;
   display: grid;
-  // gap: 0.25rem;
 
   &.has-2-covers {
     grid-template-columns: 1fr 1fr;
@@ -51,7 +50,7 @@
 
 .infos {
   width: 100%;
-  padding: $overlay-padding;
+  padding: var(--overlay-padding);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -72,21 +71,19 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    // color: var(--color-text);;
     font-weight: 400;
   }
 }
 
 .top-left {
   position: absolute;
-  // color: var(--color-text);;
   text-shadow: 1px 1px 4px rgba(var(--color-black-rgb), 0.6);
-  top: $overlay-padding;
-  left: $overlay-padding;
+  top: var(--overlay-padding);
+  left: var(--overlay-padding);
   text-align: left;
   z-index: 2;
   font-weight: 500;
-  background: var(--color-background-3);
+  background: var(--color-darkgray);
   border-radius: 50%;
   width: 1.6rem;
   height: 1.6rem;
@@ -95,5 +92,4 @@
   justify-content: center;
   font-size: var(--font-size-small);
   font-weight: 500;
-  // letter-spacing: 0.1em;
 }

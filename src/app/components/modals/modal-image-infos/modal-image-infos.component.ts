@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ModalOptions } from 'ngx-bootstrap/modal'
 import { Image } from 'src/app/models/image.model'
 import { ImageService } from 'src/app/services/image.service'
+import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
   selector: 'app-modal-image-infos',
@@ -13,7 +14,8 @@ export class ModalImageInfosComponent implements OnInit {
 
   constructor(
     private options: ModalOptions,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -26,5 +28,9 @@ export class ModalImageInfosComponent implements OnInit {
     this.imageService.update(this.image._id, {
       darkroomSettings: this.image.darkroomSettings
     })
+  }
+
+  close(): void {
+    this.modalService.close(this)
   }
 }

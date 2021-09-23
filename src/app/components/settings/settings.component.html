@@ -12,16 +12,21 @@
         </div>
       </button>
     </li>
-    <!-- <li>
-      <button (click)="onClickSetting('displayTags')">
-        <span>Display tags</span>
+    <li>
+      <button
+        class="checkbox-list__button"
+        (click)="onClickSetting('lightTheme')"
+      >
+        <span>Toggle light theme</span>
         <div class="right">
-          <app-checkbox [check]="displayTags"></app-checkbox>
+          <app-checkbox [check]="settings.lightTheme"></app-checkbox>
         </div>
       </button>
-    </li> -->
+    </li>
   </ul>
   <div class="bottom">
-    <button class="button button--logout" (click)="logout()">Logout</button>
+    <button class="button button--inverted button--logout" (click)="logout()">
+      Logout
+    </button>
   </div>
 </div>

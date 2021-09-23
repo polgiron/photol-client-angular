@@ -1,3 +1,6 @@
+<button class="modal-button-close" (click)="close()">
+  <i class="bi bi-x"></i>
+</button>
 <div class="modal-body">
   <div class="input-group">
     <h2 class="title-2">Darkroom Settings</h2>
@@ -6,7 +9,7 @@
         class="input-wrapper input-wrapper--i-left"
         [ngClass]="{ 'is-filled': image.darkroomSettings.duration != null }"
       >
-        <i class="material-icons">schedule</i>
+        <i class="bi bi-clock"></i>
         <input
           class="input"
           type="number"
@@ -20,7 +23,7 @@
         class="input-wrapper input-wrapper--i-left"
         [ngClass]="{ 'is-filled': image.darkroomSettings.contrast != null }"
       >
-        <i class="material-icons">exposure</i>
+        <i class="bi bi-circle-half"></i>
         <input
           class="input"
           type="number"
@@ -34,7 +37,7 @@
         class="input-wrapper input-wrapper--i-left"
         [ngClass]="{ 'is-filled': image.darkroomSettings.aperture != null }"
       >
-        <i class="material-icons">camera</i>
+        <i class="bi bi-bullseye"></i>
         <input
           class="input"
           type="number"

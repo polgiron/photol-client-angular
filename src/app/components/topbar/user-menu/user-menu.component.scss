@@ -1,9 +1,7 @@
-@import '~src/assets/scss/variables';
-
 .user-menu {
   display: flex;
   align-items: center;
-  color: var(--color-text-medium);
+  color: var(--color-text);
   transition: all 0.1s;
 
   &.is-active {

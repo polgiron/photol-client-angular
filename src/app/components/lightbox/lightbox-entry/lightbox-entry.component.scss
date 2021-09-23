@@ -1,11 +1,8 @@
-@import '~src/assets/scss/variables';
-
 .image-wrapper {
   position: relative;
   overflow: hidden;
-  // border: 1px solid var(--color-main-border);
   box-shadow: 0 5px 15px rgba(var(--color-black-rgb), 0.1);
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
 
   &:hover .bottom,
   &:hover .bottom-right,
@@ -18,7 +15,7 @@
   }
 
   &.is-editmode .bottom-right {
-    bottom: $lightbox-edit-tags-height;
+    bottom: var(--lightbox-edit-tags-height);
   }
 }
 

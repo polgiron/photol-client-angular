@@ -1,5 +1,3 @@
-@import '~src/assets/scss/variables';
-
 .menu__list {
   display: flex;
   align-items: center;
@@ -7,10 +5,6 @@
 
   li:not(:last-child) {
     margin-right: 1rem;
-
-    // @include respond-to('small') {
-    //   margin-right: .25rem;
-    // }
   }
 }
 
@@ -22,50 +16,19 @@
   position: relative;
   transition: 0.2s all;
   font-size: 0.7rem;
-  // padding: 0.75rem 1rem;
   padding: 0.5rem 0.75rem;
   text-transform: uppercase;
   font-weight: 500;
-  background: rgba(var(--color-black-rgb), 0.1);
-  border-radius: $small-border-radius;
-
-  // @include respond-to('small') {
-  //   padding: 0;
-  //   border: 0;
-  //   width: 2.25rem;
-  //   height: 2.25rem;
-
-  //   span {
-  //     display: none;
-  //   }
-
-  //   i {
-  //     display: block !important;
-  //   }
-  // }
+  background: var(--color-menu-background);
+  border-radius: var(--small-border-radius);
 
   &:hover,
   &.is-active {
     color: var(--color-text);
-    background: rgba(var(--color-black-rgb), 0.2);
+    background: var(--color-menu-background-hover);
   }
-
-  // i {
-  //   display: none;
-  // }
 
   span {
     letter-spacing: 0.1em;
   }
 }
-
-// .menu__entry--icon {
-//   padding: 0;
-//   border: 0;
-//   width: 2.25rem;
-//   height: 2.25rem;
-
-//   i {
-//     display: block;
-//   }
-// }

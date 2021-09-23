@@ -40,7 +40,7 @@
 }
 
 .modal-content {
-  border-radius: $big-border-radius;
+  border-radius: var(--big-border-radius);
   overflow: hidden;
   background: var(--color-background-2);
 }
@@ -55,24 +55,22 @@
 
 .modal-button-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.25rem;
+  right: 0.5rem;
   width: 1.5rem;
   height: 1.5rem;
   z-index: 2;
   display: flex;
-  opacity: 0.5;
 
   i {
-    font-size: 1rem;
-    color: var(--color-text-medium);
+    font-size: 1.75rem;
+    color: var(--color-text-lighter);
     margin: auto;
   }
 }
 
 .modal__title {
   font-size: 1.4rem;
-  // margin: 1rem 0 1.5rem;
   text-align: center;
 }
 

@@ -8,6 +8,7 @@ import { SettingsService } from 'src/app/services/settings.service'
 import { AuthService } from 'src/app/services/authentication.service'
 import { Settings } from 'src/app/models/settings.model'
 import { takeWhile } from 'rxjs/operators'
+import { ThemeService } from 'src/app/services/theme.service'
 
 @Component({
   selector: 'app-settings',
@@ -16,8 +17,6 @@ import { takeWhile } from 'rxjs/operators'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit {
-  // editMode: boolean = false
-  // displayTags: boolean = false
   private _alive: boolean = true
   settings: Settings
   email: string
@@ -25,12 +24,11 @@ export class SettingsComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private ref: ChangeDetectorRef,
-    private auth: AuthService
+    private auth: AuthService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit() {
-    // this.editMode = this.settingsService.settings.editMode
-    // this.displayTags = this.settingsService.settings.displayTags
     const user = this.auth.getUserDetails()
     this.email = user.email
 
@@ -48,17 +46,12 @@ export class SettingsComponent implements OnInit {
   }
 
   onClickSetting(type: string) {
-    switch (type) {
-      case 'editMode':
-        this.settings.editMode = !this.settings.editMode
-        this.settingsService.updateSettings(this.settings)
-        break
-      // case 'displayTags':
-      //   this.displayTags = !this.displayTags
-      //   this.settingsService.updateSettings(type, this.displayTags)
-      //   break
+    this.settings[type] = !this.settings[type]
+    this.settingsService.updateSettings(this.settings)
+
+    if (type === 'lightTheme') {
+      this.themeService.setLightMode(this.settings['lightTheme'])
     }
-    this.ref.markForCheck()
   }
 
   logout() {

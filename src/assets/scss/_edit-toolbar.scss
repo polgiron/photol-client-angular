@@ -1,7 +1,7 @@
 .edit-toolbar {
   position: absolute;
-  bottom: $overlay-padding;
-  right: $overlay-padding;
+  bottom: var(--overlay-padding);
+  right: var(--overlay-padding);
   display: flex;
   align-items: center;
   justify-content: flex-end;

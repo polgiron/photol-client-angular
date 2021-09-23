@@ -1,8 +1,3 @@
-// .title-2 {
-//   width: 100%;
-//   text-align: center;
-// }
-
 .darkroom-settings {
   display: flex;
   align-items: center;
@@ -10,4 +5,8 @@
   .input-wrapper:not(:last-child) {
     margin-right: 0.5rem;
   }
+}
+
+.input-wrapper i {
+  width: 2rem;
 }

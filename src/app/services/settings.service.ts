@@ -7,8 +7,8 @@ import { Api } from './api.service'
 export class SettingsService {
   document: string = 'settings/'
   private _settings: BehaviorSubject<Settings> = new BehaviorSubject<Settings>({
-    editMode: false
-    // displayTags: true
+    editMode: false,
+    lightTheme: false
   })
 
   constructor(private api: Api) {}

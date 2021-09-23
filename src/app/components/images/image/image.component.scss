@@ -1,11 +1,9 @@
-@import '~src/assets/scss/variables';
-
 .image-wrapper {
   width: 100%;
   position: relative;
   background: var(--color-background-2);
   overflow: hidden;
-  border-radius: $small-border-radius;
+  border-radius: var(--small-border-radius);
   height: 100%;
 }
 

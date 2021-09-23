@@ -1,7 +1,7 @@
 <div class="modal-header">
   <h2 class="modal__title">Create Album</h2>
   <button class="modal-button-close" (click)="close()">
-    <i class="bi bi-x-lg"></i>
+    <i class="bi bi-x"></i>
   </button>
 </div>
 <div class="modal-body">
@@ -9,7 +9,7 @@
     <button
       *ngIf="!images.length"
       ngfSelect
-      class="button"
+      class="button button--inverted"
       accept="image/*"
       multiple="1"
       (filesChange)="onUpload($event)"
@@ -32,7 +32,7 @@
           alt=""
         />
         <button class="button-remove" (click)="removeImage(image)">
-          <img src="assets/images/close-button.svg" alt="" />
+          <i class="bi bi-x-circle-fill"></i>
         </button>
       </li>
     </ul>
@@ -67,7 +67,7 @@
         />
       </div>
       <button
-        class="button"
+        class="button button--inverted"
         (click)="onCreateAlbum()"
         [disabled]="disableButton"
       >

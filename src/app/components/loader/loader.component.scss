@@ -1,18 +1,13 @@
-@import '~src/assets/scss/variables';
-
-$border-width: 0.2rem;
-$loader-width: 2rem;
-
 .loader {
   margin: auto;
-  width: $loader-width;
-  height: $loader-width;
+  width: var(--loader-width);
+  height: var(--loader-width);
   border-style: solid;
-  border-color: var(--color-background-2) transparent transparent
-    var(--color-background-2);
+  border-color: var(--color-background-3) transparent transparent
+    var(--color-background-3);
   border-image: initial;
   border-radius: 50%;
-  border-width: $border-width;
+  border-width: var(--border-width);
   animation: spin 0.4s linear infinite;
 
   &.is-light {

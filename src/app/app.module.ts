@@ -61,6 +61,7 @@ import { AddMenuService } from './services/add-menu.service'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalImageInfosComponent } from './components/modals/modal-image-infos/modal-image-infos.component'
 import { AllComponent } from './components/all/all.component'
+import { ThemeService } from './services/theme.service'
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { AllComponent } from './components/all/all.component'
     AuthService,
     AuthGuardService,
     UserService,
-    AddMenuService
+    AddMenuService,
+    ThemeService
   ],
   entryComponents: [ModalCreateAlbumComponent, ModalUploadProgressComponent],
   bootstrap: [AppComponent]

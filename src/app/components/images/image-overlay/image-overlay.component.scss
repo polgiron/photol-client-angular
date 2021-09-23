@@ -1,16 +1,14 @@
-@import '~src/assets/scss/variables';
-
 .image-overlay-entry {
   position: absolute;
-  // color: var(--color-text);;
   text-shadow: 1px 1px 4px rgba(var(--color-black-rgb), 0.6);
   opacity: 0;
   visibility: hidden;
+  color: var(--color-white-smoke);
 }
 
 .top-left {
-  top: $overlay-padding;
-  left: $overlay-padding;
+  top: var(--overlay-padding);
+  left: var(--overlay-padding);
   text-align: left;
 
   span {
@@ -19,15 +17,15 @@
 }
 
 .top-right {
-  top: $overlay-padding;
-  right: $overlay-padding;
+  top: var(--overlay-padding);
+  right: var(--overlay-padding);
   text-shadow: 1px 1px 4px rgba(var(--color-black-rgb), 0.3);
 }
 
 .bottom-left {
   bottom: 0;
   left: 0;
-  padding: $overlay-padding;
+  padding: var(--overlay-padding);
   display: flex;
   flex-wrap: wrap;
   max-width: 70%;
