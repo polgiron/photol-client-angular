@@ -1,3 +1,7 @@
+body.disable-scroll {
+  overflow: hidden;
+}
+
 .main-container {
   padding: var(--container-padding);
   padding-top: var(--albums-spacing);

@@ -2,9 +2,13 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core'
+import { Observable } from 'rxjs'
 import { AuthService } from 'src/app/services/authentication.service'
+import { ResponsiveService } from 'src/app/services/responsive.service'
 
 @Component({
   selector: 'app-menu',
@@ -13,15 +17,18 @@ import { AuthService } from 'src/app/services/authentication.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent implements OnInit {
+  @Output() onMenuClick: EventEmitter<void> = new EventEmitter()
   activePopButton: any = {
     tags: false,
     settings: false
   }
   isLoggedIn: boolean = this.authService.isLoggedIn
+  isScreenSmall$: Observable<boolean> = this.responsiveService.isScreenSmall$
 
   constructor(
     private ref: ChangeDetectorRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private responsiveService: ResponsiveService
   ) {}
 
   ngOnInit(): void {}
@@ -36,7 +43,7 @@ export class MenuComponent implements OnInit {
     this.ref.markForCheck()
   }
 
-  // onClickMenu(): void {
-  //   window.scrollTo(0, 0);
-  // }
+  onClickMenu(): void {
+    this.onMenuClick.emit()
+  }
 }

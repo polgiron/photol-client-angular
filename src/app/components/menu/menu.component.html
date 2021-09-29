@@ -9,52 +9,57 @@
         <span>all</span>
       </a>
     </li> -->
-    <li *ngIf="isLoggedIn">
+    <li class="list__entry" *ngIf="isLoggedIn">
       <a
         class="menu__entry"
         [routerLink]="['/albums']"
         routerLinkActive="is-active"
+        (click)="onClickMenu()"
       >
         <span>film rolls</span>
       </a>
     </li>
-    <li *ngIf="isLoggedIn">
+    <li class="list__entry" *ngIf="isLoggedIn">
       <a
         class="menu__entry"
         [routerLink]="['/favorites']"
         routerLinkActive="is-active"
+        (click)="onClickMenu()"
       >
         <span>favorites</span>
       </a>
     </li>
-    <li *ngIf="isLoggedIn">
+    <li class="list__entry" *ngIf="isLoggedIn">
       <a
         class="menu__entry"
         [routerLink]="['/toprint']"
         routerLinkActive="is-active"
+        (click)="onClickMenu()"
       >
         <span>to print</span>
       </a>
     </li>
-    <li *ngIf="!isLoggedIn">
+    <li class="list__entry" *ngIf="!isLoggedIn">
       <a
         class="menu__entry"
         [routerLink]="['/login']"
         routerLinkActive="is-active"
+        (click)="onClickMenu()"
       >
         <span>log in</span>
       </a>
     </li>
-    <li *ngIf="isLoggedIn">
+    <li class="list__entry" *ngIf="isLoggedIn">
       <a
         class="menu__entry"
         [routerLink]="['/', 'public']"
         routerLinkActive="is-active"
+        (click)="onClickMenu()"
       >
         <span>public</span>
       </a>
     </li>
-    <li *ngIf="isLoggedIn">
+    <li class="list__entry" *ngIf="isLoggedIn && !(isScreenSmall$ | async)">
       <app-search-input></app-search-input>
     </li>
     <!-- <li>

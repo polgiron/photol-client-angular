@@ -1,3 +1,5 @@
+@import '~src/assets/scss/breakpoints';
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -9,6 +11,10 @@
   height: 32px;
   width: 12rem;
   position: relative;
+
+  @include respond-to('small') {
+    width: 100%;
+  }
 
   &:focus-within,
   &.is-filled {

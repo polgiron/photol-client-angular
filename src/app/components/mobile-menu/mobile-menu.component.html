@@ -1,0 +1,15 @@
+<button class="menu-button" (click)="toggle()">
+  <i class="bi bi-list"></i>
+</button>
+
+<button
+  class="overlay"
+  *ngIf="isOpen"
+  (click)="close()"
+  [@fadeAnimation]
+></button>
+
+<div class="menu" *ngIf="isOpen" [@transAnimation]>
+  <app-menu (onMenuClick)="close()"></app-menu>
+  <app-settings></app-settings>
+</div>

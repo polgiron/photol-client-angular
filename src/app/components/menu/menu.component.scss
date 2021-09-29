@@ -5,11 +5,27 @@
   align-items: center;
   justify-content: center;
 
-  li:not(:last-child) {
+  @include respond-to('small') {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+.list__entry {
+  @include respond-to('small') {
+    width: 100%;
+  }
+
+  &:not(:last-child) {
     margin-right: 1rem;
 
     @include respond-to('medium') {
       margin-right: 0.5rem;
+    }
+
+    @include respond-to('small') {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
     }
   }
 }
@@ -27,6 +43,10 @@
   font-weight: 500;
   background: var(--color-menu-background);
   border-radius: var(--small-border-radius);
+
+  @include respond-to('small') {
+    width: 100%;
+  }
 
   &:hover,
   &.is-active {

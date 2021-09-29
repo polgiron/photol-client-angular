@@ -61,8 +61,10 @@ import { AddMenuService } from './services/add-menu.service'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ModalImageInfosComponent } from './components/modals/modal-image-infos/modal-image-infos.component'
 import { AllComponent } from './components/all/all.component'
-import { ThemeService } from './services/theme.service';
-import { CoverImageComponent } from './components/albums/album-thumb/cover-image/cover-image.component'
+import { ThemeService } from './services/theme.service'
+import { ResponsiveService } from './services/responsive.service'
+import { CoverImageComponent } from './components/albums/album-thumb/cover-image/cover-image.component';
+import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component'
 
 @NgModule({
   declarations: [
@@ -100,7 +102,8 @@ import { CoverImageComponent } from './components/albums/album-thumb/cover-image
     ButtonAddMenuComponent,
     ModalImageInfosComponent,
     AllComponent,
-    CoverImageComponent
+    CoverImageComponent,
+    MobileMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +136,8 @@ import { CoverImageComponent } from './components/albums/album-thumb/cover-image
     AuthGuardService,
     UserService,
     AddMenuService,
-    ThemeService
+    ThemeService,
+    ResponsiveService
   ],
   entryComponents: [ModalCreateAlbumComponent, ModalUploadProgressComponent],
   bootstrap: [AppComponent]

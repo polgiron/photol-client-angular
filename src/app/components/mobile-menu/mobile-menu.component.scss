@@ -1,0 +1,28 @@
+.menu-button {
+  width: var(--topbar-height);
+  height: var(--topbar-height);
+  font-size: 1.8rem;
+  color: var(--color-white-smoke);
+}
+
+.overlay,
+.menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+}
+
+.overlay {
+  width: 100%;
+  background: rgba(var(--color-black-rgb), 0.6);
+}
+
+.menu {
+  background: var(--color-background-3);
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

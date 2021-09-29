@@ -8,6 +8,7 @@
   // Sizes
   --container-width: 92rem;
   --container-padding: 1.5rem;
+  --topbar-height: 2.75rem;
   --overlay-padding: 0.5rem;
   --lightbox-edit-tags-height: 129px;
   --small-border-radius: 0.35rem;
@@ -18,12 +19,16 @@
   --albums-spacing: 2.5rem;
   --min-albums-width: 16rem;
 
+  @include respond-to('large') {
+    --albums-spacing: 1.5rem;
+  }
+
   @include respond-to('medium') {
     --min-albums-width: 12rem;
   }
 
-  @include respond-to('large') {
-    --albums-spacing: 1.5rem;
+  @include respond-to('small') {
+    --container-padding: 1rem;
   }
 
   // Easing

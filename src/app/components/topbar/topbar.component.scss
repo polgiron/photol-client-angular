@@ -1,16 +1,25 @@
+@import '~src/assets/scss/breakpoints';
+
 .main-container {
   padding-bottom: 0;
+  position: relative;
+  z-index: 99;
+}
 
-  .inner {
-    padding: 0.5rem 1rem;
-    background: var(--color-background-2);
-    border-radius: var(--small-border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    max-width: var(--container-width);
-    box-shadow: var(--main-shadow);
+.inner {
+  padding: 0 1rem;
+  height: var(--topbar-height);
+  background: var(--color-background-2);
+  border-radius: var(--small-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  max-width: var(--container-width);
+  box-shadow: var(--main-shadow);
+
+  @include respond-to('small') {
+    padding-right: 0;
   }
 }
 

@@ -1,12 +1,4 @@
-import {
-  trigger,
-  animate,
-  transition,
-  style,
-  query,
-  stagger,
-  state
-} from '@angular/animations'
+import { trigger, animate, transition, style, query } from '@angular/animations'
 
 export const fadeAnimation = trigger('fadeAnimation', [
   transition(':enter', [style({ opacity: 0 }), animate('.3s ease-out')]),
@@ -48,14 +40,14 @@ export const fadeScaleAnimation = trigger('fadeScaleAnimation', [
 
 export const transAnimation = trigger('transAnimation', [
   transition(':enter', [
-    style({ transform: 'translate3d(0, -100%, 0)' }),
-    animate('.3s ease-out')
+    style({ transform: 'translate3d(100%, 0, 0)' }),
+    animate('.5s cubic-bezier(0.23, 1, 0.32, 1)')
   ]),
   transition(':leave', [
     animate(
-      '.3s ease-out',
+      '.5s cubic-bezier(0.23, 1, 0.32, 1)',
       style({
-        transform: 'translate3d(0, -100%, 0)'
+        transform: 'translate3d(100%, 0, 0)'
       })
     )
   ])

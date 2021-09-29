@@ -1,9 +1,11 @@
 <header class="main-container">
   <div class="inner">
     <a class="title" [routerLink]="['/albums']"><h1>Photol</h1></a>
-    <div class="right">
-      <app-menu></app-menu>
-    </div>
-    <app-user-menu *ngIf="isLoggedIn"></app-user-menu>
+    <app-menu *ngIf="!(isScreenSmall$ | async)"></app-menu>
+    <app-user-menu
+      *ngIf="isLoggedIn && !(isScreenSmall$ | async)"
+    ></app-user-menu>
+    <app-search-input *ngIf="isScreenSmall$ | async"></app-search-input>
+    <app-mobile-menu *ngIf="isScreenSmall$ | async"></app-mobile-menu>
   </div>
 </header>
