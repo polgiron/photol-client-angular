@@ -18,7 +18,7 @@
   max-width: var(--container-width);
   box-shadow: var(--main-shadow);
 
-  @include respond-to('small') {
+  @include respond-to('small-topbar') {
     padding-right: 0;
   }
 }

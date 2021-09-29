@@ -44,7 +44,6 @@ export class LightboxEntryComponent implements OnInit {
   private _image: Image
   private _active: boolean
   imageSrc: string
-  padding: number = 32
   mobileBreakpoint: number = 767
   tags: Tag[]
   imageLoaded: boolean = false
@@ -103,12 +102,14 @@ export class LightboxEntryComponent implements OnInit {
   }
 
   setDialogWidth(): void {
+    let padding: number = 32
+
     if (window.innerWidth < this.mobileBreakpoint) {
-      return
+      padding = 0
     }
 
-    const maxHeight = window.innerHeight - 2 * this.padding
-    const maxWidth = window.innerWidth - 2 * this.padding
+    const maxHeight = window.innerHeight - 2 * padding
+    const maxWidth = window.innerWidth - 2 * padding
 
     let newWidth = (this.image.oriWidth * maxHeight) / this.image.oriHeight
     let newHeight = maxHeight

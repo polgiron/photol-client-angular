@@ -5,7 +5,8 @@ import { debounceTime } from 'rxjs/operators'
 @Injectable()
 export class ResponsiveService {
   breakpoints = {
-    small: 767
+    // small: 767
+    small: 885
   }
   isScreenSmall$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     this.isScreenSmall

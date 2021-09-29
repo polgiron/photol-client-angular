@@ -1,8 +1,15 @@
+@import '~src/assets/scss/breakpoints';
+
 .image-wrapper {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(var(--color-black-rgb), 0.1);
-  border-radius: var(--small-border-radius);
+  box-shadow: 0 0 16px rgba(var(--color-black-rgb), 0.6);
+  // border-radius: var(--small-border-radius);
+
+  @include respond-to('small') {
+    box-shadow: 0 0 transparent;
+    // border-radius: 0;
+  }
 
   &:hover .bottom,
   &:hover .bottom-right,

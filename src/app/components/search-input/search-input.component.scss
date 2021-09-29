@@ -13,7 +13,7 @@
   position: relative;
 
   @include respond-to('small') {
-    width: 100%;
+    width: 10rem;
   }
 
   &:focus-within,

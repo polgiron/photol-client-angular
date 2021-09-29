@@ -1,6 +1,6 @@
 <header class="main-container">
   <div class="inner">
-    <a class="title" [routerLink]="['/albums']"><h1>Photol</h1></a>
+    <a class="title" [routerLink]="['/']"><h1>Photol</h1></a>
     <app-menu *ngIf="!(isScreenSmall$ | async)"></app-menu>
     <app-user-menu
       *ngIf="isLoggedIn && !(isScreenSmall$ | async)"

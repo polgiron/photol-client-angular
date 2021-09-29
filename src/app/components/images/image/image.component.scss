@@ -1,3 +1,5 @@
+@import '~src/assets/scss/breakpoints';
+
 .image-wrapper {
   width: 100%;
   position: relative;
@@ -5,6 +7,10 @@
   overflow: hidden;
   border-radius: var(--small-border-radius);
   height: 100%;
+
+  @include respond-to('small') {
+    border-radius: 0;
+  }
 }
 
 .loader {
