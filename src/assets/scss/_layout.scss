@@ -1,6 +1,6 @@
 .main-container {
   padding: var(--container-padding);
-  // padding-top: 0.5rem;
+  padding-top: var(--albums-spacing);
   max-width: var(--container-width);
   margin: auto;
   animation: fade-in-from-bottom 1s var(--ease-out-quint) both 0.4s;
@@ -17,26 +17,8 @@
 
 .main-loader-wrapper {
   margin-top: 35vh;
-}
-
-.album,
-.main-loader-wrapper {
   position: absolute;
   width: 100%;
-}
-
-.grid-list {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-
-  @include respond-to('small') {
-    gap: 1rem;
-  }
-
-  img {
-    width: 100%;
-  }
 }
 
 body.is-static {

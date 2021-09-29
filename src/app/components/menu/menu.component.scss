@@ -1,3 +1,5 @@
+@import '~src/assets/scss/breakpoints';
+
 .menu__list {
   display: flex;
   align-items: center;
@@ -5,6 +7,10 @@
 
   li:not(:last-child) {
     margin-right: 1rem;
+
+    @include respond-to('medium') {
+      margin-right: 0.5rem;
+    }
   }
 }
 

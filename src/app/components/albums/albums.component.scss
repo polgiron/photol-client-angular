@@ -1,5 +1,16 @@
+@import '~src/assets/scss/breakpoints';
+
+.grid-list {
+  display: grid;
+  gap: var(--albums-spacing);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--min-albums-width), 1fr)
+  );
+}
+
 .list__entry {
-  padding-top: 100%;
+  // padding-top: 100%;
   position: relative;
 }
 
