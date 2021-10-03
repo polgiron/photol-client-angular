@@ -10,7 +10,7 @@
   --container-padding: 1.5rem;
   --topbar-height: 2.75rem;
   --overlay-padding: 0.5rem;
-  --lightbox-edit-tags-height: 129px;
+  // --lightbox-edit-tags-height: 129px;
   --small-border-radius: 0.35rem;
   --medium-border-radius: 0.5rem;
   --big-border-radius: 0.85rem;
@@ -65,6 +65,7 @@
   --color-menu-background: rgba(var(--color-black-rgb), 0.1);
   --color-menu-background-hover: rgba(var(--color-black-rgb), 0.2);
   --main-shadow: 0 2px 10px rgba(var(--color-black-rgb), 0.2);
+  --main-text-shadow: 1px 1px 4px rgba(var(--color-black-rgb), 0.6);
 }
 
 [data-theme='light'] {

@@ -35,8 +35,7 @@ export class TagsComponent implements OnInit {
   constructor(
     private tagService: TagService,
     private imageService: ImageService,
-    private ref: ChangeDetectorRef,
-    private router: Router
+    private ref: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -103,7 +102,7 @@ export class TagsComponent implements OnInit {
   }
 
   removeTag(deleteTag: Tag): void {
-    this.tags = this.tags.filter((tag) => tag._id != deleteTag._id)
+    this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
     this.imageService.update(this.imageId, {
       tags: this.tags
     })
@@ -122,10 +121,5 @@ export class TagsComponent implements OnInit {
       }
     })
     this.imageService.updateCurrentImages(images)
-  }
-
-  onClickTag(tag: string): void {
-    this.imageService.closeLightbox()
-    this.router.navigateByUrl('/search?value=' + tag)
   }
 }

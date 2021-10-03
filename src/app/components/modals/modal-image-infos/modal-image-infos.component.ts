@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/services/modal.service'
   styleUrls: ['./modal-image-infos.component.scss']
 })
 export class ModalImageInfosComponent implements OnInit {
-  image: Image
+  image: Image = this.options.initialState['image']
 
   constructor(
     private options: ModalOptions,
@@ -18,16 +18,10 @@ export class ModalImageInfosComponent implements OnInit {
     private modalService: ModalService
   ) {}
 
-  ngOnInit(): void {
-    if (this.options.initialState) {
-      this.image = this.options.initialState['image']
-    }
-  }
+  ngOnInit(): void {}
 
   update(): void {
-    this.imageService.update(this.image._id, {
-      darkroomSettings: this.image.darkroomSettings
-    })
+    this.imageService.update(this.image._id, this.image)
   }
 
   close(): void {

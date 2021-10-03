@@ -9,13 +9,9 @@ import {
 } from '@angular/core'
 import { ImageService } from 'src/app/services/image.service'
 import { Router, ActivatedRoute } from '@angular/router'
-import { Tag } from 'src/app/models/tag.model'
 import { Image } from 'src/app/models/image.model'
 import { fadeInAnimation } from 'src/app/utils/animations'
-import { AlbumService } from 'src/app/services/album.service'
 import { AuthService } from 'src/app/services/authentication.service'
-import { ModalService } from 'src/app/services/modal.service'
-import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component'
 
 @Component({
   selector: 'app-lightbox-entry',
@@ -32,31 +28,28 @@ export class LightboxEntryComponent implements OnInit {
     this.setDialogWidth()
   }
   @Input() set active(value: boolean) {
-    if (value) {
-      this.setQueryParameter()
-    }
-    this._active = value
+    // if (value) {
+    //   this.setQueryParameter()
+    // }
+    // this._active = value
   }
   @Input() width: number
   @Input() height: number
   @Input() editMode: boolean = false
   private _resizeListener: EventListener
   private _image: Image
-  private _active: boolean
+  // private _active: boolean
   imageSrc: string
   mobileBreakpoint: number = 767
-  tags: Tag[]
   imageLoaded: boolean = false
-  albumId: string
-  isAlbumView: boolean = false
 
   get image(): Image {
     return this._image
   }
 
-  get active(): boolean {
-    return this._active
-  }
+  // get active(): boolean {
+  //   return this._active
+  // }
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn
@@ -67,15 +60,12 @@ export class LightboxEntryComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef,
-    private albumService: AlbumService,
-    private auth: AuthService,
-    private modalService: ModalService
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
     this._resizeListener = this.onWindowResize.bind(this)
     window.addEventListener('resize', this._resizeListener)
-    this.isAlbumView = this.albumService.currentAlbum ? true : false
   }
 
   ngOnDestroy(): void {
@@ -131,24 +121,10 @@ export class LightboxEntryComponent implements OnInit {
       this._image.public
     )
     this.imageSrc = image.signedUrl
-    this.tags = image.tags
-    if (image.albums && image.albums.length) {
-      this.albumId = image.albums[0] as string
-    }
     this.ref.markForCheck()
   }
 
   onImageLoaded(): void {
     this.imageLoaded = true
-  }
-
-  onClickGoToAlbum(): void {
-    this.imageService.closeLightbox()
-  }
-
-  onClickInfos(): void {
-    this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
-      image: this.image
-    })
   }
 }

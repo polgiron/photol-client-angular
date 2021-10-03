@@ -14,13 +14,9 @@ export interface Image {
   stars: number
   toPrint: boolean
   public: boolean
-  darkroomSettings: DarkroomSettings
-}
-
-export interface DarkroomSettings {
-  duration: number
-  contrast: number
-  aperture: number
+  darkroomSettingDuration: number
+  darkroomSettingContrast: number
+  darkroomSettingAperture: number
   note: string
 }
 

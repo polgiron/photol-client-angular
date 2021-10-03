@@ -58,6 +58,10 @@ export class ImagesComponent implements OnInit, OnDestroy {
       })
   }
 
+  ngOnDestroy() {
+    this._alive = false
+  }
+
   updateImages(images: Image[]) {
     this.images = images
 
@@ -130,9 +134,5 @@ export class ImagesComponent implements OnInit, OnDestroy {
       return null
     }
     return item._id
-  }
-
-  ngOnDestroy() {
-    this._alive = false
   }
 }

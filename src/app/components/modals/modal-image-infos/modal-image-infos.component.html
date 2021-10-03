@@ -7,42 +7,42 @@
     <div class="darkroom-settings">
       <div
         class="input-wrapper input-wrapper--i-left"
-        [ngClass]="{ 'is-filled': image.darkroomSettings.duration != null }"
+        [ngClass]="{ 'is-filled': image.darkroomSettingDuration }"
       >
         <i class="bi bi-clock"></i>
         <input
           class="input"
           type="number"
           placeholder="Duration"
-          [(ngModel)]="image.darkroomSettings.duration"
+          [(ngModel)]="image.darkroomSettingDuration"
           onkeydown="return event.keyCode !== 69"
           (blur)="update()"
         />
       </div>
       <div
         class="input-wrapper input-wrapper--i-left"
-        [ngClass]="{ 'is-filled': image.darkroomSettings.contrast != null }"
+        [ngClass]="{ 'is-filled': image.darkroomSettingContrast }"
       >
         <i class="bi bi-circle-half"></i>
         <input
           class="input"
           type="number"
           placeholder="Contrast"
-          [(ngModel)]="image.darkroomSettings.contrast"
+          [(ngModel)]="image.darkroomSettingContrast"
           onkeydown="return event.keyCode !== 69"
           (blur)="update()"
         />
       </div>
       <div
         class="input-wrapper input-wrapper--i-left"
-        [ngClass]="{ 'is-filled': image.darkroomSettings.aperture != null }"
+        [ngClass]="{ 'is-filled': image.darkroomSettingAperture }"
       >
         <i class="bi bi-bullseye"></i>
         <input
           class="input"
           type="number"
           placeholder="Aperture"
-          [(ngModel)]="image.darkroomSettings.aperture"
+          [(ngModel)]="image.darkroomSettingAperture"
           onkeydown="return event.keyCode !== 69"
           (blur)="update()"
         />
@@ -53,10 +53,9 @@
     <textarea
       class="textarea"
       [ngClass]="{
-        'is-filled':
-          image.darkroomSettings.note && image.darkroomSettings.note.length
+        'is-filled': image.note && image.note.length
       }"
-      [(ngModel)]="image.darkroomSettings.note"
+      [(ngModel)]="image.note"
       placeholder="Note..."
       (blur)="update()"
     ></textarea>

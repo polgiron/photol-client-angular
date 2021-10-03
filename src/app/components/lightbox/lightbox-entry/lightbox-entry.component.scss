@@ -2,63 +2,28 @@
 
 .image-wrapper {
   position: relative;
-  overflow: hidden;
   box-shadow: 0 0 16px rgba(var(--color-black-rgb), 0.6);
-  // border-radius: var(--small-border-radius);
 
   @include respond-to('small') {
     box-shadow: 0 0 transparent;
-    // border-radius: 0;
   }
 
-  &:hover .bottom,
-  &:hover .bottom-right,
-  &:hover .image-overlay-wrapper,
-  &.is-editmode .bottom,
-  &.is-editmode .bottom-right,
-  &.is-editmode .image-overlay-wrapper {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &.is-editmode .bottom-right {
-    bottom: var(--lightbox-edit-tags-height);
-  }
+  // &:hover .bottom,
+  // &:hover .image-overlay-wrapper,
+  // &.is-editmode .bottom,
+  // &.is-editmode .bottom-right,
+  // &.is-editmode .image-overlay-wrapper {
+  //   opacity: 1;
+  //   visibility: visible;
+  // }
 }
 
-:host ::ng-deep .image-wrapper:hover .image-overlay-entry {
+:host ::ng-deep .image-wrapper:hover .add-button {
   opacity: 1;
   visibility: visible;
 }
 
-.image-overlay-wrapper {
-  transition: all 0.2s;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.bottom {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  opacity: 0;
-  transition: all 0.2s;
-  visibility: hidden;
-}
-
-.bottom-right {
-  position: absolute;
-  padding: 0.75rem;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  visibility: hidden;
-
-  .button:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-}
+// :host ::ng-deep .image-wrapper:hover .image-overlay-entry {
+//   opacity: 1;
+//   visibility: visible;
+// }

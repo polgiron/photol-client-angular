@@ -1,57 +1,106 @@
-import { Component, OnInit, Input } from '@angular/core'
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core'
 import { Image } from 'src/app/models/image.model'
 import { ImageService } from 'src/app/services/image.service'
 import { Tag } from 'src/app/models/tag.model'
+import { AlbumService } from 'src/app/services/album.service'
+import { fadeAnimation } from 'src/app/utils/animations'
+import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component'
+import { ModalService } from 'src/app/services/modal.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-image-overlay',
   templateUrl: './image-overlay.component.html',
-  styleUrls: ['./image-overlay.component.scss']
+  styleUrls: ['./image-overlay.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeAnimation]
 })
 export class ImageOverlayComponent implements OnInit {
   @Input() image: Image
-  @Input() isAlbumView: boolean
   @Input() editMode: boolean = false
-  @Input() set tags(value: Tag[]) {
-    this._tags = value
-    if (value.length > this.maxTags) {
-      this.displayedTags = value.slice(0, this.maxTags)
-    } else {
-      this.displayedTags = value
-    }
-  }
-  @Input() stars: number
-  private _tags: Tag[]
-  displayedTags: Tag[]
+  @Input() inLightbox: boolean = false
+  @Input() stars: number // We keep input stars to refresh the component, needs refactor maybe
+  @Input() tags: Tag[] // Same
   maxTags: number = 4
 
-  get tags(): Tag[] {
-    return this._tags
+  get isAlbumView(): boolean {
+    return this.albumService.currentAlbum ? true : false
   }
 
-  constructor(private imageService: ImageService) {}
+  get isCover(): boolean {
+    return (
+      this.isAlbumView &&
+      this.albumService.currentAlbum.covers.includes(this.image._id)
+    )
+  }
+
+  get displayedTags(): Tag[] {
+    return this.inLightbox ? this.tags : this.tags?.slice(0, this.maxTags)
+  }
+
+  constructor(
+    private imageService: ImageService,
+    private albumService: AlbumService,
+    private modalService: ModalService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   onRatingClick(event: any): void {
-    this.saveRating(event.target.title)
+    // this.saveRating(event.target.title)
+    this.saveRating()
   }
 
   clearRating(): void {
-    this.saveRating(0)
+    // this.saveRating(0)
+    this.image.stars = 0
+    this.saveRating()
   }
 
-  async saveRating(value: number): Promise<void> {
-    this.stars = value
-    await this.imageService.update(this.image._id, {
-      stars: this.stars
-    })
+  // async saveRating(value: number): Promise<void> {
+  async saveRating(): Promise<void> {
+    // this.stars = value
+    console.log(this.image)
+    await this.imageService.update(this.image._id, this.image)
     const images = this.imageService.currentImages
     images.forEach((image) => {
       if (image._id === this.image._id) {
-        image.stars = this.stars
+        image.stars = this.image.stars
       }
     })
     this.imageService.updateCurrentImages(images)
+  }
+
+  updateCover(): void {
+    if (this.isCover) {
+      this.albumService.removeCover(this.image._id)
+    } else {
+      this.albumService.addCover(this.image._id)
+    }
+  }
+
+  delete(): void {
+    this.imageService.delete(this.image._id)
+  }
+
+  onClickGoToAlbum(): void {
+    this.imageService.closeLightbox()
+  }
+
+  onClickInfos(): void {
+    this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
+      image: this.image
+    })
+  }
+
+  onClickTag(tag: string): void {
+    this.imageService.closeLightbox()
+    this.router.navigateByUrl('/search?value=' + tag)
   }
 }
