@@ -1,5 +1,9 @@
 <app-topbar></app-topbar>
 <router-outlet></router-outlet>
-<div class="lightbox-wrapper" *ngIf="index != undefined" [@fadeFastAnimation]>
-  <app-lightbox [index]="index"></app-lightbox>
+<div
+  class="lightbox-wrapper"
+  *ngIf="(index | async) != null"
+  [@fadeFastAnimation]
+>
+  <app-lightbox [index]="index | async"></app-lightbox>
 </div>

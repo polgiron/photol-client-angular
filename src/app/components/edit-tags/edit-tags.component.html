@@ -1,0 +1,22 @@
+<div class="add-tags-wrapper" *ngIf="suggestedTags" [@fadeAnimation]>
+  <div class="input-wrapper input-wrapper--small">
+    <input
+      type="text"
+      class="input"
+      placeholder="Add a tag..."
+      [(ngModel)]="newTagValue"
+      (keydown.enter)="onKeyEnter()"
+      (focus)="onFocus()"
+    />
+  </div>
+  <div class="suggested-tags" *ngIf="suggestedTags && suggestedTags.length">
+    <h4 class="title">Last used</h4>
+    <ul class="tags-list">
+      <li *ngFor="let tag of suggestedTags">
+        <button class="tag tag--small" (click)="addExistingTag(tag)">
+          {{ tag.value }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

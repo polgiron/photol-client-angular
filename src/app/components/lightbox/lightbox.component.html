@@ -1,29 +1,14 @@
 <div class="lightbox">
   <div class="overlay" (click)="close()"></div>
 
-  <ul class="list">
-    <li *ngFor="let image of images; let i = index">
-      <div
-        *ngIf="
-          i == index || i == getPrevIndex(index) || i == getNextIndex(index)
-        "
-        class="dialog"
-        [ngClass]="{
-          'is-visible': i == index,
-          'is-prev': i == getPrevIndex(index) && images.length > 1,
-          'is-next': i == getNextIndex(index) && images.length > 1
-        }"
-      >
-        <div class="inner">
-          <app-lightbox-entry
-            [image]="image"
-            [active]="i == index"
-            [editMode]="settings.editMode"
-          ></app-lightbox-entry>
-        </div>
-      </div>
-    </li>
-  </ul>
+  <ng-container *ngFor="let image of currentImages; let i = index">
+    <div class="dialog" *ngIf="i === index" [@fadeAnimation]>
+      <app-lightbox-entry
+        [image]="image"
+        [editMode]="(settings | async).editMode"
+      ></app-lightbox-entry>
+    </div>
+  </ng-container>
 
   <button
     *ngIf="displayControl"

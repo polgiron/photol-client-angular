@@ -11,7 +11,6 @@ import { AlbumService } from 'src/app/services/album.service'
 import { fadeAnimation } from 'src/app/utils/animations'
 import { ModalImageInfosComponent } from '../../modals/modal-image-infos/modal-image-infos.component'
 import { ModalService } from 'src/app/services/modal.service'
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-image-overlay',
@@ -26,7 +25,6 @@ export class ImageOverlayComponent implements OnInit {
   @Input() inLightbox: boolean = false
   @Input() stars: number // We keep input stars to refresh the component, needs refactor maybe
   @Input() tags: Tag[] // Same
-  maxTags: number = 4
 
   get isAlbumView(): boolean {
     return this.albumService.currentAlbum ? true : false
@@ -39,15 +37,10 @@ export class ImageOverlayComponent implements OnInit {
     )
   }
 
-  get displayedTags(): Tag[] {
-    return this.inLightbox ? this.tags : this.tags?.slice(0, this.maxTags)
-  }
-
   constructor(
     private imageService: ImageService,
     private albumService: AlbumService,
-    private modalService: ModalService,
-    private router: Router
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {}
@@ -97,10 +90,5 @@ export class ImageOverlayComponent implements OnInit {
     this.modalService.open(ModalImageInfosComponent, 'image-infos', false, {
       image: this.image
     })
-  }
-
-  onClickTag(tag: string): void {
-    this.imageService.closeLightbox()
-    this.router.navigateByUrl('/search?value=' + tag)
   }
 }

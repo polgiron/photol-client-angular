@@ -5,6 +5,7 @@ import { Api } from './api.service'
 @Injectable()
 export class TagService {
   document: string = 'tag/'
+  // lastUsed: Tag[]
 
   constructor(private api: Api) {}
 

@@ -18,52 +18,10 @@
       #{{ image.albums[0].rollId }}
     </div>
   </div>
-  <!-- <div *ngIf="!isAlbumView" class="top-right">
-  <span *ngIf="image.date">{{ image.date }}</span>
-  <div
-    *ngIf="image.albums.length && image.albums[0].rollId"
-    class="roll-id-wrapper"
-  >
-    #{{ image.albums[0].rollId }}
-  </div>
-</div> -->
-
-  <!-- <ul class="bottom-left" *ngIf="!editMode">
-    <li *ngFor="let tag of displayedTags; last as isLast">
-      {{ tag.value }}<span *ngIf="!isLast">,</span>
-    </li>
-    <li *ngIf="tags && tags.length > maxTags">
-      and {{ tags.length - maxTags }} more
-    </li>
-  </ul> -->
 
   <div class="bottom">
-    <!-- [ngClass]="{ 'is-editmode': editMode }" -->
     <div class="bottom__top">
-      <ul
-        class="tags-list"
-        [ngClass]="{ 'in-lightbox': inLightbox }"
-        *ngIf="displayedTags && displayedTags.length"
-      >
-        <li *ngFor="let tag of displayedTags; last as isLast">
-          <button
-            *ngIf="inLightbox"
-            class="tag is-clickable"
-            (click)="onClickTag(tag.value)"
-          >
-            {{ tag.value }}
-            <!-- <button *ngIf="editMode" (click)="removeTag(tag)">
-            <i class="bi bi-x"></i>
-          </button> -->
-          </button>
-          <ng-container *ngIf="!inLightbox">
-            {{ tag.value }}<span *ngIf="!isLast">,</span>
-          </ng-container>
-        </li>
-        <li *ngIf="tags && tags.length > maxTags && !inLightbox">
-          and {{ tags.length - maxTags }} more
-        </li>
-      </ul>
+      <app-tags [tags]="image.tags" [inLightbox]="inLightbox"></app-tags>
       <div class="edit-toolbar">
         <button *ngIf="inLightbox" class="button" (click)="onClickInfos()">
           <i class="bi bi-info-circle"></i> Infos
@@ -99,13 +57,11 @@
         </button>
       </div>
     </div>
-    <app-tags
-      *ngIf="inLightbox"
+    <app-edit-tags
+      *ngIf="inLightbox && editMode"
       [imageId]="image._id"
       [tags]="image.tags"
-      [editMode]="editMode"
-    ></app-tags>
-    <!-- [reload]="active" -->
+    ></app-edit-tags>
   </div>
 
   <app-button-add-menu [image]="image"></app-button-add-menu>

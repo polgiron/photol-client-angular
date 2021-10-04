@@ -1,21 +1,19 @@
-.add-tags-wrapper {
-  padding: 0.75rem;
-  background: rgba(var(--color-white-rgb), 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: var(--small-border-radius);
-  margin-top: 0.5rem;
-  pointer-events: all;
+.tags-list {
+  &.in-lightbox {
+    pointer-events: all;
+    margin-right: 4rem;
+  }
+
+  &:not(.in-lightbox) {
+    text-shadow: var(--main-text-shadow);
+    margin-right: 1rem;
+
+    li:not(:last-child) {
+      margin-right: 0.25rem;
+    }
+  }
 }
 
-.suggested-tags {
-  margin-top: 0.75rem;
-}
-
-.title {
-  text-transform: uppercase;
-  font-size: var(--font-size-mini);
-  color: var(--color-almost-black);
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-  margin-left: 0.25rem;
+.tag-text {
+  color: var(--color-white-smoke);
 }

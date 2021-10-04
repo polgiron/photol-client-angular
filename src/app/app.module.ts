@@ -14,7 +14,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { FormsModule } from '@angular/forms'
 import { ImagesComponent } from './components/images/images.component'
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component'
-import { TagsComponent } from './components/tags/tags.component'
+import { EditTagsComponent } from './components/edit-tags/edit-tags.component'
 import { LightboxEntryComponent } from './components/lightbox/lightbox-entry/lightbox-entry.component'
 import { ImageService } from 'src/app/services/image.service'
 import { TopbarComponent } from './components/topbar/topbar.component'
@@ -63,8 +63,9 @@ import { ModalImageInfosComponent } from './components/modals/modal-image-infos/
 import { AllComponent } from './components/all/all.component'
 import { ThemeService } from './services/theme.service'
 import { ResponsiveService } from './services/responsive.service'
-import { CoverImageComponent } from './components/albums/album-thumb/cover-image/cover-image.component';
+import { CoverImageComponent } from './components/albums/album-thumb/cover-image/cover-image.component'
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component'
+import { TagsComponent } from './components/tags/tags.component'
 
 @NgModule({
   declarations: [
@@ -77,7 +78,7 @@ import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.compon
     SearchInputComponent,
     ImagesComponent,
     ImageThumbComponent,
-    TagsComponent,
+    EditTagsComponent,
     LightboxEntryComponent,
     TopbarComponent,
     ImageComponent,
@@ -103,7 +104,8 @@ import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.compon
     ModalImageInfosComponent,
     AllComponent,
     CoverImageComponent,
-    MobileMenuComponent
+    MobileMenuComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

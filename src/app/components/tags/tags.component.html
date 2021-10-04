@@ -1,37 +1,24 @@
-<!-- <ul
-  class="tags-list tags"
-  *ngIf="tags && tags.length"
-  [ngClass]="{ 'is-editmode': editMode }"
+<ul
+  class="tags-list"
+  [ngClass]="{ 'in-lightbox': inLightbox }"
+  *ngIf="displayedTags && displayedTags.length"
 >
-  <li *ngFor="let tag of tags">
-    <button class="tag is-clickable" (click)="onClickTag(tag.value)">
+  <li *ngFor="let tag of displayedTags; last as isLast">
+    <button
+      *ngIf="inLightbox"
+      class="tag is-clickable"
+      (click)="onClickTag(tag.value)"
+    >
       {{ tag.value }}
-      <button *ngIf="editMode" (click)="removeTag(tag)">
-        <i class="bi bi-x"></i>
-      </button>
+      <!-- <button *ngIf="editMode" (click)="removeTag(tag)">
+            <i class="bi bi-x"></i>
+          </button> -->
     </button>
+    <ng-container *ngIf="!inLightbox">
+      {{ tag.value }}<span *ngIf="!isLast">,</span>
+    </ng-container>
   </li>
-</ul> -->
-
-<div class="add-tags-wrapper" *ngIf="editMode">
-  <div class="input-wrapper input-wrapper--small">
-    <input
-      type="text"
-      class="input"
-      placeholder="Add a tag..."
-      [(ngModel)]="newTagValue"
-      (keydown.enter)="onKeyEnter()"
-      (focus)="onFocus()"
-    />
-  </div>
-  <div class="suggested-tags" *ngIf="suggestedTags && suggestedTags.length">
-    <h4 class="title">Last used</h4>
-    <ul class="tags-list">
-      <li *ngFor="let tag of suggestedTags">
-        <button class="tag tag--small" (click)="addExistingTag(tag)">
-          {{ tag.value }}
-        </button>
-      </li>
-    </ul>
-  </div>
-</div>
+  <li *ngIf="tags && tags.length > maxTags && !inLightbox">
+    and {{ tags.length - maxTags }} more
+  </li>
+</ul>

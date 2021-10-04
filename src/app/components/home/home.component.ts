@@ -9,6 +9,7 @@ import { takeWhile } from 'rxjs/operators'
 import { fadeFastAnimation } from 'src/app/utils/animations'
 import { SettingsService } from 'src/app/services/settings.service'
 import { AuthService } from 'src/app/services/authentication.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,10 @@ import { AuthService } from 'src/app/services/authentication.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  private _alive: boolean = true
-  index: number
+  index: Observable<number> = this.imageService.lightboxIndexChannel()
 
   constructor(
     private imageService: ImageService,
-    private ref: ChangeDetectorRef,
     private settings: SettingsService,
     private auth: AuthService
   ) {
@@ -32,17 +31,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.imageService
-      .lightboxIndexChannel()
-      .pipe(takeWhile(() => this._alive))
-      .subscribe((index: number) => {
-        this.index = index
-        this.ref.markForCheck()
-      })
-  }
-
-  ngOnDestroy(): void {
-    this._alive = false
-  }
+  ngOnInit(): void {}
 }

@@ -9,23 +9,34 @@ import {
 import { ImageService } from 'src/app/services/image.service'
 import { Utils } from 'src/app/utils/utils'
 import { SettingsService } from 'src/app/services/settings.service'
-import { takeWhile } from 'rxjs/operators'
 import { Settings } from 'src/app/models/settings.model'
 import { Image } from 'src/app/models/image.model'
+import { Observable } from 'rxjs'
+import { fadeAnimation } from 'src/app/utils/animations'
 
 @Component({
   selector: 'app-lightbox',
   templateUrl: './lightbox.component.html',
   styleUrls: ['./lightbox.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeAnimation]
 })
 export class LightboxComponent implements OnInit, OnDestroy {
   @Input() index: number
   private _keydownListener: EventListener
-  private _alive: boolean = true
-  images: Image[]
-  displayControl: boolean = true
-  settings: Settings
+  settings: Observable<Settings> = this.settingsService.settingsChannel()
+
+  get currentImages(): Image[] {
+    return this.imageService.currentImages
+  }
+
+  // get currentImage(): Image {
+  //   return this.imageService.currentImages[this.index]
+  // }
+
+  get displayControl(): boolean {
+    return this.currentImages.length > 1
+  }
 
   constructor(
     private imageService: ImageService,
@@ -34,64 +45,58 @@ export class LightboxComponent implements OnInit, OnDestroy {
     private ref: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
-    this.images = this.imageService.currentImages
-    this.displayControl = this.images.length > 1
+  ngOnInit(): void {
     this._keydownListener = this.onKeydown.bind(this)
     window.addEventListener('keydown', this._keydownListener)
-
-    this.settingsService
-      .settingsChannel()
-      .pipe(takeWhile(() => this._alive))
-      .subscribe((settings: Settings) => {
-        this.settings = settings
-        this.ref.markForCheck()
-      })
   }
 
-  getPrevIndex(index: number) {
-    if (index - 1 < 0) {
-      return this.images.length - 1
-    } else {
-      return index - 1
-    }
+  ngOnDestroy(): void {
+    window.removeEventListener('keydown', this._keydownListener)
   }
 
-  getNextIndex(index: number) {
-    if (index + 1 >= this.images.length) {
-      return 0
-    } else {
-      return index + 1
-    }
-  }
+  // getPrevIndex(index: number) {
+  //   if (index - 1 < 0) {
+  //     return this.images.length - 1
+  //   } else {
+  //     return index - 1
+  //   }
+  // }
 
-  prev() {
+  // getNextIndex(index: number) {
+  //   if (index + 1 >= this.images.length) {
+  //     return 0
+  //   } else {
+  //     return index + 1
+  //   }
+  // }
+
+  prev(): void {
     this.index--
 
     if (this.index < 0) {
-      this.index = this.images.length - 1
+      this.index = this.currentImages.length - 1
     }
 
     this.ref.markForCheck()
   }
 
-  next() {
+  next(): void {
     this.index++
 
-    if (this.index >= this.images.length) {
+    if (this.index >= this.currentImages.length) {
       this.index = 0
     }
 
     this.ref.markForCheck()
   }
 
-  close() {
+  close(): void {
     this.imageService.closeLightbox()
     this.utils.clearOpenQuery()
     this.ref.markForCheck()
   }
 
-  onKeydown(event: any) {
+  onKeydown(event: KeyboardEvent): void {
     switch (event.key) {
       case 'Escape':
         this.close()
@@ -103,10 +108,5 @@ export class LightboxComponent implements OnInit, OnDestroy {
         this.next()
         break
     }
-  }
-
-  ngOnDestroy() {
-    window.removeEventListener('keydown', this._keydownListener)
-    this._alive = false
   }
 }

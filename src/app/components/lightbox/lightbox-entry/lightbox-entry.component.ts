@@ -9,7 +9,7 @@ import {
 } from '@angular/core'
 import { ImageService } from 'src/app/services/image.service'
 import { Router, ActivatedRoute } from '@angular/router'
-import { Image } from 'src/app/models/image.model'
+import { Image, ImageSize } from 'src/app/models/image.model'
 import { fadeInAnimation } from 'src/app/utils/animations'
 import { AuthService } from 'src/app/services/authentication.service'
 
@@ -22,34 +22,10 @@ import { AuthService } from 'src/app/services/authentication.service'
 })
 export class LightboxEntryComponent implements OnInit {
   @ViewChild('imageWrapper', { static: true }) imageWrapperElement: ElementRef
-  @Input() set image(value: Image) {
-    this._image = value
-    this.extendImage()
-    this.setDialogWidth()
-  }
-  @Input() set active(value: boolean) {
-    // if (value) {
-    //   this.setQueryParameter()
-    // }
-    // this._active = value
-  }
-  @Input() width: number
-  @Input() height: number
+  @Input() image: Image
   @Input() editMode: boolean = false
-  private _resizeListener: EventListener
-  private _image: Image
-  // private _active: boolean
-  imageSrc: string
   mobileBreakpoint: number = 767
   imageLoaded: boolean = false
-
-  get image(): Image {
-    return this._image
-  }
-
-  // get active(): boolean {
-  //   return this._active
-  // }
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn
@@ -64,26 +40,18 @@ export class LightboxEntryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._resizeListener = this.onWindowResize.bind(this)
-    window.addEventListener('resize', this._resizeListener)
-  }
-
-  ngOnDestroy(): void {
-    window.removeEventListener('resize', this._resizeListener)
+    this.getImageBigSignedUrl()
+    this.setDialogWidth()
+    this.setQueryParameter()
   }
 
   setQueryParameter(): void {
-    // changes the route without moving from the current view or
-    // triggering a navigation event,
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
         open: this.image._id
       },
       queryParamsHandling: 'merge'
-      // preserve the existing query params in the route
-      // skipLocationChange: true
-      // do not trigger navigation
     })
   }
 
@@ -115,16 +83,16 @@ export class LightboxEntryComponent implements OnInit {
     this.ref.markForCheck()
   }
 
-  async extendImage(): Promise<void> {
-    const image: Image = await this.imageService.getImage(
-      this._image._id,
-      this._image.public
+  async getImageBigSignedUrl(): Promise<void> {
+    this.image.signedUrl = await this.imageService.getSignedUrl(
+      this.image._id,
+      ImageSize.BIG
     )
-    this.imageSrc = image.signedUrl
     this.ref.markForCheck()
   }
 
   onImageLoaded(): void {
     this.imageLoaded = true
+    this.ref.markForCheck()
   }
 }

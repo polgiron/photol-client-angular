@@ -1,7 +1,7 @@
-<div class="image-wrapper" #imageWrapper>
+<div class="image-wrapper" (window:resize)="onWindowResize()" #imageWrapper>
   <app-image
     *ngIf="image"
-    [src]="imageSrc"
+    [src]="image.signedUrl"
     [width]="image.oriWidth"
     [height]="image.oriHeight"
     [displayLoader]="true"
