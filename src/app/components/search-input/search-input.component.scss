@@ -45,13 +45,14 @@
 
 .button-clear {
   margin-left: 0.5rem;
-  transition: all 0.15s;
   position: absolute;
   top: 50%;
   right: 0.75rem;
   transform: translateY(-50%);
+  // transition: all 0.15s;
+  // transform-origin: center center;
 
-  &:active {
-    transform: scale(0.6);
-  }
+  // &:active {
+  //   transform: translateY(-50%) scale(0.6);
+  // }
 }
