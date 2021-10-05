@@ -21,12 +21,12 @@
 
   <div class="bottom">
     <div class="bottom__top">
-      <app-tags
+      <app-image-tags
         [tags]="image.tags"
         [inLightbox]="inLightbox"
         [editMode]="editMode"
         [imageId]="image._id"
-      ></app-tags>
+      ></app-image-tags>
       <div class="edit-toolbar">
         <button *ngIf="inLightbox" class="button" (click)="onClickInfos()">
           <i class="bi bi-info-circle"></i> Infos

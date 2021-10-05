@@ -1,14 +1,11 @@
 import {
-  Component,
-  OnInit,
-  Input,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Component,
+  OnInit
 } from '@angular/core'
-import { TagService } from 'src/app/services/tag.service'
 import { Tag } from 'src/app/models/tag.model'
-import { ImageService } from 'src/app/services/image.service'
-import { Router } from '@angular/router'
+import { TagService } from 'src/app/services/tag.service'
 
 @Component({
   selector: 'app-tags',
@@ -17,37 +14,12 @@ import { Router } from '@angular/router'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsComponent implements OnInit {
-  @Input() tags: Tag[]
-  @Input() editMode: boolean = false
-  @Input() inLightbox: boolean = false
-  @Input() imageId: string
-  maxTags: number = 4
+  tags: Tag[]
 
-  get displayedTags(): Tag[] {
-    return this.inLightbox ? this.tags : this.tags?.slice(0, this.maxTags)
-  }
+  constructor(private tagService: TagService, private ref: ChangeDetectorRef) {}
 
-  constructor(
-    private tagService: TagService,
-    private imageService: ImageService,
-    private ref: ChangeDetectorRef,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {}
-
-  onClickTag(tag: string): void {
-    this.imageService.closeLightbox()
-    this.router.navigateByUrl('/search?value=' + tag)
-  }
-
-  removeTag(deleteTag: Tag): void {
-    this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
-    this.imageService.update(this.imageId, {
-      tags: this.tags
-    })
-    this.tagService.updateCurrentImages(this.tags, this.imageId)
-    this.tagService.getLastUsed(true)
+  async ngOnInit() {
+    this.tags = await this.tagService.getAll()
     this.ref.markForCheck()
   }
 }

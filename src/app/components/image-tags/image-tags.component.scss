@@ -1,0 +1,19 @@
+.tags-list {
+  &.in-lightbox {
+    pointer-events: all;
+    margin-right: 4rem;
+  }
+
+  &:not(.in-lightbox) {
+    text-shadow: var(--main-text-shadow);
+    margin-right: 1rem;
+
+    li:not(:last-child) {
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+.tag-text {
+  color: var(--color-white-smoke);
+}

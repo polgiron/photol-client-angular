@@ -65,6 +65,7 @@ import { ThemeService } from './services/theme.service'
 import { ResponsiveService } from './services/responsive.service'
 import { CoverImageComponent } from './components/albums/album-thumb/cover-image/cover-image.component'
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component'
+import { ImageTagsComponent } from './components/image-tags/image-tags.component'
 import { TagsComponent } from './components/tags/tags.component'
 
 @NgModule({
@@ -105,6 +106,7 @@ import { TagsComponent } from './components/tags/tags.component'
     AllComponent,
     CoverImageComponent,
     MobileMenuComponent,
+    ImageTagsComponent,
     TagsComponent
   ],
   imports: [

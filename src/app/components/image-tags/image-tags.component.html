@@ -1,0 +1,24 @@
+<ul
+  class="tags-list"
+  [ngClass]="{ 'in-lightbox': inLightbox }"
+  *ngIf="displayedTags && displayedTags.length"
+>
+  <li *ngFor="let tag of displayedTags; last as isLast">
+    <button
+      *ngIf="inLightbox"
+      class="tag is-clickable"
+      (click)="onClickTag(tag.value)"
+    >
+      {{ tag.value }}
+      <button *ngIf="editMode" (click)="removeTag(tag)">
+        <i class="bi bi-x"></i>
+      </button>
+    </button>
+    <ng-container *ngIf="!inLightbox">
+      {{ tag.value }}<span *ngIf="!isLast">,</span>
+    </ng-container>
+  </li>
+  <li *ngIf="tags && tags.length > maxTags && !inLightbox">
+    and {{ tags.length - maxTags }} more
+  </li>
+</ul>

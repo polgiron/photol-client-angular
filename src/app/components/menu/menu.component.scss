@@ -43,6 +43,7 @@
   font-weight: 500;
   background: var(--color-menu-background);
   border-radius: var(--small-border-radius);
+  letter-spacing: 0.1em;
 
   @include respond-to('small-topbar') {
     width: 100%;
@@ -52,9 +53,5 @@
   &.is-active {
     color: var(--color-text);
     background: var(--color-menu-background-hover);
-  }
-
-  span {
-    letter-spacing: 0.1em;
   }
 }

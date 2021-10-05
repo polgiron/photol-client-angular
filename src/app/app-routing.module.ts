@@ -10,6 +10,7 @@ import { AuthGuardService } from './services/guards/auth-guard.service'
 import { ToPrintComponent } from 'src/app/components/toprint/toprint.component'
 import { PublicComponent } from './components/public/public.component'
 import { AllComponent } from './components/all/all.component'
+import { TagsComponent } from './components/tags/tags.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'albums', pathMatch: 'full' },
@@ -46,6 +47,11 @@ const routes: Routes = [
       {
         path: 'search',
         component: SearchComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'tags',
+        component: TagsComponent,
         canActivate: [AuthGuardService]
       },
       { path: 'public', component: PublicComponent }

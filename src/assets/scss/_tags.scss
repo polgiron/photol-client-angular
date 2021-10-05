@@ -5,12 +5,8 @@ $tags-spacing: 0.25rem;
   flex-wrap: wrap;
   margin-bottom: -$tags-spacing;
 
-  &.is-editmode {
-    // margin-top: .75rem;
-
-    .tag {
-      padding-right: 0.4rem;
-    }
+  &.is-editmode .tag {
+    padding-right: 0.4rem;
   }
 }
 
