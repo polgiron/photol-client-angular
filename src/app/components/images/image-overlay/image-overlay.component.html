@@ -5,7 +5,7 @@
       <rating
         [(ngModel)]="image.stars"
         [max]="5"
-        (click)="onRatingClick($event)"
+        (click)="saveRating()"
       ></rating>
       <button class="clear-rating" (click)="clearRating()">
         <i class="bi bi-x"></i>
@@ -21,7 +21,12 @@
 
   <div class="bottom">
     <div class="bottom__top">
-      <app-tags [tags]="image.tags" [inLightbox]="inLightbox"></app-tags>
+      <app-tags
+        [tags]="image.tags"
+        [inLightbox]="inLightbox"
+        [editMode]="editMode"
+        [imageId]="image._id"
+      ></app-tags>
       <div class="edit-toolbar">
         <button *ngIf="inLightbox" class="button" (click)="onClickInfos()">
           <i class="bi bi-info-circle"></i> Infos

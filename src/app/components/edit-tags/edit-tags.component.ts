@@ -3,12 +3,14 @@ import {
   OnInit,
   Input,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  OnDestroy
 } from '@angular/core'
 import { TagService } from 'src/app/services/tag.service'
 import { Tag } from 'src/app/models/tag.model'
 import { ImageService } from 'src/app/services/image.service'
 import { fadeAnimation } from 'src/app/utils/animations'
+import { takeWhile } from 'rxjs/operators'
 
 @Component({
   selector: 'app-edit-tags',
@@ -17,20 +19,12 @@ import { fadeAnimation } from 'src/app/utils/animations'
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeAnimation]
 })
-export class EditTagsComponent implements OnInit {
+export class EditTagsComponent implements OnInit, OnDestroy {
   @Input() tags: Tag[]
   @Input() imageId: string
-  // @Input() set reload(value: boolean) {
-  //   if (value && this.editMode) {
-  //     this.tagService.getAll().then((allTags: Tag[]) => {
-  //       this.allTags = allTags
-  //       this.updateSuggestedTags()
-  //     })
-  //   }
-  // }
+  alive: boolean = true
   newTagValue: string = ''
-  allTags: Tag[]
-  suggestedTags: Tag[]
+  lastUsed: Tag[]
 
   constructor(
     private tagService: TagService,
@@ -39,32 +33,28 @@ export class EditTagsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.allTags = await this.tagService.getAll()
-    this.updateSuggestedTags()
+    this.tagService.getLastUsed()
+    this.tagService.lastUsed$
+      .pipe(takeWhile(() => this.alive))
+      .subscribe((lastUsed: Tag[]) => {
+        this.lastUsed = lastUsed.filter((tag) => {
+          return !this.tags.find((imageTag) => imageTag._id === tag._id)
+        })
+        this.ref.markForCheck()
+      })
   }
 
-  async onFocus(): Promise<void> {
-    this.allTags = await this.tagService.getAll()
-    this.updateSuggestedTags()
-    this.ref.markForCheck()
+  ngOnDestroy(): void {
+    this.alive = false
   }
 
-  async updateSuggestedTags(): Promise<void> {
-    this.suggestedTags = await this.tagService.getLastUsed()
-    this.suggestedTags = this.suggestedTags.filter((tag) => {
-      return !this.tags.find((imageTag) => imageTag._id == tag._id)
-    })
-    this.ref.markForCheck()
-  }
-
-  async onKeyEnter(): Promise<void> {
+  async addTag(): Promise<void> {
     if (
       this.newTagValue.length &&
-      !this.tags.find((tag) => tag.value == this.newTagValue)
+      !this.tags.find((tag) => tag.value === this.newTagValue)
     ) {
-      const existingTag = this.allTags.find(
-        (tag) => tag.value == this.newTagValue
-      )
+      const allTags: Tag[] = await this.tagService.getAll()
+      const existingTag = allTags.find((tag) => tag.value === this.newTagValue)
 
       if (existingTag) {
         // Add tag to image
@@ -84,8 +74,8 @@ export class EditTagsComponent implements OnInit {
     this.imageService.update(this.imageId, {
       tags: this.tags
     })
-    this.updateSuggestedTags()
-    this.updateCurrentImages()
+    this.tagService.getLastUsed()
+    this.tagService.updateCurrentImages(this.tags, this.imageId)
     this.ref.markForCheck()
   }
 
@@ -95,29 +85,8 @@ export class EditTagsComponent implements OnInit {
       images: [this.imageId]
     })
     this.tags = this.tags.concat(newTag)
-    this.updateCurrentImages()
+    this.tagService.getLastUsed(true)
+    this.tagService.updateCurrentImages(this.tags, this.imageId)
     this.ref.markForCheck()
-  }
-
-  // removeTag(deleteTag: Tag): void {
-  //   this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
-  //   this.imageService.update(this.imageId, {
-  //     tags: this.tags
-  //   })
-  //   if (this.suggestedTags) {
-  //     this.updateSuggestedTags()
-  //   }
-  //   this.updateCurrentImages()
-  //   this.ref.markForCheck()
-  // }
-
-  updateCurrentImages(): void {
-    const images = this.imageService.currentImages
-    images.map((image) => {
-      if (image._id == this.imageId) {
-        image.tags = this.tags
-      }
-    })
-    this.imageService.updateCurrentImages(images)
   }
 }

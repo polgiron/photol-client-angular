@@ -45,21 +45,12 @@ export class ImageOverlayComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onRatingClick(event: any): void {
-    // this.saveRating(event.target.title)
-    this.saveRating()
-  }
-
   clearRating(): void {
-    // this.saveRating(0)
     this.image.stars = 0
     this.saveRating()
   }
 
-  // async saveRating(value: number): Promise<void> {
   async saveRating(): Promise<void> {
-    // this.stars = value
-    console.log(this.image)
     await this.imageService.update(this.image._id, this.image)
     const images = this.imageService.currentImages
     images.forEach((image) => {

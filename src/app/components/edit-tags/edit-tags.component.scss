@@ -7,6 +7,14 @@
   pointer-events: all;
 }
 
+.top {
+  display: flex;
+}
+
+.input-wrapper {
+  margin-right: 0.5rem;
+}
+
 .suggested-tags {
   margin-top: 0.75rem;
 }

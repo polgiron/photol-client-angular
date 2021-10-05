@@ -20,17 +20,7 @@ export class TagsComponent implements OnInit {
   @Input() tags: Tag[]
   @Input() editMode: boolean = false
   @Input() inLightbox: boolean = false
-  // @Input() set reload(value: boolean) {
-  //   if (value && this.editMode) {
-  //     this.tagService.getAll().then((allTags: Tag[]) => {
-  //       this.allTags = allTags
-  //       this.updateSuggestedTags()
-  //     })
-  //   }
-  // }
-  // newTagValue: string = ''
-  // allTags: Tag[]
-  // suggestedTags: Tag[]
+  @Input() imageId: string
   maxTags: number = 4
 
   get displayedTags(): Tag[] {
@@ -51,15 +41,13 @@ export class TagsComponent implements OnInit {
     this.router.navigateByUrl('/search?value=' + tag)
   }
 
-  // removeTag(deleteTag: Tag): void {
-  //   this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
-  //   this.imageService.update(this.imageId, {
-  //     tags: this.tags
-  //   })
-  //   if (this.suggestedTags) {
-  //     this.updateSuggestedTags()
-  //   }
-  //   this.updateCurrentImages()
-  //   this.ref.markForCheck()
-  // }
+  removeTag(deleteTag: Tag): void {
+    this.tags = this.tags.filter((tag) => tag._id !== deleteTag._id)
+    this.imageService.update(this.imageId, {
+      tags: this.tags
+    })
+    this.tagService.updateCurrentImages(this.tags, this.imageId)
+    this.tagService.getLastUsed(true)
+    this.ref.markForCheck()
+  }
 }
