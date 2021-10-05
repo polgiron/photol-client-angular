@@ -5,7 +5,9 @@
     <app-user-menu
       *ngIf="isLoggedIn && !(isScreenSmall$ | async)"
     ></app-user-menu>
-    <app-search-input *ngIf="isScreenSmall$ | async"></app-search-input>
+    <app-search-input
+      *ngIf="(isScreenSmall$ | async) && isLoggedIn"
+    ></app-search-input>
     <app-mobile-menu *ngIf="isScreenSmall$ | async"></app-mobile-menu>
   </div>
 </header>

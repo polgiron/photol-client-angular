@@ -58,10 +58,11 @@ export class ImageService {
 
   async getSignedUrl(
     id: string,
-    size: ImageSize = ImageSize.SMALL
+    size: ImageSize = ImageSize.SMALL,
+    isPublic: boolean = false
   ): Promise<string> {
     const response: { signedUrl: string } = await this.api.get(
-      `${this.document}${id}/signedUrl`,
+      `${this.document}${id}/signedUrl${isPublic ? '/public' : ''}`,
       {
         size: size
       }

@@ -86,7 +86,8 @@ export class LightboxEntryComponent implements OnInit {
   async getImageBigSignedUrl(): Promise<void> {
     this.image.signedUrl = await this.imageService.getSignedUrl(
       this.image._id,
-      ImageSize.BIG
+      ImageSize.BIG,
+      this.image.public
     )
     this.ref.markForCheck()
   }
