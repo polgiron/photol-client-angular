@@ -58,6 +58,7 @@ export class AlbumService {
 
   async getAlbum(albumId: string): Promise<OneAlbum> {
     const response = await this.api.get(`${this.document}${albumId}`)
+    console.log(response)
 
     if (!this.currentAlbums.length) {
       await this.getAll()

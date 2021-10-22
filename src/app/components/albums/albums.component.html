@@ -2,12 +2,12 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="albums">
-  <ul class="grid-list">
-    <li class="list__entry" *ngIf="editMode" [@fadeAnimation]>
-      <button class="button-add-album" (click)="onClickAddAlbum()">
-        <i class="bi bi-plus"></i>
-      </button>
-    </li>
+  <div class="top" *ngIf="editMode">
+    <button class="button button-add-album" (click)="onClickAddAlbum()">
+      <i class="bi bi-plus-circle"></i> add album
+    </button>
+  </div>
+  <ul class="list">
     <li
       class="list__entry"
       *ngFor="let album of albums; trackBy: trackByFunction"

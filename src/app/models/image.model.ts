@@ -10,7 +10,7 @@ export interface Image {
   ratio: number
   signedUrl?: string
   tags?: Tag[]
-  albums?: Album[] & string[]
+  // albums?: Album[] & string[]
   stars: number
   toPrint: boolean
   public: boolean
@@ -18,6 +18,8 @@ export interface Image {
   darkroomSettingContrast: number
   darkroomSettingAperture: number
   note: string
+  rollId: number
+  albumId: string
 }
 
 export enum ImageSize {

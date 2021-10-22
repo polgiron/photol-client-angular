@@ -1,9 +1,9 @@
-<li class="wrapper" [ngClass]="{ 'is-loaded': isLoaded }">
+<button class="button-lightbox" (click)="openPhotoModal()">
   <img
     alt="Cover image"
     class="fade"
-    [src]="src"
+    [src]="image.signedUrl"
     (load)="onLoad()"
     [ngClass]="{ 'is-loaded': isLoaded }"
   />
-</li>
+</button>

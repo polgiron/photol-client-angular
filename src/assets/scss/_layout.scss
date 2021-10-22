@@ -4,7 +4,8 @@ body.disable-scroll {
 
 .main-container {
   padding: var(--container-padding);
-  padding-top: var(--albums-spacing);
+  // padding-top: var(--albums-spacing);
+  padding-top: 3rem;
   max-width: var(--container-width);
   margin: auto;
   animation: fade-in-from-bottom 1s var(--ease-out-quint) both 0.4s;

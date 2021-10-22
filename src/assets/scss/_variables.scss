@@ -16,12 +16,12 @@
   --big-border-radius: 0.85rem;
   --border-width: 0.35rem;
   --loader-width: 3rem;
-  --albums-spacing: 2.5rem;
+  // --albums-spacing: 0.75rem;
   --min-albums-width: 16rem;
 
-  @include respond-to('large') {
-    --albums-spacing: 1.5rem;
-  }
+  // @include respond-to('large') {
+  //   --albums-spacing: 1.5rem;
+  // }
 
   @include respond-to('medium') {
     --min-albums-width: 12rem;

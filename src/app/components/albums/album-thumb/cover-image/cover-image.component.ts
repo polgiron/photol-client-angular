@@ -2,11 +2,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   Input,
-  OnInit,
-  Output
+  OnInit
 } from '@angular/core'
+import { Image } from 'src/app/models/image.model'
+import { ImageService } from 'src/app/services/image.service'
 
 @Component({
   selector: 'app-cover-image',
@@ -15,15 +15,22 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoverImageComponent implements OnInit {
-  @Input() src: string
+  @Input() image: Image
   isLoaded: boolean = false
 
-  constructor(private ref: ChangeDetectorRef) {}
+  constructor(
+    private ref: ChangeDetectorRef,
+    private imageService: ImageService
+  ) {}
 
   ngOnInit() {}
 
   onLoad() {
     this.isLoaded = true
     this.ref.markForCheck()
+  }
+
+  openPhotoModal() {
+    this.imageService.openLightbox(this.image, true)
   }
 }

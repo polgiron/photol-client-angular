@@ -29,10 +29,7 @@ export class ImageThumbComponent implements OnInit {
     return this.auth.isLoggedIn
   }
 
-  constructor(
-    private auth: AuthService,
-    private imageService: ImageService // private ref: ChangeDetectorRef
-  ) {}
+  constructor(private auth: AuthService, private imageService: ImageService) {}
 
   ngOnInit(): void {}
 

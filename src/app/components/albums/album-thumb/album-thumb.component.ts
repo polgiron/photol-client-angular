@@ -25,11 +25,12 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
   @Input() album: MultipleAlbum
   private _alive: boolean = true
   editMode: boolean = false
-  isInViewport: boolean = false
+  // isInViewport: boolean = false
   isLoaded: boolean = false
 
   get covers(): Image[] {
-    return this.album?.covers?.slice(0, 4)
+    return this.album?.covers?.slice(0, 7)
+    // return this.album?.covers
   }
 
   constructor(
@@ -58,8 +59,8 @@ export class AlbumThumbComponent implements OnInit, OnDestroy {
     this.albumService.delete(this.album._id)
   }
 
-  async onDeferLoad() {
-    this.isInViewport = true
-    this.ref.markForCheck()
-  }
+  // async onDeferLoad() {
+  //   this.isInViewport = true
+  //   this.ref.markForCheck()
+  // }
 }

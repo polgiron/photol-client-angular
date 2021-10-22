@@ -87,7 +87,10 @@ export class ImageService {
     return this._lightboxIndex.asObservable()
   }
 
-  openLightbox(image: Image) {
+  openLightbox(image: Image, single: boolean = false) {
+    if (single) {
+      this._currentImages.next([image])
+    }
     this._lightboxIndex.next(this.currentImages.indexOf(image))
     document.body.classList.add('is-static')
   }
