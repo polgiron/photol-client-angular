@@ -12,6 +12,7 @@ body.disable-scroll {
 
   @include respond-to('small') {
     // padding: 1rem;
+    padding-top: 1.5rem;
   }
 }
 
