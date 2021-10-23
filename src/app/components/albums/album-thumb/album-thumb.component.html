@@ -1,29 +1,16 @@
 <div class="album-thumb">
-  <!-- <a [routerLink]="['/', 'albums', album._id]" (deferLoad)="onDeferLoad()">
-    <ul
-      class="covers"
-      [ngClass]="{
-        'has-2-covers': album.covers.length === 2,
-        'has-3-covers-or-more': album.covers.length >= 3
-      }"
-      *ngIf="album.covers.length && isInViewport"
-    >
-      <app-cover-image
-        *ngFor="let cover of covers"
-        [src]="cover.signedUrl"
-      ></app-cover-image>
-    </ul>
-    <div *ngIf="album.rollId" class="top-left">{{ album.rollId }}</div>
-    <div class="edit-toolbar" *ngIf="editMode" [@fadeAnimation]>
-      <button class="button button--icon" (click)="delete($event)">
-        <i class="bi bi-trash"></i>
-      </button>
-    </div>
-  </a> -->
   <div class="top">
-    <a [routerLink]="['/', 'albums', album._id]"
-      ><h2 class="title">{{ album.title }}</h2></a
+    <a class="title" [routerLink]="['/', 'albums', album._id]">
+      <h2>{{ album.title }}</h2>
+    </a>
+    <button
+      *ngIf="editMode"
+      [@fadeAnimation]
+      class="button"
+      (click)="delete($event)"
     >
+      <i class="bi bi-trash"></i> delete
+    </button>
   </div>
   <!-- <div class="roll-wrapper"> -->
   <!-- <div class="bar"></div> -->

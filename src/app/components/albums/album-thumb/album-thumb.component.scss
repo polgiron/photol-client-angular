@@ -1,17 +1,19 @@
 @import '~src/assets/scss/breakpoints';
 
 .top {
-  background: var(--color-background-2);
-  border-radius: var(--small-border-radius);
   margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title {
   font-weight: 300;
   font-size: 1rem;
   display: inline-block;
+  background: var(--color-background-2);
+  border-radius: var(--small-border-radius);
+  padding: 0.5rem 1rem;
 }
 
 .roll {
@@ -78,4 +80,8 @@
   g {
     stroke: var(--color-text-medium);
   }
+}
+
+.button i {
+  color: var(--color-red);
 }
