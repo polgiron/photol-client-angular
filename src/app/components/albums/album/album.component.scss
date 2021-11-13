@@ -42,9 +42,26 @@
   }
 }
 
+.label {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-text-medium);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
 .roll-id-wrapper {
   display: flex;
   align-items: center;
+}
+
+.button-upload {
+  background: var(--color-background-2);
+  width: 12rem;
+  height: 12rem;
+  border-radius: var(--small-border-radius);
+  color: var(--color-text-lighter);
+  font-size: 4em;
 }
 
 // .navigation-button {

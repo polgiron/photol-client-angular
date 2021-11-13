@@ -14,6 +14,7 @@ import { SettingsService } from 'src/app/services/settings.service'
 import { takeWhile } from 'rxjs/operators'
 import { Settings } from 'src/app/models/settings.model'
 import { ImageSize } from 'src/app/models/image.model'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-albums',
@@ -31,7 +32,8 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     private albumService: AlbumService,
     private ref: ChangeDetectorRef,
     private modalService: ModalService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -54,8 +56,10 @@ export class AlbumsComponent implements OnInit, OnDestroy {
       })
   }
 
-  onClickAddAlbum() {
-    this.modalService.open(ModalCreateAlbumComponent, ImageSize.BIG)
+  async onClickAddAlbum() {
+    const album: Album = await this.albumService.create()
+    this.router.navigateByUrl(`/albums/${album._id}`)
+    // this.modalService.open(ModalCreateAlbumComponent, ImageSize.BIG)
   }
 
   trackByFunction(index, item) {

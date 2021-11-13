@@ -72,8 +72,12 @@ export class AlbumService {
     return response !== null
   }
 
-  async create(params: Object): Promise<Album> {
-    return await this.api.post(this.document, params)
+  async create(params: any = {}): Promise<Album> {
+    const album: MultipleAlbum = await this.api.post(this.document, params)
+    const albums = this.currentAlbums
+    albums.unshift(album)
+    this._currentAlbums.next(albums)
+    return album
   }
 
   async update(albumId: string, params: any): Promise<Album> {

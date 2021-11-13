@@ -32,7 +32,7 @@ export class Api {
     return response
   }
 
-  async post(method: string, params: object): Promise<any> {
+  async post(method: string, params: any = {}): Promise<any> {
     const response = await this.http
       .post(environment.domain + method, params, {
         headers: { Authorization: `Bearer ${this.auth.getToken()}` }

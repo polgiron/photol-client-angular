@@ -123,4 +123,21 @@ export class AlbumComponent implements OnInit, OnDestroy {
     const albumId = this.albumService.currentAlbums[currentIndex + 1]._id
     this.router.navigate(['/', 'albums', albumId])
   }
+
+  onUpload(files: File[]): void {
+    this.extendPhotos(files)
+  }
+
+  extendPhotos(files: File[]): void {
+    console.log(files)
+
+    // files.map((file) => {
+    //   this.images.unshift({
+    //     file: file,
+    //     src: window.URL.createObjectURL(file).toString()
+    //   })
+    // })
+
+    // this.ref.markForCheck()
+  }
 }

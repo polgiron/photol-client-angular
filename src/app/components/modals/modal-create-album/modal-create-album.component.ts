@@ -63,21 +63,18 @@ export class ModalCreateAlbumComponent implements OnInit {
   }
 
   onCreateAlbum(): void {
-    // console.log('ON CREATE ALBUM');
-
-    const params = {
-      title: this.title,
-      rollId: this.rollId,
-      date: this.date
-    }
-
     this.close()
 
-    this.albumService.create(params).then((album: Album) => {
-      // console.log('Album has been created');
-      this.images.forEach((image) => (image.albums = [album._id]))
-      this.uploadService.upload(this.images, album._id, album.date)
-    })
+    this.albumService
+      .create({
+        title: this.title,
+        rollId: this.rollId,
+        date: this.date
+      })
+      .then((album: Album) => {
+        this.images.forEach((image) => (image.albums = [album._id]))
+        this.uploadService.upload(this.images, album._id, album.date)
+      })
 
     this.modalService.open(ModalUploadProgressComponent, 'upload', true, {
       albumTitle: this.title,
